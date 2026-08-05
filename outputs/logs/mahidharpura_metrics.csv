@@ -1,0 +1,454 @@
+camera_id,zone_id,zone_label,zone_kind,window_start_s,window_end_s,n_detections_mean,counts_by_group,unique_tracks,pcu_mean,density_pcu_per_100m2,density_pcu_per_km_lane,real_area_m2,mean_speed_kmph,stopped_fraction,queue_length_pcu,arrivals,flow_pcu_per_hr,box_occupancy,structural_occupancy,saturated,measurement_mode,scale_verified,los,congestion_index
+mahidharpura,movement_channel,Movement channel,carriageway,0.0,2.0,1.5,{'Two-wheeler': 1.5},2,0.75,,,,,0.0,0.0,2,0.0,0.1057,0.9977,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,0.0,2.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8173,True,occupancy,False,Jam,0.817
+mahidharpura,parking_bank_right,Parked bank (R),parking,0.0,2.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9827,True,occupancy,False,Jam,0.983
+mahidharpura,movement_channel,Movement channel,carriageway,2.0,4.0,2.1,{'Two-wheeler': 2.1},3,1.05,,,,,0.0,0.0,1,0.0,0.1072,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,2.0,4.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8314,True,occupancy,False,Jam,0.831
+mahidharpura,parking_bank_right,Parked bank (R),parking,2.0,4.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0222,0.9956,True,occupancy,False,Jam,0.996
+mahidharpura,movement_channel,Movement channel,carriageway,4.0,6.0,1.5,{'Two-wheeler': 1.5},3,0.75,,,,,0.0,0.0,2,0.0,0.0841,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,4.0,6.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8277,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,4.0,6.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9967,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,6.0,8.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,0,0.0,0.077,0.9988,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,6.0,8.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8213,True,occupancy,False,Jam,0.821
+mahidharpura,parking_bank_right,Parked bank (R),parking,6.0,8.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0435,0.9977,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,8.0,10.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,1,0.0,0.0761,0.9953,True,occupancy,False,Jam,0.995
+mahidharpura,parking_bank_left,Parked bank (L),parking,8.0,10.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8216,True,occupancy,False,Jam,0.822
+mahidharpura,parking_bank_right,Parked bank (R),parking,8.0,10.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9949,True,occupancy,False,Jam,0.995
+mahidharpura,movement_channel,Movement channel,carriageway,10.0,12.0,1.7,{'Two-wheeler': 1.7},3,0.85,,,,,0.0,0.0,1,0.0,0.0738,0.9994,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,10.0,12.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.832,True,occupancy,False,Jam,0.832
+mahidharpura,parking_bank_right,Parked bank (R),parking,10.0,12.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9971,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,12.0,14.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0789,0.9997,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,12.0,14.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8327,True,occupancy,False,Jam,0.833
+mahidharpura,parking_bank_right,Parked bank (R),parking,12.0,14.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0217,0.9975,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,14.0,16.0,1.7,{'Two-wheeler': 1.7},2,0.85,,,,,0.0,0.0,1,0.0,0.1229,0.995,True,occupancy,False,Jam,0.995
+mahidharpura,parking_bank_left,Parked bank (L),parking,14.0,16.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8333,True,occupancy,False,Jam,0.833
+mahidharpura,parking_bank_right,Parked bank (R),parking,14.0,16.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1265,0.9926,True,occupancy,False,Jam,0.993
+mahidharpura,movement_channel,Movement channel,carriageway,16.0,18.0,1.6,{'Two-wheeler': 1.6},3,0.8,,,,,0.0,0.0,2,0.0,0.0739,0.9954,True,occupancy,False,Jam,0.995
+mahidharpura,parking_bank_left,Parked bank (L),parking,16.0,18.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8229,True,occupancy,False,Jam,0.823
+mahidharpura,parking_bank_right,Parked bank (R),parking,16.0,18.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0401,0.9932,True,occupancy,False,Jam,0.993
+mahidharpura,movement_channel,Movement channel,carriageway,18.0,20.0,1.8,{'Two-wheeler': 1.8},5,0.9,,,,,0.0,0.0,2,0.0,0.1035,0.9997,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,18.0,20.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8325,True,occupancy,False,Jam,0.832
+mahidharpura,parking_bank_right,Parked bank (R),parking,18.0,20.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.107,0.9979,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,20.0,22.0,2.2,{'Two-wheeler': 2.2},3,1.1,,,,,0.0,0.0,0,0.0,0.1171,0.9987,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,20.0,22.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.835,True,occupancy,False,Jam,0.835
+mahidharpura,parking_bank_right,Parked bank (R),parking,20.0,22.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.1651,0.9984,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,22.0,24.0,2.1,{'Two-wheeler': 2.1},4,1.05,,,,,0.0,0.0,0,0.0,0.1188,0.9977,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,22.0,24.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8359,True,occupancy,False,Jam,0.836
+mahidharpura,parking_bank_right,Parked bank (R),parking,22.0,24.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.1623,0.9979,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,24.0,26.0,1.5,{'Two-wheeler': 1.5},3,0.75,,,,,0.0,0.0,1,0.0,0.1106,0.9965,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,24.0,26.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.834,True,occupancy,False,Jam,0.834
+mahidharpura,parking_bank_right,Parked bank (R),parking,24.0,26.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0608,0.9914,True,occupancy,False,Jam,0.991
+mahidharpura,movement_channel,Movement channel,carriageway,26.0,28.0,2.9,{'Two-wheeler': 2.9},6,1.45,,,,,0.0,0.0,3,0.0,0.1565,0.9981,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,26.0,28.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8277,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,26.0,28.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.992,True,occupancy,False,Jam,0.992
+mahidharpura,movement_channel,Movement channel,carriageway,28.0,30.0,1.6,{'Two-wheeler': 1.6},4,0.8,,,,,0.0,0.0,0,0.0,0.0616,0.9994,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,28.0,30.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8277,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,28.0,30.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9905,True,occupancy,False,Jam,0.991
+mahidharpura,movement_channel,Movement channel,carriageway,30.0,32.0,1.6,{'Two-wheeler': 1.6},3,0.8,,,,,0.0,0.0,1,0.0,0.0634,0.9983,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,30.0,32.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8268,True,occupancy,False,Jam,0.827
+mahidharpura,parking_bank_right,Parked bank (R),parking,30.0,32.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9945,True,occupancy,False,Jam,0.994
+mahidharpura,movement_channel,Movement channel,carriageway,32.0,34.0,0.6,{'Two-wheeler': 0.6},3,0.3,,,,,0.0,0.0,0,0.0,0.03,0.9966,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,32.0,34.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8264,True,occupancy,False,Jam,0.826
+mahidharpura,parking_bank_right,Parked bank (R),parking,32.0,34.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.986,True,occupancy,False,Jam,0.986
+mahidharpura,movement_channel,Movement channel,carriageway,34.0,36.0,0.6,{'Two-wheeler': 0.6},2,0.3,,,,,0.0,0.0,1,0.0,0.04,0.9996,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,34.0,36.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8379,True,occupancy,False,Jam,0.838
+mahidharpura,parking_bank_right,Parked bank (R),parking,34.0,36.0,0.1,{'Two-wheeler': 0.1},0,0.05,,,,,0.0,0.0,0,0.0,0.0221,0.991,True,occupancy,False,Jam,0.991
+mahidharpura,movement_channel,Movement channel,carriageway,36.0,38.0,0.9,{'Two-wheeler': 0.9},3,0.45,,,,,0.0,0.0,2,0.0,0.0461,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,36.0,38.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8359,True,occupancy,False,Jam,0.836
+mahidharpura,parking_bank_right,Parked bank (R),parking,36.0,38.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,1,0.0,0.1676,0.9928,True,occupancy,False,Jam,0.993
+mahidharpura,movement_channel,Movement channel,carriageway,38.0,40.0,1.1,{'Two-wheeler': 1.1},3,0.55,,,,,0.0,0.0,0,0.0,0.0647,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,38.0,40.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8337,True,occupancy,False,Jam,0.834
+mahidharpura,parking_bank_right,Parked bank (R),parking,38.0,40.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1256,0.995,True,occupancy,False,Jam,0.995
+mahidharpura,movement_channel,Movement channel,carriageway,40.0,42.0,2.1,{'Two-wheeler': 2.1},4,1.05,,,,,0.0,0.0,2,0.0,0.1054,0.9925,True,occupancy,False,Jam,0.993
+mahidharpura,parking_bank_left,Parked bank (L),parking,40.0,42.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8332,True,occupancy,False,Jam,0.833
+mahidharpura,parking_bank_right,Parked bank (R),parking,40.0,42.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.1081,0.9939,True,occupancy,False,Jam,0.994
+mahidharpura,movement_channel,Movement channel,carriageway,42.0,44.0,0.4,{'Two-wheeler': 0.4},3,0.2,,,,,0.0,0.0,0,0.0,0.0206,0.9948,True,occupancy,False,Jam,0.995
+mahidharpura,parking_bank_left,Parked bank (L),parking,42.0,44.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8303,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,42.0,44.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0208,0.9913,True,occupancy,False,Jam,0.991
+mahidharpura,movement_channel,Movement channel,carriageway,44.0,46.0,0.4,{'Two-wheeler': 0.4},2,0.2,,,,,0.0,0.0,2,0.0,0.0295,0.9993,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,44.0,46.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8381,True,occupancy,False,Jam,0.838
+mahidharpura,parking_bank_right,Parked bank (R),parking,44.0,46.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9959,True,occupancy,False,Jam,0.996
+mahidharpura,movement_channel,Movement channel,carriageway,46.0,48.0,1.9,{'Two-wheeler': 1.9},3,0.95,,,,,0.0,0.0,1,0.0,0.1223,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,46.0,48.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8438,True,occupancy,False,Jam,0.844
+mahidharpura,parking_bank_right,Parked bank (R),parking,46.0,48.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0192,0.9962,True,occupancy,False,Jam,0.996
+mahidharpura,movement_channel,Movement channel,carriageway,48.0,50.0,1.6,{'Two-wheeler': 1.6},2,0.8,,,,,0.0,0.0,0,0.0,0.1156,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,48.0,50.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8367,True,occupancy,False,Jam,0.837
+mahidharpura,parking_bank_right,Parked bank (R),parking,48.0,50.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9891,True,occupancy,False,Jam,0.989
+mahidharpura,movement_channel,Movement channel,carriageway,50.0,52.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,0,0.0,0.1099,0.9989,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,50.0,52.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8351,True,occupancy,False,Jam,0.835
+mahidharpura,parking_bank_right,Parked bank (R),parking,50.0,52.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9906,True,occupancy,False,Jam,0.991
+mahidharpura,movement_channel,Movement channel,carriageway,52.0,54.0,1.9,{'Two-wheeler': 1.9},2,0.95,,,,,0.0,0.0,0,0.0,0.1641,0.9997,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,52.0,54.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8313,True,occupancy,False,Jam,0.831
+mahidharpura,parking_bank_right,Parked bank (R),parking,52.0,54.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9989,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,54.0,56.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,0,0.0,0.106,0.9997,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,54.0,56.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8319,True,occupancy,False,Jam,0.832
+mahidharpura,parking_bank_right,Parked bank (R),parking,54.0,56.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,1,0.0,0.0744,0.9972,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,56.0,58.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0483,0.9988,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,56.0,58.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8366,True,occupancy,False,Jam,0.837
+mahidharpura,parking_bank_right,Parked bank (R),parking,56.0,58.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9929,True,occupancy,False,Jam,0.993
+mahidharpura,movement_channel,Movement channel,carriageway,58.0,60.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0071,0.9989,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,58.0,60.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8318,True,occupancy,False,Jam,0.832
+mahidharpura,parking_bank_right,Parked bank (R),parking,58.0,60.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9905,True,occupancy,False,Jam,0.991
+mahidharpura,movement_channel,Movement channel,carriageway,60.0,62.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0156,0.9988,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,60.0,62.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8292,True,occupancy,False,Jam,0.829
+mahidharpura,parking_bank_right,Parked bank (R),parking,60.0,62.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9959,True,occupancy,False,Jam,0.996
+mahidharpura,movement_channel,Movement channel,carriageway,62.0,64.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0224,0.9995,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,62.0,64.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8358,True,occupancy,False,Jam,0.836
+mahidharpura,parking_bank_right,Parked bank (R),parking,62.0,64.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9989,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,64.0,66.0,0.9,{'Two-wheeler': 0.9},2,0.45,,,,,0.0,0.0,2,0.0,0.0527,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,64.0,66.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.843,True,occupancy,False,Jam,0.843
+mahidharpura,parking_bank_right,Parked bank (R),parking,64.0,66.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,66.0,68.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,66.0,68.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8399,True,occupancy,False,Jam,0.84
+mahidharpura,parking_bank_right,Parked bank (R),parking,66.0,68.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,68.0,70.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0121,0.9996,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,68.0,70.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8353,True,occupancy,False,Jam,0.835
+mahidharpura,parking_bank_right,Parked bank (R),parking,68.0,70.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9992,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,70.0,72.0,0.6,{'Two-wheeler': 0.6},2,0.3,,,,,0.0,0.0,1,0.0,0.0427,0.9996,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,70.0,72.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8349,True,occupancy,False,Jam,0.835
+mahidharpura,parking_bank_right,Parked bank (R),parking,70.0,72.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,1,0.0,0.1186,0.9994,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,72.0,74.0,1.6,{'Two-wheeler': 1.6},4,0.8,,,,,0.0,0.0,2,0.0,0.087,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,72.0,74.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8337,True,occupancy,False,Jam,0.834
+mahidharpura,parking_bank_right,Parked bank (R),parking,72.0,74.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.062,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,74.0,76.0,0.7,{'Two-wheeler': 0.7},2,0.35,,,,,0.0,0.0,0,0.0,0.025,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,74.0,76.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8307,True,occupancy,False,Jam,0.831
+mahidharpura,parking_bank_right,Parked bank (R),parking,74.0,76.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.1434,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,76.0,78.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0164,0.999,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,76.0,78.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8339,True,occupancy,False,Jam,0.834
+mahidharpura,parking_bank_right,Parked bank (R),parking,76.0,78.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.1494,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,78.0,80.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0066,0.998,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,78.0,80.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8315,True,occupancy,False,Jam,0.831
+mahidharpura,parking_bank_right,Parked bank (R),parking,78.0,80.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0583,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,80.0,82.0,0.6,{'Two-wheeler': 0.6},2,0.3,,,,,0.0,0.0,1,0.0,0.0176,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,80.0,82.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8281,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,80.0,82.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,82.0,84.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,1,0.0,0.024,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,82.0,84.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8257,True,occupancy,False,Jam,0.826
+mahidharpura,parking_bank_right,Parked bank (R),parking,82.0,84.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,84.0,86.0,1.1,{'Two-wheeler': 1.1},3,0.55,,,,,0.0,0.0,2,0.0,0.0472,0.9983,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,84.0,86.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8261,True,occupancy,False,Jam,0.826
+mahidharpura,parking_bank_right,Parked bank (R),parking,84.0,86.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,86.0,88.0,1.6,{'Two-wheeler': 1.6},3,0.8,,,,,0.0,0.0,1,0.0,0.0731,0.9987,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,86.0,88.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8245,True,occupancy,False,Jam,0.825
+mahidharpura,parking_bank_right,Parked bank (R),parking,86.0,88.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9996,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,88.0,90.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.0363,0.9976,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,88.0,90.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8192,True,occupancy,False,Jam,0.819
+mahidharpura,parking_bank_right,Parked bank (R),parking,88.0,90.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9975,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,90.0,92.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,1,0.0,0.0307,0.9963,True,occupancy,False,Jam,0.996
+mahidharpura,parking_bank_left,Parked bank (L),parking,90.0,92.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8183,True,occupancy,False,Jam,0.818
+mahidharpura,parking_bank_right,Parked bank (R),parking,90.0,92.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9969,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,92.0,94.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,0,0.0,0.0651,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,92.0,94.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8224,True,occupancy,False,Jam,0.822
+mahidharpura,parking_bank_right,Parked bank (R),parking,92.0,94.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,94.0,96.0,1.1,{'Two-wheeler': 1.1},3,0.55,,,,,0.0,0.0,1,0.0,0.0447,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,94.0,96.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8217,True,occupancy,False,Jam,0.822
+mahidharpura,parking_bank_right,Parked bank (R),parking,94.0,96.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9995,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,96.0,98.0,1.3,{'Two-wheeler': 1.3},3,0.65,,,,,0.0,0.0,1,0.0,0.0579,0.9978,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,96.0,98.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8302,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,96.0,98.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9987,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,98.0,100.0,2.2,{'Two-wheeler': 2.2},4,1.1,,,,,0.0,0.0,1,0.0,0.0822,0.997,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,98.0,100.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8284,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,98.0,100.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9967,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,100.0,102.0,2.5,{'Two-wheeler': 2.5},3,1.25,,,,,0.0,0.0,0,0.0,0.0956,0.999,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,100.0,102.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8339,True,occupancy,False,Jam,0.834
+mahidharpura,parking_bank_right,Parked bank (R),parking,100.0,102.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9982,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,102.0,104.0,1.4,{'Two-wheeler': 1.4},3,0.7,,,,,0.0,0.0,1,0.0,0.0577,0.9986,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,102.0,104.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8289,True,occupancy,False,Jam,0.829
+mahidharpura,parking_bank_right,Parked bank (R),parking,102.0,104.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0133,0.999,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,104.0,106.0,0.9,{'Two-wheeler': 0.9},4,0.45,,,,,0.0,0.0,3,0.0,0.0368,0.9935,True,occupancy,False,Jam,0.994
+mahidharpura,parking_bank_left,Parked bank (L),parking,104.0,106.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8352,True,occupancy,False,Jam,0.835
+mahidharpura,parking_bank_right,Parked bank (R),parking,104.0,106.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9941,True,occupancy,False,Jam,0.994
+mahidharpura,movement_channel,Movement channel,carriageway,106.0,108.0,3.1,{'Two-wheeler': 3.1},7,1.55,,,,,0.0,0.0,3,0.0,0.1088,0.996,True,occupancy,False,Jam,0.996
+mahidharpura,parking_bank_left,Parked bank (L),parking,106.0,108.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8335,True,occupancy,False,Jam,0.833
+mahidharpura,parking_bank_right,Parked bank (R),parking,106.0,108.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9958,True,occupancy,False,Jam,0.996
+mahidharpura,movement_channel,Movement channel,carriageway,108.0,110.0,3.1,{'Two-wheeler': 3.1},7,1.55,,,,,0.0,0.0,1,0.0,0.1093,0.9998,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,108.0,110.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8378,True,occupancy,False,Jam,0.838
+mahidharpura,parking_bank_right,Parked bank (R),parking,108.0,110.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9974,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,110.0,112.0,2.4,{'Two-wheeler': 2.4},5,1.2,,,,,0.0,0.0,2,0.0,0.0604,0.9978,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,110.0,112.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8362,True,occupancy,False,Jam,0.836
+mahidharpura,parking_bank_right,Parked bank (R),parking,110.0,112.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0183,0.9973,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,112.0,114.0,1.9,{'Two-wheeler': 1.9},5,0.95,,,,,0.0,0.0,3,0.0,0.0608,0.9989,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,112.0,114.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8281,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,112.0,114.0,0.9,{'Two-wheeler': 0.9},2,0.45,,,,,0.0,0.0,1,0.0,0.1538,0.9985,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,114.0,116.0,3.5,{'Two-wheeler': 3.5},5,1.75,,,,,0.0,0.0,0,0.0,0.118,0.998,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,114.0,116.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8286,True,occupancy,False,Jam,0.829
+mahidharpura,parking_bank_right,Parked bank (R),parking,114.0,116.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0367,0.9965,True,occupancy,False,Jam,0.996
+mahidharpura,movement_channel,Movement channel,carriageway,116.0,118.0,1.5,{'Two-wheeler': 1.5},3,0.75,,,,,0.0,0.0,0,0.0,0.0577,0.9998,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,116.0,118.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.83,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,116.0,118.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9987,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,118.0,120.0,2.0,{'Two-wheeler': 2.0},3,1.0,,,,,0.0,0.0,0,0.0,0.0955,0.9998,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,118.0,120.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8208,True,occupancy,False,Jam,0.821
+mahidharpura,parking_bank_right,Parked bank (R),parking,118.0,120.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9989,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,120.0,122.0,2.7,{'Two-wheeler': 2.7},4,1.35,,,,,0.0,0.0,1,0.0,0.1392,0.9939,True,occupancy,False,Jam,0.994
+mahidharpura,parking_bank_left,Parked bank (L),parking,120.0,122.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8204,True,occupancy,False,Jam,0.82
+mahidharpura,parking_bank_right,Parked bank (R),parking,120.0,122.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9973,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,122.0,124.0,1.8,{'Two-wheeler': 1.8},3,0.9,,,,,0.0,0.0,0,0.0,0.0952,0.997,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,122.0,124.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8171,True,occupancy,False,Jam,0.817
+mahidharpura,parking_bank_right,Parked bank (R),parking,122.0,124.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9916,True,occupancy,False,Jam,0.992
+mahidharpura,movement_channel,Movement channel,carriageway,124.0,126.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,0,0.0,0.055,0.9977,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,124.0,126.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8247,True,occupancy,False,Jam,0.825
+mahidharpura,parking_bank_right,Parked bank (R),parking,124.0,126.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9969,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,126.0,128.0,1.0,{'Two-wheeler': 1.0},2,0.5,,,,,0.0,0.0,0,0.0,0.042,0.9941,True,occupancy,False,Jam,0.994
+mahidharpura,parking_bank_left,Parked bank (L),parking,126.0,128.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8303,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,126.0,128.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9976,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,128.0,130.0,2.4,{'Two-wheeler': 2.4},4,1.2,,,,,0.0,0.0,3,0.0,0.1528,0.991,True,occupancy,False,Jam,0.991
+mahidharpura,parking_bank_left,Parked bank (L),parking,128.0,130.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8287,True,occupancy,False,Jam,0.829
+mahidharpura,parking_bank_right,Parked bank (R),parking,128.0,130.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9964,True,occupancy,False,Jam,0.996
+mahidharpura,movement_channel,Movement channel,carriageway,130.0,132.0,1.9,{'Two-wheeler': 1.9},4,0.95,,,,,0.0,0.0,0,0.0,0.1248,0.9893,True,occupancy,False,Jam,0.989
+mahidharpura,parking_bank_left,Parked bank (L),parking,130.0,132.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8254,True,occupancy,False,Jam,0.825
+mahidharpura,parking_bank_right,Parked bank (R),parking,130.0,132.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9988,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,132.0,134.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,1,0.0,0.0725,0.9848,True,occupancy,False,Jam,0.985
+mahidharpura,parking_bank_left,Parked bank (L),parking,132.0,134.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8317,True,occupancy,False,Jam,0.832
+mahidharpura,parking_bank_right,Parked bank (R),parking,132.0,134.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.017,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,134.0,136.0,1.1,{'Two-wheeler': 1.1},3,0.55,,,,,0.0,0.0,1,0.0,0.0746,0.9903,True,occupancy,False,Jam,0.99
+mahidharpura,parking_bank_left,Parked bank (L),parking,134.0,136.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8271,True,occupancy,False,Jam,0.827
+mahidharpura,parking_bank_right,Parked bank (R),parking,134.0,136.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,136.0,138.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,0,0.0,0.0469,0.9887,True,occupancy,False,Jam,0.989
+mahidharpura,parking_bank_left,Parked bank (L),parking,136.0,138.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8259,True,occupancy,False,Jam,0.826
+mahidharpura,parking_bank_right,Parked bank (R),parking,136.0,138.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,138.0,140.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,1,0.0,0.0115,0.9846,True,occupancy,False,Jam,0.985
+mahidharpura,parking_bank_left,Parked bank (L),parking,138.0,140.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8279,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,138.0,140.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9966,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,140.0,142.0,0.4,{'Two-wheeler': 0.4},2,0.2,,,,,0.0,0.0,1,0.0,0.0176,0.9818,True,occupancy,False,Jam,0.982
+mahidharpura,parking_bank_left,Parked bank (L),parking,140.0,142.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8268,True,occupancy,False,Jam,0.827
+mahidharpura,parking_bank_right,Parked bank (R),parking,140.0,142.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9956,True,occupancy,False,Jam,0.996
+mahidharpura,movement_channel,Movement channel,carriageway,142.0,144.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,1,0.0,0.0637,0.9898,True,occupancy,False,Jam,0.99
+mahidharpura,parking_bank_left,Parked bank (L),parking,142.0,144.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8311,True,occupancy,False,Jam,0.831
+mahidharpura,parking_bank_right,Parked bank (R),parking,142.0,144.0,0.1,{'Two-wheeler': 0.1},0,0.05,,,,,0.0,0.0,0,0.0,0.0067,0.9981,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,144.0,146.0,1.6,{'Two-wheeler': 1.6},4,0.8,,,,,0.0,0.0,2,0.0,0.0769,0.9895,True,occupancy,False,Jam,0.989
+mahidharpura,parking_bank_left,Parked bank (L),parking,144.0,146.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8349,True,occupancy,False,Jam,0.835
+mahidharpura,parking_bank_right,Parked bank (R),parking,144.0,146.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9982,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,146.0,148.0,1.1,{'Two-wheeler': 1.1},3,0.55,,,,,0.0,0.0,0,0.0,0.0553,0.9791,True,occupancy,False,Jam,0.979
+mahidharpura,parking_bank_left,Parked bank (L),parking,146.0,148.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8276,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,146.0,148.0,0.1,{'Two-wheeler': 0.1},0,0.05,,,,,0.0,0.0,0,0.0,0.0089,0.9984,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,148.0,150.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,0,0.0,0.0402,0.9875,True,occupancy,False,Jam,0.987
+mahidharpura,parking_bank_left,Parked bank (L),parking,148.0,150.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8279,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,148.0,150.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9977,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,150.0,152.0,2.0,{'Two-wheeler': 2.0},3,1.0,,,,,0.0,0.0,0,0.0,0.0836,0.9984,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,150.0,152.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8344,True,occupancy,False,Jam,0.834
+mahidharpura,parking_bank_right,Parked bank (R),parking,150.0,152.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9988,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,152.0,154.0,1.8,{'Two-wheeler': 1.8},3,0.9,,,,,0.0,0.0,1,0.0,0.0677,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,152.0,154.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8356,True,occupancy,False,Jam,0.836
+mahidharpura,parking_bank_right,Parked bank (R),parking,152.0,154.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9994,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,154.0,156.0,2.2,{'Two-wheeler': 2.2},3,1.1,,,,,0.0,0.0,0,0.0,0.0754,0.9967,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,154.0,156.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8329,True,occupancy,False,Jam,0.833
+mahidharpura,parking_bank_right,Parked bank (R),parking,154.0,156.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.998,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,156.0,158.0,1.1,{'Two-wheeler': 1.1},3,0.55,,,,,0.0,0.0,1,0.0,0.045,0.9935,True,occupancy,False,Jam,0.993
+mahidharpura,parking_bank_left,Parked bank (L),parking,156.0,158.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.82,True,occupancy,False,Jam,0.82
+mahidharpura,parking_bank_right,Parked bank (R),parking,156.0,158.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,1,0.0,0.0241,0.9968,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,158.0,160.0,2.8,{'Two-wheeler': 2.8},5,1.4,,,,,0.0,0.0,2,0.0,0.1751,0.9967,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,158.0,160.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8249,True,occupancy,False,Jam,0.825
+mahidharpura,parking_bank_right,Parked bank (R),parking,158.0,160.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.017,0.9983,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,160.0,162.0,3.0,{'Two-wheeler': 3.0},4,1.5,,,,,0.0,0.0,1,0.0,0.1871,0.999,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,160.0,162.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8279,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,160.0,162.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9995,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,162.0,164.0,1.9,{'Two-wheeler': 1.9},4,0.95,,,,,0.0,0.0,0,0.0,0.0913,0.997,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,162.0,164.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8242,True,occupancy,False,Jam,0.824
+mahidharpura,parking_bank_right,Parked bank (R),parking,162.0,164.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9982,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,164.0,166.0,3.1,{'Two-wheeler': 3.1},5,1.55,,,,,0.0,0.0,1,0.0,0.1387,0.9986,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,164.0,166.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8208,True,occupancy,False,Jam,0.821
+mahidharpura,parking_bank_right,Parked bank (R),parking,164.0,166.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9983,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,166.0,168.0,3.6,{'Two-wheeler': 3.6},6,1.8,,,,,0.0,0.0,2,0.0,0.1517,0.9977,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,166.0,168.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8213,True,occupancy,False,Jam,0.821
+mahidharpura,parking_bank_right,Parked bank (R),parking,166.0,168.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9977,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,168.0,170.0,2.0,{'Two-wheeler': 2.0},4,1.0,,,,,0.0,0.0,0,0.0,0.073,0.996,True,occupancy,False,Jam,0.996
+mahidharpura,parking_bank_left,Parked bank (L),parking,168.0,170.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8231,True,occupancy,False,Jam,0.823
+mahidharpura,parking_bank_right,Parked bank (R),parking,168.0,170.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.998,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,170.0,172.0,1.4,{'Two-wheeler': 1.4},3,0.7,,,,,0.0,0.0,0,0.0,0.0501,0.9993,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,170.0,172.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.822,True,occupancy,False,Jam,0.822
+mahidharpura,parking_bank_right,Parked bank (R),parking,170.0,172.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,172.0,174.0,2.2,{'Two-wheeler': 2.2},4,1.1,,,,,0.0,0.0,0,0.0,0.1056,0.9957,True,occupancy,False,Jam,0.996
+mahidharpura,parking_bank_left,Parked bank (L),parking,172.0,174.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8159,True,occupancy,False,Jam,0.816
+mahidharpura,parking_bank_right,Parked bank (R),parking,172.0,174.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,174.0,176.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0289,0.9984,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,174.0,176.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8215,True,occupancy,False,Jam,0.822
+mahidharpura,parking_bank_right,Parked bank (R),parking,174.0,176.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9997,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,176.0,178.0,2.0,{'Two-wheeler': 2.0},2,1.0,,,,,0.0,0.0,0,0.0,0.0754,0.998,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,176.0,178.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8239,True,occupancy,False,Jam,0.824
+mahidharpura,parking_bank_right,Parked bank (R),parking,176.0,178.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9981,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,178.0,180.0,1.5,{'Two-wheeler': 1.5},3,0.75,,,,,0.0,0.0,1,0.0,0.0613,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,178.0,180.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8304,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,178.0,180.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,2,0.0,0.0917,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,180.0,182.0,0.8,{'Two-wheeler': 0.8},2,0.4,,,,,0.0,0.0,0,0.0,0.0325,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,180.0,182.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8256,True,occupancy,False,Jam,0.826
+mahidharpura,parking_bank_right,Parked bank (R),parking,180.0,182.0,0.9,{'Two-wheeler': 0.9},3,0.45,,,,,0.0,0.0,1,0.0,0.1259,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,182.0,184.0,1.1,{'Two-wheeler': 1.1},3,0.55,,,,,0.0,0.0,0,0.0,0.0474,0.9985,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,182.0,184.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8177,True,occupancy,False,Jam,0.818
+mahidharpura,parking_bank_right,Parked bank (R),parking,182.0,184.0,1.0,{'Two-wheeler': 1.0},2,0.5,,,,,0.0,0.0,0,0.0,0.1812,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,184.0,186.0,0.8,{'Two-wheeler': 0.8},3,0.4,,,,,0.0,0.0,0,0.0,0.0346,0.9884,True,occupancy,False,Jam,0.988
+mahidharpura,parking_bank_left,Parked bank (L),parking,184.0,186.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8094,True,occupancy,False,Jam,0.809
+mahidharpura,parking_bank_right,Parked bank (R),parking,184.0,186.0,1.4,{'Two-wheeler': 1.4},2,0.7,,,,,0.0,0.0,0,0.0,0.1811,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,186.0,188.0,1.9,{'Two-wheeler': 1.9},2,0.95,,,,,0.0,0.0,0,0.0,0.0801,0.9848,True,occupancy,False,Jam,0.985
+mahidharpura,parking_bank_left,Parked bank (L),parking,186.0,188.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8055,True,occupancy,False,Jam,0.805
+mahidharpura,parking_bank_right,Parked bank (R),parking,186.0,188.0,0.8,{'Two-wheeler': 0.8},2,0.4,,,,,0.0,0.0,0,0.0,0.0902,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,188.0,190.0,1.9,{'Two-wheeler': 1.9},2,0.95,,,,,0.0,0.0,0,0.0,0.0793,0.9932,True,occupancy,False,Jam,0.993
+mahidharpura,parking_bank_left,Parked bank (L),parking,188.0,190.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8067,True,occupancy,False,Jam,0.807
+mahidharpura,parking_bank_right,Parked bank (R),parking,188.0,190.0,0.6,{'Two-wheeler': 0.6},2,0.3,,,,,0.0,0.0,0,0.0,0.1045,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,190.0,192.0,1.7,{'Two-wheeler': 1.7},3,0.85,,,,,0.0,0.0,1,0.0,0.0895,0.9646,True,occupancy,False,Jam,0.965
+mahidharpura,parking_bank_left,Parked bank (L),parking,190.0,192.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8144,True,occupancy,False,Jam,0.814
+mahidharpura,parking_bank_right,Parked bank (R),parking,190.0,192.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1405,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,192.0,194.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0149,0.9733,True,occupancy,False,Jam,0.973
+mahidharpura,parking_bank_left,Parked bank (L),parking,192.0,194.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8106,True,occupancy,False,Jam,0.811
+mahidharpura,parking_bank_right,Parked bank (R),parking,192.0,194.0,1.4,{'Two-wheeler': 1.4},2,0.7,,,,,0.0,0.0,0,0.0,0.1701,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,194.0,196.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9712,True,occupancy,False,Jam,0.971
+mahidharpura,parking_bank_left,Parked bank (L),parking,194.0,196.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8129,True,occupancy,False,Jam,0.813
+mahidharpura,parking_bank_right,Parked bank (R),parking,194.0,196.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,0,0.0,0.1324,0.9977,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,196.0,198.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0114,0.9911,True,occupancy,False,Jam,0.991
+mahidharpura,parking_bank_left,Parked bank (L),parking,196.0,198.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.818,True,occupancy,False,Jam,0.818
+mahidharpura,parking_bank_right,Parked bank (R),parking,196.0,198.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,0,0.0,0.1895,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,198.0,200.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.018,0.9871,True,occupancy,False,Jam,0.987
+mahidharpura,parking_bank_left,Parked bank (L),parking,198.0,200.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8237,True,occupancy,False,Jam,0.824
+mahidharpura,parking_bank_right,Parked bank (R),parking,198.0,200.0,0.7,{'Two-wheeler': 0.7},2,0.35,,,,,0.0,0.0,0,0.0,0.1124,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,200.0,202.0,1.5,{'Two-wheeler': 1.5},3,0.75,,,,,0.0,0.0,2,0.0,0.0628,0.9708,True,occupancy,False,Jam,0.971
+mahidharpura,parking_bank_left,Parked bank (L),parking,200.0,202.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8145,True,occupancy,False,Jam,0.815
+mahidharpura,parking_bank_right,Parked bank (R),parking,200.0,202.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,0,0.0,0.1963,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,202.0,204.0,1.5,{'Two-wheeler': 1.5},4,0.75,,,,,0.0,0.0,1,0.0,0.0786,0.968,True,occupancy,False,Jam,0.968
+mahidharpura,parking_bank_left,Parked bank (L),parking,202.0,204.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8186,True,occupancy,False,Jam,0.819
+mahidharpura,parking_bank_right,Parked bank (R),parking,202.0,204.0,0.7,{'Two-wheeler': 0.7},2,0.35,,,,,0.0,0.0,0,0.0,0.1253,0.9994,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,204.0,206.0,2.3,{'Two-wheeler': 2.3},3,1.15,,,,,0.0,0.0,0,0.0,0.1025,0.9771,True,occupancy,False,Jam,0.977
+mahidharpura,parking_bank_left,Parked bank (L),parking,204.0,206.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8308,True,occupancy,False,Jam,0.831
+mahidharpura,parking_bank_right,Parked bank (R),parking,204.0,206.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,206.0,208.0,1.3,{'Two-wheeler': 1.3},2,0.65,,,,,0.0,0.0,0,0.0,0.0527,0.9845,True,occupancy,False,Jam,0.985
+mahidharpura,parking_bank_left,Parked bank (L),parking,206.0,208.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8297,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,206.0,208.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,208.0,210.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.017,0.9925,True,occupancy,False,Jam,0.992
+mahidharpura,parking_bank_left,Parked bank (L),parking,208.0,210.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8249,True,occupancy,False,Jam,0.825
+mahidharpura,parking_bank_right,Parked bank (R),parking,208.0,210.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1175,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,210.0,212.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0086,0.9816,True,occupancy,False,Jam,0.982
+mahidharpura,parking_bank_left,Parked bank (L),parking,210.0,212.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8266,True,occupancy,False,Jam,0.827
+mahidharpura,parking_bank_right,Parked bank (R),parking,210.0,212.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0771,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,212.0,214.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.9819,True,occupancy,False,Jam,0.982
+mahidharpura,parking_bank_left,Parked bank (L),parking,212.0,214.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8207,True,occupancy,False,Jam,0.821
+mahidharpura,parking_bank_right,Parked bank (R),parking,212.0,214.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0415,0.9989,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,214.0,216.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0157,0.9927,True,occupancy,False,Jam,0.993
+mahidharpura,parking_bank_left,Parked bank (L),parking,214.0,216.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8214,True,occupancy,False,Jam,0.821
+mahidharpura,parking_bank_right,Parked bank (R),parking,214.0,216.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1404,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,216.0,218.0,0.6,{'Two-wheeler': 0.6},3,0.3,,,,,0.0,0.0,2,0.0,0.0348,0.9799,True,occupancy,False,Jam,0.98
+mahidharpura,parking_bank_left,Parked bank (L),parking,216.0,218.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8199,True,occupancy,False,Jam,0.82
+mahidharpura,parking_bank_right,Parked bank (R),parking,216.0,218.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1423,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,218.0,220.0,1.2,{'Two-wheeler': 1.2},3,0.6,,,,,0.0,0.0,2,0.0,0.0409,0.9787,True,occupancy,False,Jam,0.979
+mahidharpura,parking_bank_left,Parked bank (L),parking,218.0,220.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.826,True,occupancy,False,Jam,0.826
+mahidharpura,parking_bank_right,Parked bank (R),parking,218.0,220.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0945,0.9984,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,220.0,222.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0347,0.9921,True,occupancy,False,Jam,0.992
+mahidharpura,parking_bank_left,Parked bank (L),parking,220.0,222.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8275,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,220.0,222.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1191,0.9974,True,occupancy,False,Jam,0.997
+mahidharpura,movement_channel,Movement channel,carriageway,222.0,224.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0064,0.9981,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,222.0,224.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8276,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,222.0,224.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1272,0.9995,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,224.0,226.0,0.9,{'Two-wheeler': 0.9},2,0.45,,,,,0.0,0.0,1,0.0,0.0433,0.9992,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,224.0,226.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8254,True,occupancy,False,Jam,0.825
+mahidharpura,parking_bank_right,Parked bank (R),parking,224.0,226.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1479,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,226.0,228.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0027,0.9976,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,226.0,228.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8217,True,occupancy,False,Jam,0.822
+mahidharpura,parking_bank_right,Parked bank (R),parking,226.0,228.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1249,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,228.0,230.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,1,0.0,0.0357,0.9955,True,occupancy,False,Jam,0.996
+mahidharpura,parking_bank_left,Parked bank (L),parking,228.0,230.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.821,True,occupancy,False,Jam,0.821
+mahidharpura,parking_bank_right,Parked bank (R),parking,228.0,230.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1452,0.9975,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,230.0,232.0,1.5,{'Two-wheeler': 1.5},3,0.75,,,,,0.0,0.0,2,0.0,0.0744,0.9988,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,230.0,232.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8253,True,occupancy,False,Jam,0.825
+mahidharpura,parking_bank_right,Parked bank (R),parking,230.0,232.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.1824,0.9992,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,232.0,234.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,0,0.0,0.0597,0.9993,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,232.0,234.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8296,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,232.0,234.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1507,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,234.0,236.0,1.3,{'Two-wheeler': 1.3},3,0.65,,,,,0.0,0.0,2,0.0,0.0812,0.9967,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,234.0,236.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8319,True,occupancy,False,Jam,0.832
+mahidharpura,parking_bank_right,Parked bank (R),parking,234.0,236.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0395,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,236.0,238.0,1.5,{'Two-wheeler': 1.5},4,0.75,,,,,0.0,0.0,3,0.0,0.1617,0.9941,True,occupancy,False,Jam,0.994
+mahidharpura,parking_bank_left,Parked bank (L),parking,236.0,238.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8275,True,occupancy,False,Jam,0.827
+mahidharpura,parking_bank_right,Parked bank (R),parking,236.0,238.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.1637,0.9989,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,238.0,240.0,1.7,{'Two-wheeler': 1.7},4,0.85,,,,,0.0,0.0,0,0.0,0.1065,0.9967,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,238.0,240.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8291,True,occupancy,False,Jam,0.829
+mahidharpura,parking_bank_right,Parked bank (R),parking,238.0,240.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.1995,0.9994,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,240.0,242.0,1.7,{'Two-wheeler': 1.7},3,0.85,,,,,0.0,0.0,0,0.0,0.0896,0.9956,True,occupancy,False,Jam,0.996
+mahidharpura,parking_bank_left,Parked bank (L),parking,240.0,242.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.83,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,240.0,242.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.2119,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,242.0,244.0,1.7,{'Two-wheeler': 1.7},2,0.85,,,,,0.0,0.0,0,0.0,0.0847,0.9815,True,occupancy,False,Jam,0.982
+mahidharpura,parking_bank_left,Parked bank (L),parking,242.0,244.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8299,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,242.0,244.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1276,0.9996,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,244.0,246.0,2.8,{'Two-wheeler': 2.8},4,1.4,,,,,0.0,0.0,1,0.0,0.1425,0.9876,True,occupancy,False,Jam,0.988
+mahidharpura,parking_bank_left,Parked bank (L),parking,244.0,246.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.828,True,occupancy,False,Jam,0.828
+mahidharpura,parking_bank_right,Parked bank (R),parking,244.0,246.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1313,0.9983,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,246.0,248.0,1.6,{'Two-wheeler': 1.6},3,0.8,,,,,0.0,0.0,1,0.0,0.0898,0.9887,True,occupancy,False,Jam,0.989
+mahidharpura,parking_bank_left,Parked bank (L),parking,246.0,248.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.822,True,occupancy,False,Jam,0.822
+mahidharpura,parking_bank_right,Parked bank (R),parking,246.0,248.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1276,0.9987,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,248.0,250.0,0.9,{'Two-wheeler': 0.9},2,0.45,,,,,0.0,0.0,0,0.0,0.0558,0.9987,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,248.0,250.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8255,True,occupancy,False,Jam,0.826
+mahidharpura,parking_bank_right,Parked bank (R),parking,248.0,250.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1188,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,250.0,252.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,0,0.0,0.0249,0.9953,True,occupancy,False,Jam,0.995
+mahidharpura,parking_bank_left,Parked bank (L),parking,250.0,252.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8235,True,occupancy,False,Jam,0.823
+mahidharpura,parking_bank_right,Parked bank (R),parking,250.0,252.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.119,0.9996,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,252.0,254.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,0,0.0,0.0285,0.9958,True,occupancy,False,Jam,0.996
+mahidharpura,parking_bank_left,Parked bank (L),parking,252.0,254.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8228,True,occupancy,False,Jam,0.823
+mahidharpura,parking_bank_right,Parked bank (R),parking,252.0,254.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,1,0.0,0.0726,0.9984,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,254.0,256.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,1,0.0,0.0242,0.9842,True,occupancy,False,Jam,0.984
+mahidharpura,parking_bank_left,Parked bank (L),parking,254.0,256.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.829,True,occupancy,False,Jam,0.829
+mahidharpura,parking_bank_right,Parked bank (R),parking,254.0,256.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,0,0.0,0.2147,0.9979,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,256.0,258.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0092,0.9971,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,256.0,258.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8302,True,occupancy,False,Jam,0.83
+mahidharpura,parking_bank_right,Parked bank (R),parking,256.0,258.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1354,0.999,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,258.0,260.0,0.1,{'Two-wheeler': 0.1},0,0.05,,,,,0.0,0.0,0,0.0,0.0047,0.9941,True,occupancy,False,Jam,0.994
+mahidharpura,parking_bank_left,Parked bank (L),parking,258.0,260.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.829,True,occupancy,False,Jam,0.829
+mahidharpura,parking_bank_right,Parked bank (R),parking,258.0,260.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.175,0.999,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,260.0,262.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0125,0.9929,True,occupancy,False,Jam,0.993
+mahidharpura,parking_bank_left,Parked bank (L),parking,260.0,262.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8233,True,occupancy,False,Jam,0.823
+mahidharpura,parking_bank_right,Parked bank (R),parking,260.0,262.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.1453,0.999,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,262.0,264.0,1.0,{'Two-wheeler': 1.0},2,0.5,,,,,0.0,0.0,1,0.0,0.0687,0.9916,True,occupancy,False,Jam,0.992
+mahidharpura,parking_bank_left,Parked bank (L),parking,262.0,264.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8164,True,occupancy,False,Jam,0.816
+mahidharpura,parking_bank_right,Parked bank (R),parking,262.0,264.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0204,0.9976,True,occupancy,False,Jam,0.998
+mahidharpura,movement_channel,Movement channel,carriageway,264.0,266.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0073,0.9973,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,264.0,266.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8242,True,occupancy,False,Jam,0.824
+mahidharpura,parking_bank_right,Parked bank (R),parking,264.0,266.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0599,0.9994,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,266.0,268.0,0.8,{'Two-wheeler': 0.8},2,0.4,,,,,0.0,0.0,2,0.0,0.0526,0.9902,True,occupancy,False,Jam,0.99
+mahidharpura,parking_bank_left,Parked bank (L),parking,266.0,268.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8234,True,occupancy,False,Jam,0.823
+mahidharpura,parking_bank_right,Parked bank (R),parking,266.0,268.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.18,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,268.0,270.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,0,0.0,0.0896,0.9915,True,occupancy,False,Jam,0.992
+mahidharpura,parking_bank_left,Parked bank (L),parking,268.0,270.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8164,True,occupancy,False,Jam,0.816
+mahidharpura,parking_bank_right,Parked bank (R),parking,268.0,270.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.2099,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,270.0,272.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0227,0.9923,True,occupancy,False,Jam,0.992
+mahidharpura,parking_bank_left,Parked bank (L),parking,270.0,272.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8224,True,occupancy,False,Jam,0.822
+mahidharpura,parking_bank_right,Parked bank (R),parking,270.0,272.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.1943,0.9995,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,272.0,274.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,1,0.0,0.0762,0.9918,True,occupancy,False,Jam,0.992
+mahidharpura,parking_bank_left,Parked bank (L),parking,272.0,274.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8164,True,occupancy,False,Jam,0.816
+mahidharpura,parking_bank_right,Parked bank (R),parking,272.0,274.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0192,0.9985,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,274.0,276.0,1.3,{'Two-wheeler': 1.3},2,0.65,,,,,0.0,0.0,0,0.0,0.0857,0.9972,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,274.0,276.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.822,True,occupancy,False,Jam,0.822
+mahidharpura,parking_bank_right,Parked bank (R),parking,274.0,276.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0204,0.9999,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,276.0,278.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.0705,0.9905,True,occupancy,False,Jam,0.99
+mahidharpura,parking_bank_left,Parked bank (L),parking,276.0,278.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8152,True,occupancy,False,Jam,0.815
+mahidharpura,parking_bank_right,Parked bank (R),parking,276.0,278.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.1615,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,278.0,280.0,1.6,{'Two-wheeler': 1.6},2,0.8,,,,,0.0,0.0,1,0.0,0.1104,0.9932,True,occupancy,False,Jam,0.993
+mahidharpura,parking_bank_left,Parked bank (L),parking,278.0,280.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.812,True,occupancy,False,Jam,0.812
+mahidharpura,parking_bank_right,Parked bank (R),parking,278.0,280.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1204,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,280.0,282.0,1.0,{'Two-wheeler': 1.0},3,0.5,,,,,0.0,0.0,1,0.0,0.0452,0.9934,True,occupancy,False,Jam,0.993
+mahidharpura,parking_bank_left,Parked bank (L),parking,280.0,282.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8108,True,occupancy,False,Jam,0.811
+mahidharpura,parking_bank_right,Parked bank (R),parking,280.0,282.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0573,0.9993,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,282.0,284.0,0.2,{'Two-wheeler': 0.2},2,0.1,,,,,0.0,0.0,0,0.0,0.0111,0.9965,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,282.0,284.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8095,True,occupancy,False,Jam,0.809
+mahidharpura,parking_bank_right,Parked bank (R),parking,282.0,284.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.101,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,284.0,286.0,0.9,{'Two-wheeler': 0.9},3,0.45,,,,,0.0,0.0,2,0.0,0.0618,0.9994,True,occupancy,False,Jam,0.999
+mahidharpura,parking_bank_left,Parked bank (L),parking,284.0,286.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8199,True,occupancy,False,Jam,0.82
+mahidharpura,parking_bank_right,Parked bank (R),parking,284.0,286.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.159,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,286.0,288.0,2.2,{'Two-wheeler': 2.2},4,1.1,,,,,0.0,0.0,0,0.0,0.1316,0.9966,True,occupancy,False,Jam,0.997
+mahidharpura,parking_bank_left,Parked bank (L),parking,286.0,288.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8137,True,occupancy,False,Jam,0.814
+mahidharpura,parking_bank_right,Parked bank (R),parking,286.0,288.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0538,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,288.0,290.0,2.0,{'Two-wheeler': 2.0},5,1.0,,,,,0.0,0.0,2,0.0,0.131,0.9957,True,occupancy,False,Jam,0.996
+mahidharpura,parking_bank_left,Parked bank (L),parking,288.0,290.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8113,True,occupancy,False,Jam,0.811
+mahidharpura,parking_bank_right,Parked bank (R),parking,288.0,290.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0558,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,290.0,292.0,2.2,{'Two-wheeler': 2.2},4,1.1,,,,,0.0,0.0,2,0.0,0.115,0.9952,True,occupancy,False,Jam,0.995
+mahidharpura,parking_bank_left,Parked bank (L),parking,290.0,292.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8084,True,occupancy,False,Jam,0.808
+mahidharpura,parking_bank_right,Parked bank (R),parking,290.0,292.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0752,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,292.0,294.0,1.4,{'Two-wheeler': 1.4},3,0.7,,,,,0.0,0.0,0,0.0,0.0788,0.998,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,292.0,294.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8094,True,occupancy,False,Jam,0.809
+mahidharpura,parking_bank_right,Parked bank (R),parking,292.0,294.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0949,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,294.0,296.0,1.5,{'Two-wheeler': 1.5},3,0.75,,,,,0.0,0.0,0,0.0,0.0969,0.9998,True,occupancy,False,Jam,1.0
+mahidharpura,parking_bank_left,Parked bank (L),parking,294.0,296.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.7997,True,occupancy,False,Jam,0.8
+mahidharpura,parking_bank_right,Parked bank (R),parking,294.0,296.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1086,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,296.0,298.0,3.4,{'Two-wheeler': 3.4},6,1.7,,,,,0.0,0.0,3,0.0,0.2115,0.9961,True,occupancy,False,Jam,0.996
+mahidharpura,parking_bank_left,Parked bank (L),parking,296.0,298.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.7999,True,occupancy,False,Jam,0.8
+mahidharpura,parking_bank_right,Parked bank (R),parking,296.0,298.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0386,1.0,True,occupancy,False,Jam,1.0
+mahidharpura,movement_channel,Movement channel,carriageway,298.0,300.0,3.2,{'Two-wheeler': 3.2},5,1.6,,,,,0.0,0.0,0,0.0,0.2222,0.9932,False,detection,False,Jam,0.993
+mahidharpura,parking_bank_left,Parked bank (L),parking,298.0,300.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.7991,True,occupancy,False,Jam,0.799
+mahidharpura,parking_bank_right,Parked bank (R),parking,298.0,300.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0554,0.999,True,occupancy,False,Jam,0.999
+mahidharpura,movement_channel,Movement channel,carriageway,300.0,300.8,3.0,{'Two-wheeler': 3.0},4,1.5,,,,,0.0,0.0,0,0.0,0.1949,0.9982,True,occupancy,False,Jam,0.998
+mahidharpura,parking_bank_left,Parked bank (L),parking,300.0,300.8,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.8081,True,occupancy,False,Jam,0.808
+mahidharpura,parking_bank_right,Parked bank (R),parking,300.0,300.8,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1101,0.9998,True,occupancy,False,Jam,1.0

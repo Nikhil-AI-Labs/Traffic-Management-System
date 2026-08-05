@@ -1,0 +1,454 @@
+camera_id,zone_id,zone_label,zone_kind,window_start_s,window_end_s,n_detections_mean,counts_by_group,unique_tracks,pcu_mean,density_pcu_per_100m2,density_pcu_per_km_lane,real_area_m2,mean_speed_kmph,stopped_fraction,queue_length_pcu,arrivals,flow_pcu_per_hr,box_occupancy,structural_occupancy,saturated,measurement_mode,scale_verified,los,congestion_index
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,0.0,2.0,1.5,{'Two-wheeler': 1.5},6,0.75,,,,,0.0,0.0,6,0.0,0.3154,0.1746,False,detection,False,Free,0.175
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,0.0,2.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,1,0.0,0.7162,0.022,False,detection,False,Free,0.022
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,0.0,2.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,1,0.0,0.0967,0.3876,False,detection,False,Moderate,0.388
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,2.0,4.0,0.9,{'Two-wheeler': 0.9},2,0.45,,,,,0.0,0.0,0,0.0,0.149,0.1158,False,detection,False,Free,0.116
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,2.0,4.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0283,False,detection,False,Free,0.028
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,2.0,4.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.038,0.3975,False,detection,False,Moderate,0.397
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,4.0,6.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.1239,0.1351,False,detection,False,Free,0.135
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,4.0,6.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0297,False,detection,False,Free,0.03
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,4.0,6.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3883,False,detection,False,Moderate,0.388
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,6.0,8.0,0.9,{'Two-wheeler': 0.9},3,0.45,,,,,0.0,0.0,1,0.0,0.0608,0.11,False,detection,False,Free,0.11
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,6.0,8.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0428,False,detection,False,Free,0.043
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,6.0,8.0,0.3,{'Two-wheeler': 0.3},2,0.15,,,,,0.0,0.0,2,0.0,0.0502,0.382,False,detection,False,Moderate,0.382
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,8.0,10.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0771,0.0812,False,detection,False,Free,0.081
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,8.0,10.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6446,0.0396,False,detection,False,Free,0.04
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,8.0,10.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0571,0.4031,False,detection,False,Moderate,0.403
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,10.0,12.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0795,0.0563,False,detection,False,Free,0.056
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,10.0,12.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.044,False,detection,False,Free,0.044
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,10.0,12.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3995,False,detection,False,Moderate,0.399
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,12.0,14.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,1,0.0,0.0829,0.0598,False,detection,False,Free,0.06
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,12.0,14.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7161,0.0392,False,detection,False,Free,0.039
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,12.0,14.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3672,False,detection,False,Moderate,0.367
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,14.0,16.0,0.7,{'Two-wheeler': 0.7},3,0.35,,,,,0.0,0.0,2,0.0,0.3629,0.0927,False,detection,False,Free,0.093
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,14.0,16.0,1.7,"{'Bus/Truck': 1.0, 'LCV/Tempo': 0.7}",2,3.18,,,,,0.0,0.0,1,0.0,1.2178,0.0058,False,detection,False,Free,0.006
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,14.0,16.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.348,False,detection,False,Moderate,0.348
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,16.0,18.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.2481,0.0625,False,detection,False,Free,0.063
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,16.0,18.0,1.8,"{'Bus/Truck': 1.0, 'LCV/Tempo': 0.8}",2,3.32,,,,,0.0,0.0,0,0.0,1.2894,0.0079,False,detection,False,Free,0.008
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,16.0,18.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3339,False,detection,False,Moderate,0.334
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,18.0,20.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0605,0.0814,False,detection,False,Free,0.081
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,18.0,20.0,1.1,"{'Bus/Truck': 1.0, 'LCV/Tempo': 0.1}",2,2.34,,,,,0.0,0.0,0,0.0,0.7879,0.0034,False,detection,False,Free,0.003
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,18.0,20.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3348,False,detection,False,Moderate,0.335
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,20.0,22.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0534,False,detection,False,Free,0.053
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,20.0,22.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0105,False,detection,False,Free,0.01
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,20.0,22.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3847,False,detection,False,Moderate,0.385
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,22.0,24.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0527,False,detection,False,Free,0.053
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,22.0,24.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0566,False,detection,False,Free,0.057
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,22.0,24.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4085,False,detection,False,Moderate,0.408
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,24.0,26.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0819,False,detection,False,Free,0.082
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,24.0,26.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0283,False,detection,False,Free,0.028
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,24.0,26.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4089,False,detection,False,Moderate,0.409
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,26.0,28.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1041,False,detection,False,Free,0.104
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,26.0,28.0,1.1,{'Bus/Truck': 1.1},2,2.42,,,,,0.0,0.0,0,0.0,0.7879,0.0018,False,detection,False,Free,0.002
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,26.0,28.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3923,False,detection,False,Moderate,0.392
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,28.0,30.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1078,False,detection,False,Free,0.108
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,28.0,30.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0035,False,detection,False,Free,0.003
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,28.0,30.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3898,False,detection,False,Moderate,0.39
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,30.0,32.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0934,False,detection,False,Free,0.093
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,30.0,32.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6446,0.0042,False,detection,False,Free,0.004
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,30.0,32.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3936,False,detection,False,Moderate,0.394
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,32.0,34.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0249,0.0885,False,detection,False,Free,0.088
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,32.0,34.0,0.6,{'Bus/Truck': 0.6},1,1.32,,,,,0.0,0.0,0,0.0,0.4297,0.0317,False,detection,False,Free,0.032
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,32.0,34.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3961,False,detection,False,Moderate,0.396
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,34.0,36.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0912,0.0932,False,detection,False,Free,0.093
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,34.0,36.0,0.4,{'Bus/Truck': 0.4},1,0.88,,,,,0.0,0.0,1,0.0,0.2865,0.0427,False,detection,False,Free,0.043
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,34.0,36.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3942,False,detection,False,Moderate,0.394
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,36.0,38.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0887,0.0745,False,detection,False,Free,0.075
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,36.0,38.0,0.5,{'Bus/Truck': 0.5},1,1.1,,,,,0.0,0.0,0,0.0,0.3581,0.0283,False,detection,False,Free,0.028
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,36.0,38.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3778,False,detection,False,Moderate,0.378
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,38.0,40.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0839,0.0585,False,detection,False,Free,0.059
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,38.0,40.0,0.5,{'Bus/Truck': 0.5},1,1.1,,,,,0.0,0.0,0,0.0,0.3581,0.0087,False,detection,False,Free,0.009
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,38.0,40.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3409,False,detection,False,Moderate,0.341
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,40.0,42.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0259,0.0521,False,detection,False,Free,0.052
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,40.0,42.0,0.3,"{'Bus/Truck': 0.2, 'LCV/Tempo': 0.1}",1,0.58,,,,,0.0,0.0,1,0.0,0.2149,0.0273,False,detection,False,Free,0.027
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,40.0,42.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3603,False,detection,False,Moderate,0.36
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,42.0,44.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.06,0.0568,False,detection,False,Free,0.057
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,42.0,44.0,0.5,{'Bus/Truck': 0.5},1,1.1,,,,,0.0,0.0,0,0.0,0.3581,0.0308,False,detection,False,Free,0.031
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,42.0,44.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.381,False,detection,False,Moderate,0.381
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,44.0,46.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0783,0.0393,False,detection,False,Free,0.039
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,44.0,46.0,0.8,{'Bus/Truck': 0.8},1,1.76,,,,,0.0,0.0,0,0.0,0.5729,0.0068,False,detection,False,Free,0.007
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,44.0,46.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3896,False,detection,False,Moderate,0.39
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,46.0,48.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0779,0.0263,False,detection,False,Free,0.026
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,46.0,48.0,0.8,{'Bus/Truck': 0.8},1,1.76,,,,,0.0,0.0,0,0.0,0.5729,0.0066,False,detection,False,Free,0.007
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,46.0,48.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0272,0.3941,False,detection,False,Moderate,0.394
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,48.0,50.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0788,0.0321,False,detection,False,Free,0.032
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,48.0,50.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6446,0.0028,False,detection,False,Free,0.003
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,48.0,50.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0426,0.4136,False,detection,False,Moderate,0.414
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,50.0,52.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.0631,0.0479,False,detection,False,Free,0.048
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,50.0,52.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6445,0.0249,False,detection,False,Free,0.025
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,50.0,52.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4238,False,detection,False,Moderate,0.424
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,52.0,54.0,0.7,{'Two-wheeler': 0.7},2,0.35,,,,,0.0,0.0,1,0.0,0.0566,0.0745,False,detection,False,Free,0.075
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,52.0,54.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6446,0.0156,False,detection,False,Free,0.016
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,52.0,54.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4279,False,detection,False,Moderate,0.428
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,54.0,56.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0274,0.0962,False,detection,False,Free,0.096
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,54.0,56.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0397,False,detection,False,Free,0.04
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,54.0,56.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4275,False,detection,False,Moderate,0.428
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,56.0,58.0,0.6,{'Two-wheeler': 0.6},2,0.3,,,,,0.0,0.0,2,0.0,0.1823,0.1324,False,detection,False,Free,0.132
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,56.0,58.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0352,False,detection,False,Free,0.035
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,56.0,58.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4337,False,detection,False,Moderate,0.434
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,58.0,60.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0861,0.092,False,detection,False,Free,0.092
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,58.0,60.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6445,0.0277,False,detection,False,Free,0.028
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,58.0,60.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4478,False,detection,False,Moderate,0.448
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,60.0,62.0,1.4,{'Two-wheeler': 1.4},2,0.7,,,,,0.0,0.0,1,0.0,0.2233,0.0931,False,detection,False,Free,0.093
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,60.0,62.0,0.9,"{'Bus/Truck': 0.8, 'LCV/Tempo': 0.1}",1,1.9,,,,,0.0,0.0,0,0.0,0.6446,0.021,False,detection,False,Free,0.021
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,60.0,62.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4452,False,detection,False,Moderate,0.445
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,62.0,64.0,1.3,{'Two-wheeler': 1.3},2,0.65,,,,,0.0,0.0,0,0.0,0.183,0.0582,False,detection,False,Free,0.058
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,62.0,64.0,0.3,{'Bus/Truck': 0.3},1,0.66,,,,,0.0,0.0,0,0.0,0.2148,0.0176,False,detection,False,Free,0.018
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,62.0,64.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4434,False,detection,False,Moderate,0.443
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,64.0,66.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,1,0.0,0.1112,0.0667,False,detection,False,Free,0.067
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,64.0,66.0,0.4,{'Bus/Truck': 0.4},1,0.88,,,,,0.0,0.0,0,0.0,0.2864,0.0221,False,detection,False,Free,0.022
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,64.0,66.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4405,False,detection,False,Moderate,0.44
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,66.0,68.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0115,0.038,False,detection,False,Free,0.038
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,66.0,68.0,0.4,{'Bus/Truck': 0.4},1,0.88,,,,,0.0,0.0,0,0.0,0.2865,0.0235,False,detection,False,Free,0.023
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,66.0,68.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4657,False,detection,False,Moderate,0.466
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,68.0,70.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0258,False,detection,False,Free,0.026
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,68.0,70.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0028,False,detection,False,Free,0.003
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,68.0,70.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4561,False,detection,False,Moderate,0.456
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,70.0,72.0,0.7,"{'LCV/Tempo': 0.6, 'Bus/Truck': 0.1}",2,1.06,,,,,0.0,0.0,2,0.0,0.0448,0.025,False,detection,False,Free,0.025
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,70.0,72.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6446,0.0169,False,detection,False,Free,0.017
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,70.0,72.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4493,False,detection,False,Moderate,0.449
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,72.0,74.0,1.2,"{'LCV/Tempo': 0.3, 'Bus/Truck': 0.8, 'Auto': 0.1}",2,2.3,,,,,0.0,0.0,0,0.0,0.1096,0.0221,False,detection,False,Free,0.022
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,72.0,74.0,0.6,{'Bus/Truck': 0.6},1,1.32,,,,,0.0,0.0,0,0.0,0.4298,0.0166,False,detection,False,Free,0.017
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,72.0,74.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4374,False,detection,False,Moderate,0.437
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,74.0,76.0,2.2,"{'Bus/Truck': 0.9, 'Two-wheeler': 0.8, 'LCV/Tempo': 0.5}",3,3.08,,,,,0.0,0.0,1,0.0,0.2016,0.0206,False,detection,False,Free,0.021
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,74.0,76.0,0.2,{'Bus/Truck': 0.2},1,0.44,,,,,0.0,0.0,0,0.0,0.1432,0.0184,False,detection,False,Free,0.018
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,74.0,76.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0192,0.4628,False,detection,False,Moderate,0.463
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,76.0,78.0,1.1,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.1}",2,2.25,,,,,0.0,0.0,0,0.0,0.0974,0.0242,False,detection,False,Free,0.024
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,76.0,78.0,0.6,{'Bus/Truck': 0.6},1,1.32,,,,,0.0,0.0,0,0.0,0.4297,0.0175,False,detection,False,Free,0.017
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,76.0,78.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.475,False,detection,False,Moderate,0.475
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,78.0,80.0,1.2,"{'Bus/Truck': 0.6, 'LCV/Tempo': 0.5, 'Two-wheeler': 0.1}",4,2.07,,,,,0.0,0.0,2,0.0,0.1089,0.0308,False,detection,False,Free,0.031
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,78.0,80.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6445,0.0205,False,detection,False,Free,0.021
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,78.0,80.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.022,0.4624,False,detection,False,Moderate,0.462
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,80.0,82.0,1.7,"{'LCV/Tempo': 0.8, 'Two-wheeler': 0.6, 'Car': 0.2, 'Auto': 0.1}",3,1.74,,,,,0.0,0.0,2,0.0,0.2577,0.0492,False,detection,False,Free,0.049
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,80.0,82.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7161,0.0163,False,detection,False,Free,0.016
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,80.0,82.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0241,0.4435,False,detection,False,Moderate,0.444
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,82.0,84.0,2.1,"{'Auto': 0.8, 'Car': 0.4, 'Two-wheeler': 0.9}",4,1.81,,,,,0.0,0.0,1,0.0,0.554,0.0579,False,detection,False,Free,0.058
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,82.0,84.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,0,0.0,0.5013,0.0195,False,detection,False,Free,0.02
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,82.0,84.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,1,0.0,0.0739,0.4475,False,detection,False,Moderate,0.447
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,84.0,86.0,2.3,"{'Two-wheeler': 1.0, 'Auto': 1.3}",6,2.06,,,,,0.0,0.0,3,0.0,0.6634,0.0953,False,detection,False,Free,0.095
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,84.0,86.0,0.8,{'Bus/Truck': 0.8},1,1.76,,,,,0.0,0.0,0,0.0,0.5729,0.0077,False,detection,False,Free,0.008
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,84.0,86.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.129,0.4974,False,detection,False,Moderate,0.497
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,86.0,88.0,4.0,"{'Auto': 2.5, 'Two-wheeler': 1.5}",6,3.75,,,,,0.0,0.0,1,0.0,0.993,0.1347,False,detection,False,Free,0.135
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,86.0,88.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0246,False,detection,False,Free,0.025
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,86.0,88.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,1,0.0,0.2442,0.5277,False,detection,False,Heavy,0.528
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,88.0,90.0,4.4,"{'Auto': 2.5, 'Two-wheeler': 1.9}",7,3.95,,,,,0.0,0.0,2,0.0,1.1564,0.1617,False,detection,False,Free,0.162
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,88.0,90.0,0.1,{'Bus/Truck': 0.1},1,0.22,,,,,0.0,0.0,0,0.0,0.0716,0.0512,False,detection,False,Free,0.051
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,88.0,90.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1242,0.5426,False,detection,False,Heavy,0.543
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,90.0,92.0,4.1,"{'Auto': 2.1, 'Two-wheeler': 2.0}",6,3.52,,,,,0.0,0.0,0,0.0,0.9826,0.165,False,detection,False,Free,0.165
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,90.0,92.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,0,0.0,0.5014,0.0648,False,detection,False,Free,0.065
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,90.0,92.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.1064,0.5502,False,detection,False,Heavy,0.55
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,92.0,94.0,4.6,"{'Auto': 2.0, 'Two-wheeler': 2.6}",6,3.7,,,,,0.0,0.0,1,0.0,1.0048,0.1747,False,detection,False,Free,0.175
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,92.0,94.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6445,0.0515,False,detection,False,Free,0.052
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,92.0,94.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5459,False,detection,False,Heavy,0.546
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,94.0,96.0,4.2,"{'Auto': 1.3, 'Two-wheeler': 2.9}",7,3.01,,,,,0.0,0.0,1,0.0,0.6398,0.2034,False,detection,False,Free,0.203
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,94.0,96.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0572,False,detection,False,Free,0.057
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,94.0,96.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5036,False,detection,False,Heavy,0.504
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,96.0,98.0,4.3,"{'Two-wheeler': 3.0, 'Auto': 1.3}",5,3.06,,,,,0.0,0.0,1,0.0,0.5536,0.2071,False,detection,False,Free,0.207
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,96.0,98.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0658,False,detection,False,Free,0.066
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,96.0,98.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4497,False,detection,False,Moderate,0.45
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,98.0,100.0,3.9,"{'Two-wheeler': 1.9, 'Auto': 1.9, 'Car': 0.1}",5,3.33,,,,,0.0,0.0,1,0.0,0.6278,0.2174,False,detection,False,Free,0.217
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,98.0,100.0,0.3,{'Bus/Truck': 0.3},1,0.66,,,,,0.0,0.0,0,0.0,0.2149,0.0611,False,detection,False,Free,0.061
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,98.0,100.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,2,0.0,0.1792,0.4865,False,detection,False,Moderate,0.487
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,100.0,102.0,4.2,"{'Two-wheeler': 2.0, 'Auto': 2.1, 'Car': 0.1}",5,3.62,,,,,0.0,0.0,0,0.0,0.7128,0.2513,False,detection,False,Moderate,0.251
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,100.0,102.0,0.5,{'Bus/Truck': 0.5},1,1.1,,,,,0.0,0.0,0,0.0,0.3581,0.0496,False,detection,False,Free,0.05
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,100.0,102.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.1312,0.529,False,detection,False,Heavy,0.529
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,102.0,104.0,4.3,"{'Two-wheeler': 2.3, 'Auto': 1.3, 'Car': 0.7}",6,3.41,,,,,0.0,0.0,1,0.0,0.5806,0.2687,False,detection,False,Moderate,0.269
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,102.0,104.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0623,False,detection,False,Free,0.062
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,102.0,104.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.083,0.5131,False,detection,False,Heavy,0.513
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,104.0,106.0,5.3,"{'Two-wheeler': 2.8, 'Auto': 2.3, 'Car': 0.2}",6,4.36,,,,,0.0,0.0,0,0.0,0.9581,0.2611,True,occupancy,False,Moderate,0.261
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,104.0,106.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0614,False,detection,False,Free,0.061
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,104.0,106.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,1,0.0,0.0836,0.48,False,detection,False,Moderate,0.48
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,106.0,108.0,7.6,"{'Auto': 3.0, 'Two-wheeler': 4.6}",11,5.9,,,,,0.0,0.0,4,0.0,1.5815,0.1876,True,occupancy,False,Free,0.188
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,106.0,108.0,0.3,{'Bus/Truck': 0.3},1,0.66,,,,,0.0,0.0,1,0.0,0.2149,0.0433,False,detection,False,Free,0.043
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,106.0,108.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4728,False,detection,False,Moderate,0.473
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,108.0,110.0,5.4,"{'Auto': 2.8, 'Two-wheeler': 2.6}",7,4.66,,,,,0.0,0.0,1,0.0,1.2882,0.1665,True,occupancy,False,Free,0.166
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,108.0,110.0,0.6,{'Bus/Truck': 0.6},1,1.32,,,,,0.0,0.0,0,0.0,0.4297,0.0085,False,detection,False,Free,0.008
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,108.0,110.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.0743,0.4627,False,detection,False,Moderate,0.463
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,110.0,112.0,5.8,"{'Auto': 2.2, 'Two-wheeler': 3.6}",11,4.44,,,,,0.0,0.0,2,0.0,1.1918,0.1449,False,detection,False,Free,0.145
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,110.0,112.0,0.8,{'Bus/Truck': 0.8},1,1.76,,,,,0.0,0.0,0,0.0,0.5729,0.0003,False,detection,False,Free,0.0
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,110.0,112.0,0.7,{'Two-wheeler': 0.7},2,0.35,,,,,0.0,0.0,0,0.0,0.0861,0.4738,False,detection,False,Moderate,0.474
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,112.0,114.0,6.3,"{'Auto': 2.1, 'Two-wheeler': 4.2}",8,4.62,,,,,0.0,0.0,1,0.0,1.225,0.1557,False,detection,False,Free,0.156
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,112.0,114.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,0,0.0,0.5013,0.0,False,detection,False,Free,0.0
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,112.0,114.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,1,0.0,0.0497,0.4856,False,detection,False,Moderate,0.486
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,114.0,116.0,6.4,"{'Auto': 2.0, 'Two-wheeler': 4.4}",7,4.6,,,,,0.0,0.0,1,0.0,1.203,0.1443,False,detection,False,Free,0.144
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,114.0,116.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,0,0.0,0.5013,0.0006,False,detection,False,Free,0.001
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,114.0,116.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0604,0.5064,False,detection,False,Heavy,0.506
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,116.0,118.0,4.6,"{'Auto': 1.2, 'Two-wheeler': 3.4}",8,3.14,,,,,0.0,0.0,0,0.0,0.6308,0.1181,False,detection,False,Free,0.118
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,116.0,118.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7161,0.022,False,detection,False,Free,0.022
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,116.0,118.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.502,False,detection,False,Heavy,0.502
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,118.0,120.0,5.9,"{'Auto': 2.0, 'Two-wheeler': 3.9}",7,4.35,,,,,0.0,0.0,2,0.0,1.2267,0.1076,True,occupancy,False,Free,0.108
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,118.0,120.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,0,0.0,0.5014,0.0352,False,detection,False,Free,0.035
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,118.0,120.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4943,False,detection,False,Moderate,0.494
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,120.0,122.0,6.2,"{'Auto': 1.3, 'Two-wheeler': 4.9}",9,4.01,,,,,0.0,0.0,2,0.0,1.3486,0.0987,False,detection,False,Free,0.099
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,120.0,122.0,1.1,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.1}",2,2.25,,,,,0.0,0.0,1,0.0,0.7282,0.0279,False,detection,False,Free,0.028
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,120.0,122.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5168,False,detection,False,Heavy,0.517
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,122.0,124.0,5.5,"{'Auto': 1.0, 'Two-wheeler': 4.5}",8,3.45,,,,,0.0,0.0,2,0.0,1.0054,0.1258,False,detection,False,Free,0.126
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,122.0,124.0,1.4,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.4}",3,2.4,,,,,0.0,0.0,1,0.0,0.7985,0.017,False,detection,False,Free,0.017
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,122.0,124.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0337,0.4991,False,detection,False,Moderate,0.499
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,124.0,126.0,5.8,"{'Auto': 1.2, 'Two-wheeler': 4.6}",8,3.74,,,,,0.0,0.0,1,0.0,1.0958,0.1657,False,detection,False,Free,0.166
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,124.0,126.0,1.8,"{'Bus/Truck': 0.8, 'Two-wheeler': 1.0}",2,2.26,,,,,0.0,0.0,0,0.0,0.7813,0.0432,False,detection,False,Free,0.043
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,124.0,126.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.018,0.5145,False,detection,False,Heavy,0.515
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,126.0,128.0,4.8,"{'Two-wheeler': 3.6, 'Auto': 1.2}",8,3.24,,,,,0.0,0.0,2,0.0,1.0138,0.1797,False,detection,False,Free,0.18
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,126.0,128.0,1.8,"{'Two-wheeler': 0.8, 'Bus/Truck': 1.0}",2,2.6,,,,,0.0,0.0,0,0.0,0.8765,0.031,False,detection,False,Free,0.031
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,126.0,128.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,1,0.0,0.1427,0.5427,False,detection,False,Heavy,0.543
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,128.0,130.0,6.7,"{'Auto': 1.2, 'Two-wheeler': 5.5}",11,4.19,,,,,0.0,0.0,3,0.0,1.122,0.1777,False,detection,False,Free,0.178
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,128.0,130.0,1.3,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.3}",2,2.35,,,,,0.0,0.0,0,0.0,0.7744,0.0248,False,detection,False,Free,0.025
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,128.0,130.0,1.0,{'Two-wheeler': 1.0},2,0.5,,,,,0.0,0.0,1,0.0,0.1718,0.5368,False,detection,False,Heavy,0.537
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,130.0,132.0,6.3,"{'Two-wheeler': 5.5, 'Auto': 0.8}",10,3.71,,,,,0.0,0.0,1,0.0,0.8783,0.1781,False,detection,False,Free,0.178
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,130.0,132.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6445,0.0342,False,detection,False,Free,0.034
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,130.0,132.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.1893,0.515,False,detection,False,Heavy,0.515
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,132.0,134.0,6.1,"{'Two-wheeler': 6.0, 'Auto': 0.1}",11,3.12,,,,,0.0,0.0,3,0.0,0.6479,0.2055,False,detection,False,Free,0.205
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,132.0,134.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0359,False,detection,False,Free,0.036
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,132.0,134.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.1867,0.4956,False,detection,False,Moderate,0.496
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,134.0,136.0,7.8,"{'Two-wheeler': 7.5, 'Auto': 0.3}",10,4.11,,,,,0.0,0.0,1,0.0,1.0009,0.2424,False,detection,False,Free,0.242
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,134.0,136.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0415,False,detection,False,Free,0.041
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,134.0,136.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,0,0.0,0.2287,0.4609,False,detection,False,Moderate,0.461
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,136.0,138.0,7.1,"{'Two-wheeler': 7.0, 'Auto': 0.1}",11,3.62,,,,,0.0,0.0,2,0.0,0.9523,0.1987,False,detection,False,Free,0.199
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,136.0,138.0,1.2,"{'Bus/Truck': 0.9, 'Two-wheeler': 0.3}",2,2.13,,,,,0.0,0.0,1,0.0,0.6689,0.057,False,detection,False,Free,0.057
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,136.0,138.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0617,0.4215,False,detection,False,Moderate,0.421
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,138.0,140.0,6.3,{'Two-wheeler': 6.3},7,3.15,,,,,0.0,0.0,0,0.0,0.8195,0.1871,False,detection,False,Free,0.187
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,138.0,140.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0974,False,detection,False,Free,0.097
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,138.0,140.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.027,0.4177,False,detection,False,Moderate,0.418
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,140.0,142.0,4.9,{'Two-wheeler': 4.9},7,2.45,,,,,0.0,0.0,0,0.0,0.5743,0.1781,False,detection,False,Free,0.178
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,140.0,142.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0803,False,detection,False,Free,0.08
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,140.0,142.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.43,False,detection,False,Moderate,0.43
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,142.0,144.0,4.9,{'Two-wheeler': 4.9},5,2.45,,,,,0.0,0.0,0,0.0,0.7027,0.1481,False,detection,False,Free,0.148
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,142.0,144.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0804,False,detection,False,Free,0.08
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,142.0,144.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0302,0.4537,False,detection,False,Moderate,0.454
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,144.0,146.0,5.2,{'Two-wheeler': 5.2},6,2.6,,,,,0.0,0.0,1,0.0,0.8186,0.1525,False,detection,False,Free,0.152
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,144.0,146.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,1,0.0,0.2433,0.0621,False,detection,False,Free,0.062
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,144.0,146.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0636,0.4869,False,detection,False,Moderate,0.487
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,146.0,148.0,5.4,{'Two-wheeler': 5.4},7,2.7,,,,,0.0,0.0,1,0.0,0.7895,0.1608,False,detection,False,Free,0.161
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,146.0,148.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,1,0.0,0.2054,0.0185,False,detection,False,Free,0.019
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,146.0,148.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0333,0.5481,False,detection,False,Heavy,0.548
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,148.0,150.0,5.6,{'Two-wheeler': 5.6},7,2.8,,,,,0.0,0.0,0,0.0,0.8403,0.1704,False,detection,False,Free,0.17
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,148.0,150.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1259,0.0008,False,detection,False,Free,0.001
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,148.0,150.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0327,0.5126,False,detection,False,Heavy,0.513
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,150.0,152.0,4.2,{'Two-wheeler': 4.2},5,2.1,,,,,0.0,0.0,0,0.0,0.6354,0.2093,False,detection,False,Free,0.209
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,150.0,152.0,0.3,{'Two-wheeler': 0.3},2,0.15,,,,,0.0,0.0,1,0.0,0.0608,0.0,False,detection,False,Free,0.0
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,150.0,152.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.482,False,detection,False,Moderate,0.482
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,152.0,154.0,3.5,{'Two-wheeler': 3.5},4,1.75,,,,,0.0,0.0,0,0.0,0.5096,0.2103,False,detection,False,Free,0.21
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,152.0,154.0,0.5,{'Bus/Truck': 0.5},1,1.1,,,,,0.0,0.0,1,0.0,0.3581,0.0006,False,detection,False,Free,0.001
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,152.0,154.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4802,False,detection,False,Moderate,0.48
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,154.0,156.0,3.3,{'Two-wheeler': 3.3},4,1.65,,,,,0.0,0.0,0,0.0,0.4672,0.2208,False,detection,False,Free,0.221
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,154.0,156.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6446,0.0012,False,detection,False,Free,0.001
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,154.0,156.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4872,False,detection,False,Moderate,0.487
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,156.0,158.0,3.5,{'Two-wheeler': 3.5},4,1.75,,,,,0.0,0.0,0,0.0,0.4588,0.2274,False,detection,False,Free,0.227
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,156.0,158.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0002,False,detection,False,Free,0.0
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,156.0,158.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4797,False,detection,False,Moderate,0.48
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,158.0,160.0,3.1,{'Two-wheeler': 3.1},4,1.55,,,,,0.0,0.0,0,0.0,0.3952,0.2423,False,detection,False,Free,0.242
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,158.0,160.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0,False,detection,False,Free,0.0
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,158.0,160.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4771,False,detection,False,Moderate,0.477
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,160.0,162.0,3.0,{'Two-wheeler': 3.0},3,1.5,,,,,0.0,0.0,0,0.0,0.4171,0.2133,False,detection,False,Free,0.213
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,160.0,162.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6446,0.0044,False,detection,False,Free,0.004
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,160.0,162.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,1,0.0,0.0371,0.4801,False,detection,False,Moderate,0.48
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,162.0,164.0,2.8,{'Two-wheeler': 2.8},4,1.4,,,,,0.0,0.0,1,0.0,0.5186,0.2098,False,detection,False,Free,0.21
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,162.0,164.0,1.4,"{'Bus/Truck': 0.9, 'Two-wheeler': 0.4, 'LCV/Tempo': 0.1}",2,2.32,,,,,0.0,0.0,1,0.0,0.7857,0.0003,False,detection,False,Free,0.0
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,162.0,164.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4813,False,detection,False,Moderate,0.481
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,164.0,166.0,2.0,{'Two-wheeler': 2.0},2,1.0,,,,,0.0,0.0,0,0.0,0.2354,0.1985,False,detection,False,Free,0.199
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,164.0,166.0,1.7,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.7}",3,2.55,,,,,0.0,0.0,1,0.0,0.8695,0.0058,False,detection,False,Free,0.006
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,164.0,166.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4918,False,detection,False,Moderate,0.492
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,166.0,168.0,2.4,{'Two-wheeler': 2.4},4,1.2,,,,,0.0,0.0,1,0.0,0.3156,0.1679,False,detection,False,Free,0.168
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,166.0,168.0,1.2,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.2}",2,2.3,,,,,0.0,0.0,0,0.0,0.7593,0.0411,False,detection,False,Free,0.041
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,166.0,168.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0061,0.4811,False,detection,False,Moderate,0.481
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,168.0,170.0,2.2,{'Two-wheeler': 2.2},3,1.1,,,,,0.0,0.0,0,0.0,0.3072,0.1721,False,detection,False,Free,0.172
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,168.0,170.0,1.8,"{'Bus/Truck': 0.9, 'Two-wheeler': 0.9}",3,2.43,,,,,0.0,0.0,2,0.0,0.8595,0.0781,False,detection,False,Free,0.078
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,168.0,170.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0186,0.4639,False,detection,False,Moderate,0.464
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,170.0,172.0,2.2,{'Two-wheeler': 2.2},3,1.1,,,,,0.0,0.0,1,0.0,0.283,0.1656,False,detection,False,Free,0.166
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,170.0,172.0,2.0,"{'Two-wheeler': 1.0, 'Bus/Truck': 1.0}",2,2.7,,,,,0.0,0.0,0,0.0,0.908,0.0967,False,detection,False,Free,0.097
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,170.0,172.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0236,0.4631,False,detection,False,Moderate,0.463
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,172.0,174.0,3.1,{'Two-wheeler': 3.1},4,1.55,,,,,0.0,0.0,2,0.0,0.3385,0.1807,False,detection,False,Free,0.181
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,172.0,174.0,1.1,"{'Two-wheeler': 0.1, 'Bus/Truck': 1.0}",2,2.25,,,,,0.0,0.0,0,0.0,0.7395,0.072,False,detection,False,Free,0.072
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,172.0,174.0,1.6,{'Two-wheeler': 1.6},3,0.8,,,,,0.0,0.0,1,0.0,0.1737,0.4852,False,detection,False,Moderate,0.485
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,174.0,176.0,4.0,{'Two-wheeler': 4.0},4,2.0,,,,,0.0,0.0,0,0.0,0.5947,0.1664,False,detection,False,Free,0.166
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,174.0,176.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0616,False,detection,False,Free,0.062
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,174.0,176.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0439,0.4892,False,detection,False,Moderate,0.489
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,176.0,178.0,4.0,{'Two-wheeler': 4.0},4,2.0,,,,,0.0,0.0,0,0.0,0.6274,0.136,False,detection,False,Free,0.136
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,176.0,178.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0405,False,detection,False,Free,0.04
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,176.0,178.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4921,False,detection,False,Moderate,0.492
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,178.0,180.0,2.7,{'Two-wheeler': 2.7},4,1.35,,,,,0.0,0.0,0,0.0,0.3897,0.121,False,detection,False,Free,0.121
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,178.0,180.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.6445,0.0361,False,detection,False,Free,0.036
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,178.0,180.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4744,False,detection,False,Moderate,0.474
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,180.0,182.0,2.0,{'Two-wheeler': 2.0},2,1.0,,,,,0.0,0.0,0,0.0,0.2199,0.0793,False,detection,False,Free,0.079
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,180.0,182.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7161,0.0741,False,detection,False,Free,0.074
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,180.0,182.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4804,False,detection,False,Moderate,0.48
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,182.0,184.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0745,0.0671,False,detection,False,Free,0.067
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,182.0,184.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.1361,False,detection,False,Free,0.136
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,182.0,184.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,1,0.0,0.0961,0.5096,False,detection,False,Heavy,0.51
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,184.0,186.0,1.2,{'Two-wheeler': 1.2},3,0.6,,,,,0.0,0.0,1,0.0,0.1134,0.0573,False,detection,False,Free,0.057
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,184.0,186.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.1037,False,detection,False,Free,0.104
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,184.0,186.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0553,0.5401,False,detection,False,Heavy,0.54
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,186.0,188.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0764,0.0646,False,detection,False,Free,0.065
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,186.0,188.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.1662,False,detection,False,Free,0.166
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,186.0,188.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,1,0.0,0.0946,0.5425,False,detection,False,Heavy,0.542
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,188.0,190.0,2.3,{'Two-wheeler': 2.3},4,1.15,,,,,0.0,0.0,2,0.0,0.2717,0.1592,False,detection,False,Free,0.159
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,188.0,190.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.2847,False,detection,False,Moderate,0.285
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,188.0,190.0,0.4,{'Two-wheeler': 0.4},2,0.2,,,,,0.0,0.0,0,0.0,0.037,0.4827,False,detection,False,Moderate,0.483
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,190.0,192.0,2.3,{'Two-wheeler': 2.3},3,1.15,,,,,0.0,0.0,1,0.0,0.2301,0.1909,False,detection,False,Free,0.191
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,190.0,192.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.3558,False,detection,False,Moderate,0.356
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,190.0,192.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0197,0.4779,False,detection,False,Moderate,0.478
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,192.0,194.0,1.8,{'Two-wheeler': 1.8},4,0.9,,,,,0.0,0.0,1,0.0,0.1314,0.1823,False,detection,False,Free,0.182
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,192.0,194.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7164,0.3733,False,detection,False,Moderate,0.373
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,192.0,194.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4888,False,detection,False,Moderate,0.489
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,194.0,196.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2671,False,detection,False,Moderate,0.267
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,194.0,196.0,0.4,{'Bus/Truck': 0.4},1,0.88,,,,,0.0,0.0,0,0.0,0.2865,0.1655,False,detection,False,Free,0.165
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,194.0,196.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4895,False,detection,False,Moderate,0.49
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,196.0,198.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,1,0.0,0.012,0.2081,False,detection,False,Free,0.208
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,196.0,198.0,0.3,{'Bus/Truck': 0.3},1,0.66,,,,,0.0,0.0,0,0.0,0.2148,0.0583,False,detection,False,Free,0.058
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,196.0,198.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5002,False,detection,False,Heavy,0.5
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,198.0,200.0,1.0,{'Two-wheeler': 1.0},2,0.5,,,,,0.0,0.0,1,0.0,0.0815,0.0993,False,detection,False,Free,0.099
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,198.0,200.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7161,0.0481,False,detection,False,Free,0.048
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,198.0,200.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5036,False,detection,False,Heavy,0.504
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,200.0,202.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.1318,0.1037,False,detection,False,Free,0.104
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,200.0,202.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7161,0.0282,False,detection,False,Free,0.028
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,200.0,202.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5277,False,detection,False,Heavy,0.528
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,202.0,204.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1222,0.1442,False,detection,False,Free,0.144
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,202.0,204.0,0.8,{'Bus/Truck': 0.8},1,1.76,,,,,0.0,0.0,0,0.0,0.573,0.02,False,detection,False,Free,0.02
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,202.0,204.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0163,0.5179,False,detection,False,Heavy,0.518
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,204.0,206.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,2,0.0,0.0846,0.0968,False,detection,False,Free,0.097
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,204.0,206.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,0,0.0,0.5013,0.0455,False,detection,False,Free,0.046
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,204.0,206.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4972,False,detection,False,Moderate,0.497
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,206.0,208.0,2.0,{'Two-wheeler': 2.0},2,1.0,,,,,0.0,0.0,0,0.0,0.1899,0.0705,False,detection,False,Free,0.07
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,206.0,208.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0318,False,detection,False,Free,0.032
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,206.0,208.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4787,False,detection,False,Moderate,0.479
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,208.0,210.0,2.1,{'Two-wheeler': 2.1},3,1.05,,,,,0.0,0.0,1,0.0,0.3503,0.0817,False,detection,False,Free,0.082
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,208.0,210.0,0.8,{'Bus/Truck': 0.8},2,1.76,,,,,0.0,0.0,1,0.0,0.573,0.0192,False,detection,False,Free,0.019
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,208.0,210.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0113,0.4478,False,detection,False,Moderate,0.448
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,210.0,212.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.1295,0.1298,False,detection,False,Free,0.13
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,210.0,212.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0055,False,detection,False,Free,0.005
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,210.0,212.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0644,0.4457,False,detection,False,Moderate,0.446
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,212.0,214.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0922,False,detection,False,Free,0.092
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,212.0,214.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0386,False,detection,False,Free,0.039
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,212.0,214.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0239,0.4546,False,detection,False,Moderate,0.455
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,214.0,216.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0653,False,detection,False,Free,0.065
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,214.0,216.0,0.9,{'Bus/Truck': 0.9},2,1.98,,,,,0.0,0.0,1,0.0,0.6446,0.0589,False,detection,False,Free,0.059
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,214.0,216.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0098,0.4945,False,detection,False,Moderate,0.494
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,216.0,218.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.035,False,detection,False,Free,0.035
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,216.0,218.0,1.2,{'Bus/Truck': 1.2},3,2.64,,,,,0.0,0.0,0,0.0,0.8596,0.1138,False,detection,False,Free,0.114
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,216.0,218.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.044,0.4833,False,detection,False,Moderate,0.483
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,218.0,220.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0214,False,detection,False,Free,0.021
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,218.0,220.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7164,0.0612,False,detection,False,Free,0.061
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,218.0,220.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4818,False,detection,False,Moderate,0.482
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,220.0,222.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0054,0.0187,False,detection,False,Free,0.019
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,220.0,222.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7164,0.0232,False,detection,False,Free,0.023
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,220.0,222.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4829,False,detection,False,Moderate,0.483
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,222.0,224.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0047,0.0087,False,detection,False,Free,0.009
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,222.0,224.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7164,0.0257,False,detection,False,Free,0.026
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,222.0,224.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0162,0.4715,False,detection,False,Moderate,0.472
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,224.0,226.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0078,0.0213,False,detection,False,Free,0.021
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,224.0,226.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0286,False,detection,False,Free,0.029
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,224.0,226.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.1161,0.4842,False,detection,False,Moderate,0.484
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,226.0,228.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0073,0.023,False,detection,False,Free,0.023
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,226.0,228.0,0.8,{'Bus/Truck': 0.8},1,1.76,,,,,0.0,0.0,0,0.0,0.5731,0.0209,False,detection,False,Free,0.021
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,226.0,228.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.068,0.4628,False,detection,False,Moderate,0.463
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,228.0,230.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0208,False,detection,False,Free,0.021
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,228.0,230.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,0,0.0,0.5014,0.0279,False,detection,False,Free,0.028
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,228.0,230.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4572,False,detection,False,Moderate,0.457
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,230.0,232.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.018,False,detection,False,Free,0.018
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,230.0,232.0,0.8,{'Bus/Truck': 0.8},1,1.76,,,,,0.0,0.0,0,0.0,0.573,0.0266,False,detection,False,Free,0.027
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,230.0,232.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4766,False,detection,False,Moderate,0.477
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,232.0,234.0,0.8,{'Two-wheeler': 0.8},2,0.4,,,,,0.0,0.0,2,0.0,0.1448,0.0227,False,detection,False,Free,0.023
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,232.0,234.0,0.3,{'Bus/Truck': 0.3},1,0.66,,,,,0.0,0.0,0,0.0,0.2148,0.018,False,detection,False,Free,0.018
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,232.0,234.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5077,False,detection,False,Heavy,0.508
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,234.0,236.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0655,0.0364,False,detection,False,Free,0.036
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,234.0,236.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0392,False,detection,False,Free,0.039
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,234.0,236.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5238,False,detection,False,Heavy,0.524
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,236.0,238.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0111,0.0565,False,detection,False,Free,0.056
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,236.0,238.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0372,False,detection,False,Free,0.037
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,236.0,238.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4999,False,detection,False,Moderate,0.5
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,238.0,240.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0511,False,detection,False,Free,0.051
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,238.0,240.0,0.2,{'Bus/Truck': 0.2},1,0.44,,,,,0.0,0.0,1,0.0,0.1433,0.0198,False,detection,False,Free,0.02
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,238.0,240.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0171,0.5099,False,detection,False,Heavy,0.51
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,240.0,242.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.063,False,detection,False,Free,0.063
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,240.0,242.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0265,False,detection,False,Free,0.026
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,240.0,242.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4758,False,detection,False,Moderate,0.476
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,242.0,244.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0494,False,detection,False,Free,0.049
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,242.0,244.0,0.8,{'Bus/Truck': 0.8},2,1.76,,,,,0.0,0.0,1,0.0,0.573,0.0241,False,detection,False,Free,0.024
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,242.0,244.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4751,False,detection,False,Moderate,0.475
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,244.0,246.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0465,False,detection,False,Free,0.047
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,244.0,246.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0319,False,detection,False,Free,0.032
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,244.0,246.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0195,0.4894,False,detection,False,Moderate,0.489
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,246.0,248.0,0.2,{'Two-wheeler': 0.2},2,0.1,,,,,0.0,0.0,2,0.0,0.0218,0.0484,False,detection,False,Free,0.048
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,246.0,248.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.041,False,detection,False,Free,0.041
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,246.0,248.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4974,False,detection,False,Moderate,0.497
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,248.0,250.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,0,0.0,0.0445,0.0389,False,detection,False,Free,0.039
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,248.0,250.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0669,False,detection,False,Free,0.067
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,248.0,250.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4706,False,detection,False,Moderate,0.471
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,250.0,252.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0272,0.0034,False,detection,False,Free,0.003
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,250.0,252.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.057,False,detection,False,Free,0.057
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,250.0,252.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.467,False,detection,False,Moderate,0.467
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,252.0,254.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0192,False,detection,False,Free,0.019
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,252.0,254.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0341,False,detection,False,Free,0.034
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,252.0,254.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4655,False,detection,False,Moderate,0.465
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,254.0,256.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0384,0.0353,False,detection,False,Free,0.035
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,254.0,256.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0277,False,detection,False,Free,0.028
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,254.0,256.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0218,0.4708,False,detection,False,Moderate,0.471
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,256.0,258.0,0.9,"{'Two-wheeler': 0.8, 'Auto': 0.1}",2,0.52,,,,,0.0,0.0,1,0.0,0.2044,0.0581,False,detection,False,Free,0.058
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,256.0,258.0,1.0,{'Bus/Truck': 1.0},2,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0236,False,detection,False,Free,0.024
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,256.0,258.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4664,False,detection,False,Moderate,0.466
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,258.0,260.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.1677,0.0711,False,detection,False,Free,0.071
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,258.0,260.0,1.2,{'Bus/Truck': 1.2},3,2.64,,,,,0.0,0.0,1,0.0,0.8596,0.0241,False,detection,False,Free,0.024
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,258.0,260.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.473,False,detection,False,Moderate,0.473
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,260.0,262.0,1.4,{'Two-wheeler': 1.4},2,0.7,,,,,0.0,0.0,0,0.0,0.0694,0.1001,False,detection,False,Free,0.1
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,260.0,262.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0309,False,detection,False,Free,0.031
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,260.0,262.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4707,False,detection,False,Moderate,0.471
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,262.0,264.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0741,False,detection,False,Free,0.074
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,262.0,264.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0751,False,detection,False,Free,0.075
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,262.0,264.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0509,0.4581,False,detection,False,Moderate,0.458
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,264.0,266.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0125,False,detection,False,Free,0.012
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,264.0,266.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0134,False,detection,False,Free,0.013
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,264.0,266.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.098,0.4519,False,detection,False,Moderate,0.452
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,266.0,268.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0313,0.0004,False,detection,False,Free,0.0
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,266.0,268.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0189,False,detection,False,Free,0.019
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,266.0,268.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4647,False,detection,False,Moderate,0.465
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,268.0,270.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0248,0.0,False,detection,False,Free,0.0
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,268.0,270.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0273,False,detection,False,Free,0.027
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,268.0,270.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4681,False,detection,False,Moderate,0.468
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,270.0,272.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0163,False,detection,False,Free,0.016
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,270.0,272.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.021,False,detection,False,Free,0.021
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,270.0,272.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.482,False,detection,False,Moderate,0.482
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,272.0,274.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0156,False,detection,False,Free,0.016
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,272.0,274.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.0851,False,detection,False,Free,0.085
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,272.0,274.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5068,False,detection,False,Heavy,0.507
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,274.0,276.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0005,False,detection,False,Free,0.001
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,274.0,276.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.1018,False,detection,False,Free,0.102
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,274.0,276.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.507,False,detection,False,Heavy,0.507
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,276.0,278.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0,False,detection,False,Free,0.0
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,276.0,278.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.1238,False,detection,False,Free,0.124
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,276.0,278.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4946,False,detection,False,Moderate,0.495
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,278.0,280.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.02,False,detection,False,Free,0.02
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,278.0,280.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7162,0.1777,False,detection,False,Free,0.178
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,278.0,280.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4844,False,detection,False,Moderate,0.484
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,280.0,282.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0821,False,detection,False,Free,0.082
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,280.0,282.0,1.1,{'Bus/Truck': 1.1},2,2.42,,,,,0.0,0.0,1,0.0,0.7878,0.1742,False,detection,False,Free,0.174
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,280.0,282.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4824,False,detection,False,Moderate,0.482
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,282.0,284.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0653,False,detection,False,Free,0.065
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,282.0,284.0,0.4,{'Bus/Truck': 0.4},2,0.88,,,,,0.0,0.0,0,0.0,0.2865,0.1617,False,detection,False,Free,0.162
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,282.0,284.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4883,False,detection,False,Moderate,0.488
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,284.0,286.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0295,False,detection,False,Free,0.029
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,284.0,286.0,0.4,{'Bus/Truck': 0.4},1,0.88,,,,,0.0,0.0,0,0.0,0.2865,0.1678,False,detection,False,Free,0.168
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,284.0,286.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4686,False,detection,False,Moderate,0.469
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,286.0,288.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0532,False,detection,False,Free,0.053
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,286.0,288.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0939,False,detection,False,Free,0.094
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,286.0,288.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4177,False,detection,False,Moderate,0.418
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,288.0,290.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.066,False,detection,False,Free,0.066
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,288.0,290.0,0.1,{'Bus/Truck': 0.1},1,0.22,,,,,0.0,0.0,1,0.0,0.0716,0.078,False,detection,False,Free,0.078
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,288.0,290.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4194,False,detection,False,Moderate,0.419
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,290.0,292.0,0.9,{'Two-wheeler': 0.9},2,0.45,,,,,0.0,0.0,2,0.0,0.0721,0.133,False,detection,False,Free,0.133
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,290.0,292.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.0995,False,detection,False,Free,0.1
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,290.0,292.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4102,False,detection,False,Moderate,0.41
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,292.0,294.0,1.9,{'Two-wheeler': 1.9},2,0.95,,,,,0.0,0.0,0,0.0,0.1576,0.1662,False,detection,False,Free,0.166
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,292.0,294.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7163,0.1066,False,detection,False,Free,0.107
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,292.0,294.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0687,0.4042,False,detection,False,Moderate,0.404
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,294.0,296.0,2.0,{'Two-wheeler': 2.0},3,1.0,,,,,0.0,0.0,1,0.0,0.1034,0.1168,False,detection,False,Free,0.117
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,294.0,296.0,1.1,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.1}",2,2.25,,,,,0.0,0.0,1,0.0,0.7576,0.1061,False,detection,False,Free,0.106
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,294.0,296.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4186,False,detection,False,Moderate,0.419
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,296.0,298.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0144,0.0964,False,detection,False,Free,0.096
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,296.0,298.0,1.4,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.4}",2,2.4,,,,,0.0,0.0,0,0.0,0.8376,0.0998,False,detection,False,Free,0.1
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,296.0,298.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4192,False,detection,False,Moderate,0.419
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,298.0,300.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0953,False,detection,False,Free,0.095
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,298.0,300.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.7164,0.1064,False,detection,False,Free,0.106
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,298.0,300.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4133,False,detection,False,Moderate,0.413
+chauta_bazaar,market_carriageway,Market carriageway,carriageway,300.0,300.4,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1037,False,detection,False,Free,0.104
+chauta_bazaar,vendor_encroachment_left,Vendor encroachment (L),parking,300.0,300.4,1.33,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.33}",2,2.37,,,,,0.0,0.0,1,0.0,0.8964,0.1061,False,detection,False,Free,0.106
+chauta_bazaar,vendor_encroachment_right,Vendor encroachment (R),parking,300.0,300.4,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.4092,False,detection,False,Moderate,0.409

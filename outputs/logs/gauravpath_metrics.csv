@@ -1,0 +1,94 @@
+camera_id,zone_id,zone_label,zone_kind,window_start_s,window_end_s,n_detections_mean,counts_by_group,unique_tracks,pcu_mean,density_pcu_per_100m2,density_pcu_per_km_lane,real_area_m2,mean_speed_kmph,stopped_fraction,queue_length_pcu,arrivals,flow_pcu_per_hr,box_occupancy,structural_occupancy,saturated,measurement_mode,scale_verified,los,congestion_index
+gauravpath,lane_1,Lane 1 (median),lane,0.0,2.0,1.8,"{'Two-wheeler': 1.4, 'Car': 0.4}",4,1.1,0.196,6.8,562.5,40.4,0.0,0.0,4,276.9,0.0099,0.0014,False,detection,False,Free,0.001
+gauravpath,lane_2,Lane 2 (kerb),lane,0.0,2.0,0.5,{'Two-wheeler': 0.5},1,0.25,0.048,1.7,521.0,73.7,0.0,0.0,1,123.8,0.0133,0.0561,False,detection,False,Free,0.056
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,0.0,2.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0437,False,detection,False,Free,0.044
+gauravpath,lane_1,Lane 1 (median),lane,2.0,4.0,3.9,"{'Two-wheeler': 2.9, 'Car': 1.0}",5,2.45,0.436,15.2,562.5,46.7,0.0,0.0,2,712.1,0.023,0.0133,False,detection,False,Free,0.013
+gauravpath,lane_2,Lane 2 (kerb),lane,2.0,4.0,0.1,{'Two-wheeler': 0.1},1,0.05,0.01,0.3,521.0,65.1,0.0,0.0,1,21.9,0.001,0.0713,False,detection,False,Free,0.071
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,2.0,4.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0475,False,detection,False,Free,0.047
+gauravpath,lane_1,Lane 1 (median),lane,4.0,6.0,3.4,"{'Two-wheeler': 2.2, 'Car': 1.2}",6,2.3,0.409,14.3,562.5,60.7,0.0,0.0,2,868.7,0.0606,0.0366,False,detection,False,Free,0.037
+gauravpath,lane_2,Lane 2 (kerb),lane,4.0,6.0,1.0,{'Two-wheeler': 1.0},3,0.5,0.096,3.4,521.0,65.8,0.0,0.0,2,220.9,0.0194,0.0862,False,detection,False,Free,0.086
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,4.0,6.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0493,False,detection,False,Free,0.049
+gauravpath,lane_1,Lane 1 (median),lane,6.0,8.0,2.5,"{'Car': 2.1, 'Two-wheeler': 0.4}",5,2.3,0.409,14.3,562.5,46.2,0.0,0.0,1,661.2,0.0369,0.0698,False,detection,False,Free,0.07
+gauravpath,lane_2,Lane 2 (kerb),lane,6.0,8.0,0.7,{'Two-wheeler': 0.7},4,0.35,0.067,2.4,521.0,39.8,0.0,0.0,1,93.6,0.0198,0.125,False,detection,False,Free,0.125
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,6.0,8.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.05,False,detection,False,Free,0.05
+gauravpath,lane_1,Lane 1 (median),lane,8.0,10.0,3.9,"{'Car': 2.8, 'Two-wheeler': 1.1}",6,3.35,0.596,20.8,562.5,50.8,0.0,0.0,3,1058.7,0.0711,0.0548,False,detection,False,Free,0.055
+gauravpath,lane_2,Lane 2 (kerb),lane,8.0,10.0,0.3,"{'Car': 0.2, 'Two-wheeler': 0.1}",2,0.25,0.048,1.7,521.0,63.7,0.333,0.05,2,107.0,0.0261,0.0734,False,detection,False,Free,0.073
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,8.0,10.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0463,False,detection,False,Free,0.046
+gauravpath,lane_1,Lane 1 (median),lane,10.0,12.0,4.8,"{'Car': 3.8, 'Two-wheeler': 1.0}",7,4.3,0.765,26.8,562.5,53.2,0.0,0.0,3,1423.2,0.3405,0.1197,False,detection,False,Free,0.12
+gauravpath,lane_2,Lane 2 (kerb),lane,10.0,12.0,0.9,"{'Car': 0.1, 'Two-wheeler': 0.8}",5,0.5,0.096,3.4,521.0,50.5,0.0,0.0,1,169.5,0.0478,0.1603,False,detection,False,Free,0.16
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,10.0,12.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.048,False,detection,False,Free,0.048
+gauravpath,lane_1,Lane 1 (median),lane,12.0,14.0,5.3,"{'Car': 3.2, 'Two-wheeler': 2.1}",9,4.25,0.756,26.4,562.5,51.3,0.0,0.0,4,1356.5,0.2807,0.1127,False,detection,False,Free,0.113
+gauravpath,lane_2,Lane 2 (kerb),lane,12.0,14.0,0.6,"{'Two-wheeler': 0.5, 'Car': 0.1}",3,0.35,0.067,2.4,521.0,53.2,0.0,0.0,1,125.1,0.1156,0.1355,False,detection,False,Free,0.135
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,12.0,14.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0468,False,detection,False,Free,0.047
+gauravpath,lane_1,Lane 1 (median),lane,14.0,16.0,6.8,"{'Car': 3.2, 'Two-wheeler': 3.3, 'Auto': 0.3}",12,5.21,0.926,32.4,562.5,50.3,0.0,0.0,5,1629.5,0.1401,0.1167,False,detection,False,Free,0.117
+gauravpath,lane_2,Lane 2 (kerb),lane,14.0,16.0,0.8,"{'Auto': 0.4, 'Two-wheeler': 0.3, 'Car': 0.1}",4,0.73,0.14,4.9,521.0,61.6,0.0,0.0,4,302.3,0.0454,0.1206,False,detection,False,Free,0.121
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,14.0,16.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0463,False,detection,False,Free,0.046
+gauravpath,lane_1,Lane 1 (median),lane,16.0,18.0,5.8,"{'Car': 4.0, 'Two-wheeler': 1.4, 'LCV/Tempo': 0.2, 'Auto': 0.2}",12,5.22,0.928,32.5,562.5,51.6,0.0,0.0,5,1674.5,0.174,0.1522,False,detection,False,Free,0.152
+gauravpath,lane_2,Lane 2 (kerb),lane,16.0,18.0,2.9,"{'Two-wheeler': 2.3, 'Auto': 0.6}",5,1.87,0.359,12.6,521.0,44.8,0.0,0.0,3,563.0,0.2111,0.1759,False,detection,False,Free,0.176
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,16.0,18.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0456,False,detection,False,Free,0.046
+gauravpath,lane_1,Lane 1 (median),lane,18.0,20.0,5.9,"{'Two-wheeler': 0.2, 'Car': 4.6, 'LCV/Tempo': 0.1, 'Auto': 1.0}",12,6.04,1.074,37.6,562.5,47.4,0.017,0.1,2,1783.2,0.2509,0.1638,False,detection,False,Free,0.164
+gauravpath,lane_2,Lane 2 (kerb),lane,18.0,20.0,3.0,{'Two-wheeler': 3.0},7,1.5,0.288,10.1,521.0,54.0,0.0,0.0,2,543.8,0.0979,0.1818,False,detection,False,Free,0.182
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,18.0,20.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0469,False,detection,False,Free,0.047
+gauravpath,lane_1,Lane 1 (median),lane,20.0,22.0,4.5,"{'Auto': 1.0, 'Car': 3.5}",9,4.7,0.836,29.2,562.5,39.2,0.047,0.2,2,1147.6,0.3778,0.1508,False,detection,False,Free,0.151
+gauravpath,lane_2,Lane 2 (kerb),lane,20.0,22.0,2.1,"{'Car': 0.4, 'Two-wheeler': 1.7}",7,1.25,0.24,8.4,521.0,47.3,0.0,0.0,2,397.3,0.2003,0.2615,False,detection,False,Moderate,0.261
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,20.0,22.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0468,False,detection,False,Free,0.047
+gauravpath,lane_1,Lane 1 (median),lane,22.0,24.0,5.5,"{'Car': 4.8, 'Two-wheeler': 0.7}",10,5.15,0.916,32.0,562.5,43.0,0.019,0.1,3,1376.7,0.4575,0.1491,False,detection,False,Free,0.149
+gauravpath,lane_2,Lane 2 (kerb),lane,22.0,24.0,2.3,"{'Auto': 1.0, 'Two-wheeler': 1.3}",6,1.85,0.355,12.4,521.0,46.6,0.0,0.0,3,579.1,0.141,0.1897,False,detection,False,Free,0.19
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,22.0,24.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0472,False,detection,False,Free,0.047
+gauravpath,lane_1,Lane 1 (median),lane,24.0,26.0,7.0,"{'Car': 5.1, 'Two-wheeler': 1.9}",15,6.05,1.076,37.6,562.5,44.4,0.015,0.1,5,1669.7,0.3169,0.15,False,detection,False,Free,0.15
+gauravpath,lane_2,Lane 2 (kerb),lane,24.0,26.0,1.6,"{'Two-wheeler': 0.6, 'Auto': 0.2, 'Car': 0.8}",9,1.34,0.257,9.0,521.0,46.9,0.0,0.0,3,421.8,0.4477,0.1826,False,detection,False,Free,0.183
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,24.0,26.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0452,False,detection,False,Free,0.045
+gauravpath,lane_1,Lane 1 (median),lane,26.0,28.0,6.3,"{'Two-wheeler': 1.6, 'Car': 4.7}",11,5.5,0.978,34.2,562.5,48.4,0.017,0.1,3,1655.9,0.2836,0.1573,False,detection,False,Free,0.157
+gauravpath,lane_2,Lane 2 (kerb),lane,26.0,28.0,1.3,"{'Two-wheeler': 1.0, 'Car': 0.3}",4,0.8,0.154,5.4,521.0,54.6,0.167,0.2,2,293.3,0.2314,0.1465,False,detection,False,Free,0.146
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,26.0,28.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0483,False,detection,False,Free,0.048
+gauravpath,lane_1,Lane 1 (median),lane,28.0,30.0,3.9,"{'Car': 3.2, 'Two-wheeler': 0.7}",8,3.55,0.631,22.1,562.5,44.2,0.051,0.2,1,975.5,0.2539,0.1567,False,detection,False,Free,0.157
+gauravpath,lane_2,Lane 2 (kerb),lane,28.0,30.0,2.9,{'Two-wheeler': 2.9},6,1.45,0.278,9.7,521.0,38.1,0.0,0.0,3,371.0,0.0738,0.1486,False,detection,False,Free,0.149
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,28.0,30.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0501,False,detection,False,Free,0.05
+gauravpath,lane_1,Lane 1 (median),lane,30.0,32.0,4.5,"{'Two-wheeler': 3.2, 'Car': 1.3}",6,2.9,0.516,18.0,562.5,40.6,0.0,0.0,3,733.5,0.0706,0.0811,False,detection,False,Free,0.081
+gauravpath,lane_2,Lane 2 (kerb),lane,30.0,32.0,1.6,"{'Car': 0.4, 'Two-wheeler': 1.2}",6,1.0,0.192,6.7,521.0,46.4,0.0,0.0,1,312.0,0.1307,0.204,False,detection,False,Free,0.204
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,30.0,32.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0459,False,detection,False,Free,0.046
+gauravpath,lane_1,Lane 1 (median),lane,32.0,34.0,3.0,"{'Two-wheeler': 2.9, 'Car': 0.1}",5,1.55,0.276,9.6,562.5,46.6,0.0,0.0,0,449.1,0.0311,0.0305,False,detection,False,Free,0.031
+gauravpath,lane_2,Lane 2 (kerb),lane,32.0,34.0,1.2,"{'Two-wheeler': 1.1, 'Car': 0.1}",4,0.65,0.125,4.4,521.0,52.4,0.083,0.1,3,229.0,0.0683,0.1234,False,detection,False,Free,0.123
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,32.0,34.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0456,False,detection,False,Free,0.046
+gauravpath,lane_1,Lane 1 (median),lane,34.0,36.0,2.0,{'Two-wheeler': 2.0},4,1.0,0.178,6.2,562.5,51.8,0.0,0.0,1,322.4,0.0291,0.0175,False,detection,False,Free,0.017
+gauravpath,lane_2,Lane 2 (kerb),lane,34.0,36.0,1.4,{'Two-wheeler': 1.4},5,0.7,0.134,4.7,521.0,48.7,0.071,0.05,1,228.9,0.0903,0.1055,False,detection,False,Free,0.105
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,34.0,36.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0473,False,detection,False,Free,0.047
+gauravpath,lane_1,Lane 1 (median),lane,36.0,38.0,1.4,{'Two-wheeler': 1.4},3,0.7,0.124,4.4,562.5,29.6,0.0,0.0,2,129.0,0.0053,0.0018,False,detection,False,Free,0.002
+gauravpath,lane_2,Lane 2 (kerb),lane,36.0,38.0,1.4,{'Two-wheeler': 1.4},6,0.7,0.134,4.7,521.0,31.8,0.071,0.05,3,149.5,0.1127,0.1168,False,detection,False,Free,0.117
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,36.0,38.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0451,False,detection,False,Free,0.045
+gauravpath,lane_1,Lane 1 (median),lane,38.0,40.0,1.5,{'Two-wheeler': 1.5},3,0.75,0.133,4.7,562.5,43.9,0.0,0.0,1,204.7,0.0099,0.0014,False,detection,False,Free,0.001
+gauravpath,lane_2,Lane 2 (kerb),lane,38.0,40.0,1.0,{'Two-wheeler': 1.0},1,0.5,0.096,3.4,521.0,45.3,0.0,0.0,0,152.1,0.0104,0.0572,False,detection,False,Free,0.057
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,38.0,40.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0436,False,detection,False,Free,0.044
+gauravpath,lane_1,Lane 1 (median),lane,40.0,42.0,1.0,"{'Two-wheeler': 0.6, 'Auto': 0.4}",3,0.78,0.139,4.9,562.5,36.0,0.0,0.0,2,174.8,0.0147,0.0024,False,detection,False,Free,0.002
+gauravpath,lane_2,Lane 2 (kerb),lane,40.0,42.0,1.7,{'Two-wheeler': 1.7},2,0.85,0.163,5.7,521.0,59.9,0.0,0.0,1,342.1,0.0309,0.0863,False,detection,False,Free,0.086
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,40.0,42.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0433,False,detection,False,Free,0.043
+gauravpath,lane_1,Lane 1 (median),lane,42.0,44.0,1.5,"{'Auto': 1.0, 'Two-wheeler': 0.5}",2,1.45,0.258,9.0,562.5,35.8,0.0,0.0,1,323.3,0.0088,0.001,False,detection,False,Free,0.001
+gauravpath,lane_2,Lane 2 (kerb),lane,42.0,44.0,0.4,{'Two-wheeler': 0.4},3,0.2,0.038,1.3,521.0,47.6,0.0,0.0,0,64.0,0.0377,0.1029,False,detection,False,Free,0.103
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,42.0,44.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0431,False,detection,False,Free,0.043
+gauravpath,lane_1,Lane 1 (median),lane,44.0,46.0,2.3,"{'Auto': 0.5, 'Two-wheeler': 1.8}",4,1.5,0.267,9.3,562.5,48.6,0.0,0.0,2,453.4,0.016,0.0076,False,detection,False,Free,0.008
+gauravpath,lane_2,Lane 2 (kerb),lane,44.0,46.0,0.5,{'Auto': 0.5},1,0.6,0.115,4.0,521.0,57.5,0.0,0.0,1,231.8,0.0134,0.0644,False,detection,False,Free,0.064
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,44.0,46.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0453,False,detection,False,Free,0.045
+gauravpath,lane_1,Lane 1 (median),lane,46.0,48.0,2.1,{'Two-wheeler': 2.1},3,1.05,0.187,6.5,562.5,51.0,0.0,0.0,1,333.5,0.0192,0.0186,False,detection,False,Free,0.019
+gauravpath,lane_2,Lane 2 (kerb),lane,46.0,48.0,1.0,{'Auto': 1.0},2,1.2,0.23,8.1,521.0,59.4,0.2,0.24,0,478.7,0.1837,0.1069,False,detection,False,Free,0.107
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,46.0,48.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.047,False,detection,False,Free,0.047
+gauravpath,lane_1,Lane 1 (median),lane,48.0,50.0,0.0,{},0,0.0,0.0,0.0,562.5,,0.0,0.0,0,0.0,0.0,0.0018,False,detection,False,Free,0.002
+gauravpath,lane_2,Lane 2 (kerb),lane,48.0,50.0,0.5,{'Two-wheeler': 0.5},2,0.25,0.048,1.7,521.0,66.7,0.0,0.0,1,112.0,0.0345,0.1139,False,detection,False,Free,0.114
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,48.0,50.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0459,False,detection,False,Free,0.046
+gauravpath,lane_1,Lane 1 (median),lane,50.0,52.0,0.0,{},0,0.0,0.0,0.0,562.5,,0.0,0.0,0,0.0,0.0,0.0001,False,detection,False,Free,0.0
+gauravpath,lane_2,Lane 2 (kerb),lane,50.0,52.0,0.0,{},0,0.0,0.0,0.0,521.0,,0.0,0.0,0,0.0,0.0,0.055,False,detection,False,Free,0.055
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,50.0,52.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0455,False,detection,False,Free,0.046
+gauravpath,lane_1,Lane 1 (median),lane,52.0,54.0,0.4,{'Car': 0.4},1,0.4,0.071,2.5,562.5,32.7,0.0,0.0,1,81.3,0.0027,0.0003,False,detection,False,Free,0.0
+gauravpath,lane_2,Lane 2 (kerb),lane,52.0,54.0,0.0,{},0,0.0,0.0,0.0,521.0,,0.0,0.0,0,0.0,0.0,0.0475,False,detection,False,Free,0.048
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,52.0,54.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0462,False,detection,False,Free,0.046
+gauravpath,lane_1,Lane 1 (median),lane,54.0,56.0,1.0,{'Car': 1.0},1,1.0,0.178,6.2,562.5,43.7,0.0,0.0,0,271.8,0.0114,0.0061,False,detection,False,Free,0.006
+gauravpath,lane_2,Lane 2 (kerb),lane,54.0,56.0,0.0,{},0,0.0,0.0,0.0,521.0,,0.0,0.0,0,0.0,0.0,0.048,False,detection,False,Free,0.048
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,54.0,56.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.045,False,detection,False,Free,0.045
+gauravpath,lane_1,Lane 1 (median),lane,56.0,58.0,0.8,{'Car': 0.8},1,0.8,0.142,5.0,562.5,65.0,0.0,0.0,0,323.4,0.0294,0.0134,False,detection,False,Free,0.013
+gauravpath,lane_2,Lane 2 (kerb),lane,56.0,58.0,0.2,{'Car': 0.2},1,0.2,0.038,1.3,521.0,81.2,0.0,0.0,1,109.1,0.0201,0.0571,False,detection,False,Free,0.057
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,56.0,58.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0435,False,detection,False,Free,0.043
+gauravpath,lane_1,Lane 1 (median),lane,58.0,60.0,0.8,{'Car': 0.8},1,0.8,0.142,5.0,562.5,35.1,0.0,0.0,1,174.6,0.0055,0.0039,False,detection,False,Free,0.004
+gauravpath,lane_2,Lane 2 (kerb),lane,58.0,60.0,0.2,{'Car': 0.2},1,0.2,0.038,1.3,521.0,89.3,0.0,0.0,0,120.0,0.0378,0.1216,False,detection,False,Free,0.122
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,58.0,60.0,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0428,False,detection,False,Free,0.043
+gauravpath,lane_1,Lane 1 (median),lane,60.0,61.6,1.0,{'Car': 1.0},1,1.0,0.178,6.2,562.5,53.2,0.0,0.0,0,331.0,0.0168,0.0167,False,detection,False,Free,0.017
+gauravpath,lane_2,Lane 2 (kerb),lane,60.0,61.6,0.0,{},0,0.0,0.0,0.0,521.0,,0.0,0.0,0,0.0,0.0,0.0532,False,detection,False,Free,0.053
+gauravpath,opposite_carriageway,Opposite carriageway,carriageway,60.0,61.6,0.0,{},0,0.0,0.0,0.0,256.0,,0.0,0.0,0,0.0,0.0,0.0466,False,detection,False,Free,0.047

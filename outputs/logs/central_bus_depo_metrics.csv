@@ -1,0 +1,454 @@
+camera_id,zone_id,zone_label,zone_kind,window_start_s,window_end_s,n_detections_mean,counts_by_group,unique_tracks,pcu_mean,density_pcu_per_100m2,density_pcu_per_km_lane,real_area_m2,mean_speed_kmph,stopped_fraction,queue_length_pcu,arrivals,flow_pcu_per_hr,box_occupancy,structural_occupancy,saturated,measurement_mode,scale_verified,los,congestion_index
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,0.0,2.0,12.2,"{'Bus/Truck': 11.0, 'Two-wheeler': 1.2}",17,24.8,,,,,0.0,0.0,17,0.0,1.5724,0.5164,True,occupancy,False,Heavy,0.516
+central_bus_depo,platform_waiting,Platform waiting area,platform,0.0,2.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0015,0.6216,True,occupancy,False,Heavy,0.622
+central_bus_depo,concourse,Concourse,pedestrian,0.0,2.0,0.9,"{'Bus/Truck': 0.7, 'Two-wheeler': 0.2}",2,1.64,,,,,0.0,0.0,2,0.0,0.2493,0.2422,False,occupancy,False,Free,0.242
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,2.0,4.0,12.6,"{'Bus/Truck': 11.0, 'Two-wheeler': 1.6}",16,25.0,,,,,0.0,0.0,3,0.0,2.0192,0.5353,True,occupancy,False,Heavy,0.535
+central_bus_depo,platform_waiting,Platform waiting area,platform,2.0,4.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6275,True,occupancy,False,Heavy,0.627
+central_bus_depo,concourse,Concourse,pedestrian,2.0,4.0,1.2,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.2}",2,2.3,,,,,0.0,0.0,0,0.0,0.3542,0.262,False,occupancy,False,Moderate,0.262
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,4.0,6.0,9.6,"{'Bus/Truck': 9.5, 'Two-wheeler': 0.1}",12,20.95,,,,,0.0,0.0,2,0.0,1.9322,0.5208,True,occupancy,False,Heavy,0.521
+central_bus_depo,platform_waiting,Platform waiting area,platform,4.0,6.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5839,False,occupancy,False,Heavy,0.584
+central_bus_depo,concourse,Concourse,pedestrian,4.0,6.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.3169,0.2679,False,occupancy,False,Moderate,0.268
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,6.0,8.0,9.9,"{'Bus/Truck': 9.8, 'Two-wheeler': 0.1}",11,21.61,,,,,0.0,0.0,1,0.0,1.9123,0.5169,True,occupancy,False,Heavy,0.517
+central_bus_depo,platform_waiting,Platform waiting area,platform,6.0,8.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5806,False,occupancy,False,Heavy,0.581
+central_bus_depo,concourse,Concourse,pedestrian,6.0,8.0,0.6,{'Bus/Truck': 0.6},1,1.32,,,,,0.0,0.0,0,0.0,0.2113,0.2593,False,occupancy,False,Moderate,0.259
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,8.0,10.0,8.5,"{'Bus/Truck': 8.1, 'Two-wheeler': 0.4}",12,18.02,,,,,0.0,0.0,1,0.0,1.5722,0.5264,True,occupancy,False,Heavy,0.526
+central_bus_depo,platform_waiting,Platform waiting area,platform,8.0,10.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.5974,False,occupancy,False,Heavy,0.597
+central_bus_depo,concourse,Concourse,pedestrian,8.0,10.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,0,0.0,0.2465,0.2593,False,occupancy,False,Moderate,0.259
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,10.0,12.0,9.7,{'Bus/Truck': 9.7},10,21.34,,,,,0.0,0.0,0,0.0,1.9014,0.5317,True,occupancy,False,Heavy,0.532
+central_bus_depo,platform_waiting,Platform waiting area,platform,10.0,12.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6293,True,occupancy,False,Heavy,0.629
+central_bus_depo,concourse,Concourse,pedestrian,10.0,12.0,0.8,{'Bus/Truck': 0.8},2,1.76,,,,,0.0,0.0,1,0.0,0.2817,0.2415,False,occupancy,False,Free,0.242
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,12.0,14.0,9.6,"{'Bus/Truck': 9.5, 'Two-wheeler': 0.1}",11,20.95,,,,,0.0,0.0,1,0.0,1.8442,0.5485,True,occupancy,False,Heavy,0.549
+central_bus_depo,platform_waiting,Platform waiting area,platform,12.0,14.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6506,True,occupancy,False,Heavy,0.651
+central_bus_depo,concourse,Concourse,pedestrian,12.0,14.0,1.4,{'Bus/Truck': 1.4},3,3.08,,,,,0.0,0.0,1,0.0,0.4917,0.2719,False,occupancy,False,Moderate,0.272
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,14.0,16.0,9.3,{'Bus/Truck': 9.3},11,20.46,,,,,0.0,0.0,1,0.0,1.7337,0.5827,True,occupancy,False,Heavy,0.583
+central_bus_depo,platform_waiting,Platform waiting area,platform,14.0,16.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6661,True,occupancy,False,Heavy,0.666
+central_bus_depo,concourse,Concourse,pedestrian,14.0,16.0,1.2,{'Bus/Truck': 1.2},2,2.64,,,,,0.0,0.0,0,0.0,0.423,0.32,False,occupancy,False,Moderate,0.32
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,16.0,18.0,10.0,"{'Bus/Truck': 9.7, 'Two-wheeler': 0.3}",12,21.49,,,,,0.0,0.0,1,0.0,1.8122,0.6124,True,occupancy,False,Heavy,0.612
+central_bus_depo,platform_waiting,Platform waiting area,platform,16.0,18.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0043,0.6601,True,occupancy,False,Heavy,0.66
+central_bus_depo,concourse,Concourse,pedestrian,16.0,18.0,1.5,{'Bus/Truck': 1.5},2,3.3,,,,,0.0,0.0,0,0.0,0.529,0.3147,False,occupancy,False,Moderate,0.315
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,18.0,20.0,10.2,"{'Bus/Truck': 10.1, 'Two-wheeler': 0.1}",14,22.27,,,,,0.0,0.0,3,0.0,1.922,0.6246,True,occupancy,False,Heavy,0.625
+central_bus_depo,platform_waiting,Platform waiting area,platform,18.0,20.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.66,True,occupancy,False,Heavy,0.66
+central_bus_depo,concourse,Concourse,pedestrian,18.0,20.0,3.1,"{'Bus/Truck': 3.0, 'Two-wheeler': 0.1}",4,6.65,,,,,0.0,0.0,2,0.0,1.0608,0.3157,True,occupancy,False,Moderate,0.316
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,20.0,22.0,9.8,{'Bus/Truck': 9.8},14,21.56,,,,,0.0,0.0,1,0.0,1.8042,0.6229,True,occupancy,False,Heavy,0.623
+central_bus_depo,platform_waiting,Platform waiting area,platform,20.0,22.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0078,0.6654,True,occupancy,False,Heavy,0.665
+central_bus_depo,concourse,Concourse,pedestrian,20.0,22.0,3.0,{'Bus/Truck': 3.0},3,6.6,,,,,0.0,0.0,0,0.0,1.0575,0.3278,True,occupancy,False,Moderate,0.328
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,22.0,24.0,7.0,"{'Bus/Truck': 6.6, 'Two-wheeler': 0.4}",14,14.72,,,,,0.0,0.0,1,0.0,1.3529,0.6339,True,occupancy,False,Heavy,0.634
+central_bus_depo,platform_waiting,Platform waiting area,platform,22.0,24.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0125,0.6619,True,occupancy,False,Heavy,0.662
+central_bus_depo,concourse,Concourse,pedestrian,22.0,24.0,3.0,{'Bus/Truck': 3.0},3,6.6,,,,,0.0,0.0,0,0.0,1.0573,0.3191,True,occupancy,False,Moderate,0.319
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,24.0,26.0,8.5,"{'Bus/Truck': 7.6, 'Two-wheeler': 0.9}",15,17.17,,,,,0.0,0.0,3,0.0,1.6625,0.6358,True,occupancy,False,Heavy,0.636
+central_bus_depo,platform_waiting,Platform waiting area,platform,24.0,26.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.005,0.6719,True,occupancy,False,Heavy,0.672
+central_bus_depo,concourse,Concourse,pedestrian,24.0,26.0,2.6,{'Bus/Truck': 2.6},3,5.72,,,,,0.0,0.0,0,0.0,0.9168,0.2965,True,occupancy,False,Moderate,0.296
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,26.0,28.0,8.0,"{'Bus/Truck': 7.5, 'Two-wheeler': 0.5}",12,16.75,,,,,0.0,0.0,1,0.0,1.5663,0.6191,True,occupancy,False,Heavy,0.619
+central_bus_depo,platform_waiting,Platform waiting area,platform,26.0,28.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0043,0.662,True,occupancy,False,Heavy,0.662
+central_bus_depo,concourse,Concourse,pedestrian,26.0,28.0,2.7,{'Bus/Truck': 2.7},3,5.94,,,,,0.0,0.0,0,0.0,0.9514,0.2796,True,occupancy,False,Moderate,0.28
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,28.0,30.0,7.2,{'Bus/Truck': 7.2},10,15.84,,,,,0.0,0.0,2,0.0,1.3383,0.6093,True,occupancy,False,Heavy,0.609
+central_bus_depo,platform_waiting,Platform waiting area,platform,28.0,30.0,0.6,{'Two-wheeler': 0.6},2,0.3,,,,,0.0,0.0,1,0.0,0.0129,0.6702,True,occupancy,False,Heavy,0.67
+central_bus_depo,concourse,Concourse,pedestrian,28.0,30.0,1.6,{'Bus/Truck': 1.6},3,3.52,,,,,0.0,0.0,0,0.0,0.5637,0.274,False,occupancy,False,Moderate,0.274
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,30.0,32.0,6.8,"{'Bus/Truck': 6.7, 'Two-wheeler': 0.1}",9,14.79,,,,,0.0,0.0,1,0.0,1.2806,0.6134,True,occupancy,False,Heavy,0.613
+central_bus_depo,platform_waiting,Platform waiting area,platform,30.0,32.0,0.8,{'Two-wheeler': 0.8},2,0.4,,,,,0.0,0.0,1,0.0,0.0305,0.6709,True,occupancy,False,Heavy,0.671
+central_bus_depo,concourse,Concourse,pedestrian,30.0,32.0,2.3,{'Bus/Truck': 2.3},3,5.06,,,,,0.0,0.0,0,0.0,0.8112,0.2682,True,occupancy,False,Moderate,0.268
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,32.0,34.0,7.7,{'Bus/Truck': 7.7},10,16.94,,,,,0.0,0.0,2,0.0,1.1385,0.6131,True,occupancy,False,Heavy,0.613
+central_bus_depo,platform_waiting,Platform waiting area,platform,32.0,34.0,1.0,{'Two-wheeler': 1.0},2,0.5,,,,,0.0,0.0,0,0.0,0.0317,0.6626,True,occupancy,False,Heavy,0.663
+central_bus_depo,concourse,Concourse,pedestrian,32.0,34.0,2.6,{'Bus/Truck': 2.6},3,5.72,,,,,0.0,0.0,0,0.0,0.9169,0.2617,True,occupancy,False,Moderate,0.262
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,34.0,36.0,8.7,{'Bus/Truck': 8.7},11,19.14,,,,,0.0,0.0,1,0.0,1.4343,0.6071,True,occupancy,False,Heavy,0.607
+central_bus_depo,platform_waiting,Platform waiting area,platform,34.0,36.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0263,0.6639,True,occupancy,False,Heavy,0.664
+central_bus_depo,concourse,Concourse,pedestrian,34.0,36.0,2.8,{'Bus/Truck': 2.8},3,6.16,,,,,0.0,0.0,0,0.0,0.9871,0.2572,True,occupancy,False,Moderate,0.257
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,36.0,38.0,9.0,"{'Bus/Truck': 8.7, 'Two-wheeler': 0.3}",11,19.29,,,,,0.0,0.0,1,0.0,1.4395,0.6077,True,occupancy,False,Heavy,0.608
+central_bus_depo,platform_waiting,Platform waiting area,platform,36.0,38.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0071,0.6548,True,occupancy,False,Heavy,0.655
+central_bus_depo,concourse,Concourse,pedestrian,36.0,38.0,2.7,{'Bus/Truck': 2.7},3,5.94,,,,,0.0,0.0,0,0.0,0.9515,0.2606,True,occupancy,False,Moderate,0.261
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,38.0,40.0,9.1,"{'Bus/Truck': 8.6, 'Two-wheeler': 0.5}",11,19.17,,,,,0.0,0.0,2,0.0,1.4271,0.6088,True,occupancy,False,Heavy,0.609
+central_bus_depo,platform_waiting,Platform waiting area,platform,38.0,40.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0367,0.6628,True,occupancy,False,Heavy,0.663
+central_bus_depo,concourse,Concourse,pedestrian,38.0,40.0,1.5,{'Bus/Truck': 1.5},2,3.3,,,,,0.0,0.0,0,0.0,0.5285,0.2704,False,occupancy,False,Moderate,0.27
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,40.0,42.0,9.0,"{'Bus/Truck': 8.0, 'Two-wheeler': 1.0}",13,18.1,,,,,0.0,0.0,2,0.0,1.0711,0.598,True,occupancy,False,Heavy,0.598
+central_bus_depo,platform_waiting,Platform waiting area,platform,40.0,42.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0368,0.6735,True,occupancy,False,Heavy,0.674
+central_bus_depo,concourse,Concourse,pedestrian,40.0,42.0,2.4,{'Bus/Truck': 2.4},3,5.28,,,,,0.0,0.0,0,0.0,0.8459,0.2554,True,occupancy,False,Moderate,0.255
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,42.0,44.0,7.0,"{'Bus/Truck': 6.9, 'Two-wheeler': 0.1}",10,15.23,,,,,0.0,0.0,0,0.0,0.9061,0.5928,False,detection,False,Heavy,0.593
+central_bus_depo,platform_waiting,Platform waiting area,platform,42.0,44.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.0286,0.6773,True,occupancy,False,Heavy,0.677
+central_bus_depo,concourse,Concourse,pedestrian,42.0,44.0,2.6,{'Bus/Truck': 2.6},3,5.72,,,,,0.0,0.0,0,0.0,0.9158,0.2371,True,occupancy,False,Free,0.237
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,44.0,46.0,9.6,{'Bus/Truck': 9.6},12,21.12,,,,,0.0,0.0,3,0.0,1.0951,0.5728,False,detection,False,Heavy,0.573
+central_bus_depo,platform_waiting,Platform waiting area,platform,44.0,46.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0371,0.6542,True,occupancy,False,Heavy,0.654
+central_bus_depo,concourse,Concourse,pedestrian,44.0,46.0,1.6,{'Bus/Truck': 1.6},3,3.52,,,,,0.0,0.0,0,0.0,0.5638,0.2348,False,occupancy,False,Free,0.235
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,46.0,48.0,10.5,"{'Bus/Truck': 9.2, 'Two-wheeler': 1.3}",13,20.89,,,,,0.0,0.0,2,0.0,0.914,0.5585,False,detection,False,Heavy,0.559
+central_bus_depo,platform_waiting,Platform waiting area,platform,46.0,48.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0371,0.6733,True,occupancy,False,Heavy,0.673
+central_bus_depo,concourse,Concourse,pedestrian,46.0,48.0,1.3,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.3}",2,2.35,,,,,0.0,0.0,1,0.0,0.3624,0.2485,False,occupancy,False,Free,0.249
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,48.0,50.0,9.6,"{'Bus/Truck': 9.2, 'Two-wheeler': 0.4}",12,20.44,,,,,0.0,0.0,0,0.0,0.9266,0.5581,False,detection,False,Heavy,0.558
+central_bus_depo,platform_waiting,Platform waiting area,platform,48.0,50.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.037,0.6753,True,occupancy,False,Heavy,0.675
+central_bus_depo,concourse,Concourse,pedestrian,48.0,50.0,1.3,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.3}",3,2.35,,,,,0.0,0.0,0,0.0,0.3626,0.265,False,occupancy,False,Moderate,0.265
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,50.0,52.0,9.8,"{'Bus/Truck': 9.4, 'Two-wheeler': 0.4}",14,20.88,,,,,0.0,0.0,4,0.0,1.0257,0.5641,False,detection,False,Heavy,0.564
+central_bus_depo,platform_waiting,Platform waiting area,platform,50.0,52.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0361,0.645,True,occupancy,False,Heavy,0.645
+central_bus_depo,concourse,Concourse,pedestrian,50.0,52.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.317,0.2754,False,occupancy,False,Moderate,0.275
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,52.0,54.0,11.0,"{'Bus/Truck': 10.5, 'Two-wheeler': 0.5}",14,23.35,,,,,0.0,0.0,3,0.0,1.245,0.5747,True,occupancy,False,Heavy,0.575
+central_bus_depo,platform_waiting,Platform waiting area,platform,52.0,54.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.017,0.6279,True,occupancy,False,Heavy,0.628
+central_bus_depo,concourse,Concourse,pedestrian,52.0,54.0,0.9,"{'Bus/Truck': 0.6, 'Two-wheeler': 0.3}",2,1.47,,,,,0.0,0.0,1,0.0,0.2196,0.2695,False,occupancy,False,Moderate,0.269
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,54.0,56.0,10.9,"{'Bus/Truck': 9.9, 'Two-wheeler': 1.0}",14,22.28,,,,,0.0,0.0,2,0.0,1.1474,0.5965,True,occupancy,False,Heavy,0.597
+central_bus_depo,platform_waiting,Platform waiting area,platform,54.0,56.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6298,True,occupancy,False,Heavy,0.63
+central_bus_depo,concourse,Concourse,pedestrian,54.0,56.0,1.8,"{'Two-wheeler': 0.4, 'Bus/Truck': 1.4}",3,3.28,,,,,0.0,0.0,0,0.0,0.5056,0.2459,False,occupancy,False,Free,0.246
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,56.0,58.0,9.6,"{'Bus/Truck': 9.2, 'Two-wheeler': 0.4}",13,20.44,,,,,0.0,0.0,2,0.0,0.9617,0.6094,False,detection,False,Heavy,0.609
+central_bus_depo,platform_waiting,Platform waiting area,platform,56.0,58.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.009,0.6217,True,occupancy,False,Heavy,0.622
+central_bus_depo,concourse,Concourse,pedestrian,56.0,58.0,1.1,{'Bus/Truck': 1.1},2,2.42,,,,,0.0,0.0,0,0.0,0.3909,0.2326,False,occupancy,False,Free,0.233
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,58.0,60.0,11.3,"{'Bus/Truck': 9.0, 'Two-wheeler': 2.3}",16,20.95,,,,,0.0,0.0,4,0.0,0.9563,0.6121,False,detection,False,Heavy,0.612
+central_bus_depo,platform_waiting,Platform waiting area,platform,58.0,60.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0179,0.6155,False,occupancy,False,Heavy,0.616
+central_bus_depo,concourse,Concourse,pedestrian,58.0,60.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.3524,0.2177,False,occupancy,False,Free,0.218
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,60.0,62.0,12.1,"{'Bus/Truck': 9.0, 'Two-wheeler': 3.1}",16,21.35,,,,,0.0,0.0,1,0.0,0.9536,0.6216,False,detection,False,Heavy,0.622
+central_bus_depo,platform_waiting,Platform waiting area,platform,60.0,62.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.0309,0.6214,True,occupancy,False,Heavy,0.621
+central_bus_depo,concourse,Concourse,pedestrian,60.0,62.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.3524,0.2096,False,occupancy,False,Free,0.21
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,62.0,64.0,11.1,"{'Bus/Truck': 8.5, 'Two-wheeler': 2.6}",14,20.0,,,,,0.0,0.0,1,0.0,0.8811,0.6142,False,detection,False,Heavy,0.614
+central_bus_depo,platform_waiting,Platform waiting area,platform,62.0,64.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0349,0.6093,False,occupancy,False,Heavy,0.609
+central_bus_depo,concourse,Concourse,pedestrian,62.0,64.0,0.5,{'Bus/Truck': 0.5},1,1.1,,,,,0.0,0.0,0,0.0,0.1762,0.2208,False,occupancy,False,Free,0.221
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,64.0,66.0,10.1,"{'Bus/Truck': 8.5, 'Two-wheeler': 1.6}",16,19.5,,,,,0.0,0.0,5,0.0,0.8592,0.5978,False,detection,False,Heavy,0.598
+central_bus_depo,platform_waiting,Platform waiting area,platform,64.0,66.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.0217,0.6124,False,occupancy,False,Heavy,0.612
+central_bus_depo,concourse,Concourse,pedestrian,64.0,66.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2261,False,occupancy,False,Free,0.226
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,66.0,68.0,9.1,"{'Bus/Truck': 8.5, 'Two-wheeler': 0.6}",13,19.0,,,,,0.0,0.0,2,0.0,0.8762,0.5952,False,detection,False,Heavy,0.595
+central_bus_depo,platform_waiting,Platform waiting area,platform,66.0,68.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0352,0.6217,True,occupancy,False,Heavy,0.622
+central_bus_depo,concourse,Concourse,pedestrian,66.0,68.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2265,False,occupancy,False,Free,0.226
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,68.0,70.0,8.9,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.9}",11,16.35,,,,,0.0,0.0,3,0.0,0.7635,0.5835,False,detection,False,Heavy,0.584
+central_bus_depo,platform_waiting,Platform waiting area,platform,68.0,70.0,1.4,{'Two-wheeler': 1.4},2,0.7,,,,,0.0,0.0,1,0.0,0.0408,0.6374,True,occupancy,False,Heavy,0.637
+central_bus_depo,concourse,Concourse,pedestrian,68.0,70.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2275,False,occupancy,False,Free,0.227
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,70.0,72.0,8.2,"{'Bus/Truck': 7.1, 'Two-wheeler': 1.1}",10,16.17,,,,,0.0,0.0,0,0.0,0.7833,0.5753,False,detection,False,Heavy,0.575
+central_bus_depo,platform_waiting,Platform waiting area,platform,70.0,72.0,1.0,{'Two-wheeler': 1.0},2,0.5,,,,,0.0,0.0,0,0.0,0.0328,0.6505,True,occupancy,False,Heavy,0.651
+central_bus_depo,concourse,Concourse,pedestrian,70.0,72.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2372,False,occupancy,False,Free,0.237
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,72.0,74.0,7.5,"{'Bus/Truck': 7.1, 'Two-wheeler': 0.4}",10,15.82,,,,,0.0,0.0,1,0.0,0.7466,0.5589,False,detection,False,Heavy,0.559
+central_bus_depo,platform_waiting,Platform waiting area,platform,72.0,74.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0366,0.6663,True,occupancy,False,Heavy,0.666
+central_bus_depo,concourse,Concourse,pedestrian,72.0,74.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2341,False,occupancy,False,Free,0.234
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,74.0,76.0,7.0,"{'Bus/Truck': 6.8, 'Two-wheeler': 0.2}",10,15.06,,,,,0.0,0.0,1,0.0,0.7311,0.5426,False,detection,False,Heavy,0.543
+central_bus_depo,platform_waiting,Platform waiting area,platform,74.0,76.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0362,0.6759,True,occupancy,False,Heavy,0.676
+central_bus_depo,concourse,Concourse,pedestrian,74.0,76.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2475,False,occupancy,False,Free,0.247
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,76.0,78.0,6.8,"{'Bus/Truck': 6.7, 'Two-wheeler': 0.1}",8,14.79,,,,,0.0,0.0,1,0.0,0.7202,0.524,False,detection,False,Heavy,0.524
+central_bus_depo,platform_waiting,Platform waiting area,platform,76.0,78.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0247,0.6732,True,occupancy,False,Heavy,0.673
+central_bus_depo,concourse,Concourse,pedestrian,76.0,78.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.247,False,occupancy,False,Free,0.247
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,78.0,80.0,8.2,"{'Bus/Truck': 7.2, 'Two-wheeler': 1.0}",9,16.34,,,,,0.0,0.0,1,0.0,0.7563,0.5036,False,detection,False,Heavy,0.504
+central_bus_depo,platform_waiting,Platform waiting area,platform,78.0,80.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0241,0.6659,True,occupancy,False,Heavy,0.666
+central_bus_depo,concourse,Concourse,pedestrian,78.0,80.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2296,False,occupancy,False,Free,0.23
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,80.0,82.0,8.0,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.0}",8,15.9,,,,,0.0,0.0,0,0.0,0.7374,0.4911,False,detection,False,Moderate,0.491
+central_bus_depo,platform_waiting,Platform waiting area,platform,80.0,82.0,0.6,{'Two-wheeler': 0.6},1,0.3,,,,,0.0,0.0,0,0.0,0.0209,0.6642,True,occupancy,False,Heavy,0.664
+central_bus_depo,concourse,Concourse,pedestrian,80.0,82.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.241,False,occupancy,False,Free,0.241
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,82.0,84.0,8.4,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.4}",10,16.1,,,,,0.0,0.0,2,0.0,0.7324,0.4922,False,detection,False,Moderate,0.492
+central_bus_depo,platform_waiting,Platform waiting area,platform,82.0,84.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6624,True,occupancy,False,Heavy,0.662
+central_bus_depo,concourse,Concourse,pedestrian,82.0,84.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2427,False,occupancy,False,Free,0.243
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,84.0,86.0,8.5,"{'Bus/Truck': 7.4, 'Two-wheeler': 1.1}",11,16.83,,,,,0.0,0.0,2,0.0,0.7818,0.4958,False,detection,False,Moderate,0.496
+central_bus_depo,platform_waiting,Platform waiting area,platform,84.0,86.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.006,0.6556,True,occupancy,False,Heavy,0.656
+central_bus_depo,concourse,Concourse,pedestrian,84.0,86.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2147,False,occupancy,False,Free,0.215
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,86.0,88.0,9.0,"{'Bus/Truck': 7.4, 'Two-wheeler': 1.6}",13,17.08,,,,,0.0,0.0,3,0.0,0.7736,0.498,False,detection,False,Moderate,0.498
+central_bus_depo,platform_waiting,Platform waiting area,platform,86.0,88.0,0.6,{'Two-wheeler': 0.6},2,0.3,,,,,0.0,0.0,0,0.0,0.0198,0.6474,True,occupancy,False,Heavy,0.647
+central_bus_depo,concourse,Concourse,pedestrian,86.0,88.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2085,False,occupancy,False,Free,0.209
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,88.0,90.0,9.3,"{'Bus/Truck': 7.8, 'Two-wheeler': 1.5}",13,17.91,,,,,0.0,0.0,2,0.0,0.7422,0.5077,False,detection,False,Heavy,0.508
+central_bus_depo,platform_waiting,Platform waiting area,platform,88.0,90.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0187,0.6432,True,occupancy,False,Heavy,0.643
+central_bus_depo,concourse,Concourse,pedestrian,88.0,90.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2052,False,occupancy,False,Free,0.205
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,90.0,92.0,9.7,"{'Bus/Truck': 6.9, 'Two-wheeler': 2.8}",14,16.58,,,,,0.0,0.0,3,0.0,0.739,0.5336,False,detection,False,Heavy,0.534
+central_bus_depo,platform_waiting,Platform waiting area,platform,90.0,92.0,1.3,{'Two-wheeler': 1.3},2,0.65,,,,,0.0,0.0,1,0.0,0.0535,0.645,True,occupancy,False,Heavy,0.645
+central_bus_depo,concourse,Concourse,pedestrian,90.0,92.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2206,False,occupancy,False,Free,0.221
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,92.0,94.0,9.5,"{'Bus/Truck': 7.2, 'Two-wheeler': 2.3}",13,16.99,,,,,0.0,0.0,1,0.0,0.7496,0.5432,False,detection,False,Heavy,0.543
+central_bus_depo,platform_waiting,Platform waiting area,platform,92.0,94.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0032,0.6467,True,occupancy,False,Heavy,0.647
+central_bus_depo,concourse,Concourse,pedestrian,92.0,94.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,1,0.0,0.0042,0.248,False,occupancy,False,Free,0.248
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,94.0,96.0,9.4,"{'Bus/Truck': 8.0, 'Two-wheeler': 1.4}",11,18.3,,,,,0.0,0.0,0,0.0,0.7635,0.5431,False,detection,False,Heavy,0.543
+central_bus_depo,platform_waiting,Platform waiting area,platform,94.0,96.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6473,True,occupancy,False,Heavy,0.647
+central_bus_depo,concourse,Concourse,pedestrian,94.0,96.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0069,0.2543,False,occupancy,False,Moderate,0.254
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,96.0,98.0,8.5,"{'Bus/Truck': 7.5, 'Two-wheeler': 1.0}",10,17.0,,,,,0.0,0.0,1,0.0,0.7898,0.5331,False,detection,False,Heavy,0.533
+central_bus_depo,platform_waiting,Platform waiting area,platform,96.0,98.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0034,0.6446,True,occupancy,False,Heavy,0.645
+central_bus_depo,concourse,Concourse,pedestrian,96.0,98.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0021,0.2739,False,occupancy,False,Moderate,0.274
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,98.0,100.0,7.9,"{'Bus/Truck': 7.1, 'Two-wheeler': 0.8}",9,16.02,,,,,0.0,0.0,0,0.0,0.7682,0.5323,False,detection,False,Heavy,0.532
+central_bus_depo,platform_waiting,Platform waiting area,platform,98.0,100.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0255,0.6479,True,occupancy,False,Heavy,0.648
+central_bus_depo,concourse,Concourse,pedestrian,98.0,100.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2765,False,occupancy,False,Moderate,0.277
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,100.0,102.0,8.1,"{'Bus/Truck': 7.1, 'Two-wheeler': 1.0}",9,16.12,,,,,0.0,0.0,0,0.0,0.727,0.5322,False,detection,False,Heavy,0.532
+central_bus_depo,platform_waiting,Platform waiting area,platform,100.0,102.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0366,0.6457,True,occupancy,False,Heavy,0.646
+central_bus_depo,concourse,Concourse,pedestrian,100.0,102.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2333,False,occupancy,False,Free,0.233
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,102.0,104.0,7.7,"{'Bus/Truck': 6.9, 'Two-wheeler': 0.8}",10,15.58,,,,,0.0,0.0,1,0.0,0.7206,0.5318,False,detection,False,Heavy,0.532
+central_bus_depo,platform_waiting,Platform waiting area,platform,102.0,104.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0359,0.6449,True,occupancy,False,Heavy,0.645
+central_bus_depo,concourse,Concourse,pedestrian,102.0,104.0,0.3,{'Two-wheeler': 0.3},3,0.15,,,,,0.0,0.0,3,0.0,0.0159,0.2148,False,occupancy,False,Free,0.215
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,104.0,106.0,7.9,"{'Bus/Truck': 6.9, 'Two-wheeler': 1.0}",9,15.68,,,,,0.0,0.0,0,0.0,0.7337,0.5398,False,detection,False,Heavy,0.54
+central_bus_depo,platform_waiting,Platform waiting area,platform,104.0,106.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0243,0.6621,True,occupancy,False,Heavy,0.662
+central_bus_depo,concourse,Concourse,pedestrian,104.0,106.0,1.4,{'Two-wheeler': 1.4},2,0.7,,,,,0.0,0.0,0,0.0,0.027,0.2201,False,occupancy,False,Free,0.22
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,106.0,108.0,8.5,"{'Bus/Truck': 6.5, 'Two-wheeler': 2.0}",10,15.3,,,,,0.0,0.0,2,0.0,0.7426,0.542,False,detection,False,Heavy,0.542
+central_bus_depo,platform_waiting,Platform waiting area,platform,106.0,108.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0106,0.6691,True,occupancy,False,Heavy,0.669
+central_bus_depo,concourse,Concourse,pedestrian,106.0,108.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2167,False,occupancy,False,Free,0.217
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,108.0,110.0,7.6,"{'Bus/Truck': 6.1, 'Two-wheeler': 1.5}",12,14.17,,,,,0.0,0.0,4,0.0,0.7128,0.5294,False,detection,False,Heavy,0.529
+central_bus_depo,platform_waiting,Platform waiting area,platform,108.0,110.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6763,True,occupancy,False,Heavy,0.676
+central_bus_depo,concourse,Concourse,pedestrian,108.0,110.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2199,False,occupancy,False,Free,0.22
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,110.0,112.0,9.2,"{'Bus/Truck': 6.5, 'Two-wheeler': 2.7}",15,15.65,,,,,0.0,0.0,5,0.0,0.7476,0.5322,False,detection,False,Heavy,0.532
+central_bus_depo,platform_waiting,Platform waiting area,platform,110.0,112.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6632,True,occupancy,False,Heavy,0.663
+central_bus_depo,concourse,Concourse,pedestrian,110.0,112.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0021,0.2351,False,occupancy,False,Free,0.235
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,112.0,114.0,8.3,"{'Bus/Truck': 6.9, 'Two-wheeler': 1.4}",10,15.88,,,,,0.0,0.0,1,0.0,0.7244,0.5252,False,detection,False,Heavy,0.525
+central_bus_depo,platform_waiting,Platform waiting area,platform,112.0,114.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6555,True,occupancy,False,Heavy,0.656
+central_bus_depo,concourse,Concourse,pedestrian,112.0,114.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.0297,0.2521,False,occupancy,False,Moderate,0.252
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,114.0,116.0,8.9,"{'Bus/Truck': 7.1, 'Two-wheeler': 1.8}",12,16.52,,,,,0.0,0.0,2,0.0,0.7291,0.5244,False,detection,False,Heavy,0.524
+central_bus_depo,platform_waiting,Platform waiting area,platform,114.0,116.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6546,True,occupancy,False,Heavy,0.655
+central_bus_depo,concourse,Concourse,pedestrian,114.0,116.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2325,False,occupancy,False,Free,0.232
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,116.0,118.0,8.0,"{'Bus/Truck': 6.9, 'Two-wheeler': 1.1}",13,15.73,,,,,0.0,0.0,3,0.0,0.7285,0.5293,False,detection,False,Heavy,0.529
+central_bus_depo,platform_waiting,Platform waiting area,platform,116.0,118.0,0.4,{'Two-wheeler': 0.4},2,0.2,,,,,0.0,0.0,2,0.0,0.0209,0.663,True,occupancy,False,Heavy,0.663
+central_bus_depo,concourse,Concourse,pedestrian,116.0,118.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2286,False,occupancy,False,Free,0.229
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,118.0,120.0,8.4,"{'Bus/Truck': 7.9, 'Two-wheeler': 0.5}",11,17.63,,,,,0.0,0.0,4,0.0,0.7565,0.5254,False,detection,False,Heavy,0.525
+central_bus_depo,platform_waiting,Platform waiting area,platform,118.0,120.0,0.7,{'Two-wheeler': 0.7},2,0.35,,,,,0.0,0.0,0,0.0,0.0253,0.6682,True,occupancy,False,Heavy,0.668
+central_bus_depo,concourse,Concourse,pedestrian,118.0,120.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2244,False,occupancy,False,Free,0.224
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,120.0,122.0,8.9,"{'Bus/Truck': 7.4, 'Two-wheeler': 1.5}",13,17.03,,,,,0.0,0.0,4,0.0,0.8118,0.5242,False,detection,False,Heavy,0.524
+central_bus_depo,platform_waiting,Platform waiting area,platform,120.0,122.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6612,True,occupancy,False,Heavy,0.661
+central_bus_depo,concourse,Concourse,pedestrian,120.0,122.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2213,False,occupancy,False,Free,0.221
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,122.0,124.0,8.2,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.2}",9,16.0,,,,,0.0,0.0,0,0.0,0.7346,0.5282,False,detection,False,Heavy,0.528
+central_bus_depo,platform_waiting,Platform waiting area,platform,122.0,124.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0294,0.6573,True,occupancy,False,Heavy,0.657
+central_bus_depo,concourse,Concourse,pedestrian,122.0,124.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.217,False,occupancy,False,Free,0.217
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,124.0,126.0,8.5,"{'Bus/Truck': 7.5, 'Two-wheeler': 1.0}",9,17.0,,,,,0.0,0.0,1,0.0,0.7739,0.5169,False,detection,False,Heavy,0.517
+central_bus_depo,platform_waiting,Platform waiting area,platform,124.0,126.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6554,True,occupancy,False,Heavy,0.655
+central_bus_depo,concourse,Concourse,pedestrian,124.0,126.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2077,False,occupancy,False,Free,0.208
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,126.0,128.0,8.6,"{'Bus/Truck': 8.3, 'Two-wheeler': 0.3}",11,18.41,,,,,0.0,0.0,1,0.0,0.9321,0.5054,False,detection,False,Heavy,0.505
+central_bus_depo,platform_waiting,Platform waiting area,platform,126.0,128.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0063,0.6492,True,occupancy,False,Heavy,0.649
+central_bus_depo,concourse,Concourse,pedestrian,126.0,128.0,0.8,{'Two-wheeler': 0.8},2,0.4,,,,,0.0,0.0,2,0.0,0.0194,0.2175,False,occupancy,False,Free,0.217
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,128.0,130.0,9.0,"{'Bus/Truck': 8.8, 'Two-wheeler': 0.2}",10,19.46,,,,,0.0,0.0,1,0.0,1.0185,0.4765,True,occupancy,False,Moderate,0.476
+central_bus_depo,platform_waiting,Platform waiting area,platform,128.0,130.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0095,0.6495,True,occupancy,False,Heavy,0.649
+central_bus_depo,concourse,Concourse,pedestrian,128.0,130.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,0,0.0,0.0179,0.2284,False,occupancy,False,Free,0.228
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,130.0,132.0,9.0,{'Bus/Truck': 9.0},9,19.8,,,,,0.0,0.0,0,0.0,1.0752,0.4545,True,occupancy,False,Moderate,0.455
+central_bus_depo,platform_waiting,Platform waiting area,platform,130.0,132.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6511,True,occupancy,False,Heavy,0.651
+central_bus_depo,concourse,Concourse,pedestrian,130.0,132.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2282,False,occupancy,False,Free,0.228
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,132.0,134.0,8.9,"{'Bus/Truck': 8.7, 'Two-wheeler': 0.2}",12,19.24,,,,,0.0,0.0,3,0.0,0.9505,0.4458,True,occupancy,False,Moderate,0.446
+central_bus_depo,platform_waiting,Platform waiting area,platform,132.0,134.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6577,True,occupancy,False,Heavy,0.658
+central_bus_depo,concourse,Concourse,pedestrian,132.0,134.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2008,False,occupancy,False,Free,0.201
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,134.0,136.0,9.0,"{'Bus/Truck': 8.8, 'Two-wheeler': 0.2}",12,19.46,,,,,0.0,0.0,2,0.0,0.7566,0.4903,False,detection,False,Moderate,0.49
+central_bus_depo,platform_waiting,Platform waiting area,platform,134.0,136.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6478,True,occupancy,False,Heavy,0.648
+central_bus_depo,concourse,Concourse,pedestrian,134.0,136.0,1.7,{'Bus/Truck': 1.7},3,3.74,,,,,0.0,0.0,3,0.0,0.6258,0.187,False,occupancy,False,Free,0.187
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,136.0,138.0,10.3,"{'Bus/Truck': 8.7, 'Two-wheeler': 1.6}",13,19.94,,,,,0.0,0.0,2,0.0,0.7636,0.5614,False,detection,False,Heavy,0.561
+central_bus_depo,platform_waiting,Platform waiting area,platform,136.0,138.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6751,True,occupancy,False,Heavy,0.675
+central_bus_depo,concourse,Concourse,pedestrian,136.0,138.0,1.5,{'Bus/Truck': 1.5},3,3.3,,,,,0.0,0.0,1,0.0,0.539,0.2072,False,occupancy,False,Free,0.207
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,138.0,140.0,8.9,"{'Bus/Truck': 8.6, 'Two-wheeler': 0.3}",12,19.07,,,,,0.0,0.0,3,0.0,0.9243,0.5886,False,detection,False,Heavy,0.589
+central_bus_depo,platform_waiting,Platform waiting area,platform,138.0,140.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.7001,True,occupancy,False,Heavy,0.7
+central_bus_depo,concourse,Concourse,pedestrian,138.0,140.0,1.4,{'Bus/Truck': 1.4},2,3.08,,,,,0.0,0.0,0,0.0,0.4935,0.2445,False,occupancy,False,Free,0.244
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,140.0,142.0,8.9,"{'Bus/Truck': 8.8, 'Two-wheeler': 0.1}",10,19.41,,,,,0.0,0.0,1,0.0,0.8437,0.5676,False,detection,False,Heavy,0.568
+central_bus_depo,platform_waiting,Platform waiting area,platform,140.0,142.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6923,True,occupancy,False,Heavy,0.692
+central_bus_depo,concourse,Concourse,pedestrian,140.0,142.0,0.2,{'Bus/Truck': 0.2},1,0.44,,,,,0.0,0.0,0,0.0,0.0704,0.2196,False,occupancy,False,Free,0.22
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,142.0,144.0,9.5,"{'Bus/Truck': 9.1, 'Two-wheeler': 0.4}",13,20.22,,,,,0.0,0.0,3,0.0,0.8548,0.5504,False,detection,False,Heavy,0.55
+central_bus_depo,platform_waiting,Platform waiting area,platform,142.0,144.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6829,True,occupancy,False,Heavy,0.683
+central_bus_depo,concourse,Concourse,pedestrian,142.0,144.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2051,False,occupancy,False,Free,0.205
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,144.0,146.0,9.0,"{'Bus/Truck': 8.6, 'Two-wheeler': 0.4}",11,19.12,,,,,0.0,0.0,0,0.0,0.8063,0.5466,False,detection,False,Heavy,0.547
+central_bus_depo,platform_waiting,Platform waiting area,platform,144.0,146.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6768,True,occupancy,False,Heavy,0.677
+central_bus_depo,concourse,Concourse,pedestrian,144.0,146.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,1,0.0,0.004,0.2049,False,occupancy,False,Free,0.205
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,146.0,148.0,8.0,{'Bus/Truck': 8.0},8,17.6,,,,,0.0,0.0,0,0.0,0.793,0.544,False,detection,False,Heavy,0.544
+central_bus_depo,platform_waiting,Platform waiting area,platform,146.0,148.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.674,True,occupancy,False,Heavy,0.674
+central_bus_depo,concourse,Concourse,pedestrian,146.0,148.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2167,False,occupancy,False,Free,0.217
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,148.0,150.0,8.6,"{'Bus/Truck': 8.1, 'Two-wheeler': 0.5}",10,18.07,,,,,0.0,0.0,2,0.0,0.8078,0.5235,False,detection,False,Heavy,0.523
+central_bus_depo,platform_waiting,Platform waiting area,platform,148.0,150.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0081,0.6779,True,occupancy,False,Heavy,0.678
+central_bus_depo,concourse,Concourse,pedestrian,148.0,150.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0041,0.2344,False,occupancy,False,Free,0.234
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,150.0,152.0,9.7,"{'Bus/Truck': 8.8, 'Two-wheeler': 0.9}",10,19.81,,,,,0.0,0.0,0,0.0,0.8227,0.5212,False,detection,False,Heavy,0.521
+central_bus_depo,platform_waiting,Platform waiting area,platform,150.0,152.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0162,0.6769,True,occupancy,False,Heavy,0.677
+central_bus_depo,concourse,Concourse,pedestrian,150.0,152.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.003,0.2349,False,occupancy,False,Free,0.235
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,152.0,154.0,9.9,"{'Bus/Truck': 8.2, 'Two-wheeler': 1.7}",14,18.89,,,,,0.0,0.0,4,0.0,0.7734,0.5151,False,detection,False,Heavy,0.515
+central_bus_depo,platform_waiting,Platform waiting area,platform,152.0,154.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.68,True,occupancy,False,Heavy,0.68
+central_bus_depo,concourse,Concourse,pedestrian,152.0,154.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2348,False,occupancy,False,Free,0.235
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,154.0,156.0,9.2,"{'Bus/Truck': 7.4, 'Two-wheeler': 1.6, 'Auto': 0.2}",14,17.32,,,,,0.0,0.0,2,0.0,0.7489,0.4969,False,detection,False,Moderate,0.497
+central_bus_depo,platform_waiting,Platform waiting area,platform,154.0,156.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6775,True,occupancy,False,Heavy,0.677
+central_bus_depo,concourse,Concourse,pedestrian,154.0,156.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2201,False,occupancy,False,Free,0.22
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,156.0,158.0,8.1,"{'Bus/Truck': 6.6, 'Two-wheeler': 1.5}",10,15.27,,,,,0.0,0.0,1,0.0,0.7199,0.4836,False,detection,False,Moderate,0.484
+central_bus_depo,platform_waiting,Platform waiting area,platform,156.0,158.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6768,True,occupancy,False,Heavy,0.677
+central_bus_depo,concourse,Concourse,pedestrian,156.0,158.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2208,False,occupancy,False,Free,0.221
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,158.0,160.0,6.3,"{'Bus/Truck': 6.0, 'Two-wheeler': 0.3}",7,13.35,,,,,0.0,0.0,1,0.0,0.7023,0.4815,False,detection,False,Moderate,0.481
+central_bus_depo,platform_waiting,Platform waiting area,platform,158.0,160.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6849,True,occupancy,False,Heavy,0.685
+central_bus_depo,concourse,Concourse,pedestrian,158.0,160.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.226,False,occupancy,False,Free,0.226
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,160.0,162.0,6.9,"{'Bus/Truck': 6.0, 'Two-wheeler': 0.9}",9,13.65,,,,,0.0,0.0,2,0.0,0.7076,0.4854,False,detection,False,Moderate,0.485
+central_bus_depo,platform_waiting,Platform waiting area,platform,160.0,162.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6868,True,occupancy,False,Heavy,0.687
+central_bus_depo,concourse,Concourse,pedestrian,160.0,162.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2227,False,occupancy,False,Free,0.223
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,162.0,164.0,7.0,"{'Bus/Truck': 6.5, 'Two-wheeler': 0.5}",8,14.55,,,,,0.0,0.0,1,0.0,0.9071,0.4879,False,detection,False,Moderate,0.488
+central_bus_depo,platform_waiting,Platform waiting area,platform,162.0,164.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6856,True,occupancy,False,Heavy,0.686
+central_bus_depo,concourse,Concourse,pedestrian,162.0,164.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2141,False,occupancy,False,Free,0.214
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,164.0,166.0,6.3,"{'Bus/Truck': 6.0, 'Two-wheeler': 0.3}",8,13.35,,,,,0.0,0.0,0,0.0,0.7013,0.4895,False,detection,False,Moderate,0.489
+central_bus_depo,platform_waiting,Platform waiting area,platform,164.0,166.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6905,True,occupancy,False,Heavy,0.691
+central_bus_depo,concourse,Concourse,pedestrian,164.0,166.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2262,False,occupancy,False,Free,0.226
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,166.0,168.0,6.1,{'Bus/Truck': 6.1},8,13.42,,,,,0.0,0.0,1,0.0,0.7026,0.491,False,detection,False,Moderate,0.491
+central_bus_depo,platform_waiting,Platform waiting area,platform,166.0,168.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6809,True,occupancy,False,Heavy,0.681
+central_bus_depo,concourse,Concourse,pedestrian,166.0,168.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2387,False,occupancy,False,Free,0.239
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,168.0,170.0,6.4,"{'Bus/Truck': 6.2, 'Two-wheeler': 0.2}",9,13.74,,,,,0.0,0.0,1,0.0,0.7489,0.4862,False,detection,False,Moderate,0.486
+central_bus_depo,platform_waiting,Platform waiting area,platform,168.0,170.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6703,True,occupancy,False,Heavy,0.67
+central_bus_depo,concourse,Concourse,pedestrian,168.0,170.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.002,0.2499,False,occupancy,False,Free,0.25
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,170.0,172.0,7.0,"{'Bus/Truck': 6.3, 'Two-wheeler': 0.7}",9,14.21,,,,,0.0,0.0,1,0.0,0.7182,0.4741,False,detection,False,Moderate,0.474
+central_bus_depo,platform_waiting,Platform waiting area,platform,170.0,172.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.669,True,occupancy,False,Heavy,0.669
+central_bus_depo,concourse,Concourse,pedestrian,170.0,172.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0029,0.2632,False,occupancy,False,Moderate,0.263
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,172.0,174.0,5.7,"{'Bus/Truck': 5.3, 'Two-wheeler': 0.4}",9,11.86,,,,,0.0,0.0,1,0.0,0.6839,0.4786,False,detection,False,Moderate,0.479
+central_bus_depo,platform_waiting,Platform waiting area,platform,172.0,174.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6719,True,occupancy,False,Heavy,0.672
+central_bus_depo,concourse,Concourse,pedestrian,172.0,174.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2595,False,occupancy,False,Moderate,0.26
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,174.0,176.0,6.6,{'Bus/Truck': 6.6},7,14.52,,,,,0.0,0.0,1,0.0,0.8712,0.4859,False,detection,False,Moderate,0.486
+central_bus_depo,platform_waiting,Platform waiting area,platform,174.0,176.0,0.1,{'Bus/Truck': 0.1},1,0.22,,,,,0.0,0.0,1,0.0,0.0065,0.6719,True,occupancy,False,Heavy,0.672
+central_bus_depo,concourse,Concourse,pedestrian,174.0,176.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2531,False,occupancy,False,Moderate,0.253
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,176.0,178.0,7.1,"{'Bus/Truck': 7.0, 'Two-wheeler': 0.1}",9,15.45,,,,,0.0,0.0,2,0.0,0.9648,0.5094,False,detection,False,Heavy,0.509
+central_bus_depo,platform_waiting,Platform waiting area,platform,176.0,178.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6673,True,occupancy,False,Heavy,0.667
+central_bus_depo,concourse,Concourse,pedestrian,176.0,178.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,1,0.0,0.0172,0.2562,False,occupancy,False,Moderate,0.256
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,178.0,180.0,8.5,{'Bus/Truck': 8.5},10,18.7,,,,,0.0,0.0,2,0.0,1.0788,0.5201,True,occupancy,False,Heavy,0.52
+central_bus_depo,platform_waiting,Platform waiting area,platform,178.0,180.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6639,True,occupancy,False,Heavy,0.664
+central_bus_depo,concourse,Concourse,pedestrian,178.0,180.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2378,False,occupancy,False,Free,0.238
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,180.0,182.0,8.3,{'Bus/Truck': 8.3},10,18.26,,,,,0.0,0.0,0,0.0,1.0449,0.5182,True,occupancy,False,Heavy,0.518
+central_bus_depo,platform_waiting,Platform waiting area,platform,180.0,182.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6543,True,occupancy,False,Heavy,0.654
+central_bus_depo,concourse,Concourse,pedestrian,180.0,182.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.002,0.238,False,occupancy,False,Free,0.238
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,182.0,184.0,8.0,{'Bus/Truck': 8.0},10,17.6,,,,,0.0,0.0,1,0.0,1.0689,0.5167,True,occupancy,False,Heavy,0.517
+central_bus_depo,platform_waiting,Platform waiting area,platform,182.0,184.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.647,True,occupancy,False,Heavy,0.647
+central_bus_depo,concourse,Concourse,pedestrian,182.0,184.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2474,False,occupancy,False,Free,0.247
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,184.0,186.0,7.3,{'Bus/Truck': 7.3},10,16.06,,,,,0.0,0.0,2,0.0,0.78,0.5149,False,detection,False,Heavy,0.515
+central_bus_depo,platform_waiting,Platform waiting area,platform,184.0,186.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6487,True,occupancy,False,Heavy,0.649
+central_bus_depo,concourse,Concourse,pedestrian,184.0,186.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2679,False,occupancy,False,Moderate,0.268
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,186.0,188.0,8.0,"{'Bus/Truck': 7.3, 'Two-wheeler': 0.7}",11,16.41,,,,,0.0,0.0,1,0.0,0.7448,0.5094,False,detection,False,Heavy,0.509
+central_bus_depo,platform_waiting,Platform waiting area,platform,186.0,188.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6592,True,occupancy,False,Heavy,0.659
+central_bus_depo,concourse,Concourse,pedestrian,186.0,188.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2531,False,occupancy,False,Moderate,0.253
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,188.0,190.0,7.3,"{'Bus/Truck': 7.1, 'Two-wheeler': 0.2}",10,15.72,,,,,0.0,0.0,1,0.0,0.7284,0.506,False,detection,False,Heavy,0.506
+central_bus_depo,platform_waiting,Platform waiting area,platform,188.0,190.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6517,True,occupancy,False,Heavy,0.652
+central_bus_depo,concourse,Concourse,pedestrian,188.0,190.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2415,False,occupancy,False,Free,0.241
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,190.0,192.0,7.5,"{'Bus/Truck': 7.0, 'Two-wheeler': 0.5}",9,15.65,,,,,0.0,0.0,2,0.0,0.7277,0.4973,False,detection,False,Moderate,0.497
+central_bus_depo,platform_waiting,Platform waiting area,platform,190.0,192.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6489,True,occupancy,False,Heavy,0.649
+central_bus_depo,concourse,Concourse,pedestrian,190.0,192.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2393,False,occupancy,False,Free,0.239
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,192.0,194.0,7.6,"{'Bus/Truck': 7.0, 'Two-wheeler': 0.6}",9,15.7,,,,,0.0,0.0,1,0.0,0.7261,0.4789,False,detection,False,Moderate,0.479
+central_bus_depo,platform_waiting,Platform waiting area,platform,192.0,194.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6447,True,occupancy,False,Heavy,0.645
+central_bus_depo,concourse,Concourse,pedestrian,192.0,194.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2432,False,occupancy,False,Free,0.243
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,194.0,196.0,8.1,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.1}",9,15.95,,,,,0.0,0.0,0,0.0,0.7251,0.4688,False,detection,False,Moderate,0.469
+central_bus_depo,platform_waiting,Platform waiting area,platform,194.0,196.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6429,True,occupancy,False,Heavy,0.643
+central_bus_depo,concourse,Concourse,pedestrian,194.0,196.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,1,0.0,0.0063,0.2428,False,occupancy,False,Free,0.243
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,196.0,198.0,8.5,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.5}",10,16.15,,,,,0.0,0.0,2,0.0,0.733,0.447,False,detection,False,Moderate,0.447
+central_bus_depo,platform_waiting,Platform waiting area,platform,196.0,198.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6364,True,occupancy,False,Heavy,0.636
+central_bus_depo,concourse,Concourse,pedestrian,196.0,198.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0085,0.2422,False,occupancy,False,Free,0.242
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,198.0,200.0,9.0,"{'Bus/Truck': 7.5, 'Two-wheeler': 1.5}",11,17.25,,,,,0.0,0.0,2,0.0,0.7617,0.4445,False,detection,False,Moderate,0.445
+central_bus_depo,platform_waiting,Platform waiting area,platform,198.0,200.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6377,True,occupancy,False,Heavy,0.638
+central_bus_depo,concourse,Concourse,pedestrian,198.0,200.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0072,0.2369,False,occupancy,False,Free,0.237
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,200.0,202.0,8.3,"{'Bus/Truck': 7.2, 'Two-wheeler': 1.1}",10,16.39,,,,,0.0,0.0,1,0.0,0.7407,0.4501,False,detection,False,Moderate,0.45
+central_bus_depo,platform_waiting,Platform waiting area,platform,200.0,202.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6337,True,occupancy,False,Heavy,0.634
+central_bus_depo,concourse,Concourse,pedestrian,200.0,202.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2194,False,occupancy,False,Free,0.219
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,202.0,204.0,8.4,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.4}",10,16.1,,,,,0.0,0.0,1,0.0,0.7296,0.4587,False,detection,False,Moderate,0.459
+central_bus_depo,platform_waiting,Platform waiting area,platform,202.0,204.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,1,0.0,0.0096,0.6412,True,occupancy,False,Heavy,0.641
+central_bus_depo,concourse,Concourse,pedestrian,202.0,204.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2142,False,occupancy,False,Free,0.214
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,204.0,206.0,9.3,"{'Bus/Truck': 7.0, 'Two-wheeler': 2.3}",10,16.55,,,,,0.0,0.0,1,0.0,0.7363,0.467,False,detection,False,Moderate,0.467
+central_bus_depo,platform_waiting,Platform waiting area,platform,204.0,206.0,0.8,{'Two-wheeler': 0.8},1,0.4,,,,,0.0,0.0,0,0.0,0.0273,0.646,True,occupancy,False,Heavy,0.646
+central_bus_depo,concourse,Concourse,pedestrian,204.0,206.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2197,False,occupancy,False,Free,0.22
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,206.0,208.0,9.9,"{'Bus/Truck': 7.4, 'Two-wheeler': 2.5}",11,17.53,,,,,0.0,0.0,2,0.0,0.9132,0.4736,True,occupancy,False,Moderate,0.474
+central_bus_depo,platform_waiting,Platform waiting area,platform,206.0,208.0,0.6,"{'Two-wheeler': 0.5, 'Bus/Truck': 0.1}",2,0.47,,,,,0.0,0.0,1,0.0,0.024,0.6563,True,occupancy,False,Heavy,0.656
+central_bus_depo,concourse,Concourse,pedestrian,206.0,208.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2366,False,occupancy,False,Free,0.237
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,208.0,210.0,9.1,"{'Bus/Truck': 7.2, 'Two-wheeler': 1.9}",10,16.79,,,,,0.0,0.0,0,0.0,0.8124,0.4867,False,detection,False,Moderate,0.487
+central_bus_depo,platform_waiting,Platform waiting area,platform,208.0,210.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.0305,0.6631,True,occupancy,False,Heavy,0.663
+central_bus_depo,concourse,Concourse,pedestrian,208.0,210.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2342,False,occupancy,False,Free,0.234
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,210.0,212.0,9.5,"{'Bus/Truck': 7.1, 'Two-wheeler': 2.4}",12,16.82,,,,,0.0,0.0,2,0.0,0.7781,0.504,False,detection,False,Heavy,0.504
+central_bus_depo,platform_waiting,Platform waiting area,platform,210.0,212.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.0195,0.6608,True,occupancy,False,Heavy,0.661
+central_bus_depo,concourse,Concourse,pedestrian,210.0,212.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2267,False,occupancy,False,Free,0.227
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,212.0,214.0,9.1,"{'Bus/Truck': 7.1, 'Two-wheeler': 2.0}",11,16.62,,,,,0.0,0.0,1,0.0,0.7878,0.5214,False,detection,False,Heavy,0.521
+central_bus_depo,platform_waiting,Platform waiting area,platform,212.0,214.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6536,True,occupancy,False,Heavy,0.654
+central_bus_depo,concourse,Concourse,pedestrian,212.0,214.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2269,False,occupancy,False,Free,0.227
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,214.0,216.0,8.8,"{'Bus/Truck': 7.1, 'Two-wheeler': 1.7}",13,16.47,,,,,0.0,0.0,2,0.0,0.7533,0.5427,False,detection,False,Heavy,0.543
+central_bus_depo,platform_waiting,Platform waiting area,platform,214.0,216.0,0.3,{'Bus/Truck': 0.3},1,0.66,,,,,0.0,0.0,0,0.0,0.0203,0.6557,True,occupancy,False,Heavy,0.656
+central_bus_depo,concourse,Concourse,pedestrian,214.0,216.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2354,False,occupancy,False,Free,0.235
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,216.0,218.0,8.5,"{'Bus/Truck': 7.2, 'Two-wheeler': 1.3}",12,16.49,,,,,0.0,0.0,2,0.0,0.7454,0.5481,False,detection,False,Heavy,0.548
+central_bus_depo,platform_waiting,Platform waiting area,platform,216.0,218.0,1.0,"{'Bus/Truck': 0.6, 'Two-wheeler': 0.4}",2,1.52,,,,,0.0,0.0,0,0.0,0.0608,0.6584,True,occupancy,False,Heavy,0.658
+central_bus_depo,concourse,Concourse,pedestrian,216.0,218.0,0.4,{'Two-wheeler': 0.4},2,0.2,,,,,0.0,0.0,2,0.0,0.0055,0.2472,False,occupancy,False,Free,0.247
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,218.0,220.0,8.0,"{'Bus/Truck': 7.2, 'Two-wheeler': 0.8}",11,16.24,,,,,0.0,0.0,0,0.0,0.7984,0.5444,False,detection,False,Heavy,0.544
+central_bus_depo,platform_waiting,Platform waiting area,platform,218.0,220.0,0.9,{'Bus/Truck': 0.9},1,1.98,,,,,0.0,0.0,0,0.0,0.0568,0.6587,True,occupancy,False,Heavy,0.659
+central_bus_depo,concourse,Concourse,pedestrian,218.0,220.0,1.4,{'Two-wheeler': 1.4},2,0.7,,,,,0.0,0.0,0,0.0,0.0195,0.2549,False,occupancy,False,Moderate,0.255
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,220.0,222.0,7.6,"{'Bus/Truck': 7.4, 'Two-wheeler': 0.2}",10,16.38,,,,,0.0,0.0,2,0.0,0.8441,0.5346,False,detection,False,Heavy,0.535
+central_bus_depo,platform_waiting,Platform waiting area,platform,220.0,222.0,0.3,{'Bus/Truck': 0.3},1,0.66,,,,,0.0,0.0,0,0.0,0.0187,0.6607,True,occupancy,False,Heavy,0.661
+central_bus_depo,concourse,Concourse,pedestrian,220.0,222.0,0.4,{'Two-wheeler': 0.4},2,0.2,,,,,0.0,0.0,1,0.0,0.0062,0.2492,False,occupancy,False,Free,0.249
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,222.0,224.0,8.0,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.0}",8,15.9,,,,,0.0,0.0,0,0.0,0.7417,0.5267,False,detection,False,Heavy,0.527
+central_bus_depo,platform_waiting,Platform waiting area,platform,222.0,224.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6563,True,occupancy,False,Heavy,0.656
+central_bus_depo,concourse,Concourse,pedestrian,222.0,224.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0018,0.2478,False,occupancy,False,Free,0.248
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,224.0,226.0,8.6,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.6}",10,16.2,,,,,0.0,0.0,2,0.0,0.7381,0.5101,False,detection,False,Heavy,0.51
+central_bus_depo,platform_waiting,Platform waiting area,platform,224.0,226.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6551,True,occupancy,False,Heavy,0.655
+central_bus_depo,concourse,Concourse,pedestrian,224.0,226.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,1,0.0,0.0137,0.2368,False,occupancy,False,Free,0.237
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,226.0,228.0,8.4,"{'Bus/Truck': 7.0, 'Two-wheeler': 1.4}",11,16.1,,,,,0.0,0.0,2,0.0,0.7464,0.5265,False,detection,False,Heavy,0.526
+central_bus_depo,platform_waiting,Platform waiting area,platform,226.0,228.0,0.4,{'Bus/Truck': 0.4},1,0.88,,,,,0.0,0.0,0,0.0,0.0245,0.6561,True,occupancy,False,Heavy,0.656
+central_bus_depo,concourse,Concourse,pedestrian,226.0,228.0,1.3,"{'Two-wheeler': 0.9, 'Bus/Truck': 0.4}",2,1.33,,,,,0.0,0.0,1,0.0,0.1764,0.2107,False,occupancy,False,Free,0.211
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,228.0,230.0,9.6,"{'Bus/Truck': 7.0, 'Two-wheeler': 2.6}",12,16.7,,,,,0.0,0.0,2,0.0,0.7593,0.5764,False,detection,False,Heavy,0.576
+central_bus_depo,platform_waiting,Platform waiting area,platform,228.0,230.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,0,0.0,0.0435,0.6672,True,occupancy,False,Heavy,0.667
+central_bus_depo,concourse,Concourse,pedestrian,228.0,230.0,1.5,"{'Bus/Truck': 1.1, 'Two-wheeler': 0.4}",3,2.62,,,,,0.0,0.0,1,0.0,0.4239,0.2427,False,occupancy,False,Free,0.243
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,230.0,232.0,10.2,"{'Bus/Truck': 7.3, 'Two-wheeler': 2.9}",15,17.51,,,,,0.0,0.0,5,0.0,0.8112,0.6011,False,detection,False,Heavy,0.601
+central_bus_depo,platform_waiting,Platform waiting area,platform,230.0,232.0,0.3,{'Bus/Truck': 0.3},1,0.66,,,,,0.0,0.0,0,0.0,0.0185,0.6938,True,occupancy,False,Heavy,0.694
+central_bus_depo,concourse,Concourse,pedestrian,230.0,232.0,1.3,{'Bus/Truck': 1.3},2,2.86,,,,,0.0,0.0,1,0.0,0.4673,0.2684,False,occupancy,False,Moderate,0.268
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,232.0,234.0,9.3,"{'Bus/Truck': 8.3, 'Two-wheeler': 1.0}",17,18.76,,,,,0.0,0.0,5,0.0,0.856,0.5628,False,detection,False,Heavy,0.563
+central_bus_depo,platform_waiting,Platform waiting area,platform,232.0,234.0,0.1,{'Bus/Truck': 0.1},1,0.22,,,,,0.0,0.0,0,0.0,0.0064,0.7063,True,occupancy,False,Heavy,0.706
+central_bus_depo,concourse,Concourse,pedestrian,232.0,234.0,0.1,{'Bus/Truck': 0.1},1,0.22,,,,,0.0,0.0,0,0.0,0.0358,0.249,False,occupancy,False,Free,0.249
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,234.0,236.0,9.6,"{'Bus/Truck': 8.3, 'Two-wheeler': 1.3}",13,18.91,,,,,0.0,0.0,2,0.0,0.8138,0.5462,False,detection,False,Heavy,0.546
+central_bus_depo,platform_waiting,Platform waiting area,platform,234.0,236.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.7051,True,occupancy,False,Heavy,0.705
+central_bus_depo,concourse,Concourse,pedestrian,234.0,236.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2571,False,occupancy,False,Moderate,0.257
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,236.0,238.0,9.6,"{'Bus/Truck': 8.6, 'Two-wheeler': 1.0}",11,19.42,,,,,0.0,0.0,0,0.0,0.838,0.5402,True,occupancy,False,Heavy,0.54
+central_bus_depo,platform_waiting,Platform waiting area,platform,236.0,238.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6859,True,occupancy,False,Heavy,0.686
+central_bus_depo,concourse,Concourse,pedestrian,236.0,238.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2534,False,occupancy,False,Moderate,0.253
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,238.0,240.0,9.9,"{'Bus/Truck': 8.9, 'Two-wheeler': 1.0}",11,20.08,,,,,0.0,0.0,1,0.0,0.8532,0.5493,True,occupancy,False,Heavy,0.549
+central_bus_depo,platform_waiting,Platform waiting area,platform,238.0,240.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6791,True,occupancy,False,Heavy,0.679
+central_bus_depo,concourse,Concourse,pedestrian,238.0,240.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2351,False,occupancy,False,Free,0.235
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,240.0,242.0,8.6,"{'Bus/Truck': 8.3, 'Two-wheeler': 0.3}",11,18.41,,,,,0.0,0.0,2,0.0,0.8144,0.5486,False,detection,False,Heavy,0.549
+central_bus_depo,platform_waiting,Platform waiting area,platform,240.0,242.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0114,0.6598,True,occupancy,False,Heavy,0.66
+central_bus_depo,concourse,Concourse,pedestrian,240.0,242.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2174,False,occupancy,False,Free,0.217
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,242.0,244.0,10.9,"{'Bus/Truck': 8.9, 'Two-wheeler': 2.0}",13,20.58,,,,,0.0,0.0,2,0.0,0.8734,0.5584,True,occupancy,False,Heavy,0.558
+central_bus_depo,platform_waiting,Platform waiting area,platform,242.0,244.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.006,0.6572,True,occupancy,False,Heavy,0.657
+central_bus_depo,concourse,Concourse,pedestrian,242.0,244.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2161,False,occupancy,False,Free,0.216
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,244.0,246.0,10.4,"{'Bus/Truck': 9.0, 'Two-wheeler': 1.4}",13,20.5,,,,,0.0,0.0,3,0.0,0.8449,0.5836,True,occupancy,False,Heavy,0.584
+central_bus_depo,platform_waiting,Platform waiting area,platform,244.0,246.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0122,0.6579,True,occupancy,False,Heavy,0.658
+central_bus_depo,concourse,Concourse,pedestrian,244.0,246.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2218,False,occupancy,False,Free,0.222
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,246.0,248.0,11.6,"{'Bus/Truck': 9.2, 'Two-wheeler': 2.4}",14,21.44,,,,,0.0,0.0,2,0.0,0.9149,0.6017,True,occupancy,False,Heavy,0.602
+central_bus_depo,platform_waiting,Platform waiting area,platform,246.0,248.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6676,True,occupancy,False,Heavy,0.668
+central_bus_depo,concourse,Concourse,pedestrian,246.0,248.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2337,False,occupancy,False,Free,0.234
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,248.0,250.0,11.1,"{'Bus/Truck': 9.0, 'Two-wheeler': 2.1}",15,20.85,,,,,0.0,0.0,3,0.0,1.0554,0.6065,True,occupancy,False,Heavy,0.606
+central_bus_depo,platform_waiting,Platform waiting area,platform,248.0,250.0,0.7,{'Bus/Truck': 0.7},1,1.54,,,,,0.0,0.0,1,0.0,0.0439,0.6561,True,occupancy,False,Heavy,0.656
+central_bus_depo,concourse,Concourse,pedestrian,248.0,250.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2435,False,occupancy,False,Free,0.243
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,250.0,252.0,11.6,"{'Bus/Truck': 9.0, 'Two-wheeler': 2.6}",12,21.1,,,,,0.0,0.0,0,0.0,0.8649,0.6055,True,occupancy,False,Heavy,0.605
+central_bus_depo,platform_waiting,Platform waiting area,platform,250.0,252.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.012,0.6571,True,occupancy,False,Heavy,0.657
+central_bus_depo,concourse,Concourse,pedestrian,250.0,252.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2647,False,occupancy,False,Moderate,0.265
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,252.0,254.0,10.4,"{'Bus/Truck': 9.0, 'Two-wheeler': 1.4}",11,20.5,,,,,0.0,0.0,0,0.0,0.8541,0.5849,True,occupancy,False,Heavy,0.585
+central_bus_depo,platform_waiting,Platform waiting area,platform,252.0,254.0,0.1,{'Bus/Truck': 0.1},1,0.22,,,,,0.0,0.0,0,0.0,0.0064,0.6657,True,occupancy,False,Heavy,0.666
+central_bus_depo,concourse,Concourse,pedestrian,252.0,254.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2785,False,occupancy,False,Moderate,0.278
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,254.0,256.0,11.3,"{'Bus/Truck': 9.0, 'Two-wheeler': 2.3}",12,20.95,,,,,0.0,0.0,1,0.0,0.8661,0.5719,True,occupancy,False,Heavy,0.572
+central_bus_depo,platform_waiting,Platform waiting area,platform,254.0,256.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.673,True,occupancy,False,Heavy,0.673
+central_bus_depo,concourse,Concourse,pedestrian,254.0,256.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2921,False,occupancy,False,Moderate,0.292
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,256.0,258.0,10.8,"{'Bus/Truck': 9.0, 'Two-wheeler': 1.8}",12,20.7,,,,,0.0,0.0,1,0.0,0.8878,0.5708,True,occupancy,False,Heavy,0.571
+central_bus_depo,platform_waiting,Platform waiting area,platform,256.0,258.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6651,True,occupancy,False,Heavy,0.665
+central_bus_depo,concourse,Concourse,pedestrian,256.0,258.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2854,False,occupancy,False,Moderate,0.285
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,258.0,260.0,10.0,"{'Bus/Truck': 8.8, 'Two-wheeler': 1.2}",12,19.96,,,,,0.0,0.0,1,0.0,0.866,0.5781,True,occupancy,False,Heavy,0.578
+central_bus_depo,platform_waiting,Platform waiting area,platform,258.0,260.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6641,True,occupancy,False,Heavy,0.664
+central_bus_depo,concourse,Concourse,pedestrian,258.0,260.0,0.9,{'Two-wheeler': 0.9},2,0.45,,,,,0.0,0.0,2,0.0,0.0165,0.2707,False,occupancy,False,Moderate,0.271
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,260.0,262.0,9.7,"{'Bus/Truck': 8.7, 'Two-wheeler': 1.0}",10,19.64,,,,,0.0,0.0,0,0.0,0.8168,0.579,False,detection,False,Heavy,0.579
+central_bus_depo,platform_waiting,Platform waiting area,platform,260.0,262.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6511,True,occupancy,False,Heavy,0.651
+central_bus_depo,concourse,Concourse,pedestrian,260.0,262.0,2.0,{'Two-wheeler': 2.0},2,1.0,,,,,0.0,0.0,0,0.0,0.0341,0.2792,False,occupancy,False,Moderate,0.279
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,262.0,264.0,10.5,"{'Bus/Truck': 9.3, 'Two-wheeler': 1.2}",12,21.06,,,,,0.0,0.0,2,0.0,0.9462,0.5772,True,occupancy,False,Heavy,0.577
+central_bus_depo,platform_waiting,Platform waiting area,platform,262.0,264.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6519,True,occupancy,False,Heavy,0.652
+central_bus_depo,concourse,Concourse,pedestrian,262.0,264.0,2.0,{'Two-wheeler': 2.0},2,1.0,,,,,0.0,0.0,0,0.0,0.0411,0.2832,False,occupancy,False,Moderate,0.283
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,264.0,266.0,10.6,"{'Bus/Truck': 8.6, 'Two-wheeler': 2.0}",13,19.92,,,,,0.0,0.0,3,0.0,0.8236,0.5773,False,detection,False,Heavy,0.577
+central_bus_depo,platform_waiting,Platform waiting area,platform,264.0,266.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6431,True,occupancy,False,Heavy,0.643
+central_bus_depo,concourse,Concourse,pedestrian,264.0,266.0,0.6,{'Two-wheeler': 0.6},2,0.3,,,,,0.0,0.0,1,0.0,0.0359,0.2912,False,occupancy,False,Moderate,0.291
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,266.0,268.0,10.9,"{'Bus/Truck': 9.0, 'Two-wheeler': 1.9}",13,20.75,,,,,0.0,0.0,2,0.0,0.8474,0.5712,True,occupancy,False,Heavy,0.571
+central_bus_depo,platform_waiting,Platform waiting area,platform,266.0,268.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6421,True,occupancy,False,Heavy,0.642
+central_bus_depo,concourse,Concourse,pedestrian,266.0,268.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.0309,0.3129,False,occupancy,False,Moderate,0.313
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,268.0,270.0,11.4,"{'Bus/Truck': 9.1, 'Two-wheeler': 2.3}",17,21.17,,,,,0.0,0.0,3,0.0,0.9454,0.5429,True,occupancy,False,Heavy,0.543
+central_bus_depo,platform_waiting,Platform waiting area,platform,268.0,270.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6373,True,occupancy,False,Heavy,0.637
+central_bus_depo,concourse,Concourse,pedestrian,268.0,270.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,0,0.0,0.0346,0.3056,False,occupancy,False,Moderate,0.306
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,270.0,272.0,10.2,"{'Bus/Truck': 9.0, 'Two-wheeler': 1.2}",14,20.4,,,,,0.0,0.0,1,0.0,0.8712,0.5325,True,occupancy,False,Heavy,0.533
+central_bus_depo,platform_waiting,Platform waiting area,platform,270.0,272.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.644,True,occupancy,False,Heavy,0.644
+central_bus_depo,concourse,Concourse,pedestrian,270.0,272.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2853,False,occupancy,False,Moderate,0.285
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,272.0,274.0,9.7,"{'Bus/Truck': 9.0, 'Two-wheeler': 0.7}",12,20.15,,,,,0.0,0.0,0,0.0,0.8584,0.5446,True,occupancy,False,Heavy,0.545
+central_bus_depo,platform_waiting,Platform waiting area,platform,272.0,274.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6636,True,occupancy,False,Heavy,0.664
+central_bus_depo,concourse,Concourse,pedestrian,272.0,274.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0028,0.2746,False,occupancy,False,Moderate,0.275
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,274.0,276.0,9.2,"{'Bus/Truck': 8.6, 'Two-wheeler': 0.6}",11,19.22,,,,,0.0,0.0,2,0.0,0.8401,0.5508,True,occupancy,False,Heavy,0.551
+central_bus_depo,platform_waiting,Platform waiting area,platform,274.0,276.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6755,True,occupancy,False,Heavy,0.676
+central_bus_depo,concourse,Concourse,pedestrian,274.0,276.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0014,0.2752,False,occupancy,False,Moderate,0.275
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,276.0,278.0,9.2,{'Bus/Truck': 9.2},10,20.24,,,,,0.0,0.0,1,0.0,0.9423,0.544,True,occupancy,False,Heavy,0.544
+central_bus_depo,platform_waiting,Platform waiting area,platform,276.0,278.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6792,True,occupancy,False,Heavy,0.679
+central_bus_depo,concourse,Concourse,pedestrian,276.0,278.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2803,False,occupancy,False,Moderate,0.28
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,278.0,280.0,8.8,{'Bus/Truck': 8.8},10,19.36,,,,,0.0,0.0,0,0.0,0.882,0.5315,True,occupancy,False,Heavy,0.531
+central_bus_depo,platform_waiting,Platform waiting area,platform,278.0,280.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6721,True,occupancy,False,Heavy,0.672
+central_bus_depo,concourse,Concourse,pedestrian,278.0,280.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0027,0.2742,False,occupancy,False,Moderate,0.274
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,280.0,282.0,9.1,"{'Bus/Truck': 9.0, 'Two-wheeler': 0.1}",10,19.85,,,,,0.0,0.0,1,0.0,0.8447,0.5255,True,occupancy,False,Heavy,0.526
+central_bus_depo,platform_waiting,Platform waiting area,platform,280.0,282.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6748,True,occupancy,False,Heavy,0.675
+central_bus_depo,concourse,Concourse,pedestrian,280.0,282.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0092,0.2774,False,occupancy,False,Moderate,0.277
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,282.0,284.0,9.0,{'Bus/Truck': 9.0},9,19.8,,,,,0.0,0.0,0,0.0,0.8457,0.5272,True,occupancy,False,Heavy,0.527
+central_bus_depo,platform_waiting,Platform waiting area,platform,282.0,284.0,0.5,{'Bus/Truck': 0.5},1,1.1,,,,,0.0,0.0,1,0.0,0.0314,0.666,True,occupancy,False,Heavy,0.666
+central_bus_depo,concourse,Concourse,pedestrian,282.0,284.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2797,False,occupancy,False,Moderate,0.28
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,284.0,286.0,9.6,"{'Bus/Truck': 9.4, 'Two-wheeler': 0.2}",11,20.78,,,,,0.0,0.0,2,0.0,1.0896,0.5379,True,occupancy,False,Heavy,0.538
+central_bus_depo,platform_waiting,Platform waiting area,platform,284.0,286.0,0.1,{'Bus/Truck': 0.1},1,0.22,,,,,0.0,0.0,0,0.0,0.0063,0.6611,True,occupancy,False,Heavy,0.661
+central_bus_depo,concourse,Concourse,pedestrian,284.0,286.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2827,False,occupancy,False,Moderate,0.283
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,286.0,288.0,9.4,"{'Bus/Truck': 9.3, 'Two-wheeler': 0.1}",11,20.51,,,,,0.0,0.0,1,0.0,1.0176,0.5589,True,occupancy,False,Heavy,0.559
+central_bus_depo,platform_waiting,Platform waiting area,platform,286.0,288.0,0.1,{'Bus/Truck': 0.1},1,0.22,,,,,0.0,0.0,0,0.0,0.0063,0.6631,True,occupancy,False,Heavy,0.663
+central_bus_depo,concourse,Concourse,pedestrian,286.0,288.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2869,False,occupancy,False,Moderate,0.287
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,288.0,290.0,9.1,{'Bus/Truck': 9.1},10,20.02,,,,,0.0,0.0,0,0.0,1.0025,0.5734,True,occupancy,False,Heavy,0.573
+central_bus_depo,platform_waiting,Platform waiting area,platform,288.0,290.0,0.8,{'Bus/Truck': 0.8},1,1.76,,,,,0.0,0.0,0,0.0,0.0506,0.6656,True,occupancy,False,Heavy,0.666
+central_bus_depo,concourse,Concourse,pedestrian,288.0,290.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3051,False,occupancy,False,Moderate,0.305
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,290.0,292.0,8.6,"{'Bus/Truck': 8.5, 'Two-wheeler': 0.1}",11,18.75,,,,,0.0,0.0,1,0.0,0.884,0.5676,True,occupancy,False,Heavy,0.568
+central_bus_depo,platform_waiting,Platform waiting area,platform,290.0,292.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.061,0.6613,True,occupancy,False,Heavy,0.661
+central_bus_depo,concourse,Concourse,pedestrian,290.0,292.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0034,0.3212,False,occupancy,False,Moderate,0.321
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,292.0,294.0,8.2,{'Bus/Truck': 8.2},10,18.04,,,,,0.0,0.0,0,0.0,0.8468,0.5764,True,occupancy,False,Heavy,0.576
+central_bus_depo,platform_waiting,Platform waiting area,platform,292.0,294.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.061,0.6677,True,occupancy,False,Heavy,0.668
+central_bus_depo,concourse,Concourse,pedestrian,292.0,294.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,1,0.0,0.0064,0.3325,False,occupancy,False,Moderate,0.332
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,294.0,296.0,8.3,"{'Bus/Truck': 8.0, 'Two-wheeler': 0.3}",10,17.75,,,,,0.0,0.0,1,0.0,0.8059,0.5887,False,detection,False,Heavy,0.589
+central_bus_depo,platform_waiting,Platform waiting area,platform,294.0,296.0,0.4,{'Bus/Truck': 0.4},1,0.88,,,,,0.0,0.0,0,0.0,0.0248,0.6743,True,occupancy,False,Heavy,0.674
+central_bus_depo,concourse,Concourse,pedestrian,294.0,296.0,0.7,{'Two-wheeler': 0.7},1,0.35,,,,,0.0,0.0,0,0.0,0.0121,0.3121,False,occupancy,False,Moderate,0.312
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,296.0,298.0,8.8,{'Bus/Truck': 8.8},10,19.36,,,,,0.0,0.0,0,0.0,1.0154,0.605,True,occupancy,False,Heavy,0.605
+central_bus_depo,platform_waiting,Platform waiting area,platform,296.0,298.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6781,True,occupancy,False,Heavy,0.678
+central_bus_depo,concourse,Concourse,pedestrian,296.0,298.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2975,False,occupancy,False,Moderate,0.297
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,298.0,300.0,9.9,"{'Bus/Truck': 8.7, 'Two-wheeler': 0.5, 'Car': 0.7}",12,20.09,,,,,0.0,0.0,1,0.0,0.9879,0.6047,True,occupancy,False,Heavy,0.605
+central_bus_depo,platform_waiting,Platform waiting area,platform,298.0,300.0,0.9,"{'Bus/Truck': 0.6, 'Two-wheeler': 0.3}",2,1.47,,,,,0.0,0.0,1,0.0,0.0525,0.67,True,occupancy,False,Heavy,0.67
+central_bus_depo,concourse,Concourse,pedestrian,298.0,300.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3094,False,occupancy,False,Moderate,0.309
+central_bus_depo,bus_manoeuvring,Bus manoeuvring area,carriageway,300.0,300.0,11.0,"{'Bus/Truck': 10.0, 'Car': 1.0}",11,23.0,,,,,0.0,0.0,0,0.0,1.1913,0.6121,True,occupancy,False,Heavy,0.612
+central_bus_depo,platform_waiting,Platform waiting area,platform,300.0,300.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.6652,True,occupancy,False,Heavy,0.665
+central_bus_depo,concourse,Concourse,pedestrian,300.0,300.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.3153,False,occupancy,False,Moderate,0.315

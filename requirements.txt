@@ -1,0 +1,22 @@
+# Core vision + tracking
+ultralytics>=8.3.0          # YOLO11 + ByteTrack (AGPL-3.0)
+opencv-python>=4.9.0
+numpy>=1.26.0
+
+# torch/torchvision: install the CUDA build matching your driver first, e.g.
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+torch>=2.2.0
+torchvision>=0.17.0
+
+# Metrics, analysis, dashboard
+pandas>=2.2.0
+scipy>=1.12.0
+streamlit>=1.44.0           # st.context.theme, for the light/dark chart palette
+plotly>=5.19.0              # marker.cornerradius on bars
+
+# Model download
+huggingface_hub>=0.25.0
+
+# Pulled in by ultralytics' tracker; listed so a clean install doesn't
+# auto-update mid-run
+lap>=0.5.12

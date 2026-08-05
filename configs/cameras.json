@@ -1,0 +1,1163 @@
+{
+  "gauravpath": {
+    "camera_id": "gauravpath",
+    "mode": "junction",
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "scale_model": {
+      "type": "perspective_v1",
+      "y_horizon": -133.9805825242719,
+      "c": 10.873786407766993,
+      "focal_px": 1663.0,
+      "camera_height_m": 7.0,
+      "calibration": {
+        "y_near": 1000.0,
+        "px_width_near": 730.0,
+        "y_far": 200.0,
+        "px_width_far": 215.0,
+        "real_width_m": 7.0
+      }
+    },
+    "notes": "Seeded from traced road edges; refine with src/calibrate.py.",
+    "zones": [
+      {
+        "id": "lane_1",
+        "label": "Lane 1 (median)",
+        "polygon": [
+          [
+            840,
+            90
+          ],
+          [
+            846,
+            172
+          ],
+          [
+            852,
+            254
+          ],
+          [
+            857,
+            336
+          ],
+          [
+            863,
+            418
+          ],
+          [
+            868,
+            500
+          ],
+          [
+            874,
+            582
+          ],
+          [
+            878,
+            664
+          ],
+          [
+            882,
+            746
+          ],
+          [
+            886,
+            828
+          ],
+          [
+            891,
+            910
+          ],
+          [
+            895,
+            992
+          ],
+          [
+            900,
+            1075
+          ],
+          [
+            1278,
+            1075
+          ],
+          [
+            1254,
+            992
+          ],
+          [
+            1231,
+            910
+          ],
+          [
+            1208,
+            828
+          ],
+          [
+            1186,
+            746
+          ],
+          [
+            1165,
+            664
+          ],
+          [
+            1143,
+            582
+          ],
+          [
+            1125,
+            500
+          ],
+          [
+            1107,
+            418
+          ],
+          [
+            1088,
+            336
+          ],
+          [
+            1058,
+            254
+          ],
+          [
+            1017,
+            172
+          ],
+          [
+            976,
+            90
+          ]
+        ],
+        "kind": "lane",
+        "approach": "Towards Kargil Chowk",
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": ""
+      },
+      {
+        "id": "lane_2",
+        "label": "Lane 2 (kerb)",
+        "polygon": [
+          [
+            976,
+            90
+          ],
+          [
+            1017,
+            172
+          ],
+          [
+            1058,
+            254
+          ],
+          [
+            1088,
+            336
+          ],
+          [
+            1107,
+            418
+          ],
+          [
+            1125,
+            500
+          ],
+          [
+            1143,
+            582
+          ],
+          [
+            1165,
+            664
+          ],
+          [
+            1186,
+            746
+          ],
+          [
+            1208,
+            828
+          ],
+          [
+            1231,
+            910
+          ],
+          [
+            1254,
+            992
+          ],
+          [
+            1278,
+            1075
+          ],
+          [
+            1628,
+            1075
+          ],
+          [
+            1586,
+            992
+          ],
+          [
+            1545,
+            910
+          ],
+          [
+            1506,
+            828
+          ],
+          [
+            1468,
+            746
+          ],
+          [
+            1430,
+            664
+          ],
+          [
+            1393,
+            582
+          ],
+          [
+            1363,
+            500
+          ],
+          [
+            1333,
+            418
+          ],
+          [
+            1303,
+            336
+          ],
+          [
+            1249,
+            254
+          ],
+          [
+            1175,
+            172
+          ],
+          [
+            1102,
+            90
+          ]
+        ],
+        "kind": "lane",
+        "approach": "Towards Kargil Chowk",
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": ""
+      },
+      {
+        "id": "opposite_carriageway",
+        "label": "Opposite carriageway",
+        "polygon": [
+          [
+            575,
+            300
+          ],
+          [
+            810,
+            300
+          ],
+          [
+            890,
+            1075
+          ],
+          [
+            180,
+            1075
+          ]
+        ],
+        "kind": "carriageway",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Outbound direction. No flow during this clip."
+      }
+    ]
+  },
+  "rokadiya_hanuman": {
+    "camera_id": "rokadiya_hanuman",
+    "mode": "junction",
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "scale_model": {
+      "type": "perspective_v1",
+      "y_horizon": -224.99999999999986,
+      "c": 18.374999999999996,
+      "focal_px": 1663.0,
+      "camera_height_m": 7.0,
+      "calibration": {
+        "y_near": 1000.0,
+        "px_width_near": 700.0,
+        "y_far": 300.0,
+        "px_width_far": 300.0,
+        "real_width_m": 10.5
+      }
+    },
+    "notes": "Seeded from traced road edges; refine with src/calibrate.py.",
+    "zones": [
+      {
+        "id": "lane_1",
+        "label": "Lane 1 (median)",
+        "polygon": [
+          [
+            596,
+            180
+          ],
+          [
+            561,
+            254
+          ],
+          [
+            526,
+            329
+          ],
+          [
+            497,
+            403
+          ],
+          [
+            479,
+            478
+          ],
+          [
+            565,
+            552
+          ],
+          [
+            645,
+            627
+          ],
+          [
+            715,
+            702
+          ],
+          [
+            778,
+            776
+          ],
+          [
+            831,
+            851
+          ],
+          [
+            883,
+            925
+          ],
+          [
+            921,
+            1000
+          ],
+          [
+            960,
+            1075
+          ],
+          [
+            1193,
+            1075
+          ],
+          [
+            1153,
+            1000
+          ],
+          [
+            1113,
+            925
+          ],
+          [
+            1065,
+            851
+          ],
+          [
+            1016,
+            776
+          ],
+          [
+            960,
+            702
+          ],
+          [
+            895,
+            627
+          ],
+          [
+            824,
+            552
+          ],
+          [
+            750,
+            478
+          ],
+          [
+            749,
+            403
+          ],
+          [
+            755,
+            329
+          ],
+          [
+            767,
+            254
+          ],
+          [
+            780,
+            180
+          ]
+        ],
+        "kind": "lane",
+        "approach": "Towards Bhatena",
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": ""
+      },
+      {
+        "id": "lane_2",
+        "label": "Lane 2 (centre)",
+        "polygon": [
+          [
+            780,
+            180
+          ],
+          [
+            767,
+            254
+          ],
+          [
+            755,
+            329
+          ],
+          [
+            749,
+            403
+          ],
+          [
+            750,
+            478
+          ],
+          [
+            824,
+            552
+          ],
+          [
+            895,
+            627
+          ],
+          [
+            960,
+            702
+          ],
+          [
+            1016,
+            776
+          ],
+          [
+            1065,
+            851
+          ],
+          [
+            1113,
+            925
+          ],
+          [
+            1153,
+            1000
+          ],
+          [
+            1193,
+            1075
+          ],
+          [
+            1426,
+            1075
+          ],
+          [
+            1385,
+            1000
+          ],
+          [
+            1343,
+            925
+          ],
+          [
+            1299,
+            851
+          ],
+          [
+            1254,
+            776
+          ],
+          [
+            1205,
+            702
+          ],
+          [
+            1146,
+            627
+          ],
+          [
+            1083,
+            552
+          ],
+          [
+            1021,
+            478
+          ],
+          [
+            1001,
+            403
+          ],
+          [
+            985,
+            329
+          ],
+          [
+            974,
+            254
+          ],
+          [
+            964,
+            180
+          ]
+        ],
+        "kind": "lane",
+        "approach": "Towards Bhatena",
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": ""
+      },
+      {
+        "id": "lane_3",
+        "label": "Lane 3 (kerb)",
+        "polygon": [
+          [
+            964,
+            180
+          ],
+          [
+            974,
+            254
+          ],
+          [
+            985,
+            329
+          ],
+          [
+            1001,
+            403
+          ],
+          [
+            1021,
+            478
+          ],
+          [
+            1083,
+            552
+          ],
+          [
+            1146,
+            627
+          ],
+          [
+            1205,
+            702
+          ],
+          [
+            1254,
+            776
+          ],
+          [
+            1299,
+            851
+          ],
+          [
+            1343,
+            925
+          ],
+          [
+            1385,
+            1000
+          ],
+          [
+            1426,
+            1075
+          ],
+          [
+            1660,
+            1075
+          ],
+          [
+            1617,
+            1000
+          ],
+          [
+            1574,
+            925
+          ],
+          [
+            1533,
+            851
+          ],
+          [
+            1492,
+            776
+          ],
+          [
+            1451,
+            702
+          ],
+          [
+            1397,
+            627
+          ],
+          [
+            1343,
+            552
+          ],
+          [
+            1293,
+            478
+          ],
+          [
+            1254,
+            403
+          ],
+          [
+            1215,
+            329
+          ],
+          [
+            1181,
+            254
+          ],
+          [
+            1149,
+            180
+          ]
+        ],
+        "kind": "lane",
+        "approach": "Towards Bhatena",
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": ""
+      },
+      {
+        "id": "kerbside_encroachment",
+        "label": "Kerb-side encroachment",
+        "polygon": [
+          [
+            1150,
+            200
+          ],
+          [
+            1420,
+            240
+          ],
+          [
+            1560,
+            470
+          ],
+          [
+            1230,
+            430
+          ]
+        ],
+        "kind": "parking",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Persistent stationary hotspot in the heatmap - parked two-wheelers and a vendor stall narrowing the kerb lane."
+      }
+    ]
+  },
+  "chauta_bazaar": {
+    "camera_id": "chauta_bazaar",
+    "mode": "area",
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "scale_model": null,
+    "notes": "Functional zones - no lane discipline in this view.",
+    "zones": [
+      {
+        "id": "market_carriageway",
+        "label": "Market carriageway",
+        "polygon": [
+          [
+            830,
+            60
+          ],
+          [
+            1180,
+            60
+          ],
+          [
+            1290,
+            560
+          ],
+          [
+            1180,
+            1075
+          ],
+          [
+            560,
+            1075
+          ],
+          [
+            700,
+            560
+          ]
+        ],
+        "kind": "carriageway",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Shared movement channel. No lane discipline."
+      },
+      {
+        "id": "vendor_encroachment_left",
+        "label": "Vendor encroachment (L)",
+        "polygon": [
+          [
+            0,
+            380
+          ],
+          [
+            700,
+            380
+          ],
+          [
+            560,
+            1075
+          ],
+          [
+            0,
+            1075
+          ]
+        ],
+        "kind": "parking",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Stalls and parked two-wheelers narrowing the usable width."
+      },
+      {
+        "id": "vendor_encroachment_right",
+        "label": "Vendor encroachment (R)",
+        "polygon": [
+          [
+            1290,
+            300
+          ],
+          [
+            1919,
+            300
+          ],
+          [
+            1919,
+            1075
+          ],
+          [
+            1200,
+            1075
+          ]
+        ],
+        "kind": "parking",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Shopfront overflow narrowing the usable width."
+      }
+    ]
+  },
+  "mahidharpura": {
+    "camera_id": "mahidharpura",
+    "mode": "area",
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "scale_model": null,
+    "notes": "Functional zones - no lane discipline in this view.",
+    "zones": [
+      {
+        "id": "movement_channel",
+        "label": "Movement channel",
+        "polygon": [
+          [
+            600,
+            150
+          ],
+          [
+            860,
+            150
+          ],
+          [
+            1050,
+            560
+          ],
+          [
+            1120,
+            1075
+          ],
+          [
+            450,
+            1075
+          ],
+          [
+            520,
+            560
+          ]
+        ],
+        "kind": "carriageway",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "The only walkable/rideable channel left between parked two-wheeler banks. Detection saturates here - occupancy is the trustworthy signal, not object count."
+      },
+      {
+        "id": "parking_bank_left",
+        "label": "Parked bank (L)",
+        "polygon": [
+          [
+            330,
+            260
+          ],
+          [
+            600,
+            200
+          ],
+          [
+            520,
+            560
+          ],
+          [
+            450,
+            1075
+          ],
+          [
+            140,
+            1075
+          ]
+        ],
+        "kind": "parking",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Two-wheeler parking occupying carriageway width."
+      },
+      {
+        "id": "parking_bank_right",
+        "label": "Parked bank (R)",
+        "polygon": [
+          [
+            880,
+            200
+          ],
+          [
+            1250,
+            300
+          ],
+          [
+            1500,
+            1075
+          ],
+          [
+            1120,
+            1075
+          ],
+          [
+            1050,
+            560
+          ]
+        ],
+        "kind": "parking",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Two-wheeler parking occupying carriageway width."
+      }
+    ]
+  },
+  "gopi_talav": {
+    "camera_id": "gopi_talav",
+    "mode": "area",
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "scale_model": null,
+    "notes": "Functional zones - no lane discipline in this view.",
+    "zones": [
+      {
+        "id": "gate_approach",
+        "label": "Gate approach",
+        "polygon": [
+          [
+            700,
+            180
+          ],
+          [
+            1180,
+            180
+          ],
+          [
+            1300,
+            700
+          ],
+          [
+            1250,
+            1075
+          ],
+          [
+            620,
+            1075
+          ]
+        ],
+        "kind": "pedestrian",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Pedestrian flow through the gate - crowd-density zone."
+      },
+      {
+        "id": "vehicle_channel",
+        "label": "Vehicle channel",
+        "polygon": [
+          [
+            180,
+            120
+          ],
+          [
+            700,
+            180
+          ],
+          [
+            620,
+            1075
+          ],
+          [
+            0,
+            1075
+          ],
+          [
+            0,
+            300
+          ]
+        ],
+        "kind": "carriageway",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Mixed two-wheeler / auto movement alongside the gate."
+      },
+      {
+        "id": "vendor_zone",
+        "label": "Vendor zone",
+        "polygon": [
+          [
+            1300,
+            250
+          ],
+          [
+            1919,
+            250
+          ],
+          [
+            1919,
+            1075
+          ],
+          [
+            1250,
+            1075
+          ]
+        ],
+        "kind": "parking",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Stalls and hawkers - fixed obstruction."
+      }
+    ]
+  },
+  "rly_station": {
+    "camera_id": "rly_station",
+    "mode": "area",
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "scale_model": null,
+    "notes": "Functional zones - no lane discipline in this view.",
+    "zones": [
+      {
+        "id": "forecourt_carriageway",
+        "label": "Forecourt carriageway",
+        "polygon": [
+          [
+            560,
+            60
+          ],
+          [
+            1919,
+            60
+          ],
+          [
+            1919,
+            900
+          ],
+          [
+            900,
+            1075
+          ],
+          [
+            400,
+            700
+          ]
+        ],
+        "kind": "carriageway",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Auto-rickshaw pickup / drop movement area."
+      },
+      {
+        "id": "pedestrian_flow",
+        "label": "Pedestrian flow",
+        "polygon": [
+          [
+            0,
+            60
+          ],
+          [
+            560,
+            60
+          ],
+          [
+            400,
+            700
+          ],
+          [
+            700,
+            1075
+          ],
+          [
+            0,
+            1075
+          ]
+        ],
+        "kind": "pedestrian",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Passenger walking route across the forecourt."
+      }
+    ]
+  },
+  "central_bus_depo": {
+    "camera_id": "central_bus_depo",
+    "mode": "area",
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "scale_model": null,
+    "notes": "Functional zones - no lane discipline in this view.",
+    "zones": [
+      {
+        "id": "bus_manoeuvring",
+        "label": "Bus manoeuvring area",
+        "polygon": [
+          [
+            330,
+            60
+          ],
+          [
+            1919,
+            60
+          ],
+          [
+            1919,
+            560
+          ],
+          [
+            1000,
+            620
+          ],
+          [
+            330,
+            400
+          ]
+        ],
+        "kind": "carriageway",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Bus arrival / departure movement area."
+      },
+      {
+        "id": "platform_waiting",
+        "label": "Platform waiting area",
+        "polygon": [
+          [
+            0,
+            200
+          ],
+          [
+            330,
+            200
+          ],
+          [
+            400,
+            1075
+          ],
+          [
+            0,
+            1075
+          ]
+        ],
+        "kind": "platform",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Queueing passengers - crowd-density zone."
+      },
+      {
+        "id": "concourse",
+        "label": "Concourse",
+        "polygon": [
+          [
+            330,
+            420
+          ],
+          [
+            1919,
+            580
+          ],
+          [
+            1919,
+            1075
+          ],
+          [
+            400,
+            1075
+          ]
+        ],
+        "kind": "pedestrian",
+        "approach": null,
+        "real_area_m2": null,
+        "lanes_equivalent": 1.0,
+        "notes": "Open pedestrian circulation between platform and buses."
+      }
+    ]
+  }
+}

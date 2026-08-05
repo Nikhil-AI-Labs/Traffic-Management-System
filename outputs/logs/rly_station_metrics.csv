@@ -1,0 +1,303 @@
+camera_id,zone_id,zone_label,zone_kind,window_start_s,window_end_s,n_detections_mean,counts_by_group,unique_tracks,pcu_mean,density_pcu_per_100m2,density_pcu_per_km_lane,real_area_m2,mean_speed_kmph,stopped_fraction,queue_length_pcu,arrivals,flow_pcu_per_hr,box_occupancy,structural_occupancy,saturated,measurement_mode,scale_verified,los,congestion_index
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,0.0,2.0,6.8,"{'Car': 1.9, 'Auto': 3.7, 'Two-wheeler': 1.2}",10,6.94,,,,,0.0,0.0,10,0.0,0.4972,0.039,False,detection,False,Free,0.039
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,0.0,2.0,0.8,{'Car': 0.8},2,0.8,,,,,0.0,0.0,2,0.0,0.4739,0.0996,False,occupancy,False,Free,0.1
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,2.0,4.0,6.8,"{'Auto': 3.8, 'Two-wheeler': 1.2, 'Car': 1.8}",11,6.96,,,,,0.0,0.0,3,0.0,0.6651,0.0401,True,occupancy,False,Free,0.04
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,2.0,4.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,1,0.0,0.007,0.0417,False,occupancy,False,Free,0.042
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,4.0,6.0,6.9,"{'Auto': 4.7, 'Two-wheeler': 0.8, 'Car': 1.4}",11,7.44,,,,,0.0,0.0,2,0.0,0.8453,0.0909,True,occupancy,False,Free,0.091
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,4.0,6.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.049,0.1088,False,occupancy,False,Free,0.109
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,6.0,8.0,6.4,"{'Auto': 3.7, 'Two-wheeler': 1.9, 'Car': 0.8}",12,6.19,,,,,0.0,0.0,6,0.0,0.6791,0.1381,False,detection,False,Free,0.138
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,6.0,8.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1718,False,occupancy,False,Free,0.172
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,8.0,10.0,9.3,"{'Auto': 4.8, 'Two-wheeler': 2.3, 'Car': 2.2}",15,9.11,,,,,0.0,0.0,6,0.0,1.1048,0.1243,True,occupancy,False,Free,0.124
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,8.0,10.0,0.7,"{'Two-wheeler': 0.3, 'Auto': 0.4}",3,0.63,,,,,0.0,0.0,3,0.0,0.1758,0.2351,False,occupancy,False,Free,0.235
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,10.0,12.0,10.3,"{'Auto': 5.6, 'Two-wheeler': 0.9, 'Car': 3.8}",18,10.97,,,,,0.0,0.0,6,0.0,1.4337,0.1855,True,occupancy,False,Free,0.186
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,10.0,12.0,0.5,"{'Auto': 0.4, 'Two-wheeler': 0.1}",2,0.53,,,,,0.0,0.0,1,0.0,0.1756,0.1555,False,occupancy,False,Free,0.156
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,12.0,14.0,8.6,"{'Auto': 4.1, 'Car': 3.8, 'Two-wheeler': 0.7}",12,9.07,,,,,0.0,0.0,2,0.0,1.2563,0.1991,True,occupancy,False,Free,0.199
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,12.0,14.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0878,False,occupancy,False,Free,0.088
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,14.0,16.0,5.7,"{'Auto': 2.0, 'Car': 3.5, 'Two-wheeler': 0.2}",11,6.0,,,,,0.0,0.0,3,0.0,0.8438,0.1283,True,occupancy,False,Free,0.128
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,14.0,16.0,0.4,{'Auto': 0.4},1,0.48,,,,,0.0,0.0,0,0.0,0.1812,0.0988,False,occupancy,False,Free,0.099
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,16.0,18.0,4.7,"{'Auto': 2.2, 'Car': 2.2, 'Two-wheeler': 0.3}",10,4.99,,,,,0.0,0.0,4,0.0,0.6747,0.0952,True,occupancy,False,Free,0.095
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,16.0,18.0,1.0,"{'Auto': 0.7, 'Two-wheeler': 0.3}",5,0.99,,,,,0.0,0.0,3,0.0,0.5439,0.1121,False,occupancy,False,Free,0.112
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,18.0,20.0,7.0,"{'Auto': 3.8, 'Car': 2.0, 'Two-wheeler': 1.2}",12,7.16,,,,,0.0,0.0,3,0.0,0.9671,0.1086,True,occupancy,False,Free,0.109
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,18.0,20.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0226,False,occupancy,False,Free,0.023
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,20.0,22.0,5.4,"{'Car': 0.5, 'Auto': 4.1, 'Two-wheeler': 0.8}",13,5.82,,,,,0.0,0.0,2,0.0,0.6308,0.0766,False,detection,False,Free,0.077
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,20.0,22.0,1.0,"{'Auto': 0.2, 'Two-wheeler': 0.8}",4,0.64,,,,,0.0,0.0,4,0.0,0.4174,0.0439,False,occupancy,False,Free,0.044
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,22.0,24.0,4.0,"{'Auto': 3.8, 'Two-wheeler': 0.2}",7,4.66,,,,,0.0,0.0,1,0.0,0.5448,0.036,False,detection,False,Free,0.036
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,22.0,24.0,1.2,"{'Two-wheeler': 0.6, 'Auto': 0.6}",4,1.02,,,,,0.0,0.0,0,0.0,0.4478,0.0735,False,occupancy,False,Free,0.073
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,24.0,26.0,3.0,"{'Auto': 2.2, 'Two-wheeler': 0.8}",9,3.04,,,,,0.0,0.0,3,0.0,0.3213,0.0016,False,detection,False,Free,0.002
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,24.0,26.0,0.6,"{'Two-wheeler': 0.2, 'Auto': 0.4}",3,0.58,,,,,0.0,0.0,2,0.0,0.2338,0.1362,False,occupancy,False,Free,0.136
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,26.0,28.0,3.1,"{'Auto': 2.7, 'Two-wheeler': 0.4}",5,3.44,,,,,0.0,0.0,2,0.0,0.1203,0.0,False,detection,False,Free,0.0
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,26.0,28.0,0.1,{'Car': 0.1},1,0.1,,,,,0.0,0.0,1,0.0,0.0461,0.0676,False,occupancy,False,Free,0.068
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,28.0,30.0,3.8,"{'Auto': 2.2, 'Two-wheeler': 0.6, 'Car': 0.9, 'Bus/Truck': 0.1}",7,4.06,,,,,0.0,0.0,3,0.0,0.2793,0.0004,False,detection,False,Free,0.0
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,28.0,30.0,0.8,{'Car': 0.8},2,0.8,,,,,0.0,0.0,1,0.0,0.407,0.1554,False,occupancy,False,Free,0.155
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,30.0,32.0,4.4,"{'Auto': 2.2, 'Car': 0.7, 'Two-wheeler': 1.1, 'Bus/Truck': 0.4}",8,4.77,,,,,0.0,0.0,3,0.0,0.3414,0.0145,False,detection,False,Free,0.014
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,30.0,32.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0992,False,occupancy,False,Free,0.099
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,32.0,34.0,6.4,"{'Auto': 4.3, 'Two-wheeler': 1.8, 'Car': 0.3}",8,6.36,,,,,0.0,0.0,3,0.0,0.5884,0.0079,True,occupancy,False,Free,0.008
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,32.0,34.0,0.9,"{'Two-wheeler': 0.6, 'Car': 0.3}",2,0.6,,,,,0.0,0.0,2,0.0,0.1642,0.13,False,occupancy,False,Free,0.13
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,34.0,36.0,6.2,"{'Auto': 4.1, 'Two-wheeler': 0.7, 'Car': 1.4}",8,6.67,,,,,0.0,0.0,1,0.0,0.7418,0.0524,False,detection,False,Free,0.052
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,34.0,36.0,0.5,{'Two-wheeler': 0.5},1,0.25,,,,,0.0,0.0,0,0.0,0.1009,0.1758,False,occupancy,False,Free,0.176
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,36.0,38.0,5.2,"{'Auto': 3.6, 'Car': 1.6}",10,5.92,,,,,0.0,0.0,6,0.0,0.6689,0.0508,False,detection,False,Free,0.051
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,36.0,38.0,0.4,"{'Two-wheeler': 0.3, 'Auto': 0.1}",3,0.27,,,,,0.0,0.0,3,0.0,0.0373,0.1341,False,occupancy,False,Free,0.134
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,38.0,40.0,4.8,{'Auto': 4.8},5,5.76,,,,,0.0,0.0,0,0.0,0.462,0.0083,False,detection,False,Free,0.008
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,38.0,40.0,0.8,{'Two-wheeler': 0.8},3,0.4,,,,,0.0,0.0,1,0.0,0.0959,0.0942,False,occupancy,False,Free,0.094
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,40.0,42.0,4.9,"{'Auto': 3.8, 'Two-wheeler': 1.1}",8,5.11,,,,,0.0,0.0,4,0.0,0.5389,0.0002,False,detection,False,Free,0.0
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,40.0,42.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0253,False,occupancy,False,Free,0.025
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,42.0,44.0,4.6,"{'Auto': 2.1, 'Two-wheeler': 2.5}",6,3.77,,,,,0.0,0.0,1,0.0,0.4827,0.0066,False,detection,False,Free,0.007
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,42.0,44.0,1.0,"{'Two-wheeler': 0.8, 'Auto': 0.2}",4,0.64,,,,,0.0,0.0,3,0.0,0.4678,0.1134,False,occupancy,False,Free,0.113
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,44.0,46.0,5.7,"{'Auto': 2.4, 'Two-wheeler': 3.3}",8,4.53,,,,,0.0,0.0,3,0.0,0.5697,0.1089,False,detection,False,Free,0.109
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,44.0,46.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,0,0.0,0.0252,0.0786,False,occupancy,False,Free,0.079
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,46.0,48.0,7.9,"{'Auto': 3.9, 'Two-wheeler': 4.0}",13,6.68,,,,,0.0,0.0,6,0.0,0.7257,0.0863,True,occupancy,False,Free,0.086
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,46.0,48.0,0.9,{'Two-wheeler': 0.9},1,0.45,,,,,0.0,0.0,0,0.0,0.0915,0.0158,False,occupancy,False,Free,0.016
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,48.0,50.0,7.2,"{'Two-wheeler': 2.7, 'Auto': 4.5}",11,6.75,,,,,0.0,0.0,0,0.0,0.7361,0.1081,True,occupancy,False,Free,0.108
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,48.0,50.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0479,False,occupancy,False,Free,0.048
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,50.0,52.0,7.2,"{'Two-wheeler': 2.2, 'Auto': 5.0}",12,7.1,,,,,0.0,0.0,3,0.0,0.8772,0.1134,True,occupancy,False,Free,0.113
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,50.0,52.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0649,False,occupancy,False,Free,0.065
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,52.0,54.0,6.3,"{'Two-wheeler': 0.7, 'Auto': 4.8, 'Car': 0.7, 'Bus/Truck': 0.1}",11,7.03,,,,,0.0,0.0,3,0.0,0.9454,0.1115,True,occupancy,False,Free,0.111
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,52.0,54.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0365,0.1041,False,occupancy,False,Free,0.104
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,54.0,56.0,4.4,"{'Auto': 2.5, 'Car': 1.3, 'Two-wheeler': 0.5, 'Bus/Truck': 0.1}",7,4.77,,,,,0.0,0.0,1,0.0,0.8096,0.0901,False,detection,False,Free,0.09
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,54.0,56.0,1.2,"{'Two-wheeler': 0.1, 'Auto': 1.1}",3,1.37,,,,,0.0,0.0,3,0.0,0.2511,0.1753,False,occupancy,False,Free,0.175
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,56.0,58.0,4.4,"{'Auto': 1.6, 'Car': 2.2, 'Two-wheeler': 0.6}",8,4.42,,,,,0.0,0.0,3,0.0,0.7466,0.0416,False,detection,False,Free,0.042
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,56.0,58.0,1.6,"{'Auto': 1.5, 'Two-wheeler': 0.1}",5,1.85,,,,,0.0,0.0,2,0.0,0.6931,0.2183,False,occupancy,False,Free,0.218
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,58.0,60.0,5.1,"{'Car': 2.3, 'Auto': 2.0, 'Two-wheeler': 0.8}",8,5.1,,,,,0.0,0.0,2,0.0,0.9077,0.0533,True,occupancy,False,Free,0.053
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,58.0,60.0,1.2,{'Auto': 1.2},2,1.44,,,,,0.0,0.0,0,0.0,0.2904,0.1667,False,occupancy,False,Free,0.167
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,60.0,62.0,5.0,"{'Auto': 1.1, 'Car': 2.7, 'Two-wheeler': 1.2}",8,4.62,,,,,0.0,0.0,3,0.0,0.6783,0.0775,False,detection,False,Free,0.077
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,60.0,62.0,0.5,"{'Auto': 0.4, 'Two-wheeler': 0.1}",3,0.53,,,,,0.0,0.0,2,0.0,0.0393,0.1175,False,occupancy,False,Free,0.117
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,62.0,64.0,4.7,"{'Car': 3.3, 'Two-wheeler': 1.0, 'Auto': 0.4}",8,4.28,,,,,0.0,0.0,2,0.0,0.4661,0.0513,False,detection,False,Free,0.051
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,62.0,64.0,1.2,"{'Auto': 1.1, 'Two-wheeler': 0.1}",3,1.37,,,,,0.0,0.0,1,0.0,0.181,0.0832,False,occupancy,False,Free,0.083
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,64.0,66.0,5.9,"{'Two-wheeler': 0.6, 'Car': 3.3, 'Auto': 2.0}",10,6.0,,,,,0.0,0.0,4,0.0,0.6507,0.0729,True,occupancy,False,Free,0.073
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,64.0,66.0,1.5,"{'Auto': 1.0, 'Two-wheeler': 0.5}",3,1.45,,,,,0.0,0.0,1,0.0,0.3591,0.1511,False,occupancy,False,Free,0.151
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,66.0,68.0,6.5,"{'Auto': 3.3, 'Car': 3.2}",8,7.16,,,,,0.0,0.0,2,0.0,0.9156,0.0833,False,detection,False,Free,0.083
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,66.0,68.0,1.4,{'Two-wheeler': 1.4},3,0.7,,,,,0.0,0.0,2,0.0,0.1743,0.1054,False,occupancy,False,Free,0.105
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,68.0,70.0,6.6,"{'Auto': 3.4, 'Car': 3.2}",9,7.28,,,,,0.0,0.0,1,0.0,0.8471,0.096,True,occupancy,False,Free,0.096
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,68.0,70.0,2.0,"{'Two-wheeler': 1.0, 'Auto': 1.0}",2,1.7,,,,,0.0,0.0,0,0.0,0.3227,0.1033,False,occupancy,False,Free,0.103
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,70.0,72.0,6.1,"{'Auto': 3.0, 'Car': 3.0, 'Two-wheeler': 0.1}",8,6.65,,,,,0.0,0.0,1,0.0,0.8316,0.0568,True,occupancy,False,Free,0.057
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,70.0,72.0,2.0,"{'Two-wheeler': 1.0, 'Auto': 1.0}",2,1.7,,,,,0.0,0.0,0,0.0,0.4615,0.1571,False,occupancy,False,Free,0.157
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,72.0,74.0,6.3,"{'Auto': 2.1, 'Car': 4.0, 'Two-wheeler': 0.2}",13,6.62,,,,,0.0,0.0,5,0.0,0.8724,0.0443,True,occupancy,False,Free,0.044
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,72.0,74.0,1.9,"{'Two-wheeler': 0.6, 'Auto': 0.9, 'Car': 0.4}",3,1.78,,,,,0.0,0.0,1,0.0,0.443,0.2033,False,occupancy,False,Free,0.203
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,74.0,76.0,8.0,"{'Auto': 5.1, 'Car': 2.9}",10,9.02,,,,,0.0,0.0,2,0.0,0.9637,0.0189,True,occupancy,False,Free,0.019
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,74.0,76.0,1.5,"{'Car': 0.1, 'Two-wheeler': 1.4}",3,0.8,,,,,0.0,0.0,3,0.0,0.4308,0.1904,False,occupancy,False,Free,0.19
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,76.0,78.0,7.7,"{'Auto': 4.2, 'Car': 3.2, 'Two-wheeler': 0.3}",12,8.39,,,,,0.0,0.0,5,0.0,0.9735,0.0718,False,detection,False,Free,0.072
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,76.0,78.0,1.4,{'Two-wheeler': 1.4},3,0.7,,,,,0.0,0.0,2,0.0,0.2019,0.1346,False,occupancy,False,Free,0.135
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,78.0,80.0,7.5,"{'Auto': 4.5, 'Car': 2.0, 'Two-wheeler': 1.0}",12,7.9,,,,,0.0,0.0,1,0.0,0.8147,0.0693,False,detection,False,Free,0.069
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,78.0,80.0,1.4,{'Two-wheeler': 1.4},2,0.7,,,,,0.0,0.0,1,0.0,0.1852,0.1296,False,occupancy,False,Free,0.13
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,80.0,82.0,8.1,"{'Auto': 5.3, 'Two-wheeler': 1.4, 'Car': 1.3, 'Bus/Truck': 0.1}",14,8.58,,,,,0.0,0.0,4,0.0,0.8117,0.0175,True,occupancy,False,Free,0.017
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,80.0,82.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,0,0.0,0.1744,0.1302,False,occupancy,False,Free,0.13
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,82.0,84.0,7.4,"{'Auto': 6.4, 'Two-wheeler': 0.8, 'Bus/Truck': 0.2}",11,8.52,,,,,0.0,0.0,2,0.0,0.6192,0.002,False,detection,False,Free,0.002
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,82.0,84.0,1.9,{'Two-wheeler': 1.9},2,0.95,,,,,0.0,0.0,0,0.0,0.2033,0.1262,False,occupancy,False,Free,0.126
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,84.0,86.0,7.1,"{'Auto': 5.8, 'Bus/Truck': 0.2, 'Two-wheeler': 1.1}",14,7.95,,,,,0.0,0.0,5,0.0,0.57,0.0114,False,detection,False,Free,0.011
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,84.0,86.0,1.6,{'Two-wheeler': 1.6},3,0.8,,,,,0.0,0.0,2,0.0,0.2758,0.1525,False,occupancy,False,Free,0.153
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,86.0,88.0,8.2,"{'Auto': 6.2, 'Two-wheeler': 2.0}",14,8.44,,,,,0.0,0.0,2,0.0,0.8274,0.0173,True,occupancy,False,Free,0.017
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,86.0,88.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.1498,0.0848,False,occupancy,False,Free,0.085
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,88.0,90.0,8.1,"{'Auto': 5.5, 'Two-wheeler': 2.5, 'Bus/Truck': 0.1}",9,8.07,,,,,0.0,0.0,2,0.0,0.6522,0.0463,False,detection,False,Free,0.046
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,88.0,90.0,1.0,{'Two-wheeler': 1.0},1,0.5,,,,,0.0,0.0,0,0.0,0.1562,0.083,False,occupancy,False,Free,0.083
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,90.0,92.0,6.9,"{'Auto': 4.8, 'Two-wheeler': 2.1}",10,6.81,,,,,0.0,0.0,1,0.0,0.8413,0.0979,True,occupancy,False,Free,0.098
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,90.0,92.0,1.2,{'Two-wheeler': 1.2},2,0.6,,,,,0.0,0.0,1,0.0,0.1767,0.0741,False,occupancy,False,Free,0.074
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,92.0,94.0,6.7,"{'Auto': 4.8, 'Two-wheeler': 1.9}",12,6.71,,,,,0.0,0.0,6,0.0,0.7501,0.1187,False,detection,False,Free,0.119
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,92.0,94.0,2.1,"{'Two-wheeler': 0.9, 'Auto': 1.2}",5,1.89,,,,,0.0,0.0,3,0.0,0.7916,0.1044,False,occupancy,False,Free,0.104
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,94.0,96.0,6.4,"{'Auto': 4.2, 'Two-wheeler': 2.2}",11,6.14,,,,,0.0,0.0,1,0.0,0.5883,0.1274,False,detection,False,Free,0.127
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,94.0,96.0,1.6,"{'Two-wheeler': 1.2, 'Auto': 0.4}",5,1.08,,,,,0.0,0.0,4,0.0,0.6795,0.1337,False,occupancy,False,Free,0.134
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,96.0,98.0,6.9,"{'Auto': 3.5, 'Two-wheeler': 3.4}",14,5.9,,,,,0.0,0.0,5,0.0,0.5746,0.1135,False,detection,False,Free,0.113
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,96.0,98.0,0.2,{'Two-wheeler': 0.2},2,0.1,,,,,0.0,0.0,1,0.0,0.0818,0.0703,False,occupancy,False,Free,0.07
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,98.0,100.0,7.2,"{'Auto': 3.4, 'Two-wheeler': 3.8}",10,5.98,,,,,0.0,0.0,0,0.0,0.4707,0.0862,False,detection,False,Free,0.086
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,98.0,100.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0305,False,occupancy,False,Free,0.03
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,100.0,102.0,6.6,"{'Auto': 2.9, 'Two-wheeler': 3.7}",10,5.33,,,,,0.0,0.0,3,0.0,0.433,0.1289,False,detection,False,Free,0.129
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,100.0,102.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0523,False,occupancy,False,Free,0.052
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,102.0,104.0,5.0,"{'Auto': 3.6, 'Two-wheeler': 1.4}",8,5.02,,,,,0.0,0.0,0,0.0,0.4207,0.1211,False,detection,False,Free,0.121
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,102.0,104.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0463,False,occupancy,False,Free,0.046
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,104.0,106.0,5.9,"{'Auto': 3.8, 'Two-wheeler': 1.9, 'Car': 0.2}",8,5.71,,,,,0.0,0.0,3,0.0,0.6166,0.1067,True,occupancy,False,Free,0.107
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,104.0,106.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0868,False,occupancy,False,Free,0.087
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,106.0,108.0,6.3,"{'Auto': 3.0, 'Two-wheeler': 2.6, 'Car': 0.7}",9,5.6,,,,,0.0,0.0,3,0.0,0.5528,0.1149,True,occupancy,False,Free,0.115
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,106.0,108.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0277,0.1778,False,occupancy,False,Free,0.178
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,108.0,110.0,4.8,"{'Auto': 3.0, 'Two-wheeler': 1.2, 'Car': 0.6}",8,4.8,,,,,0.0,0.0,2,0.0,0.4771,0.0983,True,occupancy,False,Free,0.098
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,108.0,110.0,0.2,"{'Two-wheeler': 0.1, 'Auto': 0.1}",2,0.17,,,,,0.0,0.0,2,0.0,0.0482,0.1554,False,occupancy,False,Free,0.155
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,110.0,112.0,4.2,"{'Auto': 3.4, 'Two-wheeler': 0.7, 'Car': 0.1}",7,4.53,,,,,0.0,0.0,1,0.0,0.5072,0.0756,True,occupancy,False,Free,0.076
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,110.0,112.0,0.4,"{'Auto': 0.2, 'Two-wheeler': 0.2}",3,0.34,,,,,0.0,0.0,2,0.0,0.0837,0.1029,False,occupancy,False,Free,0.103
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,112.0,114.0,4.7,"{'Auto': 3.5, 'Car': 1.1, 'Two-wheeler': 0.1}",8,5.35,,,,,0.0,0.0,3,0.0,0.7033,0.0705,False,detection,False,Free,0.071
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,112.0,114.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2175,False,occupancy,False,Free,0.217
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,114.0,116.0,5.6,"{'Auto': 3.3, 'Car': 1.3, 'Two-wheeler': 1.0}",8,5.76,,,,,0.0,0.0,1,0.0,0.8127,0.0565,True,occupancy,False,Free,0.056
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,114.0,116.0,1.0,"{'Auto': 0.8, 'Two-wheeler': 0.2}",3,1.06,,,,,0.0,0.0,3,0.0,0.41,0.3287,False,occupancy,False,Moderate,0.329
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,116.0,118.0,5.0,"{'Auto': 3.3, 'Two-wheeler': 1.2, 'Car': 0.4, 'LCV/Tempo': 0.1}",10,5.1,,,,,0.0,0.0,5,0.0,0.5362,0.0839,False,detection,False,Free,0.084
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,116.0,118.0,0.8,"{'Two-wheeler': 0.4, 'Auto': 0.4}",4,0.68,,,,,0.0,0.0,3,0.0,0.0634,0.2805,False,occupancy,False,Moderate,0.281
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,118.0,120.0,6.2,"{'Auto': 5.5, 'Two-wheeler': 0.4, 'Car': 0.3}",10,7.1,,,,,0.0,0.0,3,0.0,0.7873,0.045,False,detection,False,Free,0.045
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,118.0,120.0,0.4,{'Two-wheeler': 0.4},2,0.2,,,,,0.0,0.0,1,0.0,0.0347,0.3394,False,occupancy,False,Moderate,0.339
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,120.0,122.0,4.1,"{'Auto': 3.5, 'Car': 0.3, 'Two-wheeler': 0.3}",7,4.65,,,,,0.0,0.0,1,0.0,0.4389,0.0312,False,detection,False,Free,0.031
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,120.0,122.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0191,0.3053,False,occupancy,False,Moderate,0.305
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,122.0,124.0,4.3,"{'Auto': 4.0, 'Two-wheeler': 0.1, 'Car': 0.2}",6,5.05,,,,,0.0,0.0,1,0.0,0.3938,0.0026,False,detection,False,Free,0.003
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,122.0,124.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0062,0.2493,False,occupancy,False,Free,0.249
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,124.0,126.0,4.4,"{'Auto': 3.9, 'Two-wheeler': 0.3, 'Car': 0.2}",8,5.03,,,,,0.0,0.0,3,0.0,0.4765,0.0087,False,detection,False,Free,0.009
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,124.0,126.0,0.5,{'Auto': 0.5},2,0.6,,,,,0.0,0.0,1,0.0,0.2471,0.2508,False,occupancy,False,Moderate,0.251
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,126.0,128.0,6.6,"{'Auto': 3.3, 'Car': 1.3, 'Two-wheeler': 2.0}",12,6.26,,,,,0.0,0.0,5,0.0,0.6868,0.0099,True,occupancy,False,Free,0.01
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,126.0,128.0,0.3,{'Two-wheeler': 0.3},1,0.15,,,,,0.0,0.0,1,0.0,0.0445,0.1636,False,occupancy,False,Free,0.164
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,128.0,130.0,8.6,"{'Auto': 4.7, 'Two-wheeler': 3.0, 'Car': 0.9}",12,8.04,,,,,0.0,0.0,2,0.0,0.9213,0.045,True,occupancy,False,Free,0.045
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,128.0,130.0,1.6,{'Two-wheeler': 1.6},3,0.8,,,,,0.0,0.0,2,0.0,0.2102,0.1681,False,occupancy,False,Free,0.168
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,130.0,132.0,8.0,"{'Auto': 2.7, 'Two-wheeler': 3.7, 'Car': 1.6}",14,6.69,,,,,0.0,0.0,4,0.0,0.9983,0.1154,True,occupancy,False,Free,0.115
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,130.0,132.0,2.0,{'Two-wheeler': 2.0},4,1.0,,,,,0.0,0.0,2,0.0,0.2791,0.2038,False,occupancy,False,Free,0.204
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,132.0,134.0,6.7,"{'Two-wheeler': 2.3, 'Auto': 2.6, 'Car': 1.8}",11,6.07,,,,,0.0,0.0,2,0.0,0.8929,0.0862,True,occupancy,False,Free,0.086
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,132.0,134.0,0.7,{'Two-wheeler': 0.7},2,0.35,,,,,0.0,0.0,0,0.0,0.1084,0.1712,False,occupancy,False,Free,0.171
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,134.0,136.0,4.9,"{'Two-wheeler': 1.0, 'Auto': 3.2, 'Car': 0.7}",11,5.04,,,,,0.0,0.0,4,0.0,0.4093,0.0334,False,detection,False,Free,0.033
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,134.0,136.0,0.8,"{'Car': 0.5, 'Two-wheeler': 0.3}",3,0.65,,,,,0.0,0.0,2,0.0,0.3301,0.1939,False,occupancy,False,Free,0.194
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,136.0,138.0,5.7,"{'Auto': 3.8, 'Two-wheeler': 0.8, 'Car': 1.1}",8,6.06,,,,,0.0,0.0,4,0.0,0.2772,0.0012,False,detection,False,Free,0.001
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,136.0,138.0,1.3,"{'Two-wheeler': 0.5, 'Car': 0.8}",4,1.05,,,,,0.0,0.0,1,0.0,0.2752,0.156,False,occupancy,False,Free,0.156
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,138.0,140.0,7.3,"{'Auto': 5.6, 'Car': 1.7}",9,8.42,,,,,0.0,0.0,2,0.0,0.6426,0.004,True,occupancy,False,Free,0.004
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,138.0,140.0,0.6,"{'Two-wheeler': 0.4, 'Auto': 0.2}",3,0.44,,,,,0.0,0.0,2,0.0,0.0797,0.082,False,occupancy,False,Free,0.082
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,140.0,142.0,8.0,"{'Auto': 4.0, 'Car': 3.1, 'Two-wheeler': 0.9}",12,8.35,,,,,0.0,0.0,4,0.0,1.2134,0.0601,True,occupancy,False,Free,0.06
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,140.0,142.0,2.1,"{'Auto': 1.0, 'Two-wheeler': 1.1}",5,1.75,,,,,0.0,0.0,3,0.0,0.5289,0.1785,False,occupancy,False,Free,0.178
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,142.0,144.0,7.5,"{'Auto': 4.2, 'Car': 3.3}",10,8.34,,,,,0.0,0.0,3,0.0,1.3221,0.1043,True,occupancy,False,Free,0.104
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,142.0,144.0,1.1,{'Two-wheeler': 1.1},2,0.55,,,,,0.0,0.0,1,0.0,0.2038,0.2161,False,occupancy,False,Free,0.216
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,144.0,146.0,6.2,"{'Auto': 3.8, 'Car': 2.1, 'Two-wheeler': 0.3}",9,6.81,,,,,0.0,0.0,2,0.0,1.2919,0.0871,True,occupancy,False,Free,0.087
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,144.0,146.0,1.5,{'Two-wheeler': 1.5},2,0.75,,,,,0.0,0.0,1,0.0,0.1571,0.1817,False,occupancy,False,Free,0.182
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,146.0,148.0,5.4,"{'Auto': 2.9, 'Two-wheeler': 0.9, 'Car': 1.6}",9,5.53,,,,,0.0,0.0,2,0.0,0.9234,0.0796,True,occupancy,False,Free,0.08
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,146.0,148.0,0.4,{'Two-wheeler': 0.4},1,0.2,,,,,0.0,0.0,0,0.0,0.0205,0.1357,False,occupancy,False,Free,0.136
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,148.0,150.0,5.4,"{'Auto': 3.6, 'Two-wheeler': 1.8}",7,5.22,,,,,0.0,0.0,2,0.0,0.5388,0.0315,False,detection,False,Free,0.031
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,148.0,150.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0858,False,occupancy,False,Free,0.086
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,150.0,152.0,4.7,"{'Auto': 3.7, 'Two-wheeler': 1.0}",6,4.94,,,,,0.0,0.0,1,0.0,0.6463,0.0011,False,detection,False,Free,0.001
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,150.0,152.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0683,False,occupancy,False,Free,0.068
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,152.0,154.0,6.6,"{'Auto': 4.5, 'Two-wheeler': 1.9, 'Car': 0.2}",11,6.55,,,,,0.0,0.0,6,0.0,0.8068,0.0158,True,occupancy,False,Free,0.016
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,152.0,154.0,1.4,"{'Two-wheeler': 1.0, 'Auto': 0.2, 'Bus/Truck': 0.2}",3,1.18,,,,,0.0,0.0,3,0.0,0.1372,0.1037,False,occupancy,False,Free,0.104
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,154.0,156.0,5.2,"{'Auto': 4.0, 'Two-wheeler': 0.5, 'Car': 0.3, 'Bus/Truck': 0.4}",11,6.23,,,,,0.0,0.0,4,0.0,0.5271,0.0737,False,detection,False,Free,0.074
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,154.0,156.0,0.5,{'Bus/Truck': 0.5},1,1.1,,,,,0.0,0.0,0,0.0,0.2089,0.2023,False,occupancy,False,Free,0.202
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,156.0,158.0,3.6,"{'Auto': 2.5, 'Bus/Truck': 0.8, 'Car': 0.3}",7,5.06,,,,,0.0,0.0,2,0.0,0.4243,0.1142,False,detection,False,Free,0.114
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,156.0,158.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0209,0.1522,False,occupancy,False,Free,0.152
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,158.0,160.0,3.3,"{'Bus/Truck': 1.0, 'Car': 0.3, 'Auto': 1.2, 'LCV/Tempo': 0.8}",6,5.06,,,,,0.0,0.0,2,0.0,0.3216,0.1267,False,detection,False,Free,0.127
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,158.0,160.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0678,False,occupancy,False,Free,0.068
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,160.0,162.0,3.8,"{'Bus/Truck': 1.0, 'LCV/Tempo': 0.2, 'Auto': 2.0, 'Car': 0.6}",6,5.48,,,,,0.0,0.0,1,0.0,0.4907,0.129,False,detection,False,Free,0.129
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,160.0,162.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0458,False,occupancy,False,Free,0.046
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,162.0,164.0,3.0,"{'Bus/Truck': 1.0, 'Auto': 1.3, 'LCV/Tempo': 0.3, 'Car': 0.4}",5,4.58,,,,,0.0,0.0,1,0.0,0.3317,0.125,False,detection,False,Free,0.125
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,162.0,164.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0396,False,occupancy,False,Free,0.04
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,164.0,166.0,2.6,"{'Bus/Truck': 1.0, 'Auto': 1.2, 'Car': 0.4}",4,4.04,,,,,0.0,0.0,0,0.0,0.3169,0.1266,False,detection,False,Free,0.127
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,164.0,166.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0344,False,occupancy,False,Free,0.034
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,166.0,168.0,1.3,"{'Bus/Truck': 1.0, 'Auto': 0.1, 'Two-wheeler': 0.1, 'LCV/Tempo': 0.1}",4,2.51,,,,,0.0,0.0,1,0.0,0.2543,0.0928,False,detection,False,Free,0.093
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,166.0,168.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0336,False,occupancy,False,Free,0.034
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,168.0,170.0,1.1,{'Bus/Truck': 1.1},2,2.42,,,,,0.0,0.0,1,0.0,0.2626,0.0347,False,detection,False,Free,0.035
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,168.0,170.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0728,False,occupancy,False,Free,0.073
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,170.0,172.0,1.1,{'Bus/Truck': 1.1},2,2.42,,,,,0.0,0.0,1,0.0,0.2634,0.0237,False,detection,False,Free,0.024
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,170.0,172.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1127,False,occupancy,False,Free,0.113
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,172.0,174.0,1.1,"{'Bus/Truck': 1.0, 'Auto': 0.1}",2,2.32,,,,,0.0,0.0,1,0.0,0.241,0.0249,False,detection,False,Free,0.025
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,172.0,174.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1495,False,occupancy,False,Free,0.15
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,174.0,176.0,1.5,"{'Bus/Truck': 1.0, 'Auto': 0.5}",3,2.8,,,,,0.0,0.0,1,0.0,0.2471,0.0441,False,detection,False,Free,0.044
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,174.0,176.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0251,0.2187,False,occupancy,False,Free,0.219
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,176.0,178.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.2401,0.0683,False,detection,False,Free,0.068
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,176.0,178.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2273,False,occupancy,False,Free,0.227
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,178.0,180.0,1.0,{'Bus/Truck': 1.0},1,2.2,,,,,0.0,0.0,0,0.0,0.2401,0.0466,False,detection,False,Free,0.047
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,178.0,180.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2225,False,occupancy,False,Free,0.223
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,180.0,182.0,1.7,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.5, 'Auto': 0.2}",3,2.69,,,,,0.0,0.0,2,0.0,0.2459,0.0329,False,detection,False,Free,0.033
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,180.0,182.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.2627,False,occupancy,False,Moderate,0.263
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,182.0,184.0,2.1,"{'Bus/Truck': 1.0, 'Two-wheeler': 0.2, 'Car': 0.5, 'Auto': 0.4}",4,3.28,,,,,0.0,0.0,2,0.0,0.2905,0.0463,False,detection,False,Free,0.046
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,182.0,184.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,1,0.0,0.0254,0.2965,False,occupancy,False,Moderate,0.296
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,184.0,186.0,2.3,"{'Bus/Truck': 1.0, 'Auto': 1.0, 'Car': 0.3}",3,3.7,,,,,0.0,0.0,0,0.0,0.2793,0.0804,False,detection,False,Free,0.08
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,184.0,186.0,1.0,"{'Two-wheeler': 0.9, 'Bus/Truck': 0.1}",3,0.67,,,,,0.0,0.0,2,0.0,0.2065,0.2718,False,occupancy,False,Moderate,0.272
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,186.0,188.0,4.6,"{'Bus/Truck': 1.7, 'Auto': 2.0, 'Two-wheeler': 0.8, 'Car': 0.1}",9,6.64,,,,,0.0,0.0,6,0.0,0.5259,0.1313,False,detection,False,Free,0.131
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,186.0,188.0,1.0,"{'Bus/Truck': 0.1, 'Two-wheeler': 0.9}",3,0.67,,,,,0.0,0.0,1,0.0,0.2573,0.2119,False,occupancy,False,Free,0.212
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,188.0,190.0,5.2,"{'Auto': 2.7, 'Bus/Truck': 0.5, 'Two-wheeler': 1.4, 'Car': 0.6}",10,5.64,,,,,0.0,0.0,6,0.0,0.6164,0.1459,False,detection,False,Free,0.146
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,188.0,190.0,0.6,{'Two-wheeler': 0.6},3,0.3,,,,,0.0,0.0,1,0.0,0.1131,0.2072,False,occupancy,False,Free,0.207
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,190.0,192.0,3.9,"{'Two-wheeler': 1.1, 'Auto': 2.8}",5,3.91,,,,,0.0,0.0,0,0.0,0.3766,0.1371,False,detection,False,Free,0.137
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,190.0,192.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0119,0.1815,False,occupancy,False,Free,0.181
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,192.0,194.0,2.6,"{'Two-wheeler': 1.3, 'Auto': 1.3}",7,2.21,,,,,0.0,0.0,3,0.0,0.1819,0.1286,False,detection,False,Free,0.129
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,192.0,194.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1382,False,occupancy,False,Free,0.138
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,194.0,196.0,0.9,"{'Two-wheeler': 0.3, 'Auto': 0.5, 'LCV/Tempo': 0.1}",3,0.89,,,,,0.0,0.0,0,0.0,0.0744,0.0929,False,detection,False,Free,0.093
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,194.0,196.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0121,0.1455,False,occupancy,False,Free,0.145
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,196.0,198.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.037,False,detection,False,Free,0.037
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,196.0,198.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1258,False,occupancy,False,Free,0.126
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,198.0,200.0,0.1,{'LCV/Tempo': 0.1},1,0.14,,,,,0.0,0.0,1,0.0,0.024,0.0028,False,detection,False,Free,0.003
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,198.0,200.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1184,False,occupancy,False,Free,0.118
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,200.0,202.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0042,False,detection,False,Free,0.004
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,200.0,202.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0096,0.1314,False,occupancy,False,Free,0.131
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,202.0,204.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0274,False,detection,False,Free,0.027
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,202.0,204.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,0,0.0,0.0102,0.1346,False,occupancy,False,Free,0.135
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,204.0,206.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0326,False,detection,False,Free,0.033
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,204.0,206.0,1.5,"{'Two-wheeler': 0.8, 'Auto': 0.7}",4,1.24,,,,,0.0,0.0,3,0.0,0.1285,0.257,False,occupancy,False,Moderate,0.257
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,206.0,208.0,0.2,"{'Auto': 0.1, 'Two-wheeler': 0.1}",2,0.17,,,,,0.0,0.0,2,0.0,0.0238,0.0671,False,detection,False,Free,0.067
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,206.0,208.0,4.3,"{'Auto': 2.4, 'Two-wheeler': 1.9}",7,3.83,,,,,0.0,0.0,3,0.0,0.8089,0.2659,False,occupancy,False,Moderate,0.266
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,208.0,210.0,4.2,"{'Auto': 2.7, 'Two-wheeler': 1.0, 'Bus/Truck': 0.5}",6,4.84,,,,,0.0,0.0,4,0.0,0.6952,0.1252,False,detection,False,Free,0.125
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,208.0,210.0,2.9,"{'Auto': 1.7, 'Two-wheeler': 1.2}",8,2.64,,,,,0.0,0.0,3,0.0,0.4326,0.2325,False,occupancy,False,Free,0.232
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,210.0,212.0,4.6,"{'Auto': 3.0, 'Two-wheeler': 1.6}",6,4.4,,,,,0.0,0.0,3,0.0,0.5889,0.1269,False,detection,False,Free,0.127
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,210.0,212.0,2.5,"{'Auto': 2.0, 'Two-wheeler': 0.5}",5,2.65,,,,,0.0,0.0,1,0.0,0.3338,0.2513,False,occupancy,False,Moderate,0.251
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,212.0,214.0,4.3,"{'Two-wheeler': 1.9, 'Auto': 2.4}",7,3.83,,,,,0.0,0.0,2,0.0,0.4297,0.0803,False,detection,False,Free,0.08
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,212.0,214.0,3.2,"{'Auto': 2.1, 'Two-wheeler': 1.1}",7,3.07,,,,,0.0,0.0,4,0.0,0.4764,0.2684,False,occupancy,False,Moderate,0.268
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,214.0,216.0,4.9,"{'Auto': 3.4, 'Two-wheeler': 1.5}",7,4.83,,,,,0.0,0.0,3,0.0,0.4746,0.0708,False,detection,False,Free,0.071
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,214.0,216.0,1.1,"{'Two-wheeler': 0.3, 'Auto': 0.8}",5,1.11,,,,,0.0,0.0,2,0.0,0.2635,0.223,False,occupancy,False,Free,0.223
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,216.0,218.0,3.0,"{'Two-wheeler': 1.0, 'Auto': 2.0}",6,2.9,,,,,0.0,0.0,2,0.0,0.2565,0.0157,False,detection,False,Free,0.016
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,216.0,218.0,1.0,"{'Auto': 0.7, 'Two-wheeler': 0.3}",3,0.99,,,,,0.0,0.0,0,0.0,0.1965,0.1766,False,occupancy,False,Free,0.177
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,218.0,220.0,3.1,"{'Auto': 2.9, 'Two-wheeler': 0.2}",8,3.58,,,,,0.0,0.0,5,0.0,0.3469,0.0063,False,detection,False,Free,0.006
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,218.0,220.0,1.3,"{'Auto': 1.1, 'Two-wheeler': 0.2}",3,1.42,,,,,0.0,0.0,0,0.0,0.077,0.1953,False,occupancy,False,Free,0.195
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,220.0,222.0,5.4,"{'Auto': 3.7, 'Two-wheeler': 1.7}",9,5.29,,,,,0.0,0.0,2,0.0,0.38,0.0272,False,detection,False,Free,0.027
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,220.0,222.0,2.1,"{'Auto': 1.2, 'Two-wheeler': 0.9}",4,1.89,,,,,0.0,0.0,2,0.0,0.2442,0.1614,False,occupancy,False,Free,0.161
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,222.0,224.0,5.2,"{'Auto': 2.7, 'Two-wheeler': 2.3, 'Car': 0.2}",8,4.59,,,,,0.0,0.0,3,0.0,0.523,0.0806,False,detection,False,Free,0.081
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,222.0,224.0,2.0,"{'Two-wheeler': 0.8, 'Auto': 1.2}",5,1.84,,,,,0.0,0.0,1,0.0,0.3293,0.1884,False,occupancy,False,Free,0.188
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,224.0,226.0,3.8,"{'Two-wheeler': 2.1, 'Auto': 1.7}",9,3.09,,,,,0.0,0.0,3,0.0,0.3685,0.0645,False,detection,False,Free,0.065
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,224.0,226.0,2.9,"{'Auto': 2.1, 'Two-wheeler': 0.8}",7,2.92,,,,,0.0,0.0,4,0.0,0.7283,0.2087,False,occupancy,False,Free,0.209
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,226.0,228.0,5.2,"{'Two-wheeler': 2.1, 'Bus/Truck': 0.1, 'Auto': 3.0}",8,4.87,,,,,0.0,0.0,5,0.0,0.2314,0.0027,False,detection,False,Free,0.003
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,226.0,228.0,2.8,"{'Auto': 2.5, 'Two-wheeler': 0.3}",6,3.15,,,,,0.0,0.0,2,0.0,0.6528,0.1505,False,occupancy,False,Free,0.151
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,228.0,230.0,5.2,"{'Auto': 3.6, 'Two-wheeler': 1.5, 'Bus/Truck': 0.1}",10,5.29,,,,,0.0,0.0,4,0.0,0.3806,0.0001,False,detection,False,Free,0.0
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,228.0,230.0,1.8,{'Auto': 1.8},3,2.16,,,,,0.0,0.0,1,0.0,0.2097,0.1521,False,occupancy,False,Free,0.152
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,230.0,232.0,7.5,"{'Auto': 4.0, 'Two-wheeler': 3.0, 'Bus/Truck': 0.5}",11,7.4,,,,,0.0,0.0,4,0.0,0.756,0.0275,True,occupancy,False,Free,0.028
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,230.0,232.0,1.1,{'Auto': 1.1},2,1.32,,,,,0.0,0.0,0,0.0,0.1723,0.1885,False,occupancy,False,Free,0.188
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,232.0,234.0,7.9,"{'Auto': 2.9, 'Two-wheeler': 4.6, 'Bus/Truck': 0.4}",11,6.66,,,,,0.0,0.0,2,0.0,0.566,0.0658,False,detection,False,Free,0.066
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,232.0,234.0,1.6,{'Auto': 1.6},2,1.92,,,,,0.0,0.0,0,0.0,0.1887,0.2211,False,occupancy,False,Free,0.221
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,234.0,236.0,4.9,"{'Two-wheeler': 2.7, 'Auto': 2.2}",9,3.99,,,,,0.0,0.0,2,0.0,0.4276,0.0416,False,detection,False,Free,0.042
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,234.0,236.0,1.6,{'Auto': 1.6},2,1.92,,,,,0.0,0.0,0,0.0,0.2049,0.1883,False,occupancy,False,Free,0.188
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,236.0,238.0,2.5,"{'Two-wheeler': 0.5, 'Auto': 1.9, 'Bus/Truck': 0.1}",3,2.75,,,,,0.0,0.0,0,0.0,0.3381,0.0064,False,detection,False,Free,0.006
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,236.0,238.0,1.7,{'Auto': 1.7},3,2.04,,,,,0.0,0.0,1,0.0,0.2396,0.1672,False,occupancy,False,Free,0.167
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,238.0,240.0,3.4,{'Auto': 3.4},7,4.08,,,,,0.0,0.0,5,0.0,0.3341,0.0008,False,detection,False,Free,0.001
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,238.0,240.0,1.8,"{'Auto': 1.6, 'Two-wheeler': 0.2}",4,2.02,,,,,0.0,0.0,1,0.0,0.478,0.1725,False,occupancy,False,Free,0.173
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,240.0,242.0,3.6,"{'Auto': 3.4, 'Bus/Truck': 0.2}",4,4.52,,,,,0.0,0.0,0,0.0,0.3974,0.0001,False,detection,False,Free,0.0
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,240.0,242.0,1.6,{'Auto': 1.6},2,1.92,,,,,0.0,0.0,2,0.0,0.1157,0.0411,False,occupancy,False,Free,0.041
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,242.0,244.0,4.3,"{'Auto': 2.8, 'Bus/Truck': 1.0, 'LCV/Tempo': 0.5}",6,6.26,,,,,0.0,0.0,3,0.0,0.548,0.0262,False,detection,False,Free,0.026
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,242.0,244.0,1.5,{'Auto': 1.5},3,1.8,,,,,0.0,0.0,2,0.0,0.0855,0.0125,False,occupancy,False,Free,0.013
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,244.0,246.0,4.8,"{'Auto': 4.1, 'Bus/Truck': 0.7}",6,6.46,,,,,0.0,0.0,1,0.0,0.7147,0.1413,True,occupancy,False,Free,0.141
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,244.0,246.0,1.3,{'Auto': 1.3},2,1.56,,,,,0.0,0.0,0,0.0,0.071,0.0472,False,occupancy,False,Free,0.047
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,246.0,248.0,3.4,{'Auto': 3.4},5,4.08,,,,,0.0,0.0,0,0.0,0.5273,0.2155,True,occupancy,False,Free,0.215
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,246.0,248.0,0.7,{'Auto': 0.7},1,0.84,,,,,0.0,0.0,0,0.0,0.0387,0.0587,False,occupancy,False,Free,0.059
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,248.0,250.0,5.7,"{'Auto': 4.3, 'Bus/Truck': 0.8, 'Two-wheeler': 0.6}",11,7.22,,,,,0.0,0.0,7,0.0,0.7797,0.1841,True,occupancy,False,Free,0.184
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,248.0,250.0,0.1,{'Auto': 0.1},1,0.12,,,,,0.0,0.0,0,0.0,0.0059,0.0512,False,occupancy,False,Free,0.051
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,250.0,252.0,5.7,"{'Auto': 4.5, 'Bus/Truck': 0.8, 'Two-wheeler': 0.4}",9,7.36,,,,,0.0,0.0,3,0.0,0.6409,0.109,False,detection,False,Free,0.109
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,250.0,252.0,1.3,"{'Auto': 0.9, 'Two-wheeler': 0.3, 'Car': 0.1}",5,1.33,,,,,0.0,0.0,4,0.0,0.2473,0.059,False,occupancy,False,Free,0.059
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,252.0,254.0,4.7,"{'Auto': 3.9, 'Bus/Truck': 0.8}",6,6.44,,,,,0.0,0.0,3,0.0,0.5216,0.0434,False,detection,False,Free,0.043
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,252.0,254.0,1.2,"{'Auto': 0.5, 'Two-wheeler': 0.1, 'Car': 0.6}",4,1.25,,,,,0.0,0.0,2,0.0,0.2598,0.0681,False,occupancy,False,Free,0.068
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,254.0,256.0,6.2,"{'Auto': 4.8, 'Bus/Truck': 0.3, 'Car': 1.0, 'Two-wheeler': 0.1}",13,7.47,,,,,0.0,0.0,8,0.0,0.6515,0.0156,False,detection,False,Free,0.016
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,254.0,256.0,1.0,"{'Car': 0.7, 'Two-wheeler': 0.3}",4,0.85,,,,,0.0,0.0,2,0.0,0.1515,0.0176,False,occupancy,False,Free,0.018
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,256.0,258.0,7.9,"{'Auto': 6.1, 'Car': 1.7, 'Two-wheeler': 0.1}",13,9.07,,,,,0.0,0.0,4,0.0,0.9091,0.0006,True,occupancy,False,Free,0.001
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,256.0,258.0,0.9,"{'Two-wheeler': 0.4, 'Car': 0.5}",2,0.7,,,,,0.0,0.0,1,0.0,0.0632,0.0339,False,occupancy,False,Free,0.034
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,258.0,260.0,6.2,"{'Auto': 3.2, 'Car': 2.7, 'Bus/Truck': 0.3}",12,7.2,,,,,0.0,0.0,4,0.0,0.7613,0.0077,False,detection,False,Free,0.008
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,258.0,260.0,0.6,"{'Car': 0.2, 'Auto': 0.4}",2,0.68,,,,,0.0,0.0,1,0.0,0.194,0.0884,False,occupancy,False,Free,0.088
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,260.0,262.0,7.7,"{'Auto': 4.9, 'Car': 2.0, 'Two-wheeler': 0.8}",12,8.28,,,,,0.0,0.0,6,0.0,1.0434,0.0821,True,occupancy,False,Free,0.082
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,260.0,262.0,1.2,"{'Auto': 0.7, 'Two-wheeler': 0.5}",6,1.09,,,,,0.0,0.0,4,0.0,0.4278,0.1002,False,occupancy,False,Free,0.1
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,262.0,264.0,6.6,"{'Auto': 4.5, 'Car': 1.1, 'Two-wheeler': 1.0}",11,7.0,,,,,0.0,0.0,2,0.0,0.7411,0.0473,False,detection,False,Free,0.047
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,262.0,264.0,0.5,{'Two-wheeler': 0.5},2,0.25,,,,,0.0,0.0,0,0.0,0.092,0.0696,False,occupancy,False,Free,0.07
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,264.0,266.0,5.6,"{'Auto': 4.6, 'Two-wheeler': 1.0}",7,6.02,,,,,0.0,0.0,1,0.0,0.66,0.0072,False,detection,False,Free,0.007
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,264.0,266.0,0.1,{'Two-wheeler': 0.1},1,0.05,,,,,0.0,0.0,1,0.0,0.0024,0.0184,False,occupancy,False,Free,0.018
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,266.0,268.0,6.3,"{'Auto': 5.4, 'Two-wheeler': 0.8, 'Bus/Truck': 0.1}",12,7.1,,,,,0.0,0.0,5,0.0,0.4163,0.0004,False,detection,False,Free,0.0
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,266.0,268.0,0.5,{'Bus/Truck': 0.5},1,1.1,,,,,0.0,0.0,1,0.0,0.0672,0.0192,False,occupancy,False,Free,0.019
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,268.0,270.0,6.6,"{'Auto': 5.7, 'Bus/Truck': 0.9}",12,8.82,,,,,0.0,0.0,4,0.0,0.5656,0.0,True,occupancy,False,Free,0.0
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,268.0,270.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0129,False,occupancy,False,Free,0.013
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,270.0,272.0,4.1,"{'Auto': 2.8, 'Bus/Truck': 1.3}",8,6.22,,,,,0.0,0.0,1,0.0,0.6105,0.0062,False,detection,False,Free,0.006
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,270.0,272.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.012,False,occupancy,False,Free,0.012
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,272.0,274.0,1.9,"{'Auto': 0.5, 'Bus/Truck': 0.7, 'Car': 0.7}",3,2.84,,,,,0.0,0.0,1,0.0,0.2507,0.0808,False,detection,False,Free,0.081
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,272.0,274.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0404,False,occupancy,False,Free,0.04
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,274.0,276.0,2.4,"{'Car': 1.4, 'Bus/Truck': 0.6, 'Two-wheeler': 0.4}",5,2.92,,,,,0.0,0.0,3,0.0,0.3099,0.0728,False,detection,False,Free,0.073
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,274.0,276.0,0.6,{'Two-wheeler': 0.6},2,0.3,,,,,0.0,0.0,2,0.0,0.0865,0.0802,False,occupancy,False,Free,0.08
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,276.0,278.0,3.6,"{'Car': 0.1, 'Bus/Truck': 2.8, 'Auto': 0.7}",7,7.1,,,,,0.0,0.0,4,0.0,0.7029,0.0989,False,detection,False,Free,0.099
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,276.0,278.0,0.2,{'Two-wheeler': 0.2},1,0.1,,,,,0.0,0.0,0,0.0,0.0551,0.119,False,occupancy,False,Free,0.119
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,278.0,280.0,1.8,"{'Bus/Truck': 1.2, 'Auto': 0.5, 'LCV/Tempo': 0.1}",5,3.38,,,,,0.0,0.0,4,0.0,0.3055,0.0968,False,detection,False,Free,0.097
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,278.0,280.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0806,False,occupancy,False,Free,0.081
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,280.0,282.0,3.1,"{'Bus/Truck': 1.3, 'Auto': 1.6, 'LCV/Tempo': 0.2}",5,5.06,,,,,0.0,0.0,1,0.0,0.318,0.0957,False,detection,False,Free,0.096
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,280.0,282.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1204,False,occupancy,False,Free,0.12
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,282.0,284.0,2.9,"{'Bus/Truck': 1.0, 'Auto': 1.8, 'LCV/Tempo': 0.1}",5,4.5,,,,,0.0,0.0,2,0.0,0.2841,0.0889,False,detection,False,Free,0.089
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,282.0,284.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1257,False,occupancy,False,Free,0.126
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,284.0,286.0,3.7,"{'Bus/Truck': 1.0, 'Auto': 2.5, 'Two-wheeler': 0.2}",6,5.3,,,,,0.0,0.0,2,0.0,0.3236,0.0574,False,detection,False,Free,0.057
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,284.0,286.0,0.1,{'Bus/Truck': 0.1},1,0.22,,,,,0.0,0.0,1,0.0,0.05,0.1528,False,occupancy,False,Free,0.153
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,286.0,288.0,6.1,"{'Bus/Truck': 1.8, 'Auto': 3.2, 'Two-wheeler': 1.1}",9,8.35,,,,,0.0,0.0,3,0.0,0.532,0.087,False,detection,False,Free,0.087
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,286.0,288.0,0.8,{'Bus/Truck': 0.8},2,1.76,,,,,0.0,0.0,1,0.0,0.4419,0.1608,False,occupancy,False,Free,0.161
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,288.0,290.0,7.6,"{'Auto': 5.0, 'Two-wheeler': 1.0, 'Bus/Truck': 1.2, 'Car': 0.4}",11,9.54,,,,,0.0,0.0,3,0.0,0.825,0.1109,False,detection,False,Free,0.111
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,288.0,290.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.1327,False,occupancy,False,Free,0.133
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,290.0,292.0,7.0,"{'Auto': 5.5, 'Two-wheeler': 0.6, 'Bus/Truck': 0.9}",14,8.88,,,,,0.0,0.0,5,0.0,0.9889,0.1484,True,occupancy,False,Free,0.148
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,290.0,292.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.108,False,occupancy,False,Free,0.108
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,292.0,294.0,4.4,"{'Auto': 3.3, 'Bus/Truck': 1.1}",10,6.38,,,,,0.0,0.0,2,0.0,0.5566,0.1096,False,detection,False,Free,0.11
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,292.0,294.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0866,False,occupancy,False,Free,0.087
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,294.0,296.0,1.3,{'Bus/Truck': 1.3},3,2.86,,,,,0.0,0.0,0,0.0,0.3115,0.0762,False,detection,False,Free,0.076
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,294.0,296.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.104,False,occupancy,False,Free,0.104
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,296.0,298.0,1.1,"{'Bus/Truck': 1.0, 'Auto': 0.1}",3,2.32,,,,,0.0,0.0,1,0.0,0.2415,0.0471,False,detection,False,Free,0.047
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,296.0,298.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0923,False,occupancy,False,Free,0.092
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,298.0,300.0,1.1,"{'Bus/Truck': 0.9, 'Auto': 0.2}",2,2.22,,,,,0.0,0.0,0,0.0,0.22,0.042,False,detection,False,Free,0.042
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,298.0,300.0,0.0,{},0,0.0,,,,,0.0,0.0,0,0.0,0.0,0.0761,False,occupancy,False,Free,0.076
+rly_station,forecourt_carriageway,Forecourt carriageway,carriageway,300.0,301.0,1.83,"{'Bus/Truck': 1.67, 'Auto': 0.17}",3,3.87,,,,,0.0,0.0,2,0.0,0.3757,0.0419,False,detection,False,Free,0.042
+rly_station,pedestrian_flow,Pedestrian flow,pedestrian,300.0,301.0,0.17,{'Two-wheeler': 0.17},1,0.08,,,,,0.0,0.0,1,0.0,0.0266,0.0737,False,occupancy,False,Free,0.074

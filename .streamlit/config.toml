@@ -1,0 +1,120 @@
+# Surat Traffic Intelligence — app theme.
+#
+# Both modes are defined outright rather than letting Streamlit derive dark
+# from light. The chart palette in src/theme.py was validated for
+# colour-vision separation against specific surfaces, so the surfaces have to
+# be the ones it was validated against — in both modes.
+#
+# The semantic colours (green/yellow/orange/red) are pinned to the same
+# reserved status palette the charts use, so an st.error and a "Jam" band are
+# the same red, and their text colours are set explicitly: Streamlit's defaults
+# put low-contrast ink on tinted alert boxes, which is the single most common
+# way text goes hard to read in a themed Streamlit app.
+
+[theme]
+base = "light"
+font = "sans-serif"
+headingFont = "sans-serif"
+codeFont = "monospace"
+baseFontSize = 15
+baseRadius = "medium"
+buttonRadius = "medium"
+showWidgetBorder = true
+showSidebarBorder = true
+linkUnderline = false
+
+# Streamlit's own charts, kept in step with src/theme.py.
+chartCategoricalColors = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300"]
+chartSequentialColors = ["#cde2fb", "#b7d3f6", "#9ec5f4", "#86b6ef", "#6da7ec", "#5598e7", "#3987e5", "#2a78d6", "#256abf", "#1c5cab"]
+chartDivergingColors = ["#0d366b", "#1c5cab", "#3987e5", "#86b6ef", "#cde2fb", "#fbe6e6", "#f3b0b0", "#e34948", "#c02b2b", "#8f1f1f"]
+
+# --------------------------------------------------------------------------
+# Light
+# --------------------------------------------------------------------------
+[theme.light]
+backgroundColor = "#f9f9f7"           # page plane
+secondaryBackgroundColor = "#f0efec"
+textColor = "#0b0b0b"
+primaryColor = "#2a78d6"              # categorical slot 1
+linkColor = "#1c5cab"
+borderColor = "#e1e0d9"
+dataframeBorderColor = "#e1e0d9"
+dataframeHeaderBackgroundColor = "#f0efec"
+codeBackgroundColor = "#f0efec"
+codeTextColor = "#1c5cab"
+
+greenColor = "#0ca30c"
+greenBackgroundColor = "#e4f5e4"
+greenTextColor = "#0a5c0a"
+yellowColor = "#fab219"
+yellowBackgroundColor = "#fdf3dd"
+yellowTextColor = "#6b4c00"
+orangeColor = "#ec835a"
+orangeBackgroundColor = "#fdece4"
+orangeTextColor = "#8a3a17"
+redColor = "#d03b3b"
+redBackgroundColor = "#fbe6e6"
+redTextColor = "#8f1f1f"
+blueColor = "#2a78d6"
+blueBackgroundColor = "#e7f0fc"
+blueTextColor = "#164a86"
+grayColor = "#898781"
+grayBackgroundColor = "#f0efec"
+grayTextColor = "#52514e"
+
+[theme.light.sidebar]
+backgroundColor = "#f2f1ed"
+secondaryBackgroundColor = "#e8e7e2"
+textColor = "#0b0b0b"
+borderColor = "#e1e0d9"
+primaryColor = "#1c5cab"
+linkColor = "#1c5cab"
+
+# --------------------------------------------------------------------------
+# Dark — the same hues re-stepped for a dark surface, not an inversion
+# --------------------------------------------------------------------------
+[theme.dark]
+backgroundColor = "#0d0d0d"
+secondaryBackgroundColor = "#1a1a19"
+textColor = "#ffffff"
+primaryColor = "#3987e5"
+linkColor = "#86b6ef"
+borderColor = "#2c2c2a"
+dataframeBorderColor = "#2c2c2a"
+dataframeHeaderBackgroundColor = "#212120"
+codeBackgroundColor = "#1a1a19"
+codeTextColor = "#9ec5f4"
+
+greenColor = "#0ca30c"
+greenBackgroundColor = "#0f2a12"
+greenTextColor = "#6fd46f"
+yellowColor = "#fab219"
+yellowBackgroundColor = "#2e2409"
+yellowTextColor = "#fbc94d"
+orangeColor = "#ec835a"
+orangeBackgroundColor = "#301a10"
+orangeTextColor = "#f0a381"
+redColor = "#d03b3b"
+redBackgroundColor = "#2e1313"
+redTextColor = "#f08a8a"
+blueColor = "#3987e5"
+blueBackgroundColor = "#13253a"
+blueTextColor = "#9ec5f4"
+grayColor = "#898781"
+grayBackgroundColor = "#1f1f1e"
+grayTextColor = "#c3c2b7"
+
+[theme.dark.sidebar]
+backgroundColor = "#141413"
+secondaryBackgroundColor = "#1f1f1e"
+textColor = "#ffffff"
+borderColor = "#2c2c2a"
+primaryColor = "#86b6ef"
+linkColor = "#86b6ef"
+
+[server]
+# Traffic footage is large; the 200 MB default rejects a two-minute 1080p clip.
+maxUploadSize = 1024
+
+[browser]
+gatherUsageStats = false
