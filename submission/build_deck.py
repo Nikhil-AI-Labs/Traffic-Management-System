@@ -317,9 +317,10 @@ def s_title(prs, R):
 def s_problem_statement(prs, R):
     """Guideline: Problem Statement."""
     s = slide_new(prs)
-    y = header(s, "Problem statement", "PS-08 — what is being asked",
-               "Use the city's existing CCTV network to measure, optimise and "
-               "predict — without new hardware.")
+    y = header(s, "Problem statement",
+               "Measure, optimise and predict — on cameras the city already owns",
+               "No new hardware. Seven existing CCTV feeds, and four things to "
+               "do with them.")
     bullets(s, M, y, Inches(6.5), [
         ("Measure traffic density", " per lane, from existing CCTV feeds"),
         ("Optimise signal timing", " adaptively, from what is actually measured"),
@@ -351,7 +352,8 @@ def s_problem_statement(prs, R):
 def s_problem_understanding(prs, R):
     """Guideline: Problem Understanding."""
     s = slide_new(prs)
-    y = header(s, "Problem understanding", "What this data can — and cannot — support",
+    y = header(s, "Problem understanding",
+               "Seven cameras — but only two can answer the question asked",
                "Reading the footage before writing the system changed the design "
                "twice.")
     table(s, M, y, CW, [
@@ -379,7 +381,7 @@ def s_discovery(prs, R):
     """Guideline: Problem Understanding (continued) — the finding that drove the design."""
     s = slide_new(prs)
     y = header(s, "Problem understanding · the key discovery",
-               "In the worst gridlock, detection counts fewer vehicles",
+               "The worst gridlock produces the fewest detections",
                "The failure mode that would have inverted every ranking in the "
                "system — silently.")
     table(s, M, y, Inches(6.3), [
@@ -444,8 +446,13 @@ def s_solution(prs, R):
 def s_key_features(prs, R):
     """Guideline: Key Features."""
     s = slide_new(prs)
-    y = header(s, "Key features", "One dashboard, two tracks, thirteen views")
-    picture(s, IMG / "webster-network.png", M, y, w=Inches(7.15))
+    y = header(s, "Key features",
+               "Thirteen views across two tracks that never mix",
+               "Selecting a control strategy changes which views exist — neither "
+               "track can render the other's data.")
+    # Sized to clear the footer: the subtitle above costs 0.4 in of height, and
+    # at 7.15 in wide this 1680x1150 screenshot ran under the footer rule.
+    picture(s, IMG / "webster-network.png", M, y, w=Inches(6.75))
     x2 = M + Inches(7.5)
     tf = _txt(s, x2, y, Inches(4.6), Inches(0.3))
     _run(_para(tf, True), "TRACK 1 — WEBSTER'S · SURAT CCTV", 9.5, True, BLUE)
@@ -473,7 +480,8 @@ def s_key_features(prs, R):
 def s_tech_stack(prs, R):
     """Guideline: Technology Stack."""
     s = slide_new(prs)
-    y = header(s, "Technology stack", "Chosen for what the data needs")
+    y = header(s, "Technology stack",
+               "Each layer answers a constraint in the data")
     rows = [
         ["Layer", "Choice", "Why this one"],
         ["Detector", "YOLO11-S", "Better on small, distant, partly occluded vehicles"],
@@ -561,9 +569,10 @@ def s_architecture(prs, R):
 def s_workflow(prs, R):
     """Guideline: Workflow / Process Flow."""
     s = slide_new(prs)
-    y = header(s, "Workflow / process flow", "End to end, in five steps",
-               "One command runs the dashboard; the full pipeline is five steps "
-               "from raw video.")
+    y = header(s, "Workflow / process flow",
+               "Five steps from raw video to a signal plan",
+               "One command runs the dashboard; the full pipeline is the five "
+               "steps below.")
     steps = [
         ("01", "Reference frames", "One clean frame per camera, for every overlay drawn later."),
         ("02", "Calibration", "Lane / zone polygons traced, then validated against a movement heatmap."),
@@ -627,8 +636,10 @@ def s_models(prs, R):
 def s_results_surat(prs, R):
     """Supporting: measured outcome on the Surat network."""
     s = slide_new(prs)
-    y = header(s, "Results  ·  Surat", "The operational system — Webster's",
-               "Baseline is an untuned fixed timer with equal green splits.")
+    y = header(s, "Results  ·  Surat",
+               "An over-capacity approach brought back under capacity",
+               "Webster's, on the Surat network. Baseline is an untuned fixed "
+               "timer with equal green splits.")
     tw = (CW - Inches(0.6)) / 4
     tile(s, M, y, tw, Inches(1.5), "Worst-approach saturation",
          f"{R['x_before']} → {R['x_after']}", "",
@@ -667,8 +678,9 @@ def s_results_surat(prs, R):
 def s_results_fluid(prs, R):
     """Supporting: max-pressure validated where the data supports it."""
     s = slide_new(prs)
-    y = header(s, "Results  ·  FLUID", "Max-pressure, validated on real signals",
-               "Replaying max-pressure against what each real fixed-time signal "
+    y = header(s, "Results  ·  FLUID",
+               "Real signals spend 41–66% of green on a cleared queue",
+               "Max-pressure replayed against what each real fixed-time signal "
                "actually did.")
     table(s, M, y, Inches(7.3), [
         ["Intersection", "Cycle", "Real signal: green\nwith nothing to relieve", "Max-pressure"],
@@ -713,7 +725,7 @@ def s_innovation(prs, R):
     """Guideline: Innovation and Unique Value Proposition."""
     s = slide_new(prs)
     y = header(s, "Innovation and unique value proposition",
-               "Four things this system does that a standard pipeline does not")
+               "Four things a standard pipeline would have got wrong")
     items = [
         ("The observability gate", ORANGE,
          "Max-pressure refuses to name a phase when its downstream term is "
@@ -780,7 +792,9 @@ def s_challenges(prs, R):
 def s_future(prs, R):
     """Guideline: Future Scope."""
     s = slide_new(prs)
-    y = header(s, "Future scope", "What one measurement, and what more data, would unlock")
+    y = header(s, "Future scope",
+               "One surveyed road width unlocks most of what is missing",
+               "Everything below the first line needs no new hardware at all.")
     tf = _txt(s, M, y, Inches(6.1), Inches(0.3))
     _run(_para(tf, True), "IMMEDIATE — NO NEW HARDWARE", 9.5, True, GREEN)
     bullets(s, M, y + Inches(0.32), Inches(6.1), [
