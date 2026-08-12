@@ -33,25 +33,36 @@ Every item the Stage-2 guideline lists, and where it is.
 | PPTX format | ✅ `Surat-Traffic-Intelligence-PS08.pptx` |
 | PDF format | ✅ `Surat-Traffic-Intelligence-PS08.pdf` |
 
-Every slide the guideline names, in order:
+**The deck follows the guideline's own list, in the guideline's own order.**
+Every bullet the brief names appears, and each slide's eyebrow is that bullet's
+name, so a judge scanning for an item finds it without hunting.
 
-| # | Slide | Guideline item |
+| # | Guideline bullet | Slide title |
 |---|---|---|
-| 1 | Title | Team name and members |
-| 2 | PS-08 — what is being asked | Problem statement |
-| 3 | What this data can and cannot support | Problem understanding |
-| 4 | Detection counts fewer vehicles in gridlock | *(key discovery)* |
-| 5 | Two controllers, two datasets | Proposed solution |
-| 6 | Architecture — frame to recommendation | System architecture diagram |
-| 7 | Process flow, end to end | Workflow / process flow |
-| 8 | AI/ML models | AI/ML models |
-| 9 | One dashboard, two tracks, 13 views | Key features |
-| 10 | Results · Surat | *(results)* |
-| 11 | Results · FLUID | *(results)* |
-| 12 | Innovation & unique value | Innovation and USP |
-| 13 | Technology stack | Technology stack |
-| 14 | Eleven bugs found and fixed | Challenges faced |
-| 15 | Future scope & limitations | Future scope |
+| 1 | **Team Name and Team Members** | Surat Traffic Intelligence |
+| 2 | **Problem Statement** | PS-08 — what is being asked |
+| 3 | **Problem Understanding** | What this data can — and cannot — support |
+| 4 | *Problem Understanding, continued* | In the worst gridlock, detection counts fewer vehicles |
+| 5 | **Proposed Solution** | Two controllers, two datasets, one hard boundary |
+| 6 | **Key Features** | One dashboard, two tracks, thirteen views |
+| 7 | **Technology Stack** | Chosen for what the data needs |
+| 8 | **System Architecture Diagram** | From video frame to signal recommendation |
+| 9 | **Workflow / Process Flow** | End to end, in five steps |
+| 10 | **AI/ML Models** | The weights matter more than the architecture |
+| 11 | *Results* | The operational system — Webster's |
+| 12 | *Results* | Max-pressure, validated on real signals |
+| 13 | **Innovation and Unique Value Proposition** | Four things a standard pipeline does not do |
+| 14 | **Challenges Faced** | Eleven bugs found and fixed — four worth showing |
+| 15 | **Future Scope** | What one measurement, and more data, would unlock |
+
+All 12 required bullets are covered. The three italicised slides are additions,
+placed where they do the most work: the discovery sits inside problem
+understanding because it *is* the understanding, and the two results slides sit
+before the innovation claim so that claim arrives already evidenced.
+
+The order lives in one list — `SLIDES` at the bottom of `build_deck.py` — which
+pairs each slide with the guideline bullet it answers, so compliance is checkable
+by reading that list rather than by clicking through fifteen slides.
 
 > The deck is **generated** by `build_deck.py`, which recomputes the headline
 > figures from the live pipeline at build time — so a slide cannot drift from

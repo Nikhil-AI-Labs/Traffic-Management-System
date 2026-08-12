@@ -260,15 +260,15 @@ def live_results() -> dict:
 
 # ===========================================================================
 # Slides
+#
+# One function per slide. The SLIDES manifest at the bottom fixes the order,
+# and pairs each slide with the guideline bullet it answers — so the deck's
+# compliance with the Stage-2 brief is checkable by reading one list rather
+# than by clicking through fifteen slides.
 # ===========================================================================
 
-def build():
-    prs = Presentation()
-    prs.slide_width, prs.slide_height = W, H
-    R = live_results()
-    n = 0
-
-    # -- 1. Title ----------------------------------------------------------
+def s_title(prs, R):
+    """Guideline: Team Name and Team Members."""
     s = slide_new(prs)
     _rect(s, Inches(0), Inches(0), W, Inches(0.13), fill=BLUE,
           shape=MSO_SHAPE.RECTANGLE)
@@ -306,13 +306,16 @@ def build():
         _run(_para(tf, True), val, 17, True, acc)
 
     _rect(s, M, Inches(6.28), CW, Pt(1), fill=BORDER, shape=MSO_SHAPE.RECTANGLE)
-    tf = _txt(s, M, Inches(6.48), CW, Inches(0.6))
+    tf = _txt(s, M, Inches(6.44), CW, Inches(0.6))
     p = _para(tf, True)
+    _run(p, "TEAM\n", 8.5, True, INK_MUTE)
     _run(p, TEAM_NAME + "\n", 15, True, INK)
     _run(p, TEAM_MEMBERS, 11.5, False, INK_SOFT)
-    n += 1
+    return s
 
-    # -- 2. Problem statement ---------------------------------------------
+
+def s_problem_statement(prs, R):
+    """Guideline: Problem Statement."""
     s = slide_new(prs)
     y = header(s, "Problem statement", "PS-08 — what is being asked",
                "Use the city's existing CCTV network to measure, optimise and "
@@ -342,9 +345,11 @@ def build():
             "scale can be recovered from it. The system separates what it "
             "measures from what it estimates, rather than quietly presenting one "
             "as the other.", BLUE)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 3. Problem understanding -----------------------------------------
+
+def s_problem_understanding(prs, R):
+    """Guideline: Problem Understanding."""
     s = slide_new(prs)
     y = header(s, "Problem understanding", "What this data can — and cannot — support",
                "Reading the footage before writing the system changed the design "
@@ -367,11 +372,14 @@ def build():
             "depot — no lane discipline, no signal to optimise. \"Lane density\" "
             "is not a measurable quantity there, so forcing it would mean "
             "inventing numbers. Those run in area mode instead.", AMBER)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 4. Discovery ------------------------------------------------------
+
+def s_discovery(prs, R):
+    """Guideline: Problem Understanding (continued) — the finding that drove the design."""
     s = slide_new(prs)
-    y = header(s, "Key discovery", "In the worst gridlock, detection counts fewer vehicles",
+    y = header(s, "Problem understanding · the key discovery",
+               "In the worst gridlock, detection counts fewer vehicles",
                "The failure mode that would have inverted every ranking in the "
                "system — silently.")
     table(s, M, y, Inches(6.3), [
@@ -396,14 +404,16 @@ def build():
 
     callout(s, M, Inches(5.15), CW,
             "Result",
-            f"Mahidharpura now flags 452 of 453 windows as saturated and ranks "
-            f"correctly as the most congested site. The occupancy index is "
-            f"normalised against absolute bounds measured across all seven "
-            f"cameras, so a value of 0.8 means the same thing on every camera.",
+            "Mahidharpura now flags 452 of 453 windows as saturated and ranks "
+            "correctly as the most congested site. The occupancy index is "
+            "normalised against absolute bounds measured across all seven "
+            "cameras, so a value of 0.8 means the same thing on every camera.",
             GREEN)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 5. Proposed solution ---------------------------------------------
+
+def s_solution(prs, R):
+    """Guideline: Proposed Solution."""
     s = slide_new(prs)
     y = header(s, "Proposed solution", "Two controllers, two datasets, one hard boundary",
                "Surat's junctions run Webster's. Max-pressure is validated on "
@@ -428,11 +438,71 @@ def build():
             "stabilise demands max-pressure handles. So rather than fake it, a "
             "dataset containing the missing term was obtained, and the controller "
             "is validated there.", BLUE)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 6. Architecture ---------------------------------------------------
+
+def s_key_features(prs, R):
+    """Guideline: Key Features."""
     s = slide_new(prs)
-    y = header(s, "System architecture", "From video frame to signal recommendation")
+    y = header(s, "Key features", "One dashboard, two tracks, thirteen views")
+    picture(s, IMG / "webster-network.png", M, y, w=Inches(7.15))
+    x2 = M + Inches(7.5)
+    tf = _txt(s, x2, y, Inches(4.6), Inches(0.3))
+    _run(_para(tf, True), "TRACK 1 — WEBSTER'S · SURAT CCTV", 9.5, True, BLUE)
+    bullets(s, x2, y + Inches(0.3), Inches(4.6), [
+        "Network — LOS bands and congestion ranking",
+        "Site detail — zones, overlay, heatmap, trends",
+        "Signal timing — cycle, splits, delay, saturation",
+        "Bottlenecks — every alert with its evidence",
+        "Outlook — forecasts with prediction bands",
+        "Analyse footage · Calibration · How it works",
+    ], size=11.5, gap=7)
+
+    tf = _txt(s, x2, y + Inches(2.65), Inches(4.6), Inches(0.3))
+    _run(_para(tf, True), "TRACK 2 — MAX-PRESSURE · FLUID DRONE", 9.5, True, ORANGE)
+    bullets(s, x2, y + Inches(2.95), Inches(4.6), [
+        "Validation — replayed against 3 real signals",
+        "Scene — aerial with live queue shading",
+        "Phase pressure — every movement's terms",
+        "Head-to-head — 3 demand regimes simulated",
+        "Method — what the data can and cannot say",
+    ], size=11.5, gap=7, bullet_color=ORANGE)
+    return s
+
+
+def s_tech_stack(prs, R):
+    """Guideline: Technology Stack."""
+    s = slide_new(prs)
+    y = header(s, "Technology stack", "Chosen for what the data needs")
+    rows = [
+        ["Layer", "Choice", "Why this one"],
+        ["Detector", "YOLO11-S", "Better on small, distant, partly occluded vehicles"],
+        ["Weights", "UVH-26 fine-tune", "Indian CCTV domain; 14 classes incl. auto-rickshaw"],
+        ["Tracker", "ByteTrack", "Associates low-confidence detections in crowds"],
+        ["Density unit", "PCU · IRC:106-1990", "The unit Indian capacity standards are defined in"],
+        ["Signal method", "Webster's + HCM delay", "Needs only what one camera per approach sees"],
+        ["2nd controller", "Max-pressure (Varaiya)", "Throughput-optimal — gated on observability"],
+        ["Saturation flow", "IRC:SP:41-1994, S = 525·W", "Width-based; lane count is unrecoverable here"],
+        ["Occupancy", "Canny edge density", "No object resolution needed — survives saturation"],
+        ["Dashboard", "Streamlit + Plotly", "Operator view without a JS build step"],
+        ["Language", "Python 3.11 · PyTorch 2.5 · OpenCV", "GPU-accelerated, standard"],
+    ]
+    table(s, M, y, CW, rows, [Inches(2.2), Inches(3.5), Inches(6.19)], size=11,
+          row_h=Inches(0.355))
+    tf = _txt(s, M, Inches(6.15), CW, Inches(0.4))
+    p = _para(tf, True)
+    _run(p, "Hardware: ", 11, True, INK)
+    _run(p, "NVIDIA RTX 3050 6 GB laptop GPU. No cloud training was needed — "
+            "the UVH-26 weights removed the training step entirely.", 11, False,
+         INK_SOFT)
+    return s
+
+
+def s_architecture(prs, R):
+    """Guideline: System Architecture Diagram."""
+    s = slide_new(prs)
+    y = header(s, "System architecture diagram",
+               "From video frame to signal recommendation")
 
     bw, bh, gap = Inches(2.42), Inches(0.86), Inches(0.28)
     stages = [("1  DETECT + TRACK", "detector.py", "YOLO11-S · ByteTrack", BLUE),
@@ -448,7 +518,6 @@ def build():
         _run(p, f + "\n", 9, True, c)
         _run(p, d, 9, False, INK_SOFT)
 
-    # the two measurement paths
     y2 = y + bh + Inches(0.34)
     for i, (t, d, c) in enumerate([
             ("DETECTION PATH", "PCU density, speed, queue, flow (q = k·v)", BLUE),
@@ -486,11 +555,13 @@ def build():
     _run(p, "Standards, not guesses.\n", 10, True, INK)
     _run(p, "IRC:106-1990 (PCU) · IRC:SP:41-1994 (saturation flow) · "
             "IRC:103-2012 (pedestrian green)", 9, False, INK_SOFT)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 7. Workflow -------------------------------------------------------
+
+def s_workflow(prs, R):
+    """Guideline: Workflow / Process Flow."""
     s = slide_new(prs)
-    y = header(s, "Workflow", "Process flow, end to end",
+    y = header(s, "Workflow / process flow", "End to end, in five steps",
                "One command runs the dashboard; the full pipeline is five steps "
                "from raw video.")
     steps = [
@@ -516,9 +587,11 @@ def build():
             "The metrics CSVs are committed, so the entire Webster track — every "
             "operational figure in this deck — runs immediately with no video "
             "download, no GPU and no model weights.", GREEN)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 8. AI/ML models ---------------------------------------------------
+
+def s_models(prs, R):
+    """Guideline: AI/ML Models."""
     s = slide_new(prs)
     y = header(s, "AI / ML models", "The weights matter more than the architecture")
     table(s, M, y, Inches(6.5), [
@@ -548,36 +621,11 @@ def build():
             "12,000–23,000 PCU/hr against a real saturation flow near 1,800. Flow "
             "comes from the fundamental relation q = k·v instead, on directly "
             "measured density and speed.", ORANGE)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 9. Key features ---------------------------------------------------
-    s = slide_new(prs)
-    y = header(s, "Key features", "One dashboard, two tracks, thirteen views")
-    picture(s, IMG / "webster-network.png", M, y, w=Inches(7.15))
-    x2 = M + Inches(7.5)
-    tf = _txt(s, x2, y, Inches(4.6), Inches(0.3))
-    _run(_para(tf, True), "TRACK 1 — WEBSTER'S · SURAT CCTV", 9.5, True, BLUE)
-    bullets(s, x2, y + Inches(0.3), Inches(4.6), [
-        "Network — LOS bands and congestion ranking",
-        "Site detail — zones, overlay, heatmap, trends",
-        "Signal timing — cycle, splits, delay, saturation",
-        "Bottlenecks — every alert with its evidence",
-        "Outlook — forecasts with prediction bands",
-        "Analyse footage · Calibration · How it works",
-    ], size=11.5, gap=7)
 
-    tf = _txt(s, x2, y + Inches(2.65), Inches(4.6), Inches(0.3))
-    _run(_para(tf, True), "TRACK 2 — MAX-PRESSURE · FLUID DRONE", 9.5, True, ORANGE)
-    bullets(s, x2, y + Inches(2.95), Inches(4.6), [
-        "Validation — replayed against 3 real signals",
-        "Scene — aerial with live queue shading",
-        "Phase pressure — every movement's terms",
-        "Head-to-head — 3 demand regimes simulated",
-        "Method — what the data can and cannot say",
-    ], size=11.5, gap=7, bullet_color=ORANGE)
-    footer(s, n := n + 1)
-
-    # -- 10. Results: Surat ------------------------------------------------
+def s_results_surat(prs, R):
+    """Supporting: measured outcome on the Surat network."""
     s = slide_new(prs)
     y = header(s, "Results  ·  Surat", "The operational system — Webster's",
                "Baseline is an untuned fixed timer with equal green splits.")
@@ -613,9 +661,11 @@ def build():
         ("Equal saturation. ", "The optimal plan equalises degree of saturation "
          "across approaches (0.929 / 0.929) — the known optimality condition."),
     ], size=11.5, gap=9)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 11. Results: FLUID ------------------------------------------------
+
+def s_results_fluid(prs, R):
+    """Supporting: max-pressure validated where the data supports it."""
     s = slide_new(prs)
     y = header(s, "Results  ·  FLUID", "Max-pressure, validated on real signals",
                "Replaying max-pressure against what each real fixed-time signal "
@@ -656,12 +706,14 @@ def build():
             "differently — that is an observation about the recorded signals, "
             "made from the recorded queues. The counterfactual needs the "
             "simulator above.", 11, False, INK_SOFT)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 12. Innovation / USP ---------------------------------------------
+
+def s_innovation(prs, R):
+    """Guideline: Innovation and Unique Value Proposition."""
     s = slide_new(prs)
-    y = header(s, "Innovation & unique value", "Four things this system does that a "
-               "standard pipeline does not")
+    y = header(s, "Innovation and unique value proposition",
+               "Four things this system does that a standard pipeline does not")
     items = [
         ("The observability gate", ORANGE,
          "Max-pressure refuses to name a phase when its downstream term is "
@@ -691,35 +743,11 @@ def build():
         _run(p, t + "\n", 13, True, INK)
         _run(p, d, 11, False, INK_SOFT)
         yy += Inches(1.15)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 13. Tech stack ----------------------------------------------------
-    s = slide_new(prs)
-    y = header(s, "Technology stack", "Chosen for what the data needs")
-    rows = [
-        ["Layer", "Choice", "Why this one"],
-        ["Detector", "YOLO11-S", "Better on small, distant, partly occluded vehicles"],
-        ["Weights", "UVH-26 fine-tune", "Indian CCTV domain; 14 classes incl. auto-rickshaw"],
-        ["Tracker", "ByteTrack", "Associates low-confidence detections in crowds"],
-        ["Density unit", "PCU · IRC:106-1990", "The unit Indian capacity standards are defined in"],
-        ["Signal method", "Webster's + HCM delay", "Needs only what one camera per approach sees"],
-        ["2nd controller", "Max-pressure (Varaiya)", "Throughput-optimal — gated on observability"],
-        ["Saturation flow", "IRC:SP:41-1994, S = 525·W", "Width-based; lane count is unrecoverable here"],
-        ["Occupancy", "Canny edge density", "No object resolution needed — survives saturation"],
-        ["Dashboard", "Streamlit + Plotly", "Operator view without a JS build step"],
-        ["Language", "Python 3.11 · PyTorch 2.5 · OpenCV", "GPU-accelerated, standard"],
-    ]
-    table(s, M, y, CW, rows, [Inches(2.2), Inches(3.5), Inches(6.19)], size=11,
-          row_h=Inches(0.355))
-    tf = _txt(s, M, Inches(6.15), CW, Inches(0.4))
-    p = _para(tf, True)
-    _run(p, "Hardware: ", 11, True, INK)
-    _run(p, "NVIDIA RTX 3050 6 GB laptop GPU. No cloud training was needed — "
-            "the UVH-26 weights removed the training step entirely.", 11, False,
-         INK_SOFT)
-    footer(s, n := n + 1)
 
-    # -- 14. Challenges ----------------------------------------------------
+def s_challenges(prs, R):
+    """Guideline: Challenges Faced."""
     s = slide_new(prs)
     y = header(s, "Challenges faced", "Eleven bugs found and fixed — four worth showing",
                "Each was caught by a check that did not trust the output.")
@@ -746,9 +774,11 @@ def build():
             "reasonable on screen. What caught them was checking outputs against "
             "physical limits and known theory — not testing that the code ran.",
             ORANGE)
-    footer(s, n := n + 1)
+    return s
 
-    # -- 15. Future scope --------------------------------------------------
+
+def s_future(prs, R):
+    """Guideline: Future Scope."""
     s = slide_new(prs)
     y = header(s, "Future scope", "What one measurement, and what more data, would unlock")
     tf = _txt(s, M, y, Inches(6.1), Inches(0.3))
@@ -785,11 +815,51 @@ def build():
         "The two junction cameras face different corridors, so the combined plan demonstrates the method on real measured demand rather than being deployable at one junction.",
         "FLUID is Chinese traffic — it validates the controller implementation; no claim from it transfers to Surat's fleet.",
     ], size=11, gap=7, bullet_color=INK_MUTE)
-    footer(s, n := n + 1)
+    return s
+
+
+# ---------------------------------------------------------------------------
+# Order — follows the Stage-2 guideline's own list, top to bottom
+# ---------------------------------------------------------------------------
+# Every bullet the brief names appears, in the order it names them. The three
+# entries marked "supporting" are additions, placed where they do the most
+# work: the discovery sits inside problem understanding because it *is* the
+# understanding, and the two results slides sit before the innovation claim so
+# that claim arrives already evidenced.
+
+SLIDES = [
+    (s_title,                "Team Name and Team Members"),
+    (s_problem_statement,    "Problem Statement"),
+    (s_problem_understanding, "Problem Understanding"),
+    (s_discovery,            "Problem Understanding (supporting)"),
+    (s_solution,             "Proposed Solution"),
+    (s_key_features,         "Key Features"),
+    (s_tech_stack,           "Technology Stack"),
+    (s_architecture,         "System Architecture Diagram"),
+    (s_workflow,             "Workflow / Process Flow"),
+    (s_models,               "AI/ML Models"),
+    (s_results_surat,        "Results (supporting)"),
+    (s_results_fluid,        "Results (supporting)"),
+    (s_innovation,           "Innovation and Unique Value Proposition"),
+    (s_challenges,           "Challenges Faced"),
+    (s_future,               "Future Scope"),
+]
+
+
+def build():
+    prs = Presentation()
+    prs.slide_width, prs.slide_height = W, H
+    R = live_results()
+
+    for i, (fn, bullet) in enumerate(SLIDES, start=1):
+        s = fn(prs, R)
+        if i > 1:                      # the title slide carries no footer
+            footer(s, i)
+        print(f"  {i:2d}. {fn.__doc__.split(':')[-1].strip().rstrip('.'):<52s} {bullet}")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     prs.save(str(OUT))
-    print(f"\n  {n} slides -> {OUT}")
+    print(f"\n  {len(SLIDES)} slides -> {OUT}")
     return OUT
 
 
