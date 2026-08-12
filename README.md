@@ -305,7 +305,24 @@ Every headline result above is in the first category. One measured road width pr
 
 ---
 
+## Documentation
+
+| Document | What it covers |
+|---|---|
+| **[`REPORT.md`](REPORT.md)** | **The full engineering report — every design decision, every bug found, every number derived** |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | System architecture, the complete folder tree, the two measurement paths, the controller boundary, and the import graph |
+| [`API.md`](API.md) | Python module API reference — every public entry point, with the observability contract |
+| [`DATA_SCHEMA.md`](DATA_SCHEMA.md) | Every column of the metrics CSV, the camera/zone config, and the FLUID inputs |
+| [`DEPLOYMENT.md`](DEPLOYMENT.md) | How to deploy, and what a hosted instance can and cannot show |
+| [`ATTRIBUTION.md`](ATTRIBUTION.md) | Third-party libraries, datasets, pre-trained models and standards — and what is our own work |
+| [`LICENSE`](LICENSE) | AGPL-3.0 — inherited from Ultralytics; see `ATTRIBUTION.md` §6 |
+
+---
+
 ## Repository layout
+
+The complete annotated tree is in [`ARCHITECTURE.md` §1](ARCHITECTURE.md#1-project-structure).
+The parts worth knowing about:
 
 | Path | Contents |
 |---|---|
@@ -317,12 +334,10 @@ Every headline result above is in the first category. One measured road width pr
 | `src/bottleneck_detect.py` · `forecast.py` | Five sustained-pattern detectors; damped trend with prediction intervals |
 | `src/dashboard.py` · `theme.py` · `charts.py` | The two-track UI, the validated visual system, and every figure |
 | `src/calibration.py` · `ingest.py` · `report_html.py` | Metric-scale calibration, uploaded-footage analysis, downloadable reports |
+| `configs/cameras.json` | Camera registry — zones, polygons, scale models |
+| `outputs/logs/` | 8 metrics CSVs, 2,451 windows — **committed**, so results reproduce without the video |
 | `tests/verify_system.py` | 18 end-to-end checks |
-| **[`REPORT.md`](REPORT.md)** | **The full engineering report — every design decision, every bug found, every number derived** |
-| [`ATTRIBUTION.md`](ATTRIBUTION.md) | Third-party libraries, datasets, pre-trained models and standards — and what is our own work |
-| [`DATA_SCHEMA.md`](DATA_SCHEMA.md) | Every column of the metrics CSV, the camera/zone config, and the FLUID inputs |
-| [`DEPLOYMENT.md`](DEPLOYMENT.md) | How to deploy, and what a hosted instance can and cannot show |
-| [`LICENSE`](LICENSE) | AGPL-3.0 — inherited from Ultralytics; see `ATTRIBUTION.md` §6 |
+| `submission/` | Stage-2 deliverables and the scripts that generate them |
 
 ---
 
