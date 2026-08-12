@@ -137,7 +137,7 @@ code we imported. Each is cited where it is used.
 ## 6. Licence of this project
 
 ```
-Copyright (C) 2026  [TEAM NAME]
+Copyright (C) 2026  Alpha Devs
 
 This program is free software: you can redistribute it and/or modify it
 under the terms of the GNU Affero General Public License as published by
@@ -153,10 +153,8 @@ You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 ```
 
-> ⚠️ **`[TEAM NAME]` above is a placeholder.** Replace it with the copyright
-> holder — your team or institution name. AGPL-3.0 expects an identifiable
-> copyright holder; `LICENSE` itself carries only the FSF's copyright on the
-> licence text, which is correct and should not be edited.
+> `LICENSE` itself carries only the FSF's copyright on the licence text, which
+> is correct and must not be edited.
 
 The application code is released under **AGPL-3.0** — not a free choice, but a
 requirement: Ultralytics and the YOLO weights are AGPL-3.0, and linking to them

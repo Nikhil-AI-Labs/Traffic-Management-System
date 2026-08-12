@@ -32,8 +32,8 @@ IMG = ROOT / "docs" / "images"
 # ---------------------------------------------------------------------------
 # EDIT THESE TWO LINES
 # ---------------------------------------------------------------------------
-TEAM_NAME = "[TEAM NAME]"
-TEAM_MEMBERS = "[Member 1]  ·  [Member 2]  ·  [Member 3]  ·  [Member 4]"
+TEAM_NAME = "Alpha Devs"
+TEAM_MEMBERS = "Rudraksh Fanse  ·  Rushang Bagada  ·  Ayushman Singh  ·  Nikhil Pathak"
 
 # ---------------------------------------------------------------------------
 # Design system — .streamlit/config.toml, light theme

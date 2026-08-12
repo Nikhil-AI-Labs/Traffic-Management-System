@@ -22,8 +22,8 @@ import fitz
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(__file__).resolve().parent / "Surat-Traffic-Intelligence-PS08-Report.pdf"
 
-TEAM_NAME = "[TEAM NAME]"
-TEAM_MEMBERS = "[Member 1] · [Member 2] · [Member 3] · [Member 4]"
+TEAM_NAME = "Alpha Devs"
+TEAM_MEMBERS = "Rudraksh Fanse · Rushang Bagada · Ayushman Singh · Nikhil Pathak"
 
 CSS = """
 * { font-family: sans-serif; }
