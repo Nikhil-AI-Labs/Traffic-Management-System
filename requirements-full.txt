@@ -1,0 +1,47 @@
+# Surat Traffic Intelligence — full local pipeline dependencies.
+#
+# Everything in requirements.txt, plus detection and tracking. Use this to run
+# the pipeline end to end from raw video:
+#
+#     python scripts/download_models.py     # UVH-26 YOLO11 weights, ~55 MB
+#     python src/analyze.py --all           # detect → track → measure → CSV
+#     python src/calibrate.py <camera>      # interactive polygon tracer
+#
+# Standalone rather than `-r requirements.txt`, because the two files pin
+# different OpenCV builds and pip would install both into the same `cv2`:
+#
+#     requirements.txt        opencv-python-headless   no GUI, no libGL needed
+#     requirements-full.txt   opencv-python            GUI, needed by calibrate.py
+#
+# src/calibrate.py traces lane polygons by hand through cv2.imshow and a mouse
+# callback, so the local set needs the GUI build. Installing both leaves
+# whichever landed last in place, which is how you get a calibration tool that
+# opens no window and raises nothing.
+
+# Dashboard
+streamlit>=1.44.0           # st.context.theme, for the light/dark chart palette
+plotly>=5.19.0              # marker.cornerradius on bars
+
+# Metrics + analysis
+pandas>=2.2.0
+numpy>=1.26.0
+scipy>=1.12.0
+
+# GUI OpenCV — src/calibrate.py needs the window bindings.
+opencv-python>=4.9.0
+
+# Detection + tracking
+ultralytics>=8.3.0          # YOLO11 + ByteTrack (AGPL-3.0)
+
+# torch/torchvision: install the CUDA build matching your driver FIRST, or pip
+# resolves the CPU wheel and inference falls back to CPU silently, e.g.
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+torch>=2.2.0
+torchvision>=0.17.0
+
+# Model download
+huggingface_hub>=0.25.0
+
+# Pulled in by ultralytics' tracker; listed so a clean install doesn't
+# auto-update mid-run
+lap>=0.5.12

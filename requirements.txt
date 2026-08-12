@@ -1,22 +1,36 @@
-# Core vision + tracking
-ultralytics>=8.3.0          # YOLO11 + ByteTrack (AGPL-3.0)
-opencv-python>=4.9.0
-numpy>=1.26.0
+# Surat Traffic Intelligence — dashboard / deployment dependencies.
+#
+# This is the SLIM set: everything needed to browse the results, and nothing
+# more. It deliberately excludes torch, torchvision and ultralytics.
+#
+# That works because the Webster track — the network ranking, signal timing,
+# bottlenecks, outlook, and every operational figure in the README — is
+# computed from the metrics CSVs committed under outputs/logs/. Those are the
+# *output* of detection; reading them needs no model, no GPU and no video.
+# Detection weights are only required to analyse new footage, which a hosted
+# demo does not do.
+#
+# Installing this set on a memory-capped host is the difference between an app
+# that boots and one that is killed loading a deep-learning stack it never
+# calls. See the lazy `from ultralytics import YOLO` in src/detector.py, which
+# is what allows the dashboard's import graph to resolve without it.
+#
+# To run the full pipeline (detect → track → measure → CSV), or the interactive
+# calibration tool, use requirements-full.txt instead. Do not install both:
+# they pin different OpenCV builds (see below).
 
-# torch/torchvision: install the CUDA build matching your driver first, e.g.
-#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-torch>=2.2.0
-torchvision>=0.17.0
-
-# Metrics, analysis, dashboard
-pandas>=2.2.0
-scipy>=1.12.0
+# Dashboard
 streamlit>=1.44.0           # st.context.theme, for the light/dark chart palette
 plotly>=5.19.0              # marker.cornerradius on bars
 
-# Model download
-huggingface_hub>=0.25.0
+# Metrics + analysis
+pandas>=2.2.0
+numpy>=1.26.0
+scipy>=1.12.0
 
-# Pulled in by ultralytics' tracker; listed so a clean install doesn't
-# auto-update mid-run
-lap>=0.5.12
+# Headless OpenCV: the same library without the GUI bindings, which need
+# libGL.so.1 — absent from most container images, where plain opencv-python
+# fails at import with "ImportError: libGL.so.1: cannot open shared object
+# file". Nothing the dashboard does opens a window; it only decodes frames and
+# draws overlays into arrays.
+opencv-python-headless>=4.9.0

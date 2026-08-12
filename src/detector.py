@@ -12,7 +12,6 @@ from typing import Iterator
 
 import cv2
 import numpy as np
-from ultralytics import YOLO
 
 import config as cfg
 
@@ -106,6 +105,17 @@ class VehicleDetector:
                 f"Model weights not found at {model_path}. "
                 "Run scripts/download_models.py first."
             )
+        # Imported here rather than at module scope, because importing
+        # ultralytics pulls in torch — around 2 GB installed and several hundred
+        # MB resident. `Detection` and `FrameResult` below are plain dataclasses
+        # that half the project depends on (metrics, ingest, and through them the
+        # dashboard), so a module-level import made merely opening the dashboard
+        # load a deep-learning stack it never calls. That is fine locally and
+        # fatal on a memory-capped host: the Webster track reads committed CSVs
+        # and needs no detector at all, so the deployed app carries neither
+        # torch nor ultralytics and this line is simply never reached.
+        from ultralytics import YOLO
+
         self.model = YOLO(str(model_path))
         self.conf = conf
         self.iou = iou

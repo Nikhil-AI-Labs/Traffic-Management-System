@@ -227,17 +227,19 @@ Five cameras watch market streets, a station forecourt and a bus depot — no la
 
 ```bash
 pip install -r requirements.txt
-python scripts/download_models.py     # UVH-26 YOLO11 weights, ~55 MB
-python src/reference_frames.py        # one clean frame per camera
 streamlit run src/dashboard.py
 ```
 
-The metrics CSVs are committed, so **the Webster track works immediately** — no video download, no GPU and no model needed just to browse the results.
+That is the whole thing. The metrics CSVs and reference frames are committed, so **the Webster track works immediately** — no video download, no GPU, no model weights, and no torch. `requirements.txt` is the slim dashboard set for exactly that reason; it is also what a deployment installs.
 
 <details>
 <summary><b>Full pipeline, from raw video</b></summary>
 
+Analysing new footage needs the detector, so install the full set instead — **not both**, as they pin different OpenCV builds (`requirements-full.txt` explains why).
+
 ```bash
+pip install -r requirements-full.txt
+python scripts/download_models.py         # UVH-26 YOLO11 weights, ~55 MB
 python src/reference_frames.py            # clean frame per camera
 python src/seed_calibration.py            # first-pass lane / zone polygons
 python src/calibrate.py rokadiya_hanuman  # (optional) refine by hand
@@ -317,6 +319,10 @@ Every headline result above is in the first category. One measured road width pr
 | `src/calibration.py` · `ingest.py` · `report_html.py` | Metric-scale calibration, uploaded-footage analysis, downloadable reports |
 | `tests/verify_system.py` | 18 end-to-end checks |
 | **[`REPORT.md`](REPORT.md)** | **The full engineering report — every design decision, every bug found, every number derived** |
+| [`ATTRIBUTION.md`](ATTRIBUTION.md) | Third-party libraries, datasets, pre-trained models and standards — and what is our own work |
+| [`DATA_SCHEMA.md`](DATA_SCHEMA.md) | Every column of the metrics CSV, the camera/zone config, and the FLUID inputs |
+| [`DEPLOYMENT.md`](DEPLOYMENT.md) | How to deploy, and what a hosted instance can and cannot show |
+| [`LICENSE`](LICENSE) | AGPL-3.0 — inherited from Ultralytics; see `ATTRIBUTION.md` §6 |
 
 ---
 
