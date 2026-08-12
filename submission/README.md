@@ -8,15 +8,24 @@ Every item the Stage-2 guideline lists, and where it is.
 
 ## ⚠️ Before submitting — two things only you can do
 
-1. **Fill in the team name and members.** They are placeholders in two files:
-   - `submission/build_deck.py` — lines `TEAM_NAME` / `TEAM_MEMBERS`
-   - `submission/build_report.py` — same two constants
+1. **Fill in the team name and members.** `[TEAM NAME]` appears in exactly
+   three places, and nowhere else in the repository:
 
-   Then rebuild both:
+   | File | What to edit |
+   |---|---|
+   | `submission/build_deck.py` | `TEAM_NAME` / `TEAM_MEMBERS` (lines 35–36) |
+   | `submission/build_report.py` | `TEAM_NAME` / `TEAM_MEMBERS` (lines 25–26) |
+   | `ATTRIBUTION.md` §6 | the copyright holder in the notice |
+
+   Then rebuild both documents:
    ```bash
    python submission/build_deck.py     # then re-export the PDF
    python submission/build_report.py
    ```
+
+   Nothing else needs filling in. `LICENSE` is verbatim AGPL-3.0 and must not
+   be edited — the angle brackets near its end are part of the FSF's standard
+   "How to Apply These Terms" appendix, not fields.
 
 2. **Make the GitHub repository public.** It currently returns 404 to anyone not
    signed in as the owner. The guideline requires *"Repository should be
@@ -74,7 +83,7 @@ by reading that list rather than by clicking through fifteen slides.
 
 | Requirement | Where |
 |---|---|
-| Complete source code | `src/` — 27 modules, ~13,700 lines |
+| Complete source code | `src/` — 27 modules, ~13,100 lines |
 | README with setup and installation | [`README.md`](../README.md) |
 | Project folder structure | [`README.md`](../README.md) § Repository layout |
 | System architecture documentation | [`REPORT.md`](../REPORT.md) §4 · deck slide 6 |

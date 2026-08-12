@@ -11,8 +11,9 @@ with its licence and what it is used for.
 
 ## 1. What is ours
 
-Every line of Python in `src/`, `scripts/` and `tests/` — **27 modules,
-~13,700 lines** — was written for this hackathon. No part of it is a fork,
+Every line of Python in `src/`, `scripts/` and `tests/` — **29 files,
+~13,700 lines**, of which 27 modules and ~13,100 lines are `src/` — was
+written for this hackathon. No part of it is a fork,
 template or tutorial adaptation. Specifically, the following were designed and
 implemented here rather than taken from a library:
 
@@ -135,9 +136,31 @@ code we imported. Each is cited where it is used.
 
 ## 6. Licence of this project
 
+```
+Copyright (C) 2026  [TEAM NAME]
+
+This program is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
+```
+
+> ⚠️ **`[TEAM NAME]` above is a placeholder.** Replace it with the copyright
+> holder — your team or institution name. AGPL-3.0 expects an identifiable
+> copyright holder; `LICENSE` itself carries only the FSF's copyright on the
+> licence text, which is correct and should not be edited.
+
 The application code is released under **AGPL-3.0** — not a free choice, but a
 requirement: Ultralytics and the YOLO weights are AGPL-3.0, and linking to them
-makes the combined work AGPL-3.0. See `LICENSE`.
+makes the combined work AGPL-3.0. See `LICENSE` for the full terms.
 
 Two consequences worth stating plainly:
 

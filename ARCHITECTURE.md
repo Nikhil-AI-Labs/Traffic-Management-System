@@ -35,7 +35,7 @@ erakshak/
 │   ├── cameras.json             Camera registry: zones, polygons, scale models
 │   └── calibration_state.json   Operator state (generated, not committed)
 │
-├── src/                         27 modules · ~13,700 lines
+├── src/                         27 modules · ~13,100 lines
 │   │
 │   │  ── Measurement ──────────────────────────────────────────────
 │   ├── config.py                Camera registry, PCU factors, LOS bands, paths
