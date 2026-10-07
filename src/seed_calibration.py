@@ -351,6 +351,16 @@ def main():
             print(f"  {c}: no definition, skipped")
             continue
 
+        # A camera an operator has calibrated keeps its measured scale. Seeding
+        # used to overwrite it with the assumed model while the state file
+        # still flagged the camera "measured", so every figure on it would be
+        # presented as measured while resting on an assumption.
+        existing = Z.load(c)
+        if (existing is not None and existing.scale_model
+                and cfg.scale_is_verified(c)):
+            calib.scale_model = existing.scale_model
+            print(f"  {c}: keeping the operator-measured scale model")
+
         Z.save(calib)
         areas = []
         for z in calib.zones:

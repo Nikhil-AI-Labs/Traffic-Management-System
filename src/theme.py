@@ -24,7 +24,25 @@ the background in both modes.
 
 from __future__ import annotations
 
-import streamlit as st
+import contextlib
+import contextvars
+
+# Streamlit is imported inside the functions that render with it, not here.
+# The palette and the Plotly chrome are also used by the JSON API behind the
+# React dashboard, which must be able to build every figure without a
+# Streamlit runtime — and with an explicit light or dark mode per request,
+# since there is no `st.context` to ask.
+
+
+class _LazyStreamlit:
+    """`st.<anything>` that imports Streamlit on first use, not at import."""
+
+    def __getattr__(self, name):
+        import streamlit
+        return getattr(streamlit, name)
+
+
+st = _LazyStreamlit()
 
 
 # --------------------------------------------------------------------------
@@ -109,9 +127,39 @@ FONT = ('system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", '
 MONO = 'ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace'
 
 
+_MODE_OVERRIDE: contextvars.ContextVar[str | None] = contextvars.ContextVar(
+    "theme_mode", default=None)
+
+
+@contextlib.contextmanager
+def use_mode(m: str | None):
+    """Build every figure inside the block in `m` ("light" or "dark").
+
+    A context variable rather than a module global, because the API serves
+    concurrent requests from a thread pool and two viewers can be looking at
+    different themes at the same moment.
+    """
+    token = _MODE_OVERRIDE.set(m if m in ("light", "dark") else None)
+    try:
+        yield
+    finally:
+        _MODE_OVERRIDE.reset(token)
+
+
 def mode() -> str:
     """Whichever theme the viewer is actually looking at."""
+    forced = _MODE_OVERRIDE.get()
+    if forced:
+        return forced
     try:
+        # Only ask Streamlit inside a running Streamlit app. Outside one -
+        # the API, the tests, a script - `st.context` logs a "missing
+        # ScriptRunContext" warning on every single call, which buried the
+        # verification suite's output under hundreds of lines of noise.
+        from streamlit.runtime import exists
+        if not exists():
+            return "light"
+        import streamlit as st
         return "dark" if st.context.theme.type == "dark" else "light"
     except Exception:
         return "light"
@@ -283,6 +331,14 @@ def css() -> str:
   /* ---------------- stat tiles ---------------- */
   .tiles {{ display:grid; gap:11px; margin:.25rem 0 .35rem 0;
             align-items:stretch; }}
+  /* The column count is set inline per row of tiles; on a narrow screen a
+     fixed four-across squeezes each tile below the width of its own value. */
+  @media (max-width: 900px) {{
+    .tiles {{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }}
+  }}
+  @media (max-width: 520px) {{
+    .tiles {{ grid-template-columns: minmax(0, 1fr) !important; }}
+  }}
   .tile {{ background:{p['surface']}; border:1px solid {p['border']};
            border-radius:11px; padding:15px 17px 14px 17px;
            box-shadow:{p['shadow']}; }}

@@ -117,7 +117,7 @@ The sidebar's **control-strategy toggle switches the entire dashboard between tw
 | **Worst-approach saturation *x*** | **1.01 — over capacity** | **0.929** | **crosses back under 1.0** |
 | Mean delay (HCM control delay) | 53.5 s/PCU | 51.4 s/PCU | −3.8% |
 
-The saturation crossing is the claim that survives any delay model: equal green splits drive the busier approach past capacity, where the queue never clears within the cycle. Two independent checks confirm the optimiser — sweeping cycle length puts the empirical delay minimum at **130 s** against Webster's closed form of **135.6 s**, and the optimal plan equalises degree of saturation across approaches (**0.929 / 0.929**), which is the known optimality condition for Webster green allocation.
+The saturation crossing is the claim that survives any delay model: equal green splits drive the busier approach past capacity, where the queue never clears within the cycle. Two independent checks confirm the optimiser — sweeping cycle length under Webster's own delay model puts the empirical delay minimum at **130 s** against Webster's closed form of **135.6 s** (under the HCM model, which bounds the over-capacity term, the minimum moves to 90 s — the dashboard shows both), and the optimal plan equalises degree of saturation across approaches (**0.929 / 0.929**), which is the known optimality condition for Webster green allocation.
 
 **Network ranking** — 7 cameras, 21 zones, 2,451 measurement windows:
 
@@ -225,12 +225,26 @@ Five cameras watch market streets, a station forecourt and a bus depot — no la
 
 ## Quick start
 
+**React dashboard** (recommended) — a FastAPI server computes every figure and serves the React front end:
+
+```bash
+pip install -r requirements.txt
+cd web && npm install && npm run build && cd ..
+python src/api.py                    # → http://127.0.0.1:8000
+```
+
+For front-end development, run `python src/api.py` and `npm run dev` (in `web/`) side by side and open http://localhost:5173 — Vite proxies `/api` to the Python server and hot-reloads the UI.
+
+**Streamlit dashboard** (still supported, no Node.js needed):
+
 ```bash
 pip install -r requirements.txt
 streamlit run src/dashboard.py
 ```
 
-That is the whole thing. The metrics CSVs and reference frames are committed, so **the Webster track works immediately** — no video download, no GPU, no model weights, and no torch. `requirements.txt` is the slim dashboard set for exactly that reason; it is also what a deployment installs.
+Either way, the metrics CSVs and reference frames are committed, so **the Webster track works immediately** — no video download, no GPU, no model weights, and no torch. `requirements.txt` is the slim dashboard set for exactly that reason; it is also what a deployment installs. Point `FLUID_ROOT` at the extracted FLUID dataset to enable the max-pressure track.
+
+Both dashboards read the same numbers through the same code: `src/services.py` is the shared data layer, `src/api.py` exposes it as JSON (interactive docs at `/api/docs`), and every chart is built once, in `src/charts.py`, then drawn by Plotly in either front end.
 
 <details>
 <summary><b>Full pipeline, from raw video</b></summary>
@@ -279,6 +293,7 @@ Extract anywhere and set `FLUID_ROOT`, or drop it in the project root as `299749
 
 ```bash
 python tests/verify_system.py     # 18 checks
+python -m pytest tests/test_api.py   # 37 API checks, both themes, strict JSON
 ```
 
 Every figure quoted in this README and in `REPORT.md` is **recomputed and compared**, so the documentation cannot drift from the code. The suite also asserts the things that matter most:
@@ -332,11 +347,13 @@ The parts worth knowing about:
 | `src/fluid.py` | FLUID adapter — queues, turn ratios, phase recovery, replay, and the aerial scene layer |
 | `src/network_sim.py` | Point-queue simulator over two junctions in series |
 | `src/bottleneck_detect.py` · `forecast.py` | Five sustained-pattern detectors; damped trend with prediction intervals |
-| `src/dashboard.py` · `theme.py` · `charts.py` | The two-track UI, the validated visual system, and every figure |
+| `web/` | React + TypeScript dashboard (Vite, TanStack Query, Plotly) — both tracks, 13 views, light/dark, mobile |
+| `src/api.py` · `services.py` | FastAPI JSON API and the data layer shared by every front end and the tests |
+| `src/dashboard.py` · `theme.py` · `charts.py` | The Streamlit UI, the validated visual system, and every figure |
 | `src/calibration.py` · `ingest.py` · `report_html.py` | Metric-scale calibration, uploaded-footage analysis, downloadable reports |
 | `configs/cameras.json` | Camera registry — zones, polygons, scale models |
 | `outputs/logs/` | 8 metrics CSVs, 2,451 windows — **committed**, so results reproduce without the video |
-| `tests/verify_system.py` | 18 end-to-end checks |
+| `tests/verify_system.py` · `test_api.py` | 18 end-to-end checks · 37 API checks |
 | `submission/` | Stage-2 deliverables and the scripts that generate them |
 
 ---

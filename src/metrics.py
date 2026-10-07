@@ -188,12 +188,22 @@ class SpeedTracker:
     reporting pixels/second dressed up as km/h.
     """
 
+    # A track unseen for this long is gone. ByteTrack keeps a lost track
+    # alive for ~30 frames (1.5 s at 20 fps) before retiring its ID, so this
+    # is comfortably past any re-identification - and without it the history
+    # grows by one entry per track ever seen, which on a continuous RTSP feed
+    # is an unbounded leak.
+    STALE_TRACK_S = 10.0
+
     def __init__(self, scale_model: dict | None, history: int = 5):
         self.scale_model = scale_model
         self.history = history
         self.tracks: dict[int, deque] = defaultdict(lambda: deque(maxlen=history))
+        self._last_prune_t = 0.0
 
     def update(self, fr: FrameResult) -> dict[int, float]:
+        if fr.timestamp_s - self._last_prune_t >= self.STALE_TRACK_S:
+            self._prune(fr.timestamp_s)
         speeds: dict[int, float] = {}
         for d in fr.detections:
             if d.track_id is None:
@@ -223,6 +233,13 @@ class SpeedTracker:
             if tid not in active_ids:
                 del self.tracks[tid]
 
+    def _prune(self, now_s: float) -> None:
+        """Drop tracks whose most recent sighting is older than STALE_TRACK_S."""
+        cutoff = now_s - self.STALE_TRACK_S
+        for tid in [t for t, h in self.tracks.items() if not h or h[-1][0] < cutoff]:
+            del self.tracks[tid]
+        self._last_prune_t = now_s
+
 
 # --------------------------------------------------------------------------
 # Structural occupancy
@@ -236,8 +253,9 @@ class StructuralOccupancy:
     therefore tracks how occupied it is without needing to resolve individual
     objects — the property that makes it survive gridlock.
 
-    Reported as an index normalised against the clearest and busiest states
-    observed on that zone, not as an absolute physical quantity.
+    Reported as an index on a fixed 0-1 scale, normalised against absolute
+    edge-density bounds shared by every camera (see `index`), not as a
+    physical quantity.
     """
 
     def __init__(self, calib: Z.CameraCalibration, smooth_alpha: float = 0.3):
@@ -246,6 +264,23 @@ class StructuralOccupancy:
         self.zone_px: dict[str, int] = {}
         self.smooth_alpha = smooth_alpha
         self._ema: dict[str, float] = {}
+        # Edge map of the most recent frame. Every zone of a camera is measured
+        # on the same frame, and the grey/blur/Canny pass is the expensive part
+        # — at 1080p it costs more than the rest of the window bookkeeping put
+        # together. Computing it once per frame instead of once per zone gives
+        # identical numbers at a fraction of the cost. The source frame is held
+        # by reference and compared by identity, so a recycled `id()` can never
+        # hand one frame's edges to another.
+        self._edge_src: np.ndarray | None = None
+        self._edge_map: np.ndarray | None = None
+
+    def _edges(self, frame: np.ndarray) -> np.ndarray:
+        if frame is not self._edge_src or self._edge_map is None:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            gray = cv2.GaussianBlur(gray, (5, 5), 0)
+            self._edge_map = cv2.Canny(gray, 60, 160)
+            self._edge_src = frame
+        return self._edge_map
 
     def _mask(self, zone: Z.Zone, shape) -> np.ndarray:
         if zone.id not in self.masks:
@@ -260,11 +295,8 @@ class StructuralOccupancy:
         mask = self._mask(zone, frame.shape)
         n_px = self.zone_px[zone.id] or 1
 
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        gray = cv2.GaussianBlur(gray, (5, 5), 0)
-        edges = cv2.Canny(gray, 60, 160)
-        edges = cv2.bitwise_and(edges, edges, mask=mask)
-        return float((edges > 0).sum()) / n_px
+        edges = cv2.bitwise_and(self._edges(frame), mask)
+        return float(cv2.countNonZero(edges)) / n_px
 
     def index(self, frame: np.ndarray, zone: Z.Zone) -> float:
         """Occupancy on a fixed 0-1 scale, smoothed over time.

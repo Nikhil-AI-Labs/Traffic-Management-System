@@ -541,7 +541,7 @@ Per approach:
 **The mechanism is clear and explainable:** equal green splits drive the busier approach into oversaturation (x = 1.01 > 1), where delay explodes. Webster's rebalances the greens so both approaches sit at the same degree of saturation.
 
 **Two independent checks that the optimiser is correct:**
-1. **Sweeping cycle length** puts the empirical delay minimum at **130 s**, against Webster's closed-form optimum of **135.6 s** — close agreement (the formula is an approximation). This curve is shown live in the dashboard.
+1. **Sweeping cycle length** under Webster's own delay model puts the empirical delay minimum at **130 s**, against Webster's closed-form optimum of **135.6 s** — close agreement (the formula is an approximation). This curve is shown live in the dashboard. The check has to be run under Webster's delay model, because that is the model the closed form is derived from: under the HCM control-delay model — the dashboard's default above x = 0.85 — the swept minimum moves to **90 s**, since HCM's bounded overflow term penalises running near capacity far less. That is a property of the delay model, not a disagreement in the optimiser, and the dashboard reports both minima side by side.
 2. The optimal plan **equalises degree of saturation across approaches (0.93 / 0.93)**, which is the known theoretical optimality condition for Webster green allocation.
 
 The two delay models disagree by an order of magnitude, and that spread is itself the finding: Webster's random-delay term diverges as an approach reaches capacity, so it reads high on exactly the approach this plan is fixing, while HCM's time-dependent term stays finite above capacity. **The saturation crossing is the claim that survives either model**, and it is the one to quote. For context, the market systems surveyed in `Existing Solutions.docx` report ATSAC at 32% delay reduction and emerging research at 23.6% wait-time reduction; quoting our Webster figure alongside theirs would be comparing a number we know to be inflated against numbers measured on the street.
@@ -676,7 +676,7 @@ Included because these are the kind of errors that produce **plausible-looking b
 
 **How it was caught:** sweeping cycle length and noticing the delay curve had **no minimum**, which is impossible if the implementation is correct.
 
-**Fix:** anchor capacity, saturation and delay on the critical lane throughout. Verified by re-sweeping — the minimum now lands at 130 s against Webster's 135.6 s.
+**Fix:** anchor capacity, saturation and delay on the critical lane throughout. Verified by re-sweeping under Webster's delay model — the minimum now lands at 130 s against Webster's 135.6 s.
 
 ### 4. Module name collision breaking pandas
 

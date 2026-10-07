@@ -125,12 +125,30 @@ def probe(path: Path | str) -> MediaInfo:
 
 
 def save_upload(data: bytes, filename: str) -> Path:
-    """Write an uploaded file where OpenCV can reach it by path."""
-    stem = Path(filename).stem[:48] or "upload"
-    safe = "".join(c if c.isalnum() or c in "-_" else "_" for c in stem)
-    out = UPLOAD_DIR / f"{safe}_{uuid.uuid4().hex[:8]}{Path(filename).suffix.lower()}"
+    """Write an uploaded file where OpenCV can reach it by path.
+
+    The extension is checked against the formats `probe` accepts rather than
+    copied from the client's filename. The stem was already sanitised, but the
+    suffix was not, and on NTFS a name like `clip.mp4:payload` writes into an
+    alternate data stream of a file that then looks empty.
+    """
+    out = new_upload_path(filename)
     out.write_bytes(data)
     return out
+
+
+def new_upload_path(filename: str) -> Path:
+    """A fresh, safe destination for an upload named `filename`.
+
+    Separate from `save_upload` so a web server can stream a large clip to
+    disk in chunks instead of holding the whole file in memory first.
+    """
+    suffix = Path(filename).suffix.lower()
+    if suffix not in VIDEO_SUFFIXES | IMAGE_SUFFIXES:
+        raise ValueError(f"Unsupported file type '{suffix or '(none)'}'.")
+    stem = Path(filename).stem[:48] or "upload"
+    safe = "".join(c if c.isalnum() or c in "-_" else "_" for c in stem)
+    return UPLOAD_DIR / f"{safe}_{uuid.uuid4().hex[:8]}{suffix}"
 
 
 def session_id(path: Path) -> str:
@@ -522,9 +540,12 @@ def analyze_image(
             "n_detections": len(inside),
             "pcu": round(pcu, 2),
             "real_area_m2": round(area_m2) if area_m2 else None,
-            "density_pcu_per_100m2": round(density, 3) if density else None,
+            # `is not None`, not truthiness: an empty zone has a density of
+            # exactly 0.0, which is a measurement, not a missing value.
+            "density_pcu_per_100m2": (round(density, 3)
+                                      if density is not None else None),
             "density_pcu_per_km_lane": (round(density * 35.0, 1)
-                                        if density else None),
+                                        if density is not None else None),
             # Not clamped, matching the video path: values above 1 mean
             # the detection boxes overlap, which is information.
             "box_occupancy": round(box_cover, 4),
@@ -549,10 +570,59 @@ def _los_for(ci: float) -> str:
             else "Moderate" if ci >= 0.25 else "Free")
 
 
+PERSISTED_CAMERAS = cfg.CONFIG_DIR / "uploaded_cameras.json"
+
+
+def persisted_metrics_path(session: str) -> Path:
+    return cfg.LOG_DIR / f"{session.replace('::', '_')}_metrics.csv"
+
+
 def persist(result: VideoResult) -> Path:
-    """Write an upload's metrics beside the dataset cameras' CSVs."""
-    safe = result.session.replace("::", "_")
-    out = cfg.LOG_DIR / f"{safe}_metrics.csv"
+    """Write an upload's metrics beside the dataset cameras' CSVs.
+
+    Its zones go to `uploaded_cameras.json` and its display name with them, so
+    `persisted_sessions` can register it again in a fresh process. Without that
+    record the CSV was written and then never read: the metrics loader only
+    knew the seven dataset cameras, so "keep alongside the dataset" kept the
+    file and lost the clip.
+    """
+    out = persisted_metrics_path(result.session)
     result.metrics.to_csv(out, index=False)
-    Z.save(result.calib, cfg.CONFIG_DIR / "uploaded_cameras.json")
+    result.calib.notes = (result.calib.notes or "").strip()
+    Z.save(result.calib, PERSISTED_CAMERAS)
+    names = _persisted_names()
+    names[result.session] = cfg.camera_name(result.session)
+    cfg.write_json_atomic(PERSISTED_CAMERAS.with_suffix(".names.json"), names)
+    return out
+
+
+def _persisted_names() -> dict[str, str]:
+    import json
+    p = PERSISTED_CAMERAS.with_suffix(".names.json")
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            d = json.load(f)
+        return d if isinstance(d, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def persisted_sessions() -> list[str]:
+    """Kept uploads, re-registered as cameras for this process.
+
+    Only sessions whose metrics CSV still exists are returned, so deleting the
+    CSV is enough to drop a kept clip.
+    """
+    names = _persisted_names()
+    out = []
+    for sid, calib in Z.load_all(PERSISTED_CAMERAS).items():
+        if not persisted_metrics_path(sid).exists():
+            continue
+        if sid not in cfg.SESSION_CAMERAS:
+            cfg.register_camera(sid, {
+                "name": names.get(sid, sid.split("::", 1)[-1].replace("_", " ")),
+                "mode": calib.mode,
+                "notes": "Uploaded footage kept alongside the dataset.",
+            })
+        out.append(sid)
     return out

@@ -32,7 +32,13 @@ def analyze(
     window_s: float = 2.0,
     write_video: bool = False,
     video_fps: int = 10,
+    on_progress=None,
 ) -> pd.DataFrame:
+    """Measure one camera's whole clip and write its metrics CSV.
+
+    `on_progress(fraction, message)`, when given, is called every few frames
+    so a caller running this in the background can show how far it has got.
+    """
     cam = cfg.CAMERAS[camera_id]
     calib = Z.load(camera_id)
     if calib is None:
@@ -47,10 +53,8 @@ def analyze(
     writer = None
     if write_video:
         out_path = cfg.ANNOTATED_DIR / f"{camera_id}_annotated.mp4"
-        writer = cv2.VideoWriter(
-            str(out_path), cv2.VideoWriter_fourcc(*"mp4v"),
-            video_fps, tuple(calib.frame_size),
-        )
+        writer, _codec = cfg.video_writer(out_path, video_fps,
+                                          tuple(calib.frame_size))
 
     rows: list[dict] = []
     latest: dict[str, object] = {}
@@ -58,12 +62,25 @@ def analyze(
     t0 = time.time()
     last_t = 0.0
 
+    expected = None
+    if on_progress is not None:
+        cap = cfg.open_video(str(video_path))
+        total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT) or 0)
+        cap.release()
+        expected = max(1, total // max(1, stride))
+        if frames:
+            expected = min(expected, frames)
+
     for fr in detector.stream(
         video_path, stride=stride, max_frames=frames,
         keep_frame=True,  # structural occupancy needs pixels
     ):
         n += 1
         last_t = fr.timestamp_s
+        if on_progress is not None and (n == 1 or n % 10 == 0):
+            on_progress(min(0.99, n / expected),
+                        f"{fr.timestamp_s:.0f}s of footage measured, "
+                        f"{len(rows)} windows")
 
         for w in engine.process(fr):
             rows.append(w.to_dict())
@@ -134,17 +151,31 @@ def main():
 
     det = VehicleDetector(model_path=args.model)
     print("Analyzing...")
-    frames_all = []
     for c in cams:
-        df = analyze(c, det, frames=args.frames, stride=args.stride,
-                     window_s=args.window, write_video=args.video)
-        frames_all.append(df)
+        analyze(c, det, frames=args.frames, stride=args.stride,
+                window_s=args.window, write_video=args.video)
 
-    if len(frames_all) > 1:
-        combined = pd.concat(frames_all, ignore_index=True)
-        out = cfg.LOG_DIR / "all_metrics.csv"
-        combined.to_csv(out, index=False)
+    out = rebuild_combined()
+    if out is not None:
         print(f"\nCombined -> {out}")
+
+
+def rebuild_combined():
+    """Regenerate all_metrics.csv from every per-camera CSV on disk.
+
+    Rebuilt after *any* run, not only `--all`. Re-analysing one camera used to
+    leave the combined file holding that camera's previous numbers, so the two
+    files disagreed silently. The dashboard reads the per-camera files, but
+    all_metrics.csv is what gets handed to anyone who wants the whole dataset
+    in one file.
+    """
+    frames = [pd.read_csv(p) for c in cfg.CAMERAS
+              if (p := cfg.LOG_DIR / f"{c}_metrics.csv").exists()]
+    if not frames:
+        return None
+    out = cfg.LOG_DIR / "all_metrics.csv"
+    pd.concat(frames, ignore_index=True).to_csv(out, index=False)
+    return out
 
 
 if __name__ == "__main__":

@@ -140,9 +140,9 @@ def save(calib: CameraCalibration, path: Path = cfg.CAMERA_CONFIG) -> None:
         with open(path, "r", encoding="utf-8") as f:
             all_c = json.load(f)
     all_c[calib.camera_id] = calib.to_dict()
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(all_c, f, indent=2)
+    # Atomic: this file holds every camera's traced zones, and a torn write
+    # would take all seven with it.
+    cfg.write_json_atomic(path, all_c)
 
 
 # --------------------------------------------------------------------------

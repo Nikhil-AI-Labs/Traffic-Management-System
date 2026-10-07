@@ -439,6 +439,7 @@ def optimise(
     effective_green_total = max(1.0, cycle - lost_time)
     phases: list[PhasePlan] = []
 
+    greens: list[float] = []
     for a in approaches:
         share = (a.flow_ratio / Y) if Y > 0 else 1.0 / n
         g = effective_green_total * share
@@ -446,8 +447,23 @@ def optimise(
         # constant: a wider approach takes longer to walk across.
         ped_min = pedestrian_min_green_s(
             a.approach_width_m or DEFAULT_APPROACH_WIDTH_M)
-        g = float(min(MAX_GREEN_S, max(ped_min, g)))
+        greens.append(float(min(MAX_GREEN_S, max(ped_min, g))))
 
+    # A clamp breaks the identity C = sum(g) + L that Webster's split rests on.
+    # Raised to a pedestrian minimum, the greens no longer fit in the cycle and
+    # the plan describes a signal that cannot exist; capped at the maximum
+    # green, the cycle carries seconds nobody is served in. Either way every
+    # capacity, saturation and delay figure below would be computed against a
+    # cycle the controller does not actually run. So the cycle follows the
+    # greens. When nothing is clamped this is the same cycle to within
+    # rounding and is left untouched.
+    needed = sum(greens) + lost_time
+    pedestrian_overrun = False
+    if abs(needed - cycle) > 0.05:
+        pedestrian_overrun = needed > MAX_CYCLE_S
+        cycle = float(max(MIN_CYCLE_S, needed))
+
+    for a, g in zip(approaches, greens):
         # Critical-lane basis throughout, consistent with y_i.
         lane_cap = a.lane_capacity(g, cycle)
         x = a.critical_lane_flow_pcu_per_hr / lane_cap if lane_cap > 0 else 0.0
@@ -471,6 +487,12 @@ def optimise(
         "Demand exceeds junction capacity (Y >= 0.95). No signal timing can "
         "clear this; the fix is geometric or demand-side, not signal retiming."
     )
+    if pedestrian_overrun:
+        note = (note + " " if note else "") + (
+            f"The pedestrian minimum greens alone need a {cycle:.0f}s cycle, "
+            f"past the {MAX_CYCLE_S:.0f}s practical maximum. Pedestrian safety "
+            f"is kept and the cycle runs long; a staggered crossing or a "
+            f"refuge island would shorten it.")
     return SignalPlan(
         junction=junction_name,
         cycle_s=round(cycle, 1),

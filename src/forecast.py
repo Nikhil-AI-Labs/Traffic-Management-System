@@ -80,8 +80,14 @@ def forecast_zone(
 
     tail = z.tail(history)
     # .ffill(), not fillna(method="ffill") — the latter was removed in pandas 3.
+    # Forward fill cannot reach a gap at the *start* of the tail, and a single
+    # NaN left in y turns the least-squares slope into NaN, which then reads as
+    # "steady" with a forecast clipped to zero. So any NaN that survives the
+    # fill is dropped, together with its timestamp.
     y = tail[metric].astype(float).ffill().to_numpy()
     t = tail["window_start_s"].astype(float).to_numpy()
+    keep = np.isfinite(y)
+    y, t = y[keep], t[keep]
     if len(y) < 5 or np.allclose(t, t[0]):
         return None
 
@@ -206,4 +212,11 @@ def camera_summary(df: pd.DataFrame) -> pd.DataFrame:
             "saturated_windows": int(sub.saturated.sum()) if "saturated" in sub else 0,
             "total_windows": int(len(sub)),
         })
+    if not rows:
+        # Sorting a column-less frame raises KeyError; an empty network is a
+        # normal state on a fresh install, not an error.
+        return pd.DataFrame(columns=["camera_id", "zones", "mean_congestion",
+                                     "peak_congestion", "worst_zone",
+                                     "mean_speed_kmph", "saturated_windows",
+                                     "total_windows"])
     return pd.DataFrame(rows).sort_values("mean_congestion", ascending=False)

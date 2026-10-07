@@ -95,6 +95,33 @@ def open_video(path):
         return cv2.VideoCapture(str(path))
 
 
+def video_writer(path, fps: float, size: tuple[int, int]):
+    """An MP4 writer whose output a web browser can actually play.
+
+    'mp4v' - what this project used to write - is MPEG-4 Part 2, which no
+    current browser decodes in a <video> element, so every annotated video was
+    a dead player in both dashboards. H.264 ('avc1') is tried first: OpenCV's
+    FFmpeg build needs the OpenH264 DLL for it, and on Windows falls back to
+    Media Foundation, which encodes H.264 natively. Only if neither can open
+    is 'mp4v' used, with a warning, so a render never fails outright.
+
+    Returns (writer, codec_name).
+    """
+    import cv2
+    for fourcc in ("avc1", "mp4v"):
+        with muffle_stderr():
+            w = cv2.VideoWriter(str(path), cv2.VideoWriter_fourcc(*fourcc),
+                                float(fps), (int(size[0]), int(size[1])))
+        if w.isOpened():
+            if fourcc == "mp4v":
+                print("  warning: no H.264 encoder available; wrote MPEG-4 "
+                      "Part 2, which browsers will not play. Install the "
+                      "OpenH264 library or re-encode with ffmpeg.")
+            return w, fourcc
+        w.release()
+    raise RuntimeError(f"Could not open a video writer for {path}")
+
+
 # --------------------------------------------------------------------------
 # Paths
 # --------------------------------------------------------------------------
@@ -500,6 +527,33 @@ def load_optimization_mode() -> str:
     return OPTIMIZATION_MODE
 
 
+def write_json_atomic(path, obj) -> None:
+    """Write JSON so a reader never sees a half-written file.
+
+    The state files are read back with a `JSONDecodeError` fallback to a blank
+    state, so a crash or a concurrent reader mid-write used to be silent data
+    loss: the next save started from that blank state and overwrote every
+    stored calibration. Writing to a sibling temp file and renaming over the
+    target is atomic on every platform Python supports.
+    """
+    import json
+    import tempfile
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.",
+                               suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(obj, f, indent=2)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
 def save_optimization_mode(mode: str) -> None:
     import json
     if mode not in OPTIMIZATION_MODES:
@@ -512,9 +566,7 @@ def save_optimization_mode(mode: str) -> None:
     if not isinstance(state, dict):
         state = {}
     state["optimization_mode"] = mode
-    CALIBRATION_STATE.parent.mkdir(parents=True, exist_ok=True)
-    with open(CALIBRATION_STATE, "w", encoding="utf-8") as f:
-        json.dump(state, f, indent=2)
+    write_json_atomic(CALIBRATION_STATE, state)
 
 
 def scale_is_verified(camera_id: str) -> bool:

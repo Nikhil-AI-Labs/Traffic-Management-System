@@ -55,6 +55,18 @@ class Alert:
         return asdict(self)
 
 
+def _est(rows: pd.DataFrame) -> str:
+    """'~' unless every row behind a figure was measured on a verified scale.
+
+    Speeds and PCU densities carry the camera's unknown pixel-to-metre factor
+    until it is calibrated. Every other surface marks them '~'; alert evidence
+    is quoted verbatim to operators, so it has to say the same thing.
+    """
+    if "scale_verified" in rows and len(rows) and bool(rows.scale_verified.all()):
+        return ""
+    return "~"
+
+
 def _runs(mask: pd.Series, min_len: int) -> list[tuple[int, int]]:
     """Index ranges where `mask` is True for at least min_len in a row."""
     out, start = [], None
@@ -111,6 +123,7 @@ def _congestion(z, camera_id, name, zone_id, label, mode) -> list[Alert]:
         dur = float(seg.window_end_s.iloc[-1] - seg.window_start_s.iloc[0])
         d = float(seg.density_pcu_per_km_lane.mean())
         v = float(seg.mean_speed_kmph.mean())
+        est = _est(seg)
         sev = "critical" if dur > 20 and v < 8 else "warning"
         out.append(Alert(
             camera_id=camera_id, camera_name=name, zone_id=zone_id,
@@ -118,8 +131,8 @@ def _congestion(z, camera_id, name, zone_id, label, mode) -> list[Alert]:
             start_s=float(seg.window_start_s.iloc[0]),
             end_s=float(seg.window_end_s.iloc[-1]), duration_s=dur,
             headline=f"Sustained bottleneck on {label}",
-            evidence=(f"density {d:.0f} PCU/km/lane with mean speed "
-                      f"{v:.1f} km/h held for {dur:.0f}s "
+            evidence=(f"density {est}{d:.0f} PCU/km/lane with mean speed "
+                      f"{est}{v:.1f} km/h held for {dur:.0f}s "
                       f"(threshold: >{HIGH_DENSITY_PCU_KM_LANE:.0f} and "
                       f"<{SPEED_DROP_KMPH:.0f} km/h)"),
             recommendation=(
@@ -236,15 +249,16 @@ def _lane_imbalance(sub, camera_id, name) -> list[Alert]:
 
     t0 = float(lanes.window_start_s.min())
     t1 = float(lanes.window_end_s.max())
+    est = _est(lanes)
     return [Alert(
         camera_id=camera_id, camera_name=name,
         zone_id=str(slowest.zone_id), zone_label=str(slowest.zone_label),
         kind="lane_imbalance", severity="info",
         start_s=t0, end_s=t1, duration_s=t1 - t0,
         headline=f"Uneven lane performance on {name}",
-        evidence=(f"{slowest.zone_label} averages {slowest.speed:.1f} km/h "
-                  f"against {fastest.speed:.1f} km/h on "
-                  f"{fastest.zone_label} - a {diff:.1f} km/h spread"),
+        evidence=(f"{slowest.zone_label} averages {est}{slowest.speed:.1f} km/h "
+                  f"against {est}{fastest.speed:.1f} km/h on "
+                  f"{fastest.zone_label} - a {est}{diff:.1f} km/h spread"),
         recommendation=(
             "The approach is not being used evenly, which usually means a "
             "local obstruction rather than a shortage of capacity. Clear the "

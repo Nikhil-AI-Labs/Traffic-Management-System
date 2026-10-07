@@ -297,3 +297,43 @@ asserted by `tests/verify_system.py`, not left to chance.
 | Heatmap images | Panel shows the command that generates them |
 | Reference frames | Scene overlays are skipped; every other view is unaffected |
 | Metrics CSVs | Dashboard reports an empty dataset rather than raising |
+
+---
+
+## 9. The React front end and the JSON API
+
+```
+web/ (React + TS)  ──HTTP /api──►  src/api.py (FastAPI)  ──►  src/services.py  ──►  analysis modules
+   TanStack Query                     charts as Plotly JSON        data layer:            signal_opt, fluid,
+   react-plotly                       background jobs               metrics, images,       bottleneck_detect,
+   light / dark                       serves web/dist               FLUID tables           forecast, ...
+                                            ▲
+src/dashboard.py (Streamlit) ───────────────┘ same services.py, same charts.py
+```
+
+**One source of truth for every number.** The data helpers that used to live
+inside `dashboard.py` moved to `services.py`, which imports no UI framework.
+The API, the Streamlit dashboard and both test suites all call it, so they
+cannot drift apart. Its caches are keyed on file modification times, so a
+re-measured camera or a kept upload appears on the next request without a
+restart.
+
+**Charts are built once.** `charts.py` stays the only place a figure is
+specified. The API builds each figure in the viewer's theme (`theme.use_mode`,
+a context variable, so concurrent requests in different themes do not
+interfere) and ships it as Plotly JSON; the React app draws it with
+`react-plotly`. The colour-vision-checked palette is not re-implemented.
+
+**Long work runs as jobs.** Re-measuring a camera, finding the road in an
+upload and analysing a clip run in background threads and are polled through
+`/api/jobs/{id}`. The detector is one shared model behind a lock, because
+ByteTrack keeps its state on the model.
+
+**Strict JSON.** Webster's delay is genuinely infinite above capacity; the API
+converts NaN and infinity to `null`, and the UI shows "∞ (over capacity)" or
+"—" with the reason rather than a number. `tests/test_api.py` asserts that no
+payload contains a non-finite value.
+
+**Deployment.** `npm run build` writes `web/dist/`, which `api.py` serves from
+`/` with client-side routing, so one Python process is the whole application.
+The Streamlit dashboard remains available for environments without Node.js.

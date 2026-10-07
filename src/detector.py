@@ -151,13 +151,20 @@ class VehicleDetector:
         processed = 0
         try:
             while True:
+                if (frame_idx - start_frame) % stride != 0:
+                    # A skipped frame still has to be demuxed and decoded to
+                    # keep the H.264 reference chain intact, but `grab()` stops
+                    # there: it never converts the frame to BGR or allocates an
+                    # array for it, which is most of the per-frame cost at
+                    # stride 4.
+                    if not cap.grab():
+                        break
+                    frame_idx += 1
+                    continue
+
                 ok, frame = cap.read()
                 if not ok:
                     break
-
-                if (frame_idx - start_frame) % stride != 0:
-                    frame_idx += 1
-                    continue
 
                 results = self.model.track(
                     frame,

@@ -85,83 +85,16 @@ HEATMAP_DIR = cfg.FRAME_DIR / "heatmap"
 # Data
 # --------------------------------------------------------------------------
 
-@st.cache_data(show_spinner=False)
-def load_metrics() -> pd.DataFrame:
-    """Every camera's measurement windows, named explicitly.
+# The data layer lives in services.py, shared with the JSON API behind the
+# React dashboard and with the verification suite, so all three read the same
+# numbers through the same code. Its caches follow the files' modification
+# times, so nothing here needs clearing after a re-measure.
+import services as S
 
-    Named rather than globbed on purpose: `outputs/logs/` also holds
-    `all_metrics.csv`, the concatenation of the same rows, and a glob over
-    `*_metrics.csv` silently loads every window twice — which inflates alert
-    and forecast counts without producing a single obviously wrong number.
-
-    Windows are validated on the way in. `metrics.py` refuses to emit a
-    zero-length window, but CSVs written before that guard existed still hold
-    a few, and a window with `end == start` gives a per-hour rate with a zero
-    denominator. Dropping them here means a stale or hand-supplied CSV cannot
-    poison the dashboard.
-    """
-    frames = []
-    for cam in cfg.CAMERAS:
-        p = cfg.LOG_DIR / f"{cam}_metrics.csv"
-        if p.exists():
-            frames.append(pd.read_csv(p))
-    if not frames:
-        return pd.DataFrame()
-    df = pd.concat(frames, ignore_index=True)
-    if {"window_start_s", "window_end_s"} <= set(df.columns):
-        df = df[df.window_end_s > df.window_start_s].reset_index(drop=True)
-    return df
-
-
-@st.cache_data(show_spinner=False)
-def load_image(path_str: str) -> np.ndarray | None:
-    p = Path(path_str)
-    if not p.exists():
-        return None
-    img = cv2.imread(str(p))
-    return cv2.cvtColor(img, cv2.COLOR_BGR2RGB) if img is not None else None
-
-
-def zone_state(df: pd.DataFrame, camera_id: str) -> pd.DataFrame:
-    """Latest window per zone, joined to that zone's clip averages."""
-    sub = df[df.camera_id == camera_id]
-    if sub.empty:
-        return pd.DataFrame()
-    latest = sub.sort_values("window_start_s").groupby("zone_id").tail(1)
-    means = sub.groupby("zone_id").agg(
-        avg_congestion=("congestion_index", "mean"),
-        avg_occupancy=("structural_occupancy", "mean"),
-        avg_speed=("mean_speed_kmph", "mean"),
-        avg_density=("density_pcu_per_km_lane", "mean"),
-        avg_flow=("flow_pcu_per_hr", "mean"),
-        peak_congestion=("congestion_index", "max"),
-        sat_windows=("saturated", "sum"),
-        windows=("congestion_index", "size"),
-    )
-    return latest.merge(means, on="zone_id", how="left")
-
-
-def _bgr(hex_color: str) -> tuple[int, int, int]:
-    h = hex_color.lstrip("#")
-    return int(h[4:6], 16), int(h[2:4], 16), int(h[0:2], 16)
-
-
-def overlay(camera_id: str, state: pd.DataFrame) -> np.ndarray | None:
-    """Reference frame with zones shaded by their average level of service.
-
-    Shaded from the same status palette the charts use, so a zone that reads
-    'Heavy' on the image reads 'Heavy' in every band and legend beside it.
-    """
-    img = load_image(str(REF_DIR / f"{camera_id}.jpg"))
-    calib = Z.load(camera_id)
-    if img is None or calib is None:
-        return None
-
-    highlight = {r["zone_id"]: _bgr(T.los_color(T.los_of(
-        float(r.get("avg_congestion", 0) or 0)))) for _, r in state.iterrows()}
-    out = Z.draw_zones(cv2.cvtColor(img, cv2.COLOR_RGB2BGR), calib,
-                       alpha=0.34, show_labels=True, highlight=highlight)
-    return cv2.cvtColor(out, cv2.COLOR_BGR2RGB)
+load_metrics = S.load_metrics
+load_image = S.load_image
+zone_state = S.zone_state
+overlay = S.overlay
 
 
 def table(df: pd.DataFrame, label: str = "Table view",
@@ -718,19 +651,26 @@ def view_signal(df: pd.DataFrame):
                                    delay_model=m)
         o = so.optimise(demands, delay_model=m)
         c = so.compare(b, o)
+        # Webster's formula has no finite delay above capacity, so a
+        # "reduction" from an infinite baseline used to print as nan%.
+        finite = np.isfinite(b.mean_delay_s_per_pcu)
         rows.append({
             "Delay model": {"webster": "Webster 1958 (3-term)",
                             "hcm": "HCM control delay"}[m],
-            "Baseline (s/PCU)": c["baseline_mean_delay_s"],
+            "Baseline (s/PCU)": (c["baseline_mean_delay_s"] if finite
+                                 else "∞ (over capacity)"),
             "Optimised (s/PCU)": c["optimised_mean_delay_s"],
-            "Reduction": f"{c['delay_reduction_pct']:.1f}%",
+            "Reduction": (f"{c['delay_reduction_pct']:.1f}%" if finite
+                          else "not finite"),
         })
     c1, c2 = st.columns([2, 3], gap="large")
     with c1:
-        st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
+        st.dataframe(pd.DataFrame(rows).astype(str), width="stretch",
+                     hide_index=True)
     with c2:
-        lo = min(float(r["Reduction"].rstrip("%")) for r in rows)
-        hi = max(float(r["Reduction"].rstrip("%")) for r in rows)
+        pcts = [float(r["Reduction"].rstrip("%")) for r in rows
+                if r["Reduction"].endswith("%")] or [0.0]
+        lo, hi = min(pcts), max(pcts)
         T.callout(
             f"The honest answer is a range: <b>{lo:.0f}% to {hi:.0f}%</b>, and "
             f"the spread is a finding rather than an embarrassment. Webster's "
@@ -792,14 +732,23 @@ def view_signal(df: pd.DataFrame):
     best_c = int(curve["Demand-proportional splits"].idxmin())
 
     T.show(C.delay_curve(curve, opt.cycle_s))
+    web = S.delay_sweep(demands, "webster")["Demand-proportional splits"]
+    best_web = int(web.replace([np.inf], np.nan).idxmin())
     T.note(
-        f"Delay swept across every cycle length from 60 s to 180 s. The "
-        f"proportional-split curve bottoms out at <b>{best_c}s</b> against "
-        f"Webster's closed-form optimum of <b>{opt.cycle_s:.0f}s</b>. Those two "
+        f"Delay swept across every cycle length from 60 s to 180 s. Under "
+        f"Webster's own delay model — the one his closed form is derived from — "
+        f"the proportional-split curve bottoms out at <b>{best_web}s</b> against "
+        f"the closed-form optimum of <b>{opt.cycle_s:.0f}s</b>. Those two "
         f"agreeing is the check that the optimiser does what the theory says — "
         f"and it is a check that has caught a real bug: an earlier version "
         f"mixed per-lane and per-approach units, and this curve came out with "
-        f"no minimum at all, which is impossible for a correct delay function.")
+        f"no minimum at all, which is impossible for a correct delay function."
+        + ("" if delay_model == "webster" else
+           f"<br><br>The curve above uses the <b>{delay_model}</b> model, whose "
+           f"minimum is <b>{best_c}s</b>: HCM's bounded overflow term penalises "
+           f"running near capacity far less than Webster's, so it favours a "
+           f"shorter cycle. That is a property of the delay model, not a "
+           f"disagreement in the optimiser."))
     table(curve.round(1).reset_index(), "Table view — delay by cycle length")
 
     T.section("The feasible cycle window")
@@ -1211,25 +1160,11 @@ def view_method(df: pd.DataFrame):
 # Calibration
 # --------------------------------------------------------------------------
 
-@st.cache_resource(show_spinner=False)
-def get_detector():
-    """One YOLO instance for the whole session — loading it costs seconds."""
-    from detector import VehicleDetector
-    return VehicleDetector()
-
-
-def detector_ready() -> tuple[bool, str]:
-    """Are the model weights on disk? Returns (ok, message).
-
-    Checked before any button that would load the detector, because the
-    alternative is a raw `FileNotFoundError` traceback in the middle of the
-    page — which on a fresh clone is the first thing a new user sees, and
-    tells them nothing actionable.
-    """
-    p = Path(cfg.DEFAULT_MODEL)
-    if p.exists():
-        return True, ""
-    return False, str(p)
+# One YOLO instance per process, shared with the API, guarded by a lock.
+# `detector_ready` is checked before any button that would load the detector,
+# because the alternative is a raw FileNotFoundError traceback mid-page.
+get_detector = S.get_detector
+detector_ready = S.detector_ready
 
 
 def _detector_missing_notice(path: str):
@@ -1263,10 +1198,12 @@ def _rerun_camera(camera_id: str, stride: int = 4):
         det = get_detector()
         st.write("Detecting, tracking and measuring the whole clip. "
                  "This is the same pass analyze.py runs.")
-        df = analyze(camera_id, det, stride=stride)
+        with S.DETECTOR_LOCK:
+            df = analyze(camera_id, det, stride=stride)
+        from analyze import rebuild_combined
+        rebuild_combined()
         status.update(label=f"Re-measured — {len(df)} windows written.",
                       state="complete", expanded=False)
-    load_metrics.clear()
     return df
 
 
@@ -1614,8 +1551,8 @@ def _upload_report(res, scale_verified: bool):
                  help="Writes the metrics CSV into outputs/logs/ so this clip "
                       "appears in the Network view on the next reload."):
         p = ingest.persist(res)
-        load_metrics.clear()
-        st.success(f"Written to `{p.name}`.")
+        st.success(f"Written to `{p.name}`. It now appears in the Network "
+                   f"view.")
 
 
 def _image_report(res):
@@ -1884,43 +1821,8 @@ def view_upload():
 # Max-pressure
 # --------------------------------------------------------------------------
 
-def _mp_movements_from_metrics(df: pd.DataFrame, junctions: list[str]):
-    """Build max-pressure movements from what the cameras actually measured.
-
-    Each junction camera gives us the queue on its approach. None of them sees
-    the link that approach discharges into, so `queue_out_pcu` stays None and
-    the controller reports itself as unobservable rather than inventing a zero.
-    """
-    import maxpressure as MP
-    rows = []
-    for cam in junctions:
-        sub = df[(df.camera_id == cam) & (df.zone_kind == "lane")]
-        if sub.empty:
-            continue
-        latest_t = sub.window_start_s.max()
-        recent = sub[sub.window_start_s >= latest_t - 20.0]
-        q = float(recent.groupby("zone_id").queue_length_pcu.mean().sum())
-        rows.append({
-            "id": cam,
-            "label": cfg.camera_name(cam),
-            "from_link": f"{cam}_approach",
-            "to_link": None,                     # no camera sees it
-            "queue_in_pcu": q,
-            "queue_out_pcu": None,               # deliberately absent
-            "queue_in_source": f"{cfg.camera_name(cam)} — measured",
-            "queue_out_source": "no downstream camera configured",
-        })
-    return MP.movements_from_zones(rows)
-
-
-@st.cache_data(show_spinner=False)
-def _fluid_tables(recording_id: str):
-    """Queues, signal and turn ratios for one FLUID recording."""
-    import fluid as FL
-    rec = FL.find(recording_id)
-    if rec is None:
-        return None
-    return (FL.build_queue_table(rec), FL.load_signal(rec), FL.turn_ratios(rec))
+_mp_movements_from_metrics = S.mp_movements_from_metrics
+_fluid_tables = S.fluid_tables
 
 
 def _fluid_section():
@@ -2092,36 +1994,10 @@ def _fluid_section():
         mime="text/csv")
 
 
-@st.cache_data(show_spinner="Replaying max-pressure against all three real signals…")
 def _fluid_summary() -> pd.DataFrame:
-    """Headline validation across every site: one row per intersection.
-
-    Cached because it replays three full recordings second by second; the
-    result is deterministic, so it is computed once per session.
-    """
-    import fluid as FL
-    rows = []
-    for site in FL.SITES:
-        recs = FL.recordings(site)
-        if not recs:
-            continue
-        r = recs[0]
-        q, sg = FL.build_queue_table(r), FL.load_signal(r)
-        res = FL.replay(r, q, sg, FL.turn_ratios(r))
-        rows.append({
-            "site": site,
-            "label": FL.SITE_LABELS.get(site, site),
-            "cycle_s": FL.cycle_length_s(sg),
-            "phases": len(FL.controller_phases(sg, q)),
-            "steps": res.steps,
-            "mode": res.mode,
-            "wasted_actual": res.wasted_green_pct_actual,
-            "wasted_mp": res.wasted_green_pct_maxpressure,
-            "agreement": res.agreement_pct,
-            "press_actual": res.mean_pressure_actual,
-            "press_mp": res.mean_pressure_maxpressure,
-        })
-    return pd.DataFrame(rows)
+    """Headline validation across every site (replays three recordings)."""
+    with st.spinner("Replaying max-pressure against all three real signals…"):
+        return S.fluid_summary()
 
 
 def _fluid_headline():
@@ -2191,24 +2067,7 @@ def _fluid_headline():
         "<b>Head-to-head</b>.")
 
 
-@st.cache_data(show_spinner=False)
-def _fluid_mix(recording_id: str) -> pd.DataFrame:
-    """Vehicle-class share for one FLUID recording, by distinct vehicle."""
-    import fluid as FL
-    rec = FL.find(recording_id)
-    if rec is None:
-        return pd.DataFrame()
-    d = pd.read_csv(rec.traj_path, usecols=["id", "type"]).dropna()
-    d = d[d.type != "pedestrian"].drop_duplicates("id")
-    if d.empty:
-        return pd.DataFrame()
-    c = d.type.value_counts()
-    return pd.DataFrame({
-        "class": c.index,
-        "count": c.values,
-        "share": c.values / c.values.sum() * 100.0,
-        "pcu": [FL.FLUID_PCU.get(k, 1.0) for k in c.index],
-    })
+_fluid_mix = S.fluid_mix
 
 
 def view_mp_validation():

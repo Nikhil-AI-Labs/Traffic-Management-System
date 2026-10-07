@@ -44,6 +44,15 @@ def _ring(width: int = 2) -> dict:
     return dict(width=width, color=T.P()["surface"])
 
 
+def _missing(df, *cols: str) -> bool:
+    """True when `df` cannot feed a chart: absent, empty, or lacking columns.
+
+    A fresh install has no metrics at all, so every chart has to be able to
+    say "nothing to plot" rather than raise a KeyError on a column-less frame.
+    """
+    return df is None or len(df) == 0 or not set(cols) <= set(df.columns)
+
+
 def _blank(msg: str) -> go.Figure:
     fig = go.Figure()
     fig.update_layout(**T.layout(height=140, legend=False))
@@ -140,6 +149,8 @@ def network_los_timeline(df: pd.DataFrame, order: list[str]) -> go.Figure:
 
 def zone_los_timeline(df: pd.DataFrame, camera_id: str) -> go.Figure:
     """The same band, per zone, for one camera."""
+    if _missing(df, "camera_id", "zone_id", "congestion_index"):
+        return _blank("No metrics for this camera.")
     sub = df[df.camera_id == camera_id]
     if sub.empty:
         return _blank("No metrics for this camera.")
@@ -165,6 +176,8 @@ def congestion_ranking(summary: pd.DataFrame) -> go.Figure:
     Colouring a bar darker because it is longer spends the only free channel on
     information the length already carries.
     """
+    if _missing(summary, "camera_id", "mean_congestion", "peak_congestion"):
+        return _blank("No sites to rank.")
     p = T.P()
     s = summary.sort_values("mean_congestion")
     names = [short_name(c) for c in s.camera_id]
@@ -210,6 +223,8 @@ def zone_trend(prof: pd.DataFrame, metric: str) -> go.Figure:
     """One line per zone over the clip, direct-labelled at the right edge."""
     p = T.P()
     title, fmt, est = METRIC_AXIS.get(metric, (metric, ".2f", ""))
+    if _missing(prof, "bin", "zone_label", metric):
+        return _blank(f"{title} is not measured on this camera.")
     pivot = prof.pivot(index="bin", columns="zone_label", values=metric)
     pivot = pivot.dropna(axis=1, how="all")
     if pivot.empty:
@@ -279,6 +294,8 @@ def _parse_groups(cell) -> dict:
 
 def fleet_table(df: pd.DataFrame) -> pd.DataFrame:
     """Share of detections by vehicle group, per site."""
+    if _missing(df, "camera_id", "counts_by_group"):
+        return pd.DataFrame()
     rows = []
     for cam, sub in df.groupby("camera_id"):
         tot: dict[str, float] = {}
@@ -335,6 +352,9 @@ def fundamental_diagram(df: pd.DataFrame, camera_id: str) -> go.Figure:
     is wrong, which is how the earlier scale bug was caught.
     """
     p = T.P()
+    if _missing(df, "camera_id", "zone_kind", "density_pcu_per_km_lane",
+                "mean_speed_kmph"):
+        return _blank("No metrics for this camera.")
     sub = df[(df.camera_id == camera_id) & (df.zone_kind == "lane")].dropna(
         subset=["density_pcu_per_km_lane", "mean_speed_kmph"])
     if len(sub) < 8:
@@ -384,6 +404,8 @@ def occlusion_paradox(df: pd.DataFrame) -> go.Figure:
     detector finds the fewest vehicles.
     """
     p = T.P()
+    if _missing(df, "camera_id", "n_detections_mean", "congestion_index"):
+        return _blank("No metrics to plot.")
     g = df.groupby("camera_id").agg(
         det=("n_detections_mean", "mean"),
         ci=("congestion_index", "mean"),
@@ -443,6 +465,9 @@ def count_vs_occupancy(df: pd.DataFrame, camera_id: str) -> go.Figure:
     is precisely what breaks down here.
     """
     p = T.P()
+    if _missing(df, "camera_id", "window_start_s", "n_detections_mean",
+                "structural_occupancy"):
+        return _blank("No metrics for this camera.")
     sub = df[df.camera_id == camera_id]
     if sub.empty:
         return _blank("No metrics for this camera.")
@@ -620,6 +645,8 @@ def delay_curve(curve: pd.DataFrame, webster_c: float) -> go.Figure:
     exposed the bug.
     """
     p = T.P()
+    if curve is None or curve.empty or len(curve.columns) == 0:
+        return _blank("No delay curve to plot.")
     fig = go.Figure()
     for i, col in enumerate(curve.columns):
         fig.add_trace(go.Scatter(

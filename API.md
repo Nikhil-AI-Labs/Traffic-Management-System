@@ -2,14 +2,55 @@
 
 E-Rakshak Hackathon 2026 · PS-08 · *Surat Traffic Intelligence*
 
-> **There is no REST API.** The system ships a Streamlit dashboard, not a
-> service, so the only HTTP surface is Streamlit's own (`/` and
-> `/_stcore/health`). Exposing a network API was not in scope: the pipeline is
-> batch, and the deliverable is an operator view.
->
-> The programmatic interface is the **Python module API** documented below. It
-> is stable enough to be depended on — `tests/verify_system.py` calls it
-> directly, so a signature change here fails the suite.
+> Two interfaces: the **HTTP API** behind the React dashboard (`src/api.py`,
+> next section) and the **Python module API** documented after it. The HTTP API
+> is a thin layer over the module API through `src/services.py`, so both return
+> the same numbers; `tests/test_api.py` and `tests/verify_system.py` pin them.
+
+## HTTP API (`python src/api.py`)
+
+Interactive OpenAPI docs are served at **`/api/docs`**. Every endpoint returns
+strict JSON — NaN and infinity become `null`. Endpoints that return charts take
+`?theme=light|dark` and embed Plotly figure JSON built by `charts.py` in that
+palette.
+
+| Method | Path | Returns |
+|---|---|---|
+| GET | `/api/health` | `{"ok": true}` |
+| GET | `/api/meta` | Cameras, metric totals, detector and FLUID status, saved strategy, controller recommendation |
+| POST | `/api/settings/mode` | Persist the control strategy `{"mode": "webster" \| "max_pressure"}` |
+| GET | `/api/network` | Network KPIs, site ranking, LOS timeline and ranking charts |
+| GET | `/api/sites/{cam}` | Zone state, charts, assets, alerts for one camera |
+| GET | `/api/sites/{cam}/trend?metric=` | Trend chart and 10-second table for one metric |
+| GET | `/api/signal?baseline_cycle&delay_model&sat_source&widths` | Baseline and Webster plans, delay-model comparison, swept curve (minimum under the chosen model **and** under Webster's), charts |
+| GET | `/api/bottlenecks` | All alerts, counts, Gantt and mix charts |
+| GET | `/api/outlook?horizon=` | Zone forecasts, rising risks, forecast chart |
+| GET | `/api/method` | Occlusion finding, fleet mix |
+| GET | `/api/images/{overlay\|reference\|heatmap\|guide}/{cam}?w=` | JPEG |
+| GET | `/api/media/annotated/{cam}` | H.264 MP4 rendered by `render_demo.py` |
+| GET | `/api/calibration`, `/api/calibration/{cam}` | Calibration state; suggested measurement rows |
+| POST | `/api/calibration/{cam}/fit` | Fit preview `{"measurements": [[row, metres]], "camera_height_m", "hfov_deg"}` |
+| POST | `/api/calibration/{cam}/apply` | Apply and start a re-measure job |
+| DELETE | `/api/calibration/{cam}` | Undo (restores the previous scale model) and start a re-measure job |
+| POST | `/api/uploads` (multipart) · `/api/uploads/demo` | Register footage (upload ≤ 1 GB, or a dataset clip) |
+| POST | `/api/uploads/{id}/roi` · `/api/uploads/{id}/analyze` | Find the road · run the analysis (both may return a job) |
+| GET | `/api/uploads/{id}/report`, `/trend`, `/zones.jpg`, `/preview.jpg`, `/metrics.csv`, `/report.html` | Report payload and downloads |
+| POST | `/api/uploads/{id}/persist` | Keep the clip alongside the dataset cameras |
+| GET | `/api/jobs/{id}` | Background-job status: `status`, `progress`, `message`, `result`, `error` |
+| GET | `/api/fluid/summary` | Three-intersection validation headline |
+| GET | `/api/fluid/replay?rid&min_green&downstream` · `/api/fluid/replay.csv` | Replay of one recording · its second-by-second CSV |
+| GET | `/api/fluid/instant?rid&t` | Phase pressures and movements at one instant |
+| GET | `/api/fluid/scene?rid` · `/api/fluid/image/{zones\|instant\|heatmap}?rid&t` · `/api/fluid/video?rid` | Scene facts · aerial images (instant sends `X-Vehicles` / `X-Queued`) · drone video |
+| GET | `/api/sim/scenarios` · POST `/api/sim/run` | Simulator scenarios · run all three controllers (defaults reproduce REPORT.md's table) |
+| GET | `/api/mp/method` | The observability gate on the Surat cameras |
+
+Errors are JSON `{"detail": "..."}`: 404 unknown resource, 409 missing
+prerequisite (no metrics, no weights, FLUID absent), 413/415/422 bad input.
+
+## Python module API
+
+It is stable enough to be depended on — `tests/verify_system.py` calls it
+directly, so a signature change here fails the suite.
 
 All examples assume `sys.path` includes `src/`:
 
@@ -54,16 +95,16 @@ anywhere:
 | `all_metrics.csv` | 2,454 | **32** | stale — holds 3 zero-length windows written before `metrics.py` guarded against them |
 | **per-camera + filter** | **2,451** | **31** | correct |
 
-Load them the way the dashboard does:
+Load them the way the dashboards do — through `services.load_metrics`:
 
 ```python
-def load_metrics() -> pd.DataFrame:
-    frames = [pd.read_csv(cfg.LOG_DIR / f"{c}_metrics.csv")
-              for c in cfg.CAMERAS
-              if (cfg.LOG_DIR / f"{c}_metrics.csv").exists()]
-    df = pd.concat(frames, ignore_index=True)
-    return df[df.window_end_s > df.window_start_s].reset_index(drop=True)
+import services as S
+df = S.load_metrics(include_uploads=False)   # the 7 dataset cameras, 2,451 windows
 ```
+
+It reads each camera's CSV by name, drops zero-length windows, and caches the
+result until a file changes. `include_uploads=True` (the default) also loads
+clips kept from the Analyse footage view.
 
 A window with `end == start` produces a per-hour rate with a zero denominator,
 which is why it is dropped rather than tolerated. Every figure quoted in the

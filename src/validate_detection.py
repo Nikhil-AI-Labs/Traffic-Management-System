@@ -80,9 +80,12 @@ def main():
             saved += 1
 
     elapsed = time.time() - t0
+    if n == 0:
+        raise SystemExit("No frames were processed — check --start against the "
+                         "clip's length.")
 
     print(f"Processed {n} frames in {elapsed:.1f}s "
-          f"({n / elapsed:.1f} FPS inference throughput)")
+          f"({n / max(elapsed, 1e-6):.1f} FPS inference throughput)")
     print(f"Unique track IDs: {len(track_ids)}")
     if per_frame_counts:
         avg_n = sum(per_frame_counts) / len(per_frame_counts)

@@ -191,7 +191,17 @@ def _tile(label: str, value: str, unit: str = "", detail: str = "") -> str:
 
 
 def build(res, alerts: list, forecasts: list, scale_verified: bool) -> str:
-    """Assemble the report for an analysed video clip."""
+    """Assemble the report for an analysed video clip.
+
+    Always in the light palette. The page is white whatever the viewer's
+    dashboard theme, and charts built while a dark-mode viewer was looking
+    came out with light-grey text and gridlines on that white page.
+    """
+    with T.use_mode("light"):
+        return _build(res, alerts, forecasts, scale_verified)
+
+
+def _build(res, alerts: list, forecasts: list, scale_verified: bool) -> str:
     df: pd.DataFrame = res.metrics
     fig = _Figs()
     est = "" if scale_verified else "~"

@@ -67,8 +67,8 @@ def _():
 @check("webster: saturation crossing + equal-x optimality")
 def _():
     import pandas as pd, config as cfg, signal_opt as so
-    import dashboard as D
-    df = D.load_metrics.__wrapped__()
+    import services as S
+    df = S.load_metrics(include_uploads=False)
     js = [c for c in cfg.junction_cameras() if c in set(df.camera_id.unique())]
     dem = [d for d in (so.demand_from_metrics(df, c) for c in js) if d]
     base = so.evaluate_fixed_plan(dem, cycle_s=120.0)
@@ -89,11 +89,10 @@ def _():
 @check("max-pressure: gate REFUSES on live Surat cameras")
 def _():
     import pandas as pd, config as cfg, maxpressure as MP
-    import dashboard as D
-    import dashboard as D
-    df = D.load_metrics.__wrapped__()
+    import services as S
+    df = S.load_metrics(include_uploads=False)
     js = [c for c in cfg.junction_cameras() if c in set(df.camera_id.unique())]
-    mv = D._mp_movements_from_metrics(df, js)
+    mv = S.mp_movements_from_metrics(df, js)
     ph = MP.one_movement_per_phase(mv, min_green_s=cfg.MP_MIN_GREEN_S,
                                    max_green_s=cfg.MP_MAX_GREEN_S)
     dec = MP.decide(mv, ph)
@@ -225,7 +224,7 @@ def _():
     ever does, this fails.
     """
     import glob as _g, config as cfg, signal_opt as so
-    import dashboard as D
+    import services as S
 
     # 1. No measurement / analysis module may reference max-pressure at all.
     forbidden = ["analyze", "metrics", "zones", "bottleneck_detect",
@@ -240,7 +239,7 @@ def _():
     assert not leaks, "; ".join(leaks)
 
     # 2. The Surat signal plan must be byte-identical under either toggle.
-    df = D.load_metrics.__wrapped__()
+    df = S.load_metrics(include_uploads=False)
     js = [c for c in cfg.junction_cameras() if c in set(df.camera_id.unique())]
     dem = [d for d in (so.demand_from_metrics(df, c) for c in js) if d]
     plans = {}
@@ -256,7 +255,7 @@ def _():
 
     # 3. Max-pressure must refuse on Surat and run on FLUID.
     import maxpressure as MP, fluid as FL
-    mv = D._mp_movements_from_metrics(df, js)
+    mv = S.mp_movements_from_metrics(df, js)
     d_surat = MP.decide(mv, MP.one_movement_per_phase(mv))
     assert d_surat.mode == MP.MODE_GREEDY and d_surat.chosen_phase_id is None
     assert FL.available(), "FLUID missing — max-pressure has nowhere to be validated"
@@ -283,10 +282,10 @@ def _():
     """
     import config as cfg, signal_opt as so, fluid as FL, network_sim as NS
     import bottleneck_detect as bn, forecast as fc
-    import dashboard as D
+    import services as S
 
     doc = pathlib.Path("REPORT.md").read_text(encoding="utf-8")
-    df = D.load_metrics.__wrapped__()
+    df = S.load_metrics(include_uploads=False)
     must = {}
 
     # --- Surat / Webster ---------------------------------------------------
@@ -295,6 +294,13 @@ def _():
     opt = so.optimise(dem)
     must[f"{opt.cycle_s:.1f}"] = "Webster cycle"
     must[f"{opt.phases[0].degree_of_saturation:.3f}"] = "optimised x"
+    # The optimiser's self-audit, under each delay model. REPORT once quoted
+    # the Webster-model minimum without naming the model, while the dashboard
+    # plotted the HCM one - 130 s in the text, 90 s on screen.
+    for model in ("webster", "auto"):
+        sw = S.delay_sweep(dem, model)["Demand-proportional splits"]
+        sw = sw.replace([float("inf")], float("nan"))
+        must[f"**{int(sw.idxmin())} s**"] = f"swept minimum ({model})"
     must[f"{len(df):,}"] = "measurement windows"
     al = bn.detect_all(df)
     must[str(len(al))] = "alert count"
@@ -351,9 +357,9 @@ def _():
     assert not missing, "; ".join(missing)
 
     # And the graceful-degradation path must actually be wired up.
-    import dashboard as D
-    ok, _ = D.detector_ready()
-    assert ok and callable(D._detector_missing_notice)
+    import services as S
+    ok, _ = S.detector_ready()
+    assert ok, "detector_ready() disagrees with the weights on disk"
     return (f"weights + {len(cfg.CAMERAS)} reference frames + "
             f"{len(cfg.CAMERAS)} heatmaps present; missing-model guard wired")
 
@@ -429,36 +435,55 @@ def _():
 
 @check("charts: every figure survives degenerate input")
 def _():
-    import inspect, pandas as pd, charts as C
+    """Every chart, fed the empty input a fresh install actually produces.
+
+    This used to call each function with whatever empty object fitted the
+    first parameter and count the survivors without asserting anything - so
+    it passed while 43 of 69 calls raised, including seven charts that crashed
+    on an empty metrics table. Each chart now gets the realistic empty input
+    for its signature and must return a Figure, and a chart added to charts.py
+    without an entry here fails the check rather than going unexercised.
+    """
+    import inspect, pandas as pd, charts as C, signal_opt as so
     import plotly.graph_objects as go
-    fns = [(n, f) for n, f in vars(C).items()
+    E = pd.DataFrame()
+    plan = so.SignalPlan(junction="-", cycle_s=0, lost_time_s=0,
+                         total_flow_ratio=0)
+    calls = {
+        "network_los_timeline": (E, []), "zone_los_timeline": (E, "gauravpath"),
+        "congestion_ranking": (E,), "zone_trend": (E, "congestion_index"),
+        "fleet_mix": (E,), "fundamental_diagram": (E, "gauravpath"),
+        "occlusion_paradox": (E,), "count_vs_occupancy": (E, "gauravpath"),
+        "cycle_composition": (plan, plan), "saturation_dumbbell": (plan, plan),
+        "delay_curve": (E, 120.0), "alert_gantt": ([],), "alert_mix": ([],),
+        "forecast_chart": ([], 60.0), "controller_comparison": ([],),
+        "queue_history": ({},), "turn_ratio_chart": (E,),
+        "phase_share_chart": ({}, {}), "fluid_timeline": ([],),
+        "fluid_validation_chart": (E,), "fluid_fleet_mix": (E,),
+    }
+    fns = {n for n, f in vars(C).items()
            if callable(f) and not n.startswith("_")
            and getattr(f, "__module__", "") == "charts"
-           and inspect.signature(f).return_annotation is not inspect.Signature.empty]
-    tried = built = 0
-    for n, f in fns:
-        sig = inspect.signature(f)
-        for empty in (pd.DataFrame(), [], {}):
-            args = []
-            for p in sig.parameters.values():
-                if p.default is not inspect.Parameter.empty:
-                    break
-                args.append(empty)
-            tried += 1
-            try:
-                r = f(*args)
-                if isinstance(r, go.Figure):
-                    built += 1
-            except Exception:
-                pass
-    return f"{len(fns)} chart fns, {built}/{tried} degenerate calls returned a Figure"
+           and inspect.signature(f).return_annotation in ("go.Figure", go.Figure)}
+    unlisted = fns - set(calls)
+    assert not unlisted, f"charts without a degenerate-input case: {sorted(unlisted)}"
+    failed = []
+    for n, args in calls.items():
+        try:
+            if not isinstance(getattr(C, n)(*args), go.Figure):
+                failed.append(f"{n} (not a Figure)")
+        except Exception as e:
+            failed.append(f"{n} ({type(e).__name__})")
+    assert not failed, "; ".join(failed)
+    assert C.fleet_table(E).empty
+    return f"{len(calls)} chart fns, all return a Figure on empty input"
 
 
 @check("metrics CSVs: physical sanity")
 def _():
     import pandas as pd
-    import dashboard as D
-    df = D.load_metrics.__wrapped__()
+    import services as S
+    df = S.load_metrics(include_uploads=False)
     bad = []
     if (df.window_end_s <= df.window_start_s).any():
         bad.append(f"{int((df.window_end_s <= df.window_start_s).sum())} zero/neg windows")
@@ -479,8 +504,8 @@ def _():
 @check("bottlenecks + forecast reproduce")
 def _():
     import pandas as pd, bottleneck_detect as bn, forecast as fc
-    import dashboard as D
-    df = D.load_metrics.__wrapped__()
+    import services as S
+    df = S.load_metrics(include_uploads=False)
     al = bn.detect_all(df)
     sev = {s: sum(a.severity == s for a in al) for s in ("critical", "warning", "info")}
     f = fc.forecast_all(df, horizon_s=60.0)

@@ -67,6 +67,7 @@ def _find_fluid_root() -> Path:
     candidates += [
         cfg.ROOT / "29974954",
         cfg.ROOT / "data" / "29974954",
+        cfg.ROOT / "data" / "FLUID",
         cfg.ROOT.parent / "29974954",
         Path.home() / "OneDrive" / "Desktop" / "PS8_dataset" / "29974954",
         Path.home() / "Desktop" / "PS8_dataset" / "29974954",
@@ -236,6 +237,24 @@ def green_at(sig: pd.DataFrame, t: float) -> set[str]:
     return set(m.movement)
 
 
+class _GreenIndex:
+    """`green_at` for a caller asking about every second of a recording.
+
+    The same test on plain arrays: filtering a DataFrame once per second was
+    the largest single cost of a replay.
+    """
+
+    def __init__(self, sig: pd.DataFrame):
+        g = sig[sig.state == "G"]
+        self.begin = g.begin_time.to_numpy(dtype=float)
+        self.end = g.end_time.to_numpy(dtype=float)
+        self.movement = g.movement.to_numpy(dtype=object)
+
+    def __call__(self, t: float) -> set[str]:
+        m = (self.begin <= t) & (self.end > t)
+        return set(self.movement[m])
+
+
 def cycle_length_s(sig: pd.DataFrame) -> float:
     ph = signal_phases(sig)
     if len(ph) < 2:
@@ -268,7 +287,11 @@ def build_queue_table(rec: Recording, hz: float = 1.0,
     served; `queue_out_pcu` is what is already sitting on the link that movement
     discharges into. Both are measured, in PCU, from the same trajectories.
     """
-    cache = CACHE_DIR / f"{rec.site}_{rec.name}_queues.csv"
+    # The sample rate is part of the key. Without it a 2 Hz request was
+    # answered from the 1 Hz cache - half the rows, silently. The default keeps
+    # its old name so existing caches stay valid.
+    rate = "" if abs(hz - 1.0) < 1e-9 else f"_{hz:g}hz"
+    cache = CACHE_DIR / f"{rec.site}_{rec.name}_queues{rate}.csv"
     if use_cache and cache.exists():
         return pd.read_csv(cache)
 
@@ -393,7 +416,9 @@ DOWNSTREAM_OCCUPANCY = "occupancy"  # all vehicles on the link
 def movements_at(queues: pd.DataFrame, t: float,
                  saturation_flow_pcu_per_hr: float = 1800.0,
                  turns: pd.DataFrame | None = None,
-                 downstream: str = DOWNSTREAM_QUEUE) -> list:
+                 downstream: str = DOWNSTREAM_QUEUE,
+                 snap: pd.DataFrame | None = None,
+                 universe: set[str] | None = None) -> list:
     """Max-pressure Movement objects for one instant, from measured queues.
 
     The queue table is sparse: a movement with no queued vehicle at time t has
@@ -410,9 +435,15 @@ def movements_at(queues: pd.DataFrame, t: float,
     defaulted to zero, because a link can be queued even when no vehicle is
     currently turning onto it — which is precisely the blocked-downstream case
     max-pressure exists to notice.
+
+    `snap` (the rows at `t`) and `universe` (every movement in the recording)
+    may be passed in by a caller stepping through many instants; `replay` does,
+    because recomputing both from the full table every second made a replay
+    quadratic in the recording's length.
     """
     import maxpressure as MP
-    snap = queues[np.isclose(queues.t, t)]
+    if snap is None:
+        snap = queues[np.isclose(queues.t, t)]
     out_col = ("receiving_occupancy_pcu"
                if downstream == DOWNSTREAM_OCCUPANCY else "queue_out_pcu")
     if out_col not in snap.columns:
@@ -424,8 +455,12 @@ def movements_at(queues: pd.DataFrame, t: float,
     # Receiving-link state at this instant, keyed by exit direction. Grouped
     # by (t, to_dir) upstream, so every row sharing a to_dir carries the same
     # value and taking the first is exact, not an approximation.
+    # itertuples, not iterrows: iterrows builds a Series per row, and at one
+    # call per second of recording that was a third of a replay's run time.
+    # Same rows, same order, same values.
+    rows = list(snap.itertuples(index=False))
     recv: dict[str, float] = {}
-    for _, r in snap.iterrows():
+    for r in rows:
         recv.setdefault(str(r.to_dir), float(getattr(r, out_col)))
 
     def _mk(mid: str, q_in: float, q_out: float, measured_here: bool):
@@ -446,12 +481,14 @@ def movements_at(queues: pd.DataFrame, t: float,
         )
 
     out = [_mk(r.movement, r.queue_in_pcu, getattr(r, out_col), True)
-           for _, r in snap.iterrows()]
+           for r in rows]
 
     # The movement universe is every movement seen anywhere in the recording,
     # so a turn the junction physically forbids is never invented.
     present = {m.id for m in out}
-    for mid in sorted(set(queues.movement.unique()) - present):
+    if universe is None:
+        universe = set(queues.movement.unique())
+    for mid in sorted(universe - present):
         out.append(_mk(mid, 0.0, recv.get(str(mid).split("-")[-1], 0.0), False))
     return out
 
@@ -585,9 +622,17 @@ def replay(rec: Recording, queues: pd.DataFrame, sig: pd.DataFrame,
     hist = []
     mode = MP.MODE_FULL
 
+    # Split the table by instant once. Every `t` comes from `queues.t` itself,
+    # so the group key is the exact value the per-step scan would have matched.
+    by_t = {k: g for k, g in queues.groupby("t", sort=False)}
+    universe = set(queues.movement.unique())
+    greens = _GreenIndex(sig)
+
     for t in times:
         movements = movements_at(queues, t, saturation_flow_pcu_per_hr,
-                                 turns, downstream=downstream)
+                                 turns, downstream=downstream,
+                                 snap=by_t.get(t, queues.iloc[0:0]),
+                                 universe=universe)
         if not movements:
             continue
         decision = MP.decide(movements, phases)
@@ -595,7 +640,7 @@ def replay(rec: Recording, queues: pd.DataFrame, sig: pd.DataFrame,
         chosen, _ = state.step(decision, 1.0, phases)
 
         # What the real signal was serving at this instant.
-        green = green_at(sig, t)
+        green = greens(t)
         actual_key = None
         for p in phases:
             if set(p.id.split("+")) & green:
@@ -962,6 +1007,27 @@ def trajectory_heatmap(recording_id: str, blur: int = 21):
     return cv2.cvtColor(out, cv2.COLOR_BGR2RGB)
 
 
+@lru_cache(maxsize=2)
+def _vehicle_positions(recording_id: str) -> pd.DataFrame:
+    """Every non-pedestrian position in a recording, slimmed for repeat use.
+
+    `annotated_instant` is called once per move of the dashboard's time
+    slider, and used to parse the whole trajectory CSV - up to 145 MB - every
+    time to draw one instant. Read once, keep the five columns it needs at
+    float32, and the slider stays interactive.
+    """
+    rec = find(recording_id)
+    if rec is None:
+        return pd.DataFrame(columns=["time", "cx_m", "cy_m", "speed"])
+    d = pd.read_csv(rec.traj_path,
+                    usecols=["time", "cx_m", "cy_m", "speed", "type"]).dropna()
+    d = d[d.type != "pedestrian"].drop(columns="type")
+    # time stays float64: it is matched with np.isclose against the queue
+    # table's grid, and float32 rounding at ~2000 s is coarser than its rtol.
+    return d.astype({"cx_m": "float32", "cy_m": "float32",
+                     "speed": "float32"}).reset_index(drop=True)
+
+
 def annotated_instant(recording_id: str, t: float, radius_m: float = 2.2):
     """Every vehicle at one instant: queued in red, moving in green.
 
@@ -975,9 +1041,8 @@ def annotated_instant(recording_id: str, t: float, radius_m: float = 2.2):
     if img is None or w2p is None or rec is None:
         return None, 0, 0
     m = _scaled(w2p, img, recording_id)
-    d = pd.read_csv(rec.traj_path,
-                    usecols=["time", "cx_m", "cy_m", "speed", "type"]).dropna()
-    d = d[np.isclose(d.time, t) & (d.type != "pedestrian")]
+    d = _vehicle_positions(recording_id)
+    d = d[np.isclose(d.time.to_numpy(), t)]
     out = img.copy()
     r = max(3, int(radius_m * m.px_per_m * 0.5))
     for _, v in d.iterrows():

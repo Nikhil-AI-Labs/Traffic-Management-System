@@ -45,55 +45,34 @@ def main():
                     help="focal length in pixels (1080p, ~60 deg HFOV by default)")
     args = ap.parse_args()
 
+    # Same fit, checks and persistence as the dashboards' Calibration view, so
+    # a CLI calibration marks the camera verified in calibration_state.json,
+    # records what it replaced (so it can be undone), and honours a second
+    # row's own width. This script used to write the model directly, ignore
+    # --width2-m, and tell the user to edit a config.py setting that no longer
+    # controls anything.
+    import calibration as CAL
+
     cam = args.camera
     calib = Z.load(cam)
     if calib is None:
         raise SystemExit(f"No calibration for '{cam}'. Run seed_calibration.py first.")
 
-    px1 = road_px_at(cam, args.row) if cam in SC.JUNCTION_DEFS else None
-    if not px1:
-        raise SystemExit(f"'{cam}' has no traced road edges to measure against.")
-
+    measurements = [(args.row, args.width_m)]
     if args.row2 and args.width2_m:
-        px2 = road_px_at(cam, args.row2)
-        model = Z.build_scale_model(
-            y_near=max(args.row, args.row2),
-            px_width_near=px1 if args.row >= args.row2 else px2,
-            y_far=min(args.row, args.row2),
-            px_width_far=px2 if args.row >= args.row2 else px1,
-            real_width_m=args.width_m,
-            focal_px=args.focal_px,
-            camera_height_m=args.camera_height_m,
-        )
-        print(f"Fitted from two rows: y={args.row} ({px1} px) and "
-              f"y={args.row2} ({px2} px)")
-    else:
-        # One row fixes the lateral scale there; the horizon has to come from
-        # the traced edge convergence instead, which is weaker but workable.
-        d = SC.JUNCTION_DEFS[cam]
-        rows = [200, 400, 600, 800, 1000]
-        widths = [road_px_at(cam, r) for r in rows]
-        # width is linear in row for a flat road: width = m*(y - y_horizon)
-        import numpy as np
-        A = np.vstack([rows, np.ones(len(rows))]).T
-        m, c = np.linalg.lstsq(A, np.array(widths, float), rcond=None)[0]
-        y_h = -c / m
-        far_row = 250
-        far_px = max(1.0, m * (far_row - y_h))
-        model = Z.build_scale_model(
-            y_near=args.row, px_width_near=px1,
-            y_far=far_row, px_width_far=far_px,
-            real_width_m=args.width_m,
-            focal_px=args.focal_px,
-            camera_height_m=args.camera_height_m,
-        )
-        print(f"Fitted from one row (y={args.row}, {px1} px = {args.width_m} m); "
-              f"horizon taken from edge convergence (y={y_h:.0f}).")
-        print("Supplying --row2/--width2-m would determine the horizon directly "
-              "and give more trustworthy speeds.")
+        measurements.append((args.row2, args.width2_m))
+    hfov = CAL.hfov_from_focal_px(args.focal_px, int(calib.frame_size[0]))
 
-    calib.scale_model = model
-    Z.save(calib)
+    res = CAL.fit_scale(cam, measurements, camera_height_m=args.camera_height_m,
+                        hfov_deg=hfov, calib=calib)
+    if not res.ok:
+        raise SystemExit(res.message)
+    print(res.message)
+    for w in res.warnings or []:
+        print(f"  check: {w}")
+    CAL.apply(cam, res, mark_verified=True, measurements=measurements,
+              camera_height_m=args.camera_height_m, hfov_deg=hfov)
+    model = res.model
 
     print(f"\nApplied to {cam}:")
     print(f"  y_horizon = {model['y_horizon']:.0f}   C = {model['c']:.3f}")
@@ -111,9 +90,11 @@ def main():
             print(f"    {z.label:<26} {a:8.0f} m2  "
                   f"(~{a / cfg.LANE_WIDTH_M:.0f} m of road)")
 
-    print(f"\nNow mark it verified so its metric figures become primary:")
-    print(f"  in src/config.py, set  SCALE_VERIFIED = {{'{cam}': True}}")
-    print(f"Then re-run:  python src/analyze.py {cam}")
+    print(f"\nMarked {cam} scale-verified in {CAL.STATE_PATH.name}.")
+    print(f"Re-measure so the new scale takes effect:  python src/analyze.py {cam}")
+    print(f"Undo from the dashboard's Calibration view, or "
+          f"`python -c \"import sys; sys.path.insert(0,'src'); "
+          f"import calibration; calibration.clear('{cam}')\"`.")
 
 
 if __name__ == "__main__":

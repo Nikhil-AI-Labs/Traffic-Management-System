@@ -68,9 +68,7 @@ def load_state() -> dict:
 
 
 def save_state(state: dict) -> None:
-    STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(STATE_PATH, "w", encoding="utf-8") as f:
-        json.dump(state, f, indent=2)
+    cfg.write_json_atomic(STATE_PATH, state)
 
 
 def is_verified(camera_id: str) -> bool:
@@ -89,8 +87,19 @@ def measurement_for(camera_id: str) -> dict | None:
 
 
 def clear(camera_id: str) -> None:
-    """Undo a calibration: drop the model, the record and the verified flag."""
+    """Undo a calibration: restore the model it replaced, drop the record and
+    the verified flag.
+
+    Restored, not deleted. The junction cameras ship with a *seeded* scale
+    model - estimated, but it is what every speed, density and flow figure on
+    those cameras is computed from. Undo used to set the model to None, so
+    re-measuring after an undo produced no speeds or densities at all, the
+    signal plan lost its demand, and "back to estimated figures" was in fact
+    "back to no figures". The seed is kept in the measurement record when a
+    calibration is applied, and put back here.
+    """
     s = load_state()
+    record = s["measurements"].get(camera_id) or {}
     s["scale_verified"].pop(camera_id, None)
     s["measurements"].pop(camera_id, None)
     save_state(s)
@@ -98,7 +107,7 @@ def clear(camera_id: str) -> None:
 
     calib = Z.load(camera_id)
     if calib is not None:
-        calib.scale_model = None
+        calib.scale_model = record.get("previous_scale_model")
         Z.save(calib)
 
 
@@ -471,11 +480,20 @@ def apply(camera_id: str, result: ScaleResult, mark_verified: bool = True,
     calib = Z.load(camera_id)
     if calib is None:
         raise ValueError(f"No calibration for '{camera_id}'.")
+
+    s = load_state()
+    # The model this one replaces, so `clear` can restore it. Re-applying over
+    # an existing measurement keeps the *original* seed rather than chaining
+    # back only as far as the previous measurement.
+    prior = s["measurements"].get(camera_id) or {}
+    previous_model = (prior["previous_scale_model"]
+                      if "previous_scale_model" in prior else calib.scale_model)
+
     calib.scale_model = result.model
     Z.save(calib)
 
-    s = load_state()
     s["measurements"][camera_id] = {
+        "previous_scale_model": previous_model,
         "rows": [[int(r), float(w)] for r, w in (measurements or [])],
         "camera_height_m": float(camera_height_m),
         "hfov_deg": float(hfov_deg),

@@ -49,7 +49,7 @@ Be clear about this before demoing to anyone.
 | 31 bottleneck alerts, 21 forecasts | ✅ | |
 | Scene overlays, calibration view | ✅ | Reference frames are committed |
 | **Movement heatmap panel** | ⚠️ notice | `outputs/frames/heatmap/` not committed — panel shows a "not rendered yet" note |
-| **Annotated video panel** | ⚠️ absent | MP4s not committed (size) |
+| **Annotated video panel** | ⚠️ absent | MP4s not committed (size). `python src/render_demo.py --junctions` renders H.264 MP4s that both dashboards play |
 | **"Analyse footage" upload** | ⚠️ disabled | Needs the detector; degrades via `detector_ready()` to an explanatory notice, not a crash |
 | **All 5 max-pressure views** | ⚠️ notice | FLUID is 18 GB and cannot be hosted. Views render an amber "Real-intersection data not found" callout |
 
@@ -61,7 +61,54 @@ To demo the FLUID track, run locally with `FLUID_ROOT` set.
 
 ---
 
-## 3. Streamlit Community Cloud (recommended)
+## The React dashboard (FastAPI)
+
+The React front end is a static build served by the FastAPI app, so it deploys
+as one Python process with the same slim `requirements.txt` (FastAPI and
+Uvicorn are in it; torch is not).
+
+```bash
+pip install -r requirements.txt
+cd web && npm ci && npm run build && cd ..        # writes web/dist
+python src/api.py --host 0.0.0.0 --port 8000      # API + UI on one port
+```
+
+Health check: `GET /api/health` → `{"ok": true}`. OpenAPI docs: `/api/docs`.
+The degradations in §2 apply unchanged — missing weights, heatmaps, videos or
+FLUID each render an explanation in the UI rather than an error.
+
+**Docker** (self-hosted, or a Hugging Face Space with SDK *Docker*):
+
+```dockerfile
+FROM node:22-slim AS web
+WORKDIR /web
+COPY web/package*.json ./
+RUN npm ci
+COPY web/ ./
+RUN npm run build
+
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+COPY --from=web /web/dist ./web/dist
+EXPOSE 8000
+HEALTHCHECK CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"
+CMD ["python", "src/api.py", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+For a Hugging Face Space, set `app_port: 8000` in the README front-matter.
+
+The control-strategy switch in the React UI follows the URL (`/surat/*` or
+`/fluid/*`), so concurrent viewers do not flip each other's view — the issue in
+§8 applies only to the Streamlit dashboard.
+
+The sections below cover the Streamlit dashboard.
+
+---
+
+## 3. Streamlit Community Cloud (recommended for the Streamlit dashboard)
 
 Free, no card, purpose-built for this. ~10 minutes.
 

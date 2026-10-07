@@ -137,7 +137,11 @@ def render(camera_id: str, seconds: float | None, fps: int, stride: int,
     if calib is None:
         raise SystemExit(f"No calibration for '{camera_id}'.")
 
-    src_fps = 20.0
+    # The clip's own frame rate, not an assumed 20: `--seconds` on a 25 fps
+    # upload would otherwise render the wrong length.
+    cap = cfg.open_video(cfg.camera_video_path(camera_id))
+    src_fps = cap.get(cv2.CAP_PROP_FPS) or 20.0
+    cap.release()
     max_frames = int(seconds * src_fps / stride) if seconds else None
 
     det = VehicleDetector(model_path=model)
@@ -145,8 +149,7 @@ def render(camera_id: str, seconds: float | None, fps: int, stride: int,
     scale_verified = cfg.scale_is_verified(camera_id)
 
     out_path = cfg.ANNOTATED_DIR / f"{camera_id}_demo.mp4"
-    writer = cv2.VideoWriter(str(out_path), cv2.VideoWriter_fourcc(*"mp4v"),
-                             fps, tuple(calib.frame_size))
+    writer, codec = cfg.video_writer(out_path, fps, tuple(calib.frame_size))
 
     latest: dict = {}
     tally: Counter = Counter()
@@ -175,7 +178,7 @@ def render(camera_id: str, seconds: float | None, fps: int, stride: int,
     writer.release()
     size_mb = out_path.stat().st_size / 1e6
     print(f"  {cam['name'][:40]:<42} {n:>4} frames  "
-          f"{time.time() - t0:>5.0f}s  {size_mb:>5.1f} MB")
+          f"{time.time() - t0:>5.0f}s  {size_mb:>5.1f} MB  ({codec})")
     print(f"    -> {out_path}")
 
 
