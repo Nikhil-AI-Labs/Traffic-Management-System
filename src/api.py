@@ -31,12 +31,14 @@ from dataclasses import asdict, is_dataclass
 from pathlib import Path
 from typing import Any, Callable
 
+import anyio
 import numpy as np
 import pandas as pd
-from fastapi import Body, FastAPI, File, HTTPException, Query, UploadFile
+from fastapi import (Body, Depends, FastAPI, File, HTTPException, Query, Request,
+                     UploadFile)
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
-from fastapi.responses import FileResponse, JSONResponse, Response
+from fastapi.responses import FileResponse, JSONResponse, Response, StreamingResponse
 
 import config as cfg
 
@@ -44,10 +46,14 @@ cfg.quiet_opencv()
 import bottleneck_detect as bn
 import charts as C
 import forecast as fc
+import incidents as INC
+import security as SEC
 import services as S
 import signal_opt as so
 import theme as T
+import whatif as W
 import zones as Z
+from security import limit, operator
 
 WEB_DIST = cfg.ROOT / "web" / "dist"
 MAX_UPLOAD_BYTES = 1024 * 1024 * 1024        # 1 GB, as the old uploader allowed
@@ -80,17 +86,25 @@ async def lifespan(_app):
     yield
 
 
-app = FastAPI(title="Surat Traffic Intelligence API", version="2.0.0",
+app = FastAPI(title="Surat Traffic Intelligence API", version="2.1.0",
               docs_url="/api/docs", openapi_url="/api/openapi.json",
               lifespan=lifespan)
-app.add_middleware(GZipMiddleware, minimum_size=1024)
+# Streams must not be compressed: gzip holds output back until it has enough
+# to emit, which turns a live video feed into a stutter. Starlette already
+# skips event streams and images; the MJPEG multipart type is added here.
+try:
+    from starlette.middleware.gzip import DEFAULT_EXCLUDED_CONTENT_TYPES as _NO_GZIP
+    app.add_middleware(GZipMiddleware, minimum_size=1024,
+                       exclude_content_types=(*_NO_GZIP, "multipart/x-mixed-replace"))
+except ImportError:                      # Starlette < 0.40: no exclusion list
+    app.add_middleware(GZipMiddleware, minimum_size=1024)
 # The Vite dev server proxies /api, so this only matters when the front end is
 # served from a different origin during development.
 app.add_middleware(CORSMiddleware,
                    allow_origins=["http://localhost:5173",
                                   "http://127.0.0.1:5173"],
                    allow_methods=["*"], allow_headers=["*"],
-                   expose_headers=["X-Vehicles", "X-Queued"])
+                   expose_headers=["X-Vehicles", "X-Queued", "Retry-After"])
 
 
 # --------------------------------------------------------------------------
@@ -193,6 +207,7 @@ class Job:
         self.error = ""
         self.created = time.time()
         self.finished: float | None = None
+        self.detector = False
 
     def update(self, frac: float, msg: str) -> None:
         self.progress = float(max(0.0, min(1.0, frac)))
@@ -207,11 +222,22 @@ class Job:
 
 
 JOBS: dict[str, Job] = {}
+MAX_DETECTOR_QUEUE = 3      # detector jobs waiting or running at once
 
 
 def start_job(kind: str, label: str,
               fn: Callable[[Job], Any], detector: bool = False) -> Job:
+    if detector:
+        # Detector jobs run one at a time behind a lock; past a short queue a
+        # new one would only wait minutes for its turn, so say so now.
+        pending = sum(1 for j in JOBS.values()
+                      if j.detector and j.status in ("queued", "running"))
+        if pending >= MAX_DETECTOR_QUEUE:
+            raise HTTPException(429, f"The detector already has {pending} jobs "
+                                     f"queued. Try again when one finishes.",
+                                headers={"Retry-After": "30"})
     job = Job(kind, label)
+    job.detector = detector
     JOBS[job.id] = job
     # Keep the table from growing for the life of the server.
     for old in sorted(JOBS.values(), key=lambda j: j.created)[:-50]:
@@ -310,19 +336,35 @@ def meta():
         except Exception:
             rec = None
 
+    try:
+        inc = INC.counts(_incident_items(df))
+    except Exception:
+        traceback.print_exc()
+        inc = None
+
     return ok({
         "cameras": cams,
         "metrics": {"windows": int(len(df)), "cameras": len(analysed),
                     "minutes": minutes},
         "calibrated": sum(1 for c in cfg.CAMERAS if cfg.scale_is_verified(c)),
-        "detector": {"ready": det_ok, "path": det_path},
+        "detector": {"ready": det_ok, "path": det_path,
+                     "fast": S.live_detector_label()},
         "fluid": _fluid_status(),
         "mode": cfg.load_optimization_mode(),
         "recommendation": rec,
+        "auth": {"required": SEC.auth_required()},
+        "incidents": inc,
     })
 
 
-@app.post("/api/settings/mode")
+@app.post("/api/auth/check", dependencies=[Depends(limit("auth", 10, 5))])
+def auth_check(name: str = Depends(operator)):
+    """200 when the supplied operator token is valid (or none is required).
+    Rate-limited, so the token cannot be guessed at speed."""
+    return ok({"ok": True, "required": SEC.auth_required(), "name": name})
+
+
+@app.post("/api/settings/mode", dependencies=[Depends(limit("settings", 30, 10))])
 def set_mode(body: dict = Body(...)):
     """The control strategy is a standing operator decision, so it persists."""
     mode = body.get("mode")
@@ -387,14 +429,22 @@ TREND_METRICS = ("congestion_index", "occupancy", "density_pcu_per_km_lane",
                  "speed_kmph", "flow_pcu_per_hr")
 
 
-def _alerts_payload(alerts) -> dict:
+def _alerts_payload(alerts, actionable: bool = True) -> dict:
+    """Alerts as the views show them. Each carries its incident id and
+    workflow status, so a card can be acknowledged where it is read.
+    `actionable` is off for an upload that has not been kept: its alerts are
+    not part of the network, and the incident log only tracks the network."""
     counts = {s: sum(a.severity == s for a in alerts)
               for s in ("critical", "warning", "info")}
-    return {
-        "alerts": [{**a.to_dict(), "camera_short": short(a.camera_id)}
-                   for a in alerts],
-        "counts": counts,
-    }
+    log = INC.load()["incidents"] if actionable else {}
+    out = []
+    for a in alerts:
+        d = {**a.to_dict(), "camera_short": short(a.camera_id)}
+        d["id"] = INC.alert_id(d)
+        d["status"] = log.get(d["id"], {}).get("status", "open")
+        d["actionable"] = actionable
+        out.append(d)
+    return {"alerts": out, "counts": counts}
 
 
 @app.get("/api/sites/{cam}")
@@ -483,6 +533,19 @@ def site_trend(cam: str, metric: str = "congestion_index", theme: str = Theme):
 # Webster track — Signal timing
 # --------------------------------------------------------------------------
 
+def _parse_widths(sat_source: str, widths: str) -> dict[str, float]:
+    if sat_source not in S.SAT_SOURCES:
+        raise HTTPException(422, f"sat_source must be one of {list(S.SAT_SOURCES)}")
+    try:
+        w = {str(k): float(v) for k, v in json.loads(widths or "{}").items()}
+    except (ValueError, AttributeError, TypeError):
+        raise HTTPException(422, "widths must be a JSON object of numbers")
+    for k, v in w.items():
+        if not 2.0 <= v <= 30.0:
+            raise HTTPException(422, f"width for {k} must be 2–30 m")
+    return w
+
+
 def _plan(plan) -> dict:
     d = plan.to_dict()
     for p, ph in zip(d["phases"], plan.phases):
@@ -501,15 +564,7 @@ def signal(baseline_cycle: float = Query(120.0, ge=60, le=150),
     demands = S.junction_demands(df)
     if not demands:
         raise HTTPException(409, "No junction-mode cameras analysed yet.")
-    if sat_source not in S.SAT_SOURCES:
-        raise HTTPException(422, f"sat_source must be one of {list(S.SAT_SOURCES)}")
-    try:
-        w = {str(k): float(v) for k, v in json.loads(widths or "{}").items()}
-    except (ValueError, AttributeError, TypeError):
-        raise HTTPException(422, "widths must be a JSON object of numbers")
-    for k, v in w.items():
-        if not 2.0 <= v <= 30.0:
-            raise HTTPException(422, f"width for {k} must be 2–30 m")
+    w = _parse_widths(sat_source, widths)
 
     approaches = [{"id": d.approach_id, "label": d.label,
                    "short": short(d.camera_id), "lanes": d.lanes,
@@ -800,7 +855,7 @@ def _fit_args(body: dict) -> tuple[list[tuple[int, float]], float, float]:
     return meas, height, hfov
 
 
-@app.post("/api/calibration/{cam}/fit")
+@app.post("/api/calibration/{cam}/fit", dependencies=[Depends(limit("fit", 30, 10))])
 def calibration_fit(cam: str, body: dict = Body(...)):
     import calibration as CAL
     if cam not in cfg.CAMERAS:
@@ -825,7 +880,8 @@ def _remeasure(cam: str) -> Callable[[Job], Any]:
     return run
 
 
-@app.post("/api/calibration/{cam}/apply")
+@app.post("/api/calibration/{cam}/apply",
+          dependencies=[Depends(operator), Depends(limit("remeasure", 4, 2))])
 def calibration_apply(cam: str, body: dict = Body(...)):
     import calibration as CAL
     if cam not in cfg.CAMERAS:
@@ -848,7 +904,8 @@ def calibration_apply(cam: str, body: dict = Body(...)):
     return ok({"job": job.view()})
 
 
-@app.delete("/api/calibration/{cam}")
+@app.delete("/api/calibration/{cam}",
+            dependencies=[Depends(operator), Depends(limit("remeasure", 4, 2))])
 def calibration_clear(cam: str):
     import calibration as CAL
     if cam not in cfg.CAMERAS:
@@ -916,7 +973,7 @@ def _register_upload(u: Upload) -> dict:
     return u.view()
 
 
-@app.post("/api/uploads")
+@app.post("/api/uploads", dependencies=[Depends(operator), Depends(limit("upload", 6, 3))])
 async def upload_file(file: UploadFile = File(...)):
     import ingest
     try:
@@ -942,7 +999,7 @@ async def upload_file(file: UploadFile = File(...)):
     return ok(_register_upload(u))
 
 
-@app.post("/api/uploads/demo")
+@app.post("/api/uploads/demo", dependencies=[Depends(operator), Depends(limit("upload", 6, 3))])
 def upload_demo(body: dict = Body(...)):
     cam = body.get("camera")
     if cam not in cfg.CAMERAS:
@@ -960,7 +1017,7 @@ def upload_get(uid: str):
     return ok(need_upload(uid).view())
 
 
-@app.delete("/api/uploads/{uid}")
+@app.delete("/api/uploads/{uid}", dependencies=[Depends(operator)])
 def upload_delete(uid: str):
     u = UPLOADS.pop(uid, None)
     # Dataset clips are loaded in place and are never deleted.
@@ -979,7 +1036,8 @@ def _whole_frame_roi(media):
              "include everything in view, not just carriageway.")
 
 
-@app.post("/api/uploads/{uid}/roi")
+@app.post("/api/uploads/{uid}/roi",
+          dependencies=[Depends(operator), Depends(limit("analyse", 12, 4))])
 def upload_roi(uid: str, body: dict = Body(...)):
     import ingest
     u = need_upload(uid)
@@ -1025,7 +1083,8 @@ def upload_zones_image(uid: str, w: int = Query(1600, ge=200, le=3840)):
     return jpeg(ingest.preview_zones(u.media, u.calib, u.roi), max_width=w)
 
 
-@app.post("/api/uploads/{uid}/analyze")
+@app.post("/api/uploads/{uid}/analyze",
+          dependencies=[Depends(operator), Depends(limit("analyse", 12, 4))])
 def upload_analyze(uid: str, body: dict = Body(default={})):
     import ingest
     u = need_upload(uid)
@@ -1094,7 +1153,7 @@ def _video_report(u: Upload, theme: str) -> dict:
         "has_preview": res.preview is not None,
         "trend_metrics": [{"id": m, "label": C.METRIC_AXIS[m][0]} for m in metrics],
         "charts": charts,
-        **_alerts_payload(alerts),
+        **_alerts_payload(alerts, actionable=False),
     }
 
 
@@ -1176,7 +1235,8 @@ def upload_html(uid: str):
                              f'attachment; filename="{u.path.stem}_report.html"'})
 
 
-@app.post("/api/uploads/{uid}/persist")
+@app.post("/api/uploads/{uid}/persist",
+          dependencies=[Depends(operator), Depends(limit("persist", 6, 3))])
 def upload_persist(uid: str):
     import ingest
     u = need_upload(uid)
@@ -1389,7 +1449,7 @@ def sim_scenarios():
                              for k, v in NS.SCENARIOS.items()]})
 
 
-@app.post("/api/sim/run")
+@app.post("/api/sim/run", dependencies=[Depends(limit("sim", 30, 10))])
 def sim_run(body: dict = Body(default={}), theme: str = Theme):
     import network_sim as NS
     scenario = body.get("scenario", "steady")
@@ -1473,6 +1533,366 @@ def mp_method():
                        "queue_out_source": m.queue_out_source,
                        "pressure": m.pressure} for m in movements],
     })
+
+
+# --------------------------------------------------------------------------
+# Signal timing — what-if
+# --------------------------------------------------------------------------
+
+@app.get("/api/signal/whatif")
+def signal_whatif(growth: float = Query(0.0, ge=-50, le=100,
+                                        description="demand change from today, %"),
+                  loss_approach: str | None = Query(None),
+                  loss_pct: float = Query(0.0, ge=0, le=60,
+                                          description="saturation flow lost, %"),
+                  growth_per_year: float = Query(5.0, ge=0.5, le=20),
+                  hours_per_day: float = Query(6.0, ge=1, le=24),
+                  baseline_cycle: float = Query(120.0, ge=60, le=150),
+                  delay_model: str = Query("auto", pattern="^(auto|hcm|webster)$"),
+                  sat_source: str = Query("per_lane"),
+                  widths: str = Query("{}"),
+                  theme: str = Theme):
+    df = need_metrics()
+    today = S.junction_demands(df)
+    if not today:
+        raise HTTPException(409, "No junction-mode cameras analysed yet.")
+    today = S.with_widths(today, S.saturation_factor(sat_source),
+                          _parse_widths(sat_source, widths))
+    ids = [d.approach_id for d in today]
+    if loss_approach and loss_approach not in ids:
+        raise HTTPException(422, f"loss_approach must be one of {ids}")
+    loss = {loss_approach: loss_pct / 100.0} if loss_approach and loss_pct else None
+    scen = W.scenario(today, 1.0 + growth / 100.0, loss)
+
+    def plans(dem):
+        b = so.evaluate_fixed_plan(dem, cycle_s=baseline_cycle, delay_model=delay_model)
+        o = so.optimise(dem, delay_model=delay_model)
+        return b, o
+
+    base_t, opt_t = plans(today)
+    base_s, opt_s = plans(scen)
+    curve = W.growth_curve(today, baseline_cycle, delay_model)
+    shares = W.fleet_shares(df, ids)
+    with T.use_mode(theme):
+        chart = figure(C.growth_headroom(curve, W.PRACTICAL_X))
+
+    def block(base, opt, dem):
+        return {"headroom": W.headroom(dem, growth_per_year / 100.0),
+                "base": _plan(base), "opt": _plan(opt), "compare": so.compare(base, opt),
+                "worst_x_fixed": max(p.degree_of_saturation for p in base.phases),
+                "worst_x_adaptive": max(p.degree_of_saturation for p in opt.phases)}
+
+    return ok({
+        "approaches": [{"id": d.approach_id, "short": short(d.camera_id),
+                        "label": d.label} for d in today],
+        "today": block(base_t, opt_t, today),
+        "scenario": {**block(base_s, opt_s, scen), "growth_pct": growth,
+                     "loss_approach": loss_approach, "loss_pct": loss_pct},
+        "benefits": W.benefits(base_t, opt_t, today, shares, hours_per_day=hours_per_day),
+        "curve": records(curve.round(4)),
+        "practical_x": W.PRACTICAL_X,
+        "chart": chart,
+    })
+
+
+# --------------------------------------------------------------------------
+# Incidents — the alert workflow
+# --------------------------------------------------------------------------
+
+_SEV_ORDER = {"critical": 0, "warning": 1, "info": 2}
+_STATUS_ORDER = {"open": 0, "acknowledged": 1, "resolved": 2, "cleared": 3}
+_recorded_cache: tuple[int, list[dict]] = (0, [])
+
+
+def _recorded_alerts(df: pd.DataFrame) -> list[dict]:
+    """Alerts derived from the measured windows, with stable ids. Cached on
+    the metrics frame itself, which is replaced whenever a CSV changes."""
+    global _recorded_cache
+    if _recorded_cache[0] == id(df) and _recorded_cache[1]:
+        return _recorded_cache[1]
+    out = []
+    for a in bn.detect_all(df) if not df.empty else []:
+        d = {**a.to_dict(), "camera_short": short(a.camera_id), "source": "recorded"}
+        d["id"] = INC.alert_id(d)
+        out.append(d)
+    _recorded_cache = (id(df), out)
+    return out
+
+
+def _incident_items(df: pd.DataFrame | None = None) -> list[dict]:
+    df = S.load_metrics() if df is None else df
+    return INC.annotate(_recorded_alerts(df) + LIVE.alert_log())
+
+
+@app.get("/api/incidents")
+def incidents(status: str = Query("all", pattern="^(all|open|acknowledged|resolved|cleared)$"),
+              source: str = Query("all", pattern="^(all|recorded|live)$")):
+    items = _incident_items()
+    counts = INC.counts(items)
+    if status != "all":
+        items = [i for i in items if i["status"] == status]
+    if source == "recorded":
+        items = [i for i in items if i.get("source", "recorded") == "recorded"]
+    elif source == "live":
+        items = [i for i in items if i.get("source") in ("replay", "detect")]
+    # Open before handled. Within a status, live alerts first and newest
+    # first; then recorded ones, most severe first, longest first.
+    live = sorted((i for i in items if i.get("source") in ("replay", "detect")),
+                  key=lambda i: str(i.get("raised_at", "")), reverse=True)
+    rec = sorted((i for i in items if i.get("source") not in ("replay", "detect")),
+                 key=lambda i: (_SEV_ORDER.get(i.get("severity"), 3),
+                                -float(i.get("duration_s") or 0)))
+    ordered = sorted(live + rec, key=lambda i: _STATUS_ORDER.get(i["status"], 3))
+    return ok({"items": ordered, "counts": counts})
+
+
+@app.post("/api/incidents/{iid}/action",
+          dependencies=[Depends(limit("incident", 120, 30))])
+def incident_action(iid: str, body: dict = Body(...), who: str = Depends(operator)):
+    item = next((i for i in _incident_items() if i["id"] == iid), None)
+    if item is None:
+        raise HTTPException(404, "Unknown incident (a live alert from before a "
+                                 "restart is only kept once acted on).")
+    snapshot = {k: v for k, v in item.items()
+                if k not in ("status", "history", "current", "active")}
+    try:
+        rec = INC.act(iid, str(body.get("action", "")), who,
+                      str(body.get("note") or ""), snapshot=snapshot)
+    except ValueError as e:
+        raise HTTPException(409, str(e))
+    return ok({"id": iid, "status": rec["status"], "history": rec["history"]})
+
+
+@app.get("/api/report/briefing.html", dependencies=[Depends(limit("report", 30, 10))])
+def report_briefing(download: bool = False):
+    """The printable network briefing (src/briefing.py)."""
+    import briefing
+    df = need_metrics()
+    html = briefing.build(df, _incident_items(df))
+    headers = {"Cache-Control": "no-cache"}
+    if download:
+        stamp = time.strftime("%Y%m%d")
+        headers["Content-Disposition"] = f'attachment; filename="network_briefing_{stamp}.html"'
+    return Response(html, media_type="text/html", headers=headers)
+
+
+@app.get("/api/incidents.csv")
+def incidents_csv():
+    rows = INC.to_rows(_incident_items())
+    return Response(pd.DataFrame(rows).to_csv(index=False), media_type="text/csv",
+                    headers={"Content-Disposition":
+                             'attachment; filename="incident_log.csv"'})
+
+
+# --------------------------------------------------------------------------
+# Camera locations — the network map
+# --------------------------------------------------------------------------
+
+LOCATIONS = cfg.CONFIG_DIR / "camera_locations.json"
+SURAT_BOUNDS = (20.95, 21.35, 72.60, 73.00)       # lat_min, lat_max, lon_min, lon_max
+_loc_lock = threading.Lock()
+
+
+def _locations_raw() -> dict:
+    try:
+        with open(LOCATIONS, "r", encoding="utf-8") as f:
+            d = json.load(f)
+        return d if isinstance(d, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+@app.get("/api/locations")
+def locations():
+    df = S.load_metrics()
+    summary = fc.camera_summary(df) if not df.empty else pd.DataFrame()
+    mean_ci = (dict(zip(summary.camera_id, summary.mean_congestion))
+               if not summary.empty else {})
+    raw = _locations_raw()
+    cams = []
+    for cid in cfg.CAMERAS:
+        loc = raw.get(cid) if isinstance(raw.get(cid), dict) else None
+        ci = mean_ci.get(cid)
+        cams.append({
+            "id": cid, "name": cfg.camera_name(cid), "short": short(cid),
+            "mode": cfg.camera_meta(cid).get("mode", "area"),
+            "lat": loc.get("lat") if loc else None,
+            "lon": loc.get("lon") if loc else None,
+            "verified": bool(loc and loc.get("verified")),
+            "mean_congestion": ci, "los": T.los_of(ci) if ci is not None else None,
+        })
+    return ok({"cameras": cams, "note": raw.get("_note", ""),
+               "bounds": {"lat": SURAT_BOUNDS[:2], "lon": SURAT_BOUNDS[2:]}})
+
+
+@app.put("/api/locations/{cam}",
+         dependencies=[Depends(operator), Depends(limit("locations", 60, 20))])
+def set_location(cam: str, body: dict = Body(...)):
+    if cam not in cfg.CAMERAS:
+        raise HTTPException(404, f"Unknown camera '{cam}'.")
+    try:
+        lat, lon = float(body["lat"]), float(body["lon"])
+    except (KeyError, TypeError, ValueError):
+        raise HTTPException(422, "lat and lon must be numbers")
+    if not (SURAT_BOUNDS[0] <= lat <= SURAT_BOUNDS[1]
+            and SURAT_BOUNDS[2] <= lon <= SURAT_BOUNDS[3]):
+        raise HTTPException(422, "That position is outside Surat.")
+    with _loc_lock:
+        raw = _locations_raw()
+        raw[cam] = {"lat": round(lat, 6), "lon": round(lon, 6), "verified": True}
+        cfg.write_json_atomic(LOCATIONS, raw)
+    return ok({"id": cam, **raw[cam]})
+
+
+# --------------------------------------------------------------------------
+# Live monitoring
+# --------------------------------------------------------------------------
+
+import live as _live_mod  # noqa: E402
+
+LIVE = _live_mod.HUB
+
+
+@app.get("/api/live/state")
+def live_state():
+    LIVE.ensure_started()
+    LIVE.touch()
+    return ok(LIVE.snapshot())
+
+
+@app.get("/api/live/events")
+async def live_events(request: Request,
+                      max_ticks: int = Query(0, ge=0, le=100000, alias="limit")):
+    """Server-sent events: the whole live picture once a second, plus every
+    alert raised or cleared since the last tick. Resumes from Last-Event-ID
+    after a reconnect, so a dropped connection does not lose an alert."""
+    LIVE.ensure_started()
+    last = request.headers.get("last-event-id", "")
+    start = int(last) if last.isdigit() else LIVE.seq
+
+    async def gen():
+        seq, n = start, 0
+        yield "retry: 3000\n\n"
+        while True:
+            if await request.is_disconnected():
+                break
+            LIVE.touch()
+            snap = await anyio.to_thread.run_sync(LIVE.snapshot)
+            events, seq = LIVE.events_since(seq)
+            data = json.dumps(clean({"state": snap, "events": events}),
+                              separators=(",", ":"))
+            yield f"id: {seq}\nevent: tick\ndata: {data}\n\n"
+            n += 1
+            if max_ticks and n >= max_ticks:
+                break
+            await anyio.sleep(1.0)
+
+    return StreamingResponse(gen(), media_type="text/event-stream",
+                             headers={"Cache-Control": "no-cache",
+                                      "X-Accel-Buffering": "no"})
+
+
+def _frame_source(cam: str):
+    LIVE.ensure_started()
+    try:
+        return LIVE.frame_source(cam)
+    except KeyError:
+        raise HTTPException(404, f"No live feed for '{cam}'.")
+
+
+@app.get("/api/live/stream.mjpg")
+async def live_stream(request: Request, cam: str,
+                      frames: int = Query(0, ge=0, le=100000)):
+    """Motion-JPEG: an <img> plays it with no player and no codec questions."""
+    src = _frame_source(cam)
+    src.acquire()
+
+    async def gen():
+        last, n = 0, 0
+        try:
+            while True:
+                if await request.is_disconnected():
+                    break
+                jpg, last = await anyio.to_thread.run_sync(src.wait, last, 2.0)
+                if jpg is None:
+                    continue
+                LIVE.touch()
+                yield (b"--frame\r\nContent-Type: image/jpeg\r\nContent-Length: "
+                       + str(len(jpg)).encode() + b"\r\n\r\n" + jpg + b"\r\n")
+                n += 1
+                if frames and n >= frames:
+                    break
+        finally:
+            src.release()
+
+    return StreamingResponse(gen(), media_type="multipart/x-mixed-replace; boundary=frame",
+                             headers={"Cache-Control": "no-cache, no-store, must-revalidate",
+                                      "X-Accel-Buffering": "no"})
+
+
+@app.get("/api/live/frame.jpg")
+def live_frame(cam: str):
+    src = _frame_source(cam)
+    src.acquire()
+    try:
+        jpg, _ = src.wait(0, 8.0)
+    finally:
+        src.release()
+    if jpg is None:
+        raise HTTPException(503, "No frame yet — try again in a moment.")
+    return Response(jpg, media_type="image/jpeg", headers={"Cache-Control": "no-cache"})
+
+
+@app.post("/api/live/control",
+          dependencies=[Depends(operator), Depends(limit("live", 60, 20))])
+def live_control(body: dict = Body(...)):
+    playing, speed = body.get("playing"), body.get("speed")
+    if playing is not None and not isinstance(playing, bool):
+        raise HTTPException(422, "playing must be true or false")
+    try:
+        state = LIVE.control(playing=playing,
+                             speed=None if speed is None else float(speed),
+                             restart=bool(body.get("restart")))
+    except (TypeError, ValueError) as e:
+        raise HTTPException(422, str(e))
+    return ok(state)
+
+
+@app.post("/api/live/detect",
+          dependencies=[Depends(operator), Depends(limit("live-detect", 6, 3))])
+def live_detect_start(body: dict = Body(...)):
+    cam = body.get("camera")
+    if cam not in cfg.CAMERAS:
+        raise HTTPException(404, f"Unknown camera '{cam}'.")
+    ok_det, path = S.detector_ready()
+    if not ok_det:
+        raise HTTPException(409, f"Detection weights not found at {path}. "
+                                 f"Run `python scripts/download_models.py`.")
+    if not cfg.camera_video_path(cam).exists():
+        raise HTTPException(409, "That camera's footage is not on this machine.")
+    if Z.load(cam) is None:
+        raise HTTPException(409, "No zones are traced on this camera.")
+    running = LIVE.detect
+    if running is not None and running.running and running.cam != cam:
+        raise HTTPException(409, f"Live detection is already running on "
+                                 f"{running.info['short']}. Stop it first.")
+    if running is not None and running.running:
+        return ok({"session": running.view()})
+    if not S.DETECTOR_LOCK.acquire(blocking=False):
+        raise HTTPException(409, "The detector is busy with an analysis job. "
+                                 "Try again when it finishes.")
+    S.DETECTOR_LOCK.release()
+    try:
+        sess = LIVE.start_detect(cam)
+    except RuntimeError as e:
+        raise HTTPException(409, str(e))
+    return ok({"session": sess.view()})
+
+
+@app.delete("/api/live/detect", dependencies=[Depends(operator)])
+def live_detect_stop():
+    sess = LIVE.stop_detect()
+    return ok({"session": sess.view() if sess else None})
 
 
 # --------------------------------------------------------------------------

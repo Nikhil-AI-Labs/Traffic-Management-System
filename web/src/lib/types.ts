@@ -31,11 +31,21 @@ export interface Recording {
   has_video: boolean
 }
 
+export interface IncidentCounts {
+  open: number
+  acknowledged: number
+  resolved: number
+  cleared: number
+  open_critical: number
+}
+
 export interface Meta {
   cameras: Camera[]
   metrics: { windows: number; cameras: number; minutes: number }
   calibrated: number
-  detector: { ready: boolean; path: string }
+  detector: { ready: boolean; path: string; fast: string | null }
+  auth: { required: boolean }
+  incidents: IncidentCounts | null
   fluid: {
     available: boolean
     root?: string
@@ -66,6 +76,36 @@ export interface Alert {
   headline: string
   evidence: string
   recommendation: string
+  // Workflow fields. Present on network alerts; absent or not actionable on
+  // an upload that has not been kept.
+  id?: string
+  status?: IncidentStatus
+  actionable?: boolean
+  source?: 'recorded' | 'replay' | 'detect'
+  raised_at?: string
+}
+
+// "cleared": a live alert whose condition ended before anyone acted on it.
+export type IncidentStatus = 'open' | 'acknowledged' | 'resolved' | 'cleared'
+
+export interface IncidentAction {
+  at: string
+  action: 'acknowledge' | 'resolve' | 'reopen'
+  by: string
+  note: string
+}
+
+export interface Incident extends Alert {
+  id: string
+  status: IncidentStatus
+  history: IncidentAction[]
+  current: boolean
+  active?: boolean
+}
+
+export interface IncidentsPayload {
+  items: Incident[]
+  counts: IncidentCounts
 }
 
 export interface AlertsPayload {
@@ -237,4 +277,163 @@ export interface Job<R = unknown> {
   error: string
   result: R | null
   elapsed_s: number
+}
+
+// ------------------------------------------------------------------ live
+
+export interface LiveZone {
+  zone_id: string
+  label: string
+  kind: string | null
+  ci: number
+  los: Los
+  occupancy: number | null
+  density: number | null
+  speed: number | null
+  flow: number | null
+  queue: number | null
+  saturated: boolean
+  mode: string | null
+  t: number | null
+}
+
+export interface LiveCamera {
+  id: string
+  name: string
+  short: string
+  mode: 'junction' | 'area'
+  has_video: boolean
+  has_annotated: boolean
+  can_detect: boolean
+  source: 'replay' | 'detect'
+  clip_t: number
+  duration: number | null
+  lap: number
+  ci: number
+  los: Los
+  zones: LiveZone[]
+  spark: number[]
+}
+
+export interface LiveSession {
+  id: string
+  camera_id: string
+  camera_short: string
+  status: 'starting' | 'running' | 'stopped' | 'error'
+  message: string
+  model: string
+  fps: number
+  frames: number
+  t: number
+  elapsed_s: number
+  vehicles: Record<string, number>
+}
+
+export interface LiveRisk {
+  camera_id: string
+  camera_short: string
+  zone_label: string
+  current: number
+  predicted: number
+  horizon_s: number
+}
+
+export interface LiveState {
+  t: number
+  playing: boolean
+  speed: number
+  speeds: number[]
+  cameras: LiveCamera[]
+  active: Alert[]
+  detect: LiveSession | null
+  risks: LiveRisk[]
+}
+
+export type LiveEvent =
+  | { type: 'alert'; seq: number; at: string; alert: Alert }
+  | { type: 'clear'; seq: number; at: string; id: string; camera_short: string; zone_label: string; kind: string }
+  | { type: 'detect'; seq: number; at: string; session: LiveSession }
+  | { type: 'control'; seq: number; at: string; playing: boolean; speed: number; t: number }
+
+// --------------------------------------------------------------- what-if
+
+export interface Headroom {
+  Y: number
+  lost_time_s: number
+  max_cycle_s: number
+  x_practical: number
+  Y_practical: number
+  Y_ultimate: number
+  best_x_at_max_cycle: number | null
+  reserve_practical_pct: number | null
+  reserve_ultimate_pct: number | null
+  growth_per_year_pct: number
+  years_to_practical: number | null
+  years_to_failure: number | null
+  approaches: { id: string; y: number; share_pct: number }[]
+}
+
+export interface WhatIfBlock {
+  headroom: Headroom
+  base: SignalPlan
+  opt: SignalPlan
+  compare: SignalPayload['compare']
+  worst_x_fixed: number
+  worst_x_adaptive: number
+}
+
+export interface Benefits {
+  pcu_hours_per_hour: number
+  vehicle_hours_per_day: number
+  vehicle_hours_per_year: number
+  fuel_l_per_day: number
+  fuel_l_per_year: number
+  co2_t_per_year: number
+  rupees_per_year: number
+  per_approach: {
+    id: string
+    flow_pcu_per_hr: number
+    delay_before_s: number | null
+    delay_after_s: number | null
+    saved_s_per_pcu: number
+  }[]
+  fleet: { group: string; share_pct: number; idle_l_per_h: number; fuel: string }[]
+  assumptions: {
+    hours_per_day: number
+    days_per_year: number
+    pcu_per_vehicle: number
+    price_rs_per_l: Record<string, number>
+    co2_kg_per_l: Record<string, number>
+    note: string
+  }
+}
+
+export interface WhatIfPayload {
+  approaches: { id: string; short: string; label: string }[]
+  today: WhatIfBlock
+  scenario: WhatIfBlock & { growth_pct: number; loss_approach: string | null; loss_pct: number }
+  benefits: Benefits
+  curve: Row[]
+  practical_x: number
+  chart: Figure
+}
+
+// --------------------------------------------------------------- map
+
+export interface CameraLocation {
+  id: string
+  name: string
+  short: string
+  mode: 'junction' | 'area'
+  lat: number | null
+  lon: number | null
+  verified: boolean
+  mean_congestion: number | null
+  los: Los | null
+}
+
+export interface LocationsPayload {
+  cameras: CameraLocation[]
+  note: string
+  bounds: { lat: [number, number]; lon: [number, number] }
 }

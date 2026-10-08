@@ -48,6 +48,9 @@ Be clear about this before demoing to anyone.
 | Signal timing — cycle, splits, delay, saturation | ✅ | |
 | 31 bottleneck alerts, 21 forecasts | ✅ | |
 | Scene overlays, calibration view | ✅ | Reference frames are committed |
+| **Live monitor — replay** (React) | ✅ | Committed CSVs; reference frames stand in for footage that is not on disk |
+| Incidents, signal what-if, network map, briefing (React) | ✅ | Map tiles need the viewer's browser to reach OpenStreetMap |
+| **Live monitor — real-time detection** | ⚠️ absent | Needs the weights and the source clips; the button is not shown without them |
 | **Movement heatmap panel** | ⚠️ notice | `outputs/frames/heatmap/` not committed — panel shows a "not rendered yet" note |
 | **Annotated video panel** | ⚠️ absent | MP4s not committed (size). `python src/render_demo.py --junctions` renders H.264 MP4s that both dashboards play |
 | **"Analyse footage" upload** | ⚠️ disabled | Needs the detector; degrades via `detector_ready()` to an explanatory notice, not a crash |
@@ -76,6 +79,30 @@ python src/api.py --host 0.0.0.0 --port 8000      # API + UI on one port
 Health check: `GET /api/health` → `{"ok": true}`. OpenAPI docs: `/api/docs`.
 The degradations in §2 apply unchanged — missing weights, heatmaps, videos or
 FLUID each render an explanation in the UI rather than an error.
+
+**Set an operator token on anything public.** Viewing stays open; changing
+state (incident actions, calibration, uploads, live control and detection, map
+positions) then needs the token, entered once per browser tab via *Operator
+sign-in*:
+
+```bash
+STI_OPERATOR_TOKEN="$(python -c 'import secrets; print(secrets.token_urlsafe(24))')" \
+  python src/api.py --host 0.0.0.0 --port 8000
+```
+
+Rate limits are on by default (`STI_RATE_LIMIT=0` turns them off for load
+tests). The incident log is written to `outputs/incidents.json`; mount that
+path on a volume if a container should keep it across restarts.
+
+**The live monitor on a host.** Replay needs only the committed CSVs, so it
+runs anywhere: without footage on disk each camera shows its reference frame
+with zones shaded by the replayed level of service. Live detection appears only
+where the weights and the clips are present. Both streams are long-lived HTTP
+responses — server-sent events and MJPEG — so a reverse proxy must not buffer
+them: the API already sends `X-Accel-Buffering: no` (nginx honours it); for
+other proxies disable response buffering on `/api/live/`. Over HTTP/1.1 a
+browser allows six connections per host and each open Live tab holds two, so
+serve over HTTP/2 if many tabs will be open at once.
 
 **Docker** (self-hosted, or a Hugging Face Space with SDK *Docker*):
 
@@ -204,6 +231,9 @@ No secrets, no API keys, no environment file is required.
 
 | Variable | Default | Purpose |
 |---|---|---|
+| `STI_OPERATOR_TOKEN` | unset (open) | Shared operator token for every state-changing endpoint of the React/FastAPI app. Set it on any instance other people can reach. |
+| `STI_RATE_LIMIT` | `1` | `0` disables the per-client rate limits. |
+| `STI_OPENVINO_DEVICE` | auto | Where the OpenVINO export runs for live detection: the Intel integrated GPU when OpenVINO sees one (`intel:gpu`), else `cpu`. |
 | `FLUID_ROOT` | auto-discovered | Path to the extracted FLUID dataset. Unset on a host — the max-pressure track then shows its "not found" callout. |
 | `OPENCV_FFMPEG_LOGLEVEL` | `-8` | Set by `config.py` before cv2 loads, to suppress harmless H.264-in-AVI container chatter. |
 

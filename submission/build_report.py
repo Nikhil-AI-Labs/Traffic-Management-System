@@ -65,13 +65,15 @@ code { font-family: monospace; font-size: 9pt; color: #1c5cab; }
 
 def live() -> dict:
     r = dict(cycle="135.6", xb="1.01", xa="0.929", win="2,451",
-             alerts="31", fc="21", cams="7", zones="21")
+             alerts="31", fc="21", cams="7", zones="21",
+             Y="0.875", head="+8.2", years="1.6")
     try:
         sys.path.insert(0, str(ROOT / "src"))
         import config as cfg, signal_opt as so
         import bottleneck_detect as bn, forecast as fo
-        import dashboard as D
-        df = D.load_metrics.__wrapped__()
+        import services as S
+        import whatif as W
+        df = S.load_metrics(include_uploads=False)
         js = [c for c in cfg.junction_cameras() if c in set(df.camera_id.unique())]
         dem = [d for d in (so.demand_from_metrics(df, c) for c in js) if d]
         base, opt = so.evaluate_fixed_plan(dem, cycle_s=120.0), so.optimise(dem)
@@ -83,6 +85,9 @@ def live() -> dict:
                  fc=str(len(fo.forecast_all(df, horizon_s=60.0))),
                  cams=str(df.camera_id.nunique()),
                  zones=str(df.groupby(['camera_id', 'zone_id']).ngroups))
+        h = W.headroom(dem)
+        r.update(Y=f"{h['Y']:.3f}", head=f"{h['reserve_ultimate_pct']:+.1f}",
+                 years=f"{h['years_to_failure']:.1f}")
         print(f"  live: C={r['cycle']}s  x {r['xb']}->{r['xa']}  {r['win']} windows")
     except Exception as e:
         print(f"  ! live recompute unavailable ({type(e).__name__}); using constants")
@@ -124,9 +129,13 @@ windows</b> across <b>{R['zones']} zones</b>, and produces:</p>
     <td><b>{R['xb']} → {R['xa']}</b> — an over-capacity approach brought back under 1.0</td></tr>
 <tr><td>Optimal cycle length</td><td>{R['cycle']} s, against a 120 s fixed-timer baseline</td></tr>
 <tr><td>Mean delay</td><td>53.5 → 51.4 s/PCU (HCM control delay), −3.8%</td></tr>
+<tr><td>How long the retiming lasts</td><td><b>{R['head']}% demand headroom</b> before no timing can cope —
+    about {R['years']} years at 5% annual growth; after that the fix is physical</td></tr>
 <tr><td>Bottleneck alerts</td><td>{R['alerts']}, each with its triggering evidence and a specific recommendation</td></tr>
 <tr><td>Zone forecasts</td><td>{R['fc']}, with prediction intervals</td></tr>
 <tr><td>Max-pressure validation</td><td>Real fixed-time signals waste 41–66% of green; max-pressure 1.5–16%</td></tr>
+<tr><td>Live control room</td><td>Every camera on one screen — replayed, or detected in real time — with
+    alerts raised as their evidence completes and an acknowledge/resolve incident log</td></tr>
 </table>
 
 <p>Two findings shaped the design more than any algorithm choice, and both are cases where
@@ -177,7 +186,7 @@ as the most congested site.</div>
 <p>The pipeline has seven stages. Video frames are detected and tracked, located into
 lane or zone polygons, then measured along <b>two parallel paths</b> whose outputs feed
 signal optimisation, bottleneck detection and forecasting, and finally a two-track
-dashboard.</p>
+dashboard with a live control room.</p>
 
 <table>
 <tr><th>Stage</th><th>Module</th><th>What it does</th></tr>
@@ -187,7 +196,7 @@ dashboard.</p>
 <tr><td>4. Optimise</td><td>signal_opt.py, maxpressure.py</td><td>Webster's cycle and splits; max-pressure with its observability gate</td></tr>
 <tr><td>5. Detect bottlenecks</td><td>bottleneck_detect.py</td><td>Five sustained-pattern detectors with recommendations</td></tr>
 <tr><td>6. Predict</td><td>forecast.py</td><td>Damped trend with prediction intervals</td></tr>
-<tr><td>7. Present</td><td>dashboard.py</td><td>Two tracks, thirteen views</td></tr>
+<tr><td>7. Present</td><td>api.py, live.py, web/</td><td>React control room: live monitor, incidents, map; two tracks, fifteen views</td></tr>
 </table>
 
 <p>Which measurement path leads is decided per zone by a saturation check, and the active
@@ -257,7 +266,28 @@ is the known optimality condition for Webster green allocation.</p>
 <p>Plus <b>{R['alerts']} evidence-backed bottleneck alerts</b> and <b>{R['fc']} zone
 forecasts</b> with prediction intervals.</p>
 
-<h3>5.2 FLUID — the max-pressure validation</h3>
+<p><b>How long the fix lasts.</b> Webster's closed form also gives the reserve capacity:
+at the longest acceptable cycle (150 s) the junction stays serviceable while the total flow
+ratio is below 0.947. Measured it is <b>{R['Y']}</b> — <b>{R['head']}% headroom</b>, about
+<b>{R['years']} years</b> at 5% annual growth, and already past the 0.90 practical limit.
+Losing 10% of saturation flow on one approach (a parked bus near the stop line) pushes the
+best possible plan to x = 0.98. Beyond those points the remedy is road space or demand
+management, not retiming — the kind of answer an infrastructure recommendation needs.</p>
+
+<h3>5.2 Live operation — the control room</h3>
+
+<p>The dashboard opens on a <b>live monitor</b>: all seven cameras on a street map
+coloured by level of service, the focused camera's video, live zone states, the alerts in
+force and the zones forecast to worsen within a minute. Recorded windows replay on a shared
+clock as if arriving now, and each alert fires the moment its evidence completes — quoting
+only the windows up to that instant; the verification suite checks that one lap raises
+exactly the {R['alerts']} recorded alerts and none early. One click runs the real pipeline
+on a camera in real time, skipping frames rather than falling behind, and watches each
+track for a vehicle standing still in a flowing lane. Alerts become work in an incident log
+— acknowledged, resolved, with notes and names — and a printable briefing summarises the
+network for a meeting.</p>
+
+<h3>5.3 FLUID — the max-pressure validation</h3>
 
 <table>
 <tr><th>Intersection</th><th>Cycle</th><th>Real signal: green with nothing to relieve</th><th>Max-pressure</th></tr>
@@ -316,9 +346,11 @@ reverse.</p>
 
 <h2>7. Verification</h2>
 
-<p><code>python tests/verify_system.py</code> runs 18 end-to-end checks. Beyond
-recomputing the documented figures, it asserts the things most likely to break
-silently:</p>
+<p><code>python tests/verify_system.py</code> runs 21 end-to-end checks,
+<code>tests/test_api.py</code> 50 API checks, and <code>tests/e2e_pipeline.py</code> drives
+every detector flow — uploads, calibration, live detection — through the real API. CI runs
+the first two on every push. Beyond recomputing the documented figures, the suite asserts the
+things most likely to break silently:</p>
 
 <ul>
 <li><b>The separation</b> — the Surat plan is recomputed under both controller settings
@@ -333,6 +365,10 @@ all three demand scenarios must genuinely differ.</li>
 <li><b>Geometry</b> — the world-to-pixel fit on every FLUID site must land within 5 px.</li>
 <li><b>Physical sanity</b> — no zero-length measurement window, and no speed, density or
 occupancy outside its physical range.</li>
+<li><b>Live replay is honest</b> — one lap raises exactly the recorded alerts, each no
+earlier than its condition began.</li>
+<li><b>Headroom agrees with the optimiser</b> — scaling demand by the reported reserve puts
+the best plan at x = 1.000.</li>
 </ul>
 
 <h2>8. Challenges faced</h2>
@@ -385,8 +421,8 @@ data.</li>
 <li><b>One surveyed road width</b> promotes every metric figure from estimate to primary.</li>
 <li><b>Cameras on receiving links</b> unlock true max-pressure on Surat; the controller is
 already implemented and validated.</li>
-<li><b>Continuous RTSP ingest</b> replaces 31 minutes of clips with a live feed; the
-pipeline is already windowed for it.</li>
+<li><b>A live camera feed.</b> The live monitor already runs the full pipeline in real
+time on the recorded clips; reading a camera's RTSP stream is the remaining piece.</li>
 </ul>
 
 <h3>Longer term</h3>
@@ -394,8 +430,8 @@ pipeline is already windowed for it.</li>
 <li><b>Seasonal forecasting</b> once weeks of continuous operation justify it.</li>
 <li><b>Coordinated corridors</b> — green-wave offsets across adjacent junctions; the
 simulator already models two in series.</li>
-<li><b>Production stack</b> — React + Kafka + PostGIS for city scale, with the measurement
-core unchanged.</li>
+<li><b>City scale</b> — a message bus and a spatial database for hundreds of cameras,
+with the measurement core and the React control room unchanged.</li>
 </ul>
 
 <h2>11. Technology and attribution</h2>
@@ -409,10 +445,11 @@ core unchanged.</li>
 <tr><td>Saturation flow</td><td>IRC:SP:41-1994, S = 525·W</td><td>Standard implemented</td></tr>
 <tr><td>Pedestrian minimum green</td><td>IRC:103-2012</td><td>Standard implemented</td></tr>
 <tr><td>Signal methods</td><td>Webster (1958), HCM control delay, Varaiya (2013)</td><td>Published methods implemented</td></tr>
-<tr><td>Dashboard</td><td>Streamlit + Plotly</td><td>Apache-2.0 / MIT</td></tr>
+<tr><td>Dashboard</td><td>React 19 + FastAPI, Plotly, Leaflet / OpenStreetMap</td><td>MIT / BSD-2 / ODbL map data</td></tr>
 </table>
 
-<p>All 27 Python modules — roughly 13,700 lines — were written for this hackathon. The
+<p>All 34 Python modules — roughly 17,500 lines — and the React front end were written
+for this hackathon. The
 project is released under AGPL-3.0, inherited from Ultralytics. Full detail, including
 what is ours versus third-party, is in <code>ATTRIBUTION.md</code>.</p>
 
@@ -422,7 +459,8 @@ what is ours versus third-party, is in <code>ATTRIBUTION.md</code>.</p>
 video download, no GPU, no model weights:</p>
 
 <p><code>pip install -r requirements.txt</code><br/>
-<code>streamlit run src/dashboard.py</code></p>
+<code>cd web &amp;&amp; npm install &amp;&amp; npm run build &amp;&amp; cd ..</code><br/>
+<code>python src/api.py</code> &nbsp;→ http://127.0.0.1:8000</p>
 
 <p>The full pipeline from raw video uses <code>requirements-full.txt</code> and adds
 detection, tracking and the interactive calibration tool. Deployment guidance —

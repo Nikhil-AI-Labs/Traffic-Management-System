@@ -1,5 +1,5 @@
 import { keepPreviousData } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {
   Callout,
   Chart,
@@ -17,22 +17,14 @@ import {
 import { DataTable, TableView } from '../components/widgets'
 import { useThemedApi } from '../lib/api'
 import { isNum, num, secs, signed } from '../lib/format'
+import { useDebounced } from '../lib/hooks'
 import type { SignalPayload } from '../lib/types'
+import WhatIf from './WhatIf'
 
 const MODEL_LABEL: Record<string, string> = {
   auto: 'Automatic (HCM above x = 0.85)',
   hcm: 'HCM control delay',
   webster: 'Webster 1958',
-}
-
-/** Debounce a value so a dragged slider sends one request, not thirty. */
-function useDebounced<T>(v: T, ms = 250): T {
-  const [d, setD] = useState(v)
-  useEffect(() => {
-    const t = setTimeout(() => setD(v), ms)
-    return () => clearTimeout(t)
-  }, [v, ms])
-  return d
 }
 
 export default function Signal() {
@@ -255,6 +247,8 @@ export default function Signal() {
           </Callout>
         </div>
       )}
+
+      <WhatIf cycle={cycle} model={model} source={source} widths={widths} />
 
       <Section title="Measured demand and the resulting plan" />
       <DataTable rows={d.plan_table} format={{ 'Flow ratio y': 3, 'Saturation x': 3, 'Delay (s/PCU)': 1, 'Green (s)': 1, 'Cycle (s)': 1 }} />

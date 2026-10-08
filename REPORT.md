@@ -441,6 +441,22 @@ Both the light and dark palettes were checked for colour-vision separation again
 
 **Annotated demo videos** (`render_demo.py`) — MP4 with live lane shading by level of service, tracked detections, a per-zone metrics panel and a running class tally.
 
+**The React dashboard** (`web/`, served by `src/api.py`) carries every view above and adds the control-room layer below. Both front ends read the same numbers through `src/services.py` and draw the same figures from `charts.py`.
+
+### Stage 8 — Live operation: the control room
+
+A dashboard that only explains a clip after the fact is an analysis tool; a traffic control room needs to *watch*. The **Live monitor** (`src/live.py`) puts every camera on one screen — a street map coloured by level of service, the focused camera's video, live zone states, the alerts in force and what is rising in the next minute — fed by one server-sent event stream and one MJPEG stream.
+
+- **Replay** plays every camera's recorded windows on a shared clock (pause, 0.5–10×), with the footage or its annotated render in step. Each alert fires **the moment its evidence completes** — the end of its third sustained window, exactly when `bottleneck_detect` could first see it — and quotes only the windows up to that instant. `verify_system.py` checks that one lap raises exactly the 31 recorded alerts and none before its condition began.
+- **Real-time detection** runs the full pipeline on one camera at wall-clock speed. When inference cannot keep up it skips frames rather than queueing them, so the picture is always current and the frame rate shown is the one achieved. It adds a detector no zone average can provide: a **track standing still for 20 s in a lane whose traffic is flowing** — a breakdown or an illegal stop — raised as an alert and boxed on the video.
+- **Incidents** turn alerts into work. Each can be acknowledged and resolved with a note; the append-only log records who did what and when, survives restarts (recorded alerts keep stable ids), and exports to CSV. The sidebar badge counts unacknowledged critical alerts.
+- **Operator sign-in.** Anything that changes state needs the operator token when one is configured; reading never does. Uploads, analyses and simulator runs are rate-limited and the detector queue is capped.
+- **The printable network briefing** puts sites, the signal plan with its headroom, the bottlenecks and the control-room log on a few A4 pages.
+
+**Speed.** On the development laptop (i7-12700H, Iris Xe graphics) an OpenVINO build of the same weights runs YOLO11-S at **25 fps on the integrated GPU**, against 6 fps for PyTorch on the CPU, with detection counts within 0.7% of PyTorch's (`scripts/export_openvino.py` exports and benchmarks both on 40 real frames). That is faster than the cameras' own 20 fps, so live detection on an ordinary laptop keeps up instead of sampling. Batch analysis keeps the PyTorch weights that produced every committed figure.
+
+Real-time detection runs on the recorded clips — no RTSP feed was available to us, and a stream reader is the one piece not built. Everything downstream of the frame source is the code a live feed would use.
+
 ---
 
 ## 5. The two discoveries that shaped the design
@@ -545,6 +561,14 @@ Per approach:
 2. The optimal plan **equalises degree of saturation across approaches (0.93 / 0.93)**, which is the known theoretical optimality condition for Webster green allocation.
 
 The two delay models disagree by an order of magnitude, and that spread is itself the finding: Webster's random-delay term diverges as an approach reaches capacity, so it reads high on exactly the approach this plan is fixing, while HCM's time-dependent term stays finite above capacity. **The saturation crossing is the claim that survives either model**, and it is the one to quote. For context, the market systems surveyed in `Existing Solutions.docx` report ATSAC at 32% delay reduction and emerging research at 23.6% wait-time reduction; quoting our Webster figure alongside theirs would be comparing a number we know to be inflated against numbers measured on the street.
+
+### How long the retiming lasts — reserve capacity
+
+The plan above fixes today's oversaturation. The next question an engineer asks is how long that fix holds, and Webster's closed form answers it directly: with every approach at the same degree of saturation x = Y·C/(C−L), the longest acceptable cycle (C = 150 s, L = 8 s) keeps the junction serviceable only while the total flow ratio Y stays below 0.947 (x = 1) — or 0.852 for the practical limit x = 0.90.
+
+Measured Y is **0.875** (from unclipped flow ratios — the optimiser's per-approach clip at 0.95 would otherwise report headroom that is not there). That leaves **+8.2%** demand headroom before no timing can cope, about **1.6 years** at 5% annual traffic growth; and the junction is already past the practical limit. Losing capacity is worse: 10% of saturation flow on the Rokadiya approach — one parked bus near the stop line — pushes the best achievable plan to x = 0.98, and 20% takes it past capacity. Beyond those points the remedy is physical capacity or demand management, not retiming. `verify_system.py` checks the reserve against the optimiser itself: scaling demand by exactly the reported headroom lands the best plan at x = 1.000.
+
+The dashboard's what-if panel also turns the delay saved into vehicle-hours, idling fuel, CO₂ and rupees, with every assumption printed beside the result. At the measured demand for 6 h a day the order of magnitude is ten thousand vehicle-hours and a few tonnes of CO₂ a year for this one junction — indicative, because the delays are model delays and the idling rates are defaults.
 
 ### Bottleneck detection
 
@@ -768,7 +792,15 @@ Every headline result in §6 is in the first category.
 | `src/ingest.py` | Analysis of uploaded footage: automatic road-region detection from vehicle movement, zone construction, video and single-frame pipelines. |
 | `src/report_html.py` | Standalone downloadable HTML report with live charts and the annotated frame embedded. |
 | `src/signal_opt.py` → `recommend_controller()` | Reads this network's own measured demand and recommends which controller to run, with reasons. Observability is tested first (without a downstream view max-pressure is unavailable, not merely worse), then the *split* variability between approaches — dimensionless, so the uncalibrated metric scale cannot affect it. Surfaced beside the sidebar toggle. |
-| `tests/verify_system.py` | End-to-end verification, 16 checks. Recomputes every figure quoted in this report and asserts the behaviours that matter: the observability gate refuses on Surat and runs on FLUID, the argmax is scale-invariant, the simulator conserves vehicles and charges both controllers the same lost time, every chart survives degenerate input, no window has zero duration. Run it before believing anything here. |
+| `tests/verify_system.py` | End-to-end verification, 21 checks. Recomputes every figure quoted in this report and asserts the behaviours that matter: the observability gate refuses on Surat and runs on FLUID, the argmax is scale-invariant, the simulator conserves vehicles and charges both controllers the same lost time, every chart survives degenerate input, no window has zero duration, the live replay raises exactly the recorded alerts and never early, and the reported headroom agrees with the optimiser. Run it before believing anything here. `--ci` skips the checks that need the FLUID download or the source videos. |
+| `src/api.py` · `src/services.py` | FastAPI JSON API behind the React dashboard (also serves its build), and the data layer every front end and test shares. |
+| `src/live.py` | Live monitor: replay clock over every camera, real-time detection session paced to wall-clock time, stalled-vehicle watch, server-sent events and MJPEG streams. |
+| `src/incidents.py` | Incident workflow: append-only log of acknowledge/resolve/reopen per alert, with notes and operator names. |
+| `src/security.py` | Operator sign-in (shared token, constant-time compare) and per-client rate limits. |
+| `src/whatif.py` | Reserve capacity from Webster's closed form, demand-growth and capacity-loss scenarios, and the benefit estimate. |
+| `src/briefing.py` | The printable network briefing. |
+| `tests/test_api.py` · `tests/e2e_pipeline.py` | 50 API checks (every view in both themes, strict JSON, sign-in, rate limits, incidents, what-if, live streams) · the detector flows end to end, including live detection. |
+| `web/` | React + TypeScript dashboard: 10 Surat views (Live monitor, Network with map, Site, Signal with what-if, Bottlenecks, Incidents, Outlook, Analyse, Calibration, How it works) and 5 FLUID views. |
 
 ### Calibration and setup tools
 
@@ -790,12 +822,15 @@ Every headline result in §6 is in the first category.
 | `src/validate_detection.py` | Detection sanity check with annotated sample frames and class distribution. |
 | `src/render_demo.py` | Presentation-grade annotated MP4 with live LOS shading and metrics panel. |
 | `scripts/download_models.py` | Fetches UVH-26 weights from HuggingFace and verifies the class list. |
+| `scripts/export_openvino.py` | Exports the detector to OpenVINO for the live monitor and benchmarks it against PyTorch on real frames. |
 
 ### Data and outputs
 
 | Path | Contents |
 |---|---|
 | `configs/cameras.json` | All lane/zone polygons and scale models |
+| `configs/camera_locations.json` | Map positions — approximate until an operator confirms them |
+| `outputs/incidents.json` | The incident log (runtime state, not committed) |
 | `outputs/logs/*_metrics.csv` | Per-window metrics, 25 columns |
 | `outputs/annotated/*_demo.mp4` | Presentation videos |
 | `outputs/frames/reference/` | Reference + grid frames |

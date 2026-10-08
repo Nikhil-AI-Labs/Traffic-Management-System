@@ -6,25 +6,33 @@ import {
   Clapperboard,
   Gauge,
   GitCompareArrows,
+  Lock,
+  LogOut,
   Map as MapIcon,
   Menu,
   Monitor,
   Moon,
+  Radio,
   Ruler,
   ScrollText,
+  ShieldCheck,
+  Siren,
   Sun,
   TrafficCone,
   TrendingUp,
   TriangleAlert,
+  UserRound,
   X,
   type LucideIcon,
 } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { post, useApi } from '../lib/api'
+import { AUTH_REQUIRED, signOut, useOperator } from '../lib/auth'
 import { int } from '../lib/format'
 import { useTheme, type ThemeChoice } from '../lib/theme'
 import type { Meta } from '../lib/types'
+import SignInDialog from './SignInDialog'
 import { Chip } from './ui'
 
 export type Track = 'surat' | 'fluid'
@@ -38,10 +46,12 @@ interface View {
 
 export const VIEWS: Record<Track, View[]> = {
   surat: [
+    { path: '/surat/live', label: 'Live monitor', subtitle: 'Every camera as it happens — replay or real-time detection', icon: Radio },
     { path: '/surat/network', label: 'Network', subtitle: 'Which site is worst, and how the network is behaving', icon: MapIcon },
     { path: '/surat/site', label: 'Site detail', subtitle: 'One camera in depth — zones, scene, trends, diagnostics', icon: Camera },
     { path: '/surat/signal', label: 'Signal timing', subtitle: 'What the signal should do differently, and why', icon: TrafficCone },
     { path: '/surat/bottlenecks', label: 'Bottlenecks', subtitle: 'Sustained problems, with the evidence that raised them', icon: TriangleAlert },
+    { path: '/surat/incidents', label: 'Incidents', subtitle: 'Every alert, who picked it up, and what was done', icon: Siren },
     { path: '/surat/outlook', label: 'Outlook', subtitle: 'What is trending worse over the next minute', icon: TrendingUp },
     { path: '/surat/analyse', label: 'Analyse footage', subtitle: 'Run the pipeline on a clip or still it has never seen', icon: Clapperboard },
     { path: '/surat/calibration', label: 'Calibration', subtitle: 'Pin pixels to metres, once, and promote every estimate', icon: Ruler },
@@ -88,12 +98,25 @@ export default function Layout() {
   const [openOn, setOpenOn] = useState<string | null>(null)
   const open = openOn === pathname
   const setOpen = (f: (o: boolean) => boolean) => setOpenOn(f(open) ? pathname : null)
-  const meta = useApi<Meta>('/meta', { staleTime: 15_000 })
+  const meta = useApi<Meta>('/meta', { staleTime: 15_000, refetchInterval: 20_000 })
   const m = meta.data
+  const op = useOperator()
+  const [signInOpen, setSignInOpen] = useState(false)
+  const closeSignIn = useCallback(() => setSignInOpen(false), [])
 
   useEffect(() => {
     document.title = `${view.label} · Surat Traffic Intelligence`
   }, [view.label])
+
+  // Any request refused for want of sign-in opens the dialog.
+  useEffect(() => {
+    const open = () => setSignInOpen(true)
+    window.addEventListener(AUTH_REQUIRED, open)
+    return () => window.removeEventListener(AUTH_REQUIRED, open)
+  }, [])
+
+  const authRequired = !!m?.auth.required
+  const openCritical = m?.incidents?.open_critical ?? 0
 
   const switchTrack = (t: Track) => {
     if (t === track) return
@@ -143,6 +166,11 @@ export default function Layout() {
                 <NavLink to={v.path} className={({ isActive }) => (isActive ? 'active' : '')}>
                   <v.icon size={18} />
                   {v.label}
+                  {v.path === '/surat/incidents' && openCritical > 0 && (
+                    <span className="nav-badge" aria-label={`${openCritical} open critical incidents`}>
+                      {openCritical}
+                    </span>
+                  )}
                 </NavLink>
                 {v.path === '/surat/site' && pathname.startsWith('/surat/site') && analysed.length > 0 && (
                   <div className="sub">
@@ -209,7 +237,7 @@ export default function Layout() {
           )}
         </div>
         <div className="side-foot">
-          {m?.detector.ready ? 'Detector ready' : 'Detector weights not downloaded'} · API{' '}
+          {m?.detector.ready ? `Detector ready${m.detector.fast ? ` · live: ${m.detector.fast}` : ''}` : 'Detector weights not downloaded'} · API{' '}
           {meta.isError ? 'offline' : 'connected'}
         </div>
       </aside>
@@ -247,6 +275,25 @@ export default function Layout() {
                   </Chip>
                 )
               )}
+              {authRequired && op.signedIn ? (
+                <span className="row" style={{ gap: 2 }}>
+                  <Chip color="var(--good)">
+                    <ShieldCheck size={13} /> {op.name || 'Operator'}
+                  </Chip>
+                  <button className="btn btn-icon btn-ghost" onClick={signOut} title="Sign out" aria-label="Sign out">
+                    <LogOut size={17} />
+                  </button>
+                </span>
+              ) : (
+                <button
+                  className="btn btn-sm btn-ghost op-btn"
+                  onClick={() => setSignInOpen(true)}
+                  title={authRequired ? 'Sign in to act on incidents, run detection and calibrate' : 'Your name for the incident log'}
+                >
+                  {authRequired ? <Lock size={15} /> : <UserRound size={15} />}
+                  {authRequired ? 'Operator sign-in' : op.name || 'Set your name'}
+                </button>
+              )}
               <ThemeToggle />
             </div>
           </div>
@@ -255,6 +302,7 @@ export default function Layout() {
           <Outlet />
         </main>
       </div>
+      {signInOpen && <SignInDialog required={authRequired} onClose={closeSignIn} />}
     </div>
   )
 }

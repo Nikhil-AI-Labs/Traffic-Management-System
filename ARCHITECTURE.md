@@ -20,7 +20,7 @@ erakshak/
 ├── README.md                    Overview, quick start, results
 ├── REPORT.md                    Full engineering report
 ├── ARCHITECTURE.md              This document
-├── API.md                       Python module API reference
+├── API.md                       HTTP endpoints + Python module API reference
 ├── DATA_SCHEMA.md               Measurement + config data contract
 ├── DEPLOYMENT.md                Hosting instructions
 ├── ATTRIBUTION.md               Third-party components and licensing
@@ -31,11 +31,14 @@ erakshak/
 ├── .streamlit/
 │   └── config.toml              Theme, validated for both light and dark
 │
+├── .github/workflows/ci.yml     CI: verification, API tests, React lint + build
+│
 ├── configs/
 │   ├── cameras.json             Camera registry: zones, polygons, scale models
+│   ├── camera_locations.json    Map positions (approximate until confirmed)
 │   └── calibration_state.json   Operator state (generated, not committed)
 │
-├── src/                         27 modules · ~13,100 lines
+├── src/                         34 modules · ~17,500 lines
 │   │
 │   │  ── Measurement ──────────────────────────────────────────────
 │   ├── config.py                Camera registry, PCU factors, LOS bands, paths
@@ -62,6 +65,16 @@ erakshak/
 │   ├── calibrate_occupancy.py   Absolute occupancy bounds across all cameras
 │   ├── apply_scale.py           Write a verified scale into calibration state
 │   │
+│   │  ── Service layer ───────────────────────────────────────────
+│   ├── api.py                   FastAPI JSON API; serves the React build
+│   ├── services.py              Data layer shared by every front end + tests
+│   ├── live.py                  Live monitor: replay clock, real-time detection,
+│   │                            stalled-vehicle watch, SSE + MJPEG streams
+│   ├── incidents.py             Incident workflow log (acknowledge / resolve)
+│   ├── security.py              Operator sign-in, rate limits
+│   ├── whatif.py                Reserve capacity, scenarios, benefit estimate
+│   ├── briefing.py              Printable network briefing
+│   │
 │   │  ── Presentation ────────────────────────────────────────────
 │   ├── dashboard.py             Two-track Streamlit UI, 13 views
 │   ├── charts.py                Every figure
@@ -77,17 +90,26 @@ erakshak/
 │   └── measurement_guide.py     In-dashboard measurement explainer
 │
 ├── scripts/
-│   └── download_models.py       Fetch UVH-26 weights from HuggingFace
+│   ├── download_models.py       Fetch UVH-26 weights from HuggingFace
+│   └── export_openvino.py       OpenVINO export + PyTorch/OpenVINO benchmark
 │
 ├── tests/
-│   └── verify_system.py         18 end-to-end checks
+│   ├── verify_system.py         21 end-to-end checks (--ci skips data-bound ones)
+│   ├── test_api.py              50 API checks
+│   └── e2e_pipeline.py          Detector flows end to end, incl. live detection
+│
+├── web/                         React 19 + TypeScript front end (Vite)
+│   └── src/pages/               Live · Network · Site · Signal (+ WhatIf) ·
+│                                Bottlenecks · Incidents · Outlook · Analyse ·
+│                                Calibration · Method · fluid/ (5 views)
 │
 ├── outputs/                     Pipeline output
 │   ├── logs/                    8 metrics CSVs — COMMITTED, 2,451 windows
 │   ├── frames/reference/        7 clean frames — COMMITTED
 │   ├── frames/heatmap/          Movement heatmaps (generated)
 │   ├── annotated/               Annotated MP4s (generated)
-│   └── fluid_cache/             FLUID derived tables (generated)
+│   ├── fluid_cache/             FLUID derived tables (generated)
+│   └── incidents.json           Incident log (generated, not committed)
 │
 ├── docs/images/                 9 dashboard screenshots
 │
@@ -337,3 +359,71 @@ payload contains a non-finite value.
 **Deployment.** `npm run build` writes `web/dist/`, which `api.py` serves from
 `/` with client-side routing, so one Python process is the whole application.
 The Streamlit dashboard remains available for environments without Node.js.
+
+---
+
+## 10. Live monitoring
+
+```
+                    ┌──────────────── src/live.py ─────────────────┐
+committed CSVs ───► │ ReplayFeed ×7    one shared clock (play/pause, │
+                    │                  0.5–10×), alerts scheduled at │──► GET /api/live/events
+                    │                  the end of their 3rd window   │    (SSE, 1 tick/s + events)
+footage / render ─► │ ReplayFrames     decoded once per camera,      │
+                    │                  shared by every viewer        │──► GET /api/live/stream.mjpg
+detector ─────────► │ DetectSession    YOLO11 + ByteTrack + metrics  │    (MJPEG, <img> plays it)
+                    │                  at wall-clock pace; stalled-  │
+                    │                  vehicle watch per track       │──► incidents (acknowledge,
+                    └────────────────────────────────────────────────┘     resolve, CSV log)
+```
+
+**Two sources, one picture.** Every camera's recorded windows replay on one
+clock, as if arriving now. One camera at a time can instead run the real
+pipeline: `DetectSession` reads the clip at wall-clock speed, processes the
+newest frame it has time for and *skips* the rest — so the picture is always
+current and the frame rate reported is the one achieved. While it runs, that
+camera's tile, zones, alerts and video come from detection.
+
+**Alerts that do not know the future.** A replayed alert fires when its
+evidence completes — the end of its third sustained window — and quotes
+`bottleneck_detect` run on the windows up to that instant, not on the whole
+clip. `verify_system.py` asserts that one lap raises exactly the 31 recorded
+alerts, none before its condition began. Live detection re-runs the same
+detectors on its own rolling windows every time a window closes, and adds one
+the zone averages cannot see: a track that has stood still for 20 s in a lane
+whose traffic is flowing.
+
+**Streams that cost nothing per viewer.** The SSE snapshot is computed at most
+once per 0.4 s however many screens are open; each camera's frames are decoded
+and encoded once and fanned out through a condition variable. A replay source
+outlives its last viewer by eight seconds, and live detection stops itself when
+nobody has watched for ninety, freeing the detector for analysis jobs. GZip is
+switched off for both stream types — it would hold frames back until it had
+enough to compress.
+
+**Fallbacks.** Without footage on disk — the hosted case — the replay shows the
+camera's reference frame with its zones shaded by the replayed level of
+service. Without detector weights, the live-detection button is simply absent.
+
+## 11. Incidents, sign-in, what-if
+
+**Incidents** (`src/incidents.py`). Alerts are derived, so they carry no state;
+the incident log is the state — an append-only history per alert id, written
+atomically to `outputs/incidents.json`. Recorded alerts have stable ids
+(`camera|zone|kind|start`), so an acknowledgement survives restarts; a live
+alert's details are snapshotted into its entry when it is first acted on.
+
+**Sign-in** (`src/security.py`). One shared operator token
+(`STI_OPERATOR_TOKEN`), compared in constant time, guards every endpoint that
+changes state or starts heavy work; reading is always open. Per-client token
+buckets rate-limit uploads, analyses, simulator runs and sign-in attempts, and
+the detector queue is capped at three jobs.
+
+**What-if** (`src/whatif.py`). Reserve capacity straight from Webster's closed
+form — at the longest acceptable cycle the junction stays workable while
+Y ≤ x·(C−L)/C — using *uncapped* flow ratios, because the optimiser's
+per-approach clip at 0.95 would otherwise report headroom that is not there.
+Scenarios scale demand or cut one approach's saturation flow and re-run the
+same optimiser; the benefit estimate turns the delay difference into
+vehicle-hours, idling fuel, CO₂ and rupees with every assumption returned
+alongside the result.

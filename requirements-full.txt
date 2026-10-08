@@ -54,3 +54,7 @@ huggingface_hub>=0.25.0
 # Pulled in by ultralytics' tracker; listed so a clean install doesn't
 # auto-update mid-run
 lap>=0.5.12
+
+# Optional: faster live detection on Intel CPUs. Not needed for anything
+# else; after installing, run python scripts/export_openvino.py once.
+# openvino>=2024.4

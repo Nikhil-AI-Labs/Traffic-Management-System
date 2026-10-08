@@ -166,18 +166,7 @@ class VehicleDetector:
                 if not ok:
                     break
 
-                results = self.model.track(
-                    frame,
-                    persist=True,
-                    conf=self.conf,
-                    iou=self.iou,
-                    imgsz=self.imgsz,
-                    device=self.device,
-                    tracker=self.tracker,
-                    verbose=verbose,
-                )
-
-                dets = self._parse(results)
+                dets = self.track_frame(frame, verbose=verbose)
                 yield FrameResult(
                     frame_idx=frame_idx,
                     timestamp_s=frame_idx / fps,
@@ -191,6 +180,26 @@ class VehicleDetector:
                     break
         finally:
             cap.release()
+
+    def track_frame(self, frame: np.ndarray, verbose: bool = False) -> list[Detection]:
+        """Detect and track on one frame whose source the caller owns.
+
+        `stream` reads a file at a fixed stride; the live monitor instead
+        paces itself to wall-clock time and decides frame by frame which one
+        to process, so it needs the per-frame step on its own. Tracker state
+        persists across calls exactly as it does inside `stream`.
+        """
+        results = self.model.track(
+            frame,
+            persist=True,
+            conf=self.conf,
+            iou=self.iou,
+            imgsz=self.imgsz,
+            device=self.device,
+            tracker=self.tracker,
+            verbose=verbose,
+        )
+        return self._parse(results)
 
     def _parse(self, results) -> list[Detection]:
         dets: list[Detection] = []

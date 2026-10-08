@@ -1,7 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { lazy, StrictMode, Suspense, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import ErrorBoundary from './components/ErrorBoundary'
 import Layout from './components/Layout'
 import { ErrorState, PageSkeleton } from './components/ui'
 import { useApi } from './lib/api'
@@ -9,6 +10,8 @@ import { ThemeProvider } from './lib/theme'
 import type { Meta } from './lib/types'
 import './styles.css'
 
+const Live = lazy(() => import('./pages/Live'))
+const Incidents = lazy(() => import('./pages/Incidents'))
 const Network = lazy(() => import('./pages/Network'))
 const Site = lazy(() => import('./pages/Site'))
 const Signal = lazy(() => import('./pages/Signal'))
@@ -42,7 +45,7 @@ const queryClient = new QueryClient({
 function Home() {
   const meta = useApi<Meta>('/meta')
   if (meta.isLoading) return <PageSkeleton />
-  return <Navigate to={meta.data?.mode === 'max_pressure' ? '/fluid/validation' : '/surat/network'} replace />
+  return <Navigate to={meta.data?.mode === 'max_pressure' ? '/fluid/validation' : '/surat/live'} replace />
 }
 
 function NotFound() {
@@ -58,12 +61,14 @@ createRoot(document.getElementById('root')!).render(
             <Route element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="surat">
-                <Route index element={<Navigate to="network" replace />} />
+                <Route index element={<Navigate to="live" replace />} />
+                <Route path="live" element={<Page el={<Live />} />} />
                 <Route path="network" element={<Page el={<Network />} />} />
                 <Route path="site" element={<Page el={<Site />} />} />
                 <Route path="site/:cam" element={<Page el={<Site />} />} />
                 <Route path="signal" element={<Page el={<Signal />} />} />
                 <Route path="bottlenecks" element={<Page el={<Bottlenecks />} />} />
+                <Route path="incidents" element={<Page el={<Incidents />} />} />
                 <Route path="outlook" element={<Page el={<Outlook />} />} />
                 <Route path="analyse" element={<Page el={<Analyse />} />} />
                 <Route path="calibration" element={<Page el={<Calibration />} />} />
@@ -87,7 +92,13 @@ createRoot(document.getElementById('root')!).render(
 )
 
 // The shell stays mounted while a page's code loads; only the content area
-// shows the skeleton.
+// shows the skeleton. A view that crashes is contained the same way, and the
+// error clears as soon as the operator navigates elsewhere.
 function Page({ el }: { el: ReactNode }) {
-  return <Suspense fallback={<PageSkeleton />}>{el}</Suspense>
+  const { pathname } = useLocation()
+  return (
+    <ErrorBoundary resetKey={pathname}>
+      <Suspense fallback={<PageSkeleton />}>{el}</Suspense>
+    </ErrorBoundary>
+  )
 }

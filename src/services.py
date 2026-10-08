@@ -15,6 +15,7 @@ anyone having to remember to clear a cache.
 
 from __future__ import annotations
 
+import os
 import threading
 from functools import lru_cache
 from pathlib import Path
@@ -226,6 +227,104 @@ def get_detector():
             from detector import VehicleDetector
             _detector = VehicleDetector()
         return _detector
+
+
+# Live monitoring needs frames per second more than it needs bit-for-bit
+# agreement with the committed batch run, so it prefers an OpenVINO export of
+# the same weights when one has been made (scripts/export_openvino.py, which
+# also benchmarks the two on the machine it runs on). Batch analysis,
+# re-measuring and uploads keep the PyTorch weights, which produced every
+# committed figure.
+OPENVINO_MODEL = Path(cfg.DEFAULT_MODEL).with_name(
+    Path(cfg.DEFAULT_MODEL).stem + "_openvino_model")
+_live_detector = None
+
+
+def _openvino_ready() -> bool:
+    if not (OPENVINO_MODEL / "metadata.yaml").exists():
+        return False
+    try:
+        import importlib.util
+        return importlib.util.find_spec("openvino") is not None
+    except Exception:
+        return False
+
+
+def openvino_imgsz():
+    """The input shape the OpenVINO export was made for, [h, w]. A static
+    export must be fed exactly that shape, not the square default."""
+    try:
+        import yaml
+        with open(OPENVINO_MODEL / "metadata.yaml", "r", encoding="utf-8") as f:
+            sz = yaml.safe_load(f).get("imgsz")
+        if isinstance(sz, (list, tuple)) and len(sz) == 2:
+            return [int(sz[0]), int(sz[1])]
+    except Exception:
+        pass
+    return cfg.DETECT_IMGSZ
+
+
+def openvino_device() -> str:
+    """Where OpenVINO should run: the Intel integrated GPU when there is one.
+
+    Measured on the development laptop (i7-12700H, Iris Xe; 40 frames of
+    Rokadiya Hanuman via scripts/export_openvino.py): PyTorch on the CPU
+    6.3 fps, OpenVINO on the CPU 5.0 fps, OpenVINO on the integrated GPU
+    25.4 fps, with detection counts within 0.7 % of PyTorch's. The GPU is
+    what makes live detection keep up with a 20 fps camera.
+    STI_OPENVINO_DEVICE overrides (e.g. "cpu").
+    """
+    forced = os.environ.get("STI_OPENVINO_DEVICE", "").strip()
+    if forced:
+        return forced
+    try:
+        import openvino as ov
+        if any(d.startswith("GPU") for d in ov.Core().available_devices):
+            return "intel:gpu"
+    except Exception:
+        pass
+    return "cpu"
+
+
+def _ov_label(device: str) -> str:
+    return f"YOLO11-S · OpenVINO {'GPU' if 'gpu' in device.lower() else 'CPU'}"
+
+
+def live_detector_label() -> str | None:
+    """What the live monitor will run, for display; None if it cannot run."""
+    if _live_detector is not None:
+        return getattr(_live_detector, "label", None)
+    if _openvino_ready():
+        return _ov_label(openvino_device())
+    return "YOLO11-S · PyTorch" if detector_ready()[0] else None
+
+
+def get_live_detector():
+    global _live_detector
+    with DETECTOR_LOCK:
+        if _live_detector is None:
+            if _openvino_ready():
+                from detector import VehicleDetector
+                # One inference now compiles the graph for the device, so a
+                # missing GPU driver fails here - and falls back to the CPU -
+                # rather than in the middle of a live session.
+                blank = np.zeros((1080, 1920, 3), np.uint8)
+                for device in dict.fromkeys([openvino_device(), "cpu"]):
+                    try:
+                        det = VehicleDetector(model_path=OPENVINO_MODEL, device=device,
+                                              imgsz=openvino_imgsz())
+                        det.track_frame(blank)
+                        det.reset_tracker()
+                        det.label = _ov_label(device)
+                        _live_detector = det
+                        break
+                    except Exception:
+                        import traceback
+                        traceback.print_exc()
+            if _live_detector is None:
+                _live_detector = get_detector()
+                _live_detector.label = "YOLO11-S · PyTorch"
+        return _live_detector
 
 
 # --------------------------------------------------------------------------

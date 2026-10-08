@@ -20,6 +20,8 @@ export default defineConfig({
         // navigation and every non-chart view load without waiting for it.
         manualChunks(id) {
           if (id.includes('plotly')) return 'plotly'
+          // Leaflet only travels with the map views.
+          if (id.includes('leaflet')) return 'leaflet'
           if (id.includes('node_modules')) return 'vendor'
         },
       },

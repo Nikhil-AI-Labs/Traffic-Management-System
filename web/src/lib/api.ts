@@ -2,6 +2,7 @@
 // /api, which the Vite dev server proxies and FastAPI serves in production.
 
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query'
+import { authHeaders, requestSignIn } from './auth'
 import { useTheme } from './theme'
 
 export class ApiError extends Error {
@@ -15,7 +16,10 @@ export class ApiError extends Error {
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let r: Response
   try {
-    r = await fetch(`/api${path}`, init)
+    r = await fetch(`/api${path}`, {
+      ...init,
+      headers: { ...authHeaders(), ...((init?.headers as Record<string, string>) ?? {}) },
+    })
   } catch {
     throw new ApiError(0, 'The analysis server is not reachable. Start it with `python src/api.py`.')
   }
@@ -28,6 +32,9 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     } catch {
       /* not JSON */
     }
+    // A write the server refused for want of sign-in: ask for it, and let
+    // the caller show the message as well.
+    if (r.status === 401) requestSignIn()
     throw new ApiError(r.status, msg)
   }
   return r.json() as Promise<T>
@@ -35,12 +42,15 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 
 export const get = <T>(path: string) => request<T>(path)
 
-export const post = <T>(path: string, body?: unknown) =>
+const withBody = (method: string) => <T>(path: string, body?: unknown) =>
   request<T>(path, {
-    method: 'POST',
+    method,
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body ?? {}),
   })
+
+export const post = withBody('POST')
+export const put = withBody('PUT')
 
 export const del = <T>(path: string) => request<T>(path, { method: 'DELETE' })
 
@@ -49,6 +59,7 @@ export function uploadFile<T>(file: File, onProgress: (frac: number) => void): P
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest()
     xhr.open('POST', '/api/uploads')
+    for (const [k, v] of Object.entries(authHeaders())) xhr.setRequestHeader(k, v)
     xhr.upload.onprogress = (e) => {
       if (e.lengthComputable) onProgress(e.loaded / e.total)
     }
@@ -60,7 +71,10 @@ export function uploadFile<T>(file: File, onProgress: (frac: number) => void): P
         /* ignore */
       }
       if (xhr.status >= 200 && xhr.status < 300) resolve(body as T)
-      else reject(new ApiError(xhr.status, body.detail || `Upload failed (HTTP ${xhr.status})`))
+      else {
+        if (xhr.status === 401) requestSignIn()
+        reject(new ApiError(xhr.status, body.detail || `Upload failed (HTTP ${xhr.status})`))
+      }
     }
     xhr.onerror = () => reject(new ApiError(0, 'Upload failed — the server is not reachable.'))
     const form = new FormData()

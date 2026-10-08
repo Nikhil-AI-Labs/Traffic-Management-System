@@ -1,7 +1,12 @@
-// The only module that imports Plotly. It is loaded lazily (see Chart.tsx), so
-// the ~3.5 MB bundle is fetched once, on the first view that draws a chart.
+// The only module that imports Plotly. It is loaded lazily (see Chart in
+// ui.tsx), so the bundle is fetched once, on the first view that draws a chart.
+//
+// The *basic* distribution: scatter and bar traces plus the core (subplots,
+// shapes, annotations). Every figure charts.py builds is go.Scatter or go.Bar,
+// so the full 4.6 MB build was shipping 3.6 MB of trace types nothing used.
+// verify_system.py fails if charts.py ever reaches for another trace type.
 
-import Plotly from 'plotly.js-dist-min'
+import Plotly from 'plotly.js-basic-dist-min'
 import createPlotlyComponent from 'react-plotly.js/factory'
 import type { Figure } from '../lib/types'
 

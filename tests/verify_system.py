@@ -25,15 +25,43 @@ What it asserts, and why each one exists:
   * every chart survives empty and degenerate input;
   * no measurement window has a zero or negative duration, and no speed,
     density or occupancy escapes its physical range.
+
+    python tests/verify_system.py --ci     # on a checkout without the data
+
+`--ci` is for a machine that has only the repository: the FLUID dataset (18
+GB), the detector weights and the source videos are not in it. Checks that
+need one of those are reported as SKIP instead of FAIL. Without the flag a
+missing asset is a failure, because on the project machine it is a real
+problem that this suite exists to make loud.
 """
 import sys, glob, io, contextlib, traceback, pathlib
 sys.path.insert(0, "src")
 
-OK, BAD = [], []
+OK, BAD, SKIPPED = [], [], []
+CI = "--ci" in sys.argv
 
 
-def check(name):
+def _have(resource: str) -> bool:
+    import config as cfg
+    if resource == "fluid":
+        import fluid as FL
+        return FL.available()
+    if resource == "weights":
+        return pathlib.Path(cfg.DEFAULT_MODEL).exists()
+    if resource == "videos":
+        return all(cfg.camera_video_path(c).exists() for c in cfg.CAMERAS)
+    if resource == "heatmaps":
+        hm = cfg.FRAME_DIR / "heatmap"
+        return all((hm / f"{c}_heatmap.jpg").exists() for c in cfg.CAMERAS)
+    raise ValueError(resource)
+
+
+def check(name, needs=()):
     def deco(fn):
+        missing = [r for r in needs if not _have(r)] if CI else []
+        if missing:
+            SKIPPED.append((name, "needs " + ", ".join(missing)))
+            return fn
         try:
             buf = io.StringIO()
             with contextlib.redirect_stdout(buf):
@@ -121,7 +149,7 @@ def _():
     return f"argmax stable, pressure scaled by {r:.4f} (k=7.3)"
 
 
-@check("max-pressure: runs GENUINELY on FLUID")
+@check("max-pressure: runs GENUINELY on FLUID", needs=("fluid",))
 def _():
     import config as cfg, maxpressure as MP, fluid as FL
     if not FL.available():
@@ -143,7 +171,7 @@ def _():
             f"phases {len(dec.phases)}, all with resolved movements")
 
 
-@check("FLUID: turn ratios sum to 1 per origin")
+@check("FLUID: turn ratios sum to 1 per origin", needs=("fluid",))
 def _():
     import fluid as FL
     rec = FL.recordings()[0]
@@ -154,7 +182,7 @@ def _():
     return f"{len(s)} origins, all sum to 1.0"
 
 
-@check("FLUID: replay figures match the report")
+@check("FLUID: replay figures match the report", needs=("fluid",))
 def _():
     import fluid as FL
     want = {"FI": 41.1, "FIDRT": 66.3, "TI": 46.6}
@@ -229,7 +257,7 @@ def _():
     # 1. No measurement / analysis module may reference max-pressure at all.
     forbidden = ["analyze", "metrics", "zones", "bottleneck_detect",
                  "forecast", "ingest", "calibration", "report_html",
-                 "detector"]
+                 "detector", "live", "whatif", "briefing", "incidents"]
     leaks = []
     for mod in forbidden:
         src = pathlib.Path(f"src/{mod}.py").read_text(encoding="utf-8")
@@ -258,17 +286,21 @@ def _():
     mv = S.mp_movements_from_metrics(df, js)
     d_surat = MP.decide(mv, MP.one_movement_per_phase(mv))
     assert d_surat.mode == MP.MODE_GREEDY and d_surat.chosen_phase_id is None
-    assert FL.available(), "FLUID missing — max-pressure has nowhere to be validated"
-    rec = FL.recordings()[0]
-    q, sg = FL.build_queue_table(rec), FL.load_signal(rec)
-    t = sorted(q.t.unique())[100]
-    d_fluid = MP.decide(FL.movements_at(q, float(t), turns=FL.turn_ratios(rec)),
-                        FL.controller_phases(sg, q))
-    assert d_fluid.mode == MP.MODE_FULL and d_fluid.chosen_phase_id is not None
+    if CI and not FL.available():
+        fluid_note = "FLUID half skipped (--ci, dataset absent)"
+    else:
+        assert FL.available(), "FLUID missing — max-pressure has nowhere to be validated"
+        rec = FL.recordings()[0]
+        q, sg = FL.build_queue_table(rec), FL.load_signal(rec)
+        t = sorted(q.t.unique())[100]
+        d_fluid = MP.decide(FL.movements_at(q, float(t), turns=FL.turn_ratios(rec)),
+                            FL.controller_phases(sg, q))
+        assert d_fluid.mode == MP.MODE_FULL and d_fluid.chosen_phase_id is not None
+        fluid_note = f"runs on FLUID ({d_fluid.mode})"
 
     return (f"Surat plan identical under both toggles (C={plans['webster'][0]}s); "
-            f"MP refuses on Surat ({d_surat.mode}), runs on FLUID "
-            f"({d_fluid.mode}); 0 leaks into {len(forbidden)} analysis modules")
+            f"MP refuses on Surat ({d_surat.mode}), {fluid_note}; "
+            f"0 leaks into {len(forbidden)} analysis modules")
 
 
 @check("REPORT.md headline figures match live computation")
@@ -301,6 +333,11 @@ def _():
         sw = S.delay_sweep(dem, model)["Demand-proportional splits"]
         sw = sw.replace([float("inf")], float("nan"))
         must[f"**{int(sw.idxmin())} s**"] = f"swept minimum ({model})"
+    import whatif as W
+    h = W.headroom(dem)
+    must[f"**{h['Y']:.3f}**"] = "measured total flow ratio (unclipped)"
+    must[f"**{h['reserve_ultimate_pct']:+.1f}%**"] = "demand headroom"
+    must[f"**{h['years_to_failure']:.1f} years**"] = "years of headroom at 5%/yr"
     must[f"{len(df):,}"] = "measurement windows"
     al = bn.detect_all(df)
     must[str(len(al))] = "alert count"
@@ -308,12 +345,14 @@ def _():
     must[str(len(f))] = "zones forecast"
 
     # --- FLUID / max-pressure ---------------------------------------------
-    for site in ("FI", "FIDRT", "TI"):
-        r = FL.recordings(site)[0]
-        res = FL.replay(r, FL.build_queue_table(r), FL.load_signal(r),
-                        FL.turn_ratios(r))
-        must[f"{res.wasted_green_pct_actual:.1f}%"] = f"{site} wasted green"
-    must[f"{len(FL.recordings())}"] = "FLUID recordings"
+    fluid_skipped = CI and not FL.available()
+    if not fluid_skipped:
+        for site in ("FI", "FIDRT", "TI"):
+            r = FL.recordings(site)[0]
+            res = FL.replay(r, FL.build_queue_table(r), FL.load_signal(r),
+                            FL.turn_ratios(r))
+            must[f"{res.wasted_green_pct_actual:.1f}%"] = f"{site} wasted green"
+        must[f"{len(FL.recordings())}"] = "FLUID recordings"
 
     # --- simulator ---------------------------------------------------------
     for sc in NS.SCENARIOS:
@@ -323,10 +362,13 @@ def _():
 
     missing = [f"{v}={k!r}" for k, v in must.items() if k not in doc]
     assert not missing, "REPORT.md missing/stale: " + "; ".join(missing)
-    return f"{len(must)} headline figures verified against REPORT.md"
+    return (f"{len(must)} headline figures verified against REPORT.md"
+            + (" (FLUID figures skipped: --ci, dataset absent)"
+               if fluid_skipped else ""))
 
 
-@check("runtime assets present (weights, reference frames, heatmaps)")
+@check("runtime assets present (weights, reference frames, heatmaps)",
+       needs=("weights", "heatmaps"))
 def _():
     """The assets a fresh run needs, and what breaks without each.
 
@@ -364,7 +406,7 @@ def _():
             f"{len(cfg.CAMERAS)} heatmaps present; missing-model guard wired")
 
 
-@check("FLUID scene layer renders on every site")
+@check("FLUID scene layer renders on every site", needs=("fluid",))
 def _():
     """The visual parity layer: aerial scene, zones, heatmap, instant.
 
@@ -405,7 +447,8 @@ def _():
     return "  ".join(out) + "  (scene, zones, heatmap, instant on each)"
 
 
-@check("decoder log noise suppressed, real stderr preserved")
+@check("decoder log noise suppressed, real stderr preserved",
+       needs=("videos", "fluid"))
 def _():
     """Harmless FFmpeg/GeoTIFF chatter is silenced; genuine errors are not."""
     import io, subprocess, textwrap
@@ -455,7 +498,8 @@ def _():
         "fleet_mix": (E,), "fundamental_diagram": (E, "gauravpath"),
         "occlusion_paradox": (E,), "count_vs_occupancy": (E, "gauravpath"),
         "cycle_composition": (plan, plan), "saturation_dumbbell": (plan, plan),
-        "delay_curve": (E, 120.0), "alert_gantt": ([],), "alert_mix": ([],),
+        "delay_curve": (E, 120.0), "growth_headroom": (E,),
+        "alert_gantt": ([],), "alert_mix": ([],),
         "forecast_chart": ([], 60.0), "controller_comparison": ([],),
         "queue_history": ({},), "turn_ratio_chart": (E,),
         "phase_share_chart": ({}, {}), "fluid_timeline": ([],),
@@ -477,6 +521,78 @@ def _():
     assert not failed, "; ".join(failed)
     assert C.fleet_table(E).empty
     return f"{len(calls)} chart fns, all return a Figure on empty input"
+
+
+@check("what-if: reserve capacity agrees with the optimiser")
+def _():
+    """Headroom is quoted from Webster's closed form; the optimiser must agree
+    with it. Scaling today's demand up by exactly the reported reserve should
+    put the best achievable plan - capped at the maximum cycle - at x = 1.0,
+    and the practical reserve at x = 0.90. If either drifts, the "years
+    before retiming stops working" figure on the dashboard is wrong."""
+    import services as S, signal_opt as so, whatif as W
+    df = S.load_metrics(include_uploads=False)
+    dem = S.junction_demands(df)
+    h = W.headroom(dem)
+    out = []
+    for key, want in (("reserve_ultimate_pct", 1.0), ("reserve_practical_pct", W.PRACTICAL_X)):
+        g = 1.0 + h[key] / 100.0
+        dg = W.scenario(dem, g)
+        Y = sum(W.y_raw(d) for d in dg)
+        L = len(dg) * so.LOST_TIME_PER_PHASE_S
+        x = so.common_degree_of_saturation(Y, so.MAX_CYCLE_S, L)
+        assert abs(x - want) < 1e-6, f"{key}: x at C_max = {x:.4f}, want {want}"
+        out.append(f"{key.split('_')[1]} {h[key]:+.2f}% -> x {x:.3f}")
+    # And a lost lane can only make the best plan worse.
+    worse = so.optimise(W.scenario(dem, 1.0, {dem[-1].approach_id: 0.2}))
+    best = so.optimise(dem)
+    assert (max(p.degree_of_saturation for p in worse.phases)
+            > max(p.degree_of_saturation for p in best.phases))
+    return "; ".join(out) + f"; {h['years_to_failure']:.2f} yr to failure at 5%/yr"
+
+
+@check("live replay: raises exactly the recorded alerts, never early")
+def _():
+    """The live view replays the recorded windows and raises each alert when
+    its evidence completes. Over one lap it must raise exactly what
+    bottleneck_detect finds in the whole clip - no more, no fewer - and never
+    before the condition began or after it ended."""
+    import services as S, bottleneck_detect as bn, live
+    df = S.load_metrics(include_uploads=False)
+    total, cams = 0, 0
+    for cam in S.analysed_cameras(df):
+        sub = df[df.camera_id == cam]
+        feed = live.ReplayFeed(cam, sub)
+        want = bn.detect(sub, cam)
+        assert len(feed.schedule) == len(want), f"{cam}: {len(feed.schedule)} vs {len(want)}"
+        for raise_at, a in feed.schedule:
+            assert a.start_s <= raise_at <= a.end_s + 1e-9, (
+                f"{cam}/{a.zone_id}/{a.kind}: raised at {raise_at} outside "
+                f"[{a.start_s}, {a.end_s}]")
+        # Zones resolve at every point of the clip, wrap included.
+        for ct in (0.0, feed.duration / 2, feed.duration - 1e-6):
+            assert len(feed.zones_at(ct)) == len(feed.zone_order)
+        total += len(want)
+        cams += 1
+    assert total == len(bn.detect_all(df)), "replay schedule disagrees with detect_all"
+    return f"{total} alerts scheduled across {cams} feeds, each within its own span"
+
+
+@check("charts: only trace types the web bundle can draw")
+def _():
+    """The React front end ships plotly.js-basic (scatter + bar + core), not
+    the full 4.6 MB build. A chart that reached for a heatmap or a pie would
+    render as an empty frame in the browser with only a console warning - so
+    the trace vocabulary is pinned here, at the source."""
+    import re
+    src = pathlib.Path("src/charts.py").read_text(encoding="utf-8")
+    used = set(re.findall(r"\bgo\.([A-Z][A-Za-z]+)\(", src))
+    allowed = {"Figure", "Scatter", "Bar"}
+    extra = used - allowed
+    assert not extra, (f"charts.py uses {sorted(extra)}, which plotly.js-basic "
+                       f"cannot draw; switch web/ to a fuller bundle first")
+    assert "px." not in src, "plotly.express picks trace types implicitly"
+    return f"trace types used: {sorted(used - {'Figure'})}"
 
 
 @check("metrics CSVs: physical sanity")
@@ -519,10 +635,13 @@ if __name__ == "__main__":
     print("=" * 74)
     for n, d in OK:
         print(f"  PASS  {n:46s} {d}")
+    for n, why in SKIPPED:
+        print(f"  SKIP  {n:46s} {why}")
     for n, e, tb in BAD:
         print(f"  FAIL  {n:46s} {e}")
     print("=" * 74)
-    print(f"  {len(OK)} passed, {len(BAD)} failed")
+    print(f"  {len(OK)} passed, {len(BAD)} failed"
+          + (f", {len(SKIPPED)} skipped" if SKIPPED else ""))
     if BAD:
         print()
         for n, e, tb in BAD:

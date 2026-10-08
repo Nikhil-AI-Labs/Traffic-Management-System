@@ -53,7 +53,7 @@ name, so a judge scanning for an item finds it without hunting.
 | 3 | **Problem Understanding** | What this data can — and cannot — support |
 | 4 | *Problem Understanding, continued* | In the worst gridlock, detection counts fewer vehicles |
 | 5 | **Proposed Solution** | Two controllers, two datasets, one hard boundary |
-| 6 | **Key Features** | One dashboard, two tracks, thirteen views |
+| 6 | **Key Features** | A live control room, and fifteen views across two tracks |
 | 7 | **Technology Stack** | Chosen for what the data needs |
 | 8 | **System Architecture Diagram** | From video frame to signal recommendation |
 | 9 | **Workflow / Process Flow** | End to end, in five steps |
@@ -83,11 +83,11 @@ by reading that list rather than by clicking through fifteen slides.
 
 | Requirement | Where |
 |---|---|
-| Complete source code | `src/` — 27 modules, ~13,100 lines |
+| Complete source code | `src/` — 34 modules, ~17,500 lines · `web/` — the React front end |
 | README with setup and installation | [`README.md`](../README.md) |
 | Project folder structure | [`README.md`](../README.md) § Repository layout |
 | System architecture documentation | [`REPORT.md`](../REPORT.md) §4 · deck slide 6 |
-| API documentation | [`DATA_SCHEMA.md`](../DATA_SCHEMA.md) §6 — **no REST API**; the interface is the Python module API, documented by docstring |
+| API documentation | [`API.md`](../API.md) — the HTTP JSON API (interactive OpenAPI at `/api/docs`) and the Python module API |
 | Database schema | [`DATA_SCHEMA.md`](../DATA_SCHEMA.md) — **no database**; the equivalent CSV/JSON contract is documented in full |
 | Dependencies and requirements | `requirements.txt` (deploy) · `requirements-full.txt` (pipeline) |
 | Deployment instructions | [`DEPLOYMENT.md`](../DEPLOYMENT.md) |
@@ -101,7 +101,7 @@ Extra, not required but worth pointing a judge at:
 | | |
 |---|---|
 | [`REPORT.md`](../REPORT.md) | Full engineering report — every design decision, every bug, every number derived |
-| `tests/verify_system.py` | 18 end-to-end checks, including one that recomputes every documented figure and fails if the docs drift |
+| `tests/` | `verify_system.py` — 21 checks, including one that recomputes every documented figure and fails if the docs drift · `test_api.py` — 50 API checks · `e2e_pipeline.py` — every detector flow end to end · run by CI on every push |
 
 ---
 
@@ -109,17 +109,17 @@ Extra, not required but worth pointing a judge at:
 
 | Requirement | Status |
 |---|---|
-| Working prototype | ✅ `streamlit run src/dashboard.py` |
+| Working prototype | ✅ `python src/api.py` → http://127.0.0.1:8000 (React control room); `streamlit run src/dashboard.py` still works |
 | **2–3 minute demonstration video (MP4, 1080p)** | ⏳ **script ready — needs recording** → [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md) |
 | Hosted application URL *(if available)* | ⚪ optional — see [`DEPLOYMENT.md`](../DEPLOYMENT.md) |
-| Login credentials | ⚪ N/A — no authentication |
+| Login credentials | ⚪ none needed to view; set `STI_OPERATOR_TOKEN` to require an operator token for anything that changes state |
 | APK / installer | ⚪ N/A — web application |
 
 **The video is the only mandatory item still outstanding.** `VIDEO_SCRIPT.md`
-has a shot-by-shot script timed to 2:45, with a pre-recording checklist and
-alternates for 2:00 and 3:00.
+has a shot-by-shot script timed to 2:55, opening on the live control room,
+with a pre-recording checklist and a cut for 2:00.
 
-> ⚠️ Set `FLUID_ROOT` before recording, or five of the thirteen views will show
+> ⚠️ Set `FLUID_ROOT` before recording, or five of the fifteen views will show
 > a "data not found" callout on camera.
 
 ---
@@ -129,9 +129,9 @@ alternates for 2:00 and 3:00.
 | Criterion | Weight | Strongest evidence |
 |---|---|---|
 | Innovation | 25 | The observability gate (deck 12, report §6.1); occlusion-proof occupancy (deck 4, report §2.2) |
-| Technical implementation | 25 | 27 modules; 18-check verification suite; two controllers with a test-enforced boundary |
-| Real-world impact | 25 | Saturation 1.01 → 0.929 — an over-capacity approach brought back under; 31 evidence-backed alerts; runs on cameras the city already owns |
-| Usability | 15 | 13-view operator dashboard; every chart has a table beside it; every estimate flagged as one |
+| Technical implementation | 25 | 34 modules + React; real-time detection at 25 fps on an Intel laptop iGPU (OpenVINO); 21-check verification suite, 50 API tests, CI; two controllers with a test-enforced boundary |
+| Real-world impact | 25 | Saturation 1.01 → 0.929 — an over-capacity approach brought back under, and how long it lasts (+8.2% headroom, ~1.6 years); 31 evidence-backed alerts with an incident workflow; runs on cameras the city already owns |
+| Usability | 15 | Live control room — map, video, alerts as they fire, acknowledge/resolve; 15 views; printable briefing; every chart has a table beside it; every estimate flagged as one |
 | Presentation & demonstration | 10 | This deck, this report, and the video script |
 
 ---
@@ -144,7 +144,7 @@ submission/
 ├── Surat-Traffic-Intelligence-PS08.pptx         15 slides
 ├── Surat-Traffic-Intelligence-PS08.pdf          same, as PDF
 ├── Surat-Traffic-Intelligence-PS08-Report.pdf   7-page standalone report
-├── VIDEO_SCRIPT.md                              2:45 shot-by-shot script
+├── VIDEO_SCRIPT.md                              2:55 shot-by-shot script
 ├── build_deck.py                                regenerates the deck
 └── build_report.py                              regenerates the report
 ```

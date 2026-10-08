@@ -1,27 +1,33 @@
-# Demo Video Script — 2:45
+# Demo Video Script — 2:55
 
 E-Rakshak Hackathon 2026 · PS-08 · *Surat Traffic Intelligence*
 
 **Target:** 2–3 minutes · MP4 · 1080p · screen recording with voice-over
-**Actual runtime:** 2:45 of narration at a natural pace (~150 wpm), leaving
-headroom inside the 3:00 limit.
+**Actual runtime:** 2:55 of narration at a natural pace (~150 wpm), inside the
+3:00 limit.
 
 ---
 
 ## Before you record
 
-```bash
-cd E:\Researcher\erakshak
-streamlit run src/dashboard.py          # http://localhost:8501
+```powershell
+cd E:\E-RAKSHAK\Traffic-Management-System
+$env:FLUID_ROOT = "E:\Conflict"
+.\.venv\Scripts\python.exe src\api.py     # http://127.0.0.1:8000
 ```
 
 **Checklist**
-- [ ] Set `FLUID_ROOT` so the max-pressure track has data — **without it, five
-      of the thirteen views show a "data not found" callout on camera**
-- [ ] Browser at 1920×1080, zoom 100%, full screen (`F11`)
-- [ ] Hide bookmarks bar; close other tabs
-- [ ] Pre-load each view once so nothing is computing mid-take
-- [ ] Sidebar set to **Webster — Surat network**, view **Network**
+- [ ] `FLUID_ROOT` set — **without it the five max-pressure views show a
+      "data not found" callout on camera**
+- [ ] `npm run build` in `web/` after any front-end change, then restart the server
+- [ ] Browser at 1920×1080, zoom 100%, full screen (`F11`), light theme
+- [ ] Internet on — the map tiles come from OpenStreetMap
+- [ ] Close other heavy programs: live detection wants the CPU and ~1 GB of RAM
+- [ ] Open each view once so nothing is computing mid-take
+- [ ] Start live detection once and stop it, so the model is already loaded
+- [ ] Live monitor at **2×**; press **Restart** (↺) as the take begins — the
+      first alerts fire 6 s into the clips, about 3 s later
+- [ ] Signal view scrolled to the top
 - [ ] OBS / Xbox Game Bar recording at 1080p 30 fps
 
 **Tone.** Explain, don't sell. The strongest thing about this project is that it
@@ -32,119 +38,97 @@ enthusiasm would.
 
 ## Shot list
 
-### 00:00 – 00:18 · Cold open — the problem
-**On screen:** Network view, full dashboard. Slow scroll to the congestion
-ranking.
+### 00:00 – 00:22 · Cold open — the control room
+**On screen:** **Live monitor**, replay at 2×, just restarted. The map with
+coloured camera pins, the camera list with sparklines moving. After ~3 s four
+critical alerts fire and the Gopi Talav and Mahidharpura pins start pulsing.
+Click Gopi Talav on the map.
 
-> "Surat has a CCTV network already watching its streets. Problem statement 08
-> asks us to turn it into a traffic system — measure density, optimise the
-> signals, find the bottlenecks. We analysed seven cameras: twenty-one zones,
-> two-and-a-half thousand measurement windows. But the first thing the footage
-> told us was that the obvious approach would have been confidently wrong."
-
----
-
-### 00:18 – 00:48 · The discovery
-**On screen:** Switch to **How it works** view. Scroll to the occlusion chart —
-the detections-per-camera bar chart.
-
-> "This is detection count per camera. Rokadiya Hanuman — a free-flowing
-> arterial — gives seven and a half thousand detections. Mahidharpura, the worst
-> gridlock in the dataset, gives four hundred and sixty-three.
->
-> At extreme density, vehicles stop being separable and the detector's recall
-> collapses. So a system that equates more detections with more congestion would
-> rank Surat's worst street among its emptiest. And every number would look
-> plausible.
->
-> Our fix is a texture-based occupancy index — edge density, normalised against
-> absolute bounds measured across all seven cameras. It has no notion of an
-> object, so occlusion can't defeat it. Mahidharpura now flags four hundred and
-> fifty-two of four hundred and fifty-three windows as saturated, and ranks
-> correctly as the most congested site."
+> "This is Surat's CCTV network as a traffic control room. Seven cameras on one
+> screen — each one's level of service on the map, its congestion trend, and
+> alerts the moment they fire. Gopi Talav and Mahidharpura just went critical:
+> their evidence completed its third sustained window, so they were raised —
+> quoting only what was known at that instant, never the rest of the clip."
 
 ---
 
-### 00:48 – 01:28 · The operational result
-**On screen:** **Signal timing** view. Let the `1.01 → 0.93` headline sit for a
-beat. Then drag the *Existing fixed-timer cycle* slider so the audience sees it
-recompute live. Then scroll to the cycle-sweep chart.
+### 00:22 – 00:45 · The real pipeline, live
+**On screen:** Focus **Rokadiya Hanuman**. Press **Run live detection**. Boxes
+appear on the video, the LIVE badge, the frame rate in the status bar.
 
-> "Here's the operational output. The existing fixed timer runs a hundred-and-
-> twenty-second cycle with equal green splits, and that drives the busier
-> approach to a degree of saturation of one-point-oh-one — over capacity, where
-> the queue never clears within the cycle.
->
-> Webster's optimal plan brings that to nought-point-nine-three. That's the
-> claim that survives any delay model, and it's the one that matters.
->
-> Two independent checks. Sweeping cycle length puts the empirical delay minimum
-> at a hundred and thirty seconds, against Webster's closed form of a hundred and
-> thirty-five point six. And the optimal plan equalises saturation across both
-> approaches — which is the known optimality condition for Webster green
-> allocation, so we're not just asserting the implementation is right."
-
-*(If asked about the small delay figure, the honest line is: "delay falls three
-point eight percent — the saturation crossing is the real result, and we quote
-the smaller number rather than the flattering one.")*
+> "That was a replay of the recorded measurements. This is the real thing:
+> YOLO11, fine-tuned on Indian CCTV, with ByteTrack and our metrics engine,
+> running at wall-clock speed on this laptop's CPU. When it can't keep up it
+> skips frames rather than falling behind, so the picture is always now. It also
+> watches every track: a vehicle standing still in a lane that's flowing gets
+> boxed and raised — a breakdown, or an illegal stop."
 
 ---
 
-### 01:28 – 01:50 · Evidence, not just numbers
-**On screen:** **Bottlenecks** view. Hover one critical alert so the evidence
-tooltip shows. Then **Outlook** briefly.
+### 00:45 – 01:10 · The discovery
+**On screen:** **How it works**. Scroll to the occlusion chart.
 
-> "Thirty-one bottleneck alerts, each carrying the evidence that raised it and a
-> specific recommendation — so an engineer can check the reasoning rather than
-> trust it. This one is a standing queue: sustained stopped-fraction above
-> threshold, with the recommendation to check downstream before retiming,
-> because if the blockage is downstream, adding green here just moves the queue.
->
-> And twenty-one zone forecasts with prediction intervals — the band widens
-> where the history is thin, rather than pretending to precision."
+> "The footage taught us something first. Rokadiya Hanuman, a flowing arterial:
+> seven and a half thousand detections. Mahidharpura, the worst gridlock in the
+> dataset: four hundred and sixty-three. When vehicles pack too tight, the
+> detector stops seeing them — so 'more detections, more congestion' would rank
+> Surat's worst street among its emptiest. We measure texture-based occupancy
+> instead, which occlusion can't defeat, and Mahidharpura ranks first."
 
 ---
 
-### 01:50 – 02:25 · The part we're proudest of
-**On screen:** Switch the sidebar toggle to **Max-pressure — FLUID validation**.
-Let the whole dashboard change. Land on **Scene** — the aerial with shaded
-queues.
+### 01:10 – 01:48 · The signal — and how long the fix lasts
+**On screen:** **Signal timing**. Let `1.01 → 0.93` sit. Scroll to **How long
+does the retiming last?** — the headroom chart. Then in **Scenario**, set
+*Capacity lost on* → Rokadiya Hanuman and drag to 10%.
 
-> "Now the part we think matters most. Max-pressure is the throughput-optimal
-> signal controller. It needs the queue on the approach *and* the queue on the
-> link it discharges into.
+> "The fixed timer drives the busier approach to a degree of saturation of
+> one-point-oh-one — over capacity, the queue never clears. Webster's plan brings
+> it to nought-point-nine-three.
 >
-> No Surat camera watches a receiving link. So that term simply is not in our
-> data. We could have set it to zero — but that doesn't give a degraded
-> max-pressure, it gives greedy queue control, which Varaiya's own paper proves
-> fails to stabilise demands max-pressure handles.
->
-> So our implementation refuses. On Surat it reports 'greedy-queue' and declines
-> to name a phase.
->
-> Instead we went and got a dataset that has the missing term — FLUID, fourteen
-> drone recordings of three real signalised intersections. This is the picture
-> the Surat cameras structurally cannot produce: every approach and every
-> receiving link in one frame. Replayed against the real signals, those
-> fixed-time plans spend forty-one to sixty-six percent of their green on a phase
-> whose queue had already cleared. Max-pressure, on the same measured queues,
-> does that one-and-a-half to sixteen percent of the time."
+> Then the question an engineer actually asks: how long does that last?
+> Webster's closed form answers it. This junction has eight percent of headroom —
+> about a year and a half at five percent traffic growth. And one parked bus near
+> the stop line" *(drag)* "takes the best possible plan to nought-point-nine-eight.
+> Past that, the answer is road space, not a better cycle."
 
 ---
 
-### 02:25 – 02:45 · Close on the honest note
-**On screen:** **Head-to-head** view — the three-scenario comparison table.
+### 01:48 – 02:10 · Alerts become work
+**On screen:** **Incidents**. Acknowledge a critical incident with the note
+"PCR van dispatched"; the sidebar badge drops by one. Then **Network** →
+**Network briefing**; show the printable page for two seconds.
 
-> "And we'll say the unflattering part too. In simulation, max-pressure is
-> *worse* than a fixed timer on steady demand — it pays an inter-green for a
-> benefit that isn't there. It wins when demand shifts between approaches, and
-> wins big when something downstream backs up: thirty-one percent less delay.
+> "Every alert becomes work. Acknowledge it, resolve it, note what was done —
+> the log keeps who and when, survives a restart, and exports for the shift
+> handover. And the whole network goes on a printable briefing for the morning
+> meeting."
+
+---
+
+### 02:10 – 02:42 · Max-pressure — validated where the data allows
+**On screen:** Switch the sidebar to **Max-pressure — FLUID drone**. Land on
+**Scene**, the aerial with shaded queues. Then **Validation**.
+
+> "Max-pressure is the throughput-optimal controller, but it needs the queue on
+> the link each movement discharges into — and no Surat camera watches one.
+> Setting it to zero gives greedy queue control, which Varaiya's own paper proves
+> unstable. So on Surat our implementation refuses to name a phase.
 >
-> So the system doesn't offer it as an upgrade. It tells the operator which
-> regime their junction is actually in, and recommends accordingly.
->
-> Two controllers. Two datasets. Neither borrowing from the other — and a test
-> that fails if that ever stops being true."
+> Instead we validated it on FLUID: drone recordings of real intersections where
+> every link is in frame. The real fixed-time signals spend forty-one to
+> sixty-six percent of their green on a phase with nothing left to clear.
+> Max-pressure: one and a half to sixteen."
+
+---
+
+### 02:42 – 02:55 · Close on the honest note
+**On screen:** **Head-to-head** table.
+
+> "And it's worse than a fixed timer on steady demand. So we don't sell it as an
+> upgrade — the system tells the operator which regime a junction is in. Every
+> number you've seen is recomputed by a test that fails if the code and this
+> story ever disagree."
 
 ---
 
@@ -152,27 +136,23 @@ queues.
 
 | Segment | Duration | Cumulative |
 |---|---|---|
-| Cold open — the problem | 0:18 | 0:18 |
-| The discovery | 0:30 | 0:48 |
-| Operational result | 0:40 | 1:28 |
-| Evidence | 0:22 | 1:50 |
-| Max-pressure & FLUID | 0:35 | 2:25 |
-| Honest close | 0:20 | 2:45 |
+| Cold open — the control room | 0:22 | 0:22 |
+| The real pipeline, live | 0:23 | 0:45 |
+| The discovery | 0:25 | 1:10 |
+| Signal and headroom | 0:38 | 1:48 |
+| Incidents and briefing | 0:22 | 2:10 |
+| Max-pressure and FLUID | 0:32 | 2:42 |
+| Honest close | 0:13 | 2:55 |
 
 ---
 
 ## If you need to cut to 2:00
 
-Drop **Evidence** (0:22) entirely, and trim the operational segment to the
-`1.01 → 0.93` headline plus one verification check (saves ~0:20). That lands at
-**2:03** and keeps both discoveries and the max-pressure argument, which are the
-parts that differentiate the project.
-
-## If you have room to 3:00
-
-Add 15 s on **Site detail** — zone tiles, scene overlay, movement heatmap and
-the speed–density diagram — to show the measurement layer directly rather than
-only its conclusions.
+Drop **Incidents and briefing** (0:22) and the second paragraph of
+**Max-pressure** (0:15), and trim the discovery to its first two sentences plus
+the fix (saves ~0:12). That lands near **2:05** and keeps the control room, the
+live pipeline, the signal result and the refusal — the parts that differentiate
+the project.
 
 ---
 
@@ -180,11 +160,10 @@ only its conclusions.
 
 - **Do not narrate the UI.** Say what the number means, not "here you can see a
   chart showing…".
-- **Pause after each headline figure.** `1.01 → 0.93` needs a beat to land.
+- **Pause after each headline figure.** `1.01 → 0.93` and "a year and a half"
+  each need a beat to land.
 - **Move the cursor deliberately.** Slow drags read as confident; fast jitter
   reads as lost.
 - **One take per segment**, then join — far easier than one clean 3-minute run.
-- **Record system audio off**, mic only. No background music: it competes with
-  the numbers.
-- If a view is slow to compute, cut the dead air out rather than talking over
-  the spinner.
+- **Record system audio off**, mic only; the alert chime is optional and
+  competes with the voice.

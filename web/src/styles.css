@@ -410,3 +410,87 @@ pre.code { background: var(--sunken); border-radius: 8px; padding: 12px 14px; ov
   background: var(--raised); border: 1px solid var(--border); border-left: 3px solid var(--c, var(--good));
   border-radius: 10px; box-shadow: var(--shadow-lg); padding: 12px 15px; font-size: 0.87rem;
 }
+
+/* ------------------------------------------------------------ map */
+
+.map { width: 100%; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); background: var(--sunken); z-index: 0; }
+.map .leaflet-control-attribution { font-size: 10px; }
+/* Dark mode: invert the street tiles rather than ship a second tile set. */
+:root[data-theme='dark'] .map .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.88) saturate(0.6); }
+:root[data-theme='dark'] .map .leaflet-control-attribution,
+:root[data-theme='dark'] .map .leaflet-bar a { background: var(--raised); color: var(--text2); }
+.cam-pin-wrap { background: none; border: 0; }
+/* The icon element sits exactly on the coordinate (iconSize 0), so the dot is
+   centred on it and the label hangs off to the right. */
+.cam-pin { position: absolute; left: -8px; top: -8px; width: 16px; height: 16px; cursor: pointer; }
+.cam-pin i {
+  position: relative; display: block; width: 100%; height: 100%; border-radius: 50%;
+  background: var(--c); border: 2.5px solid var(--surface); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+.cam-pin span {
+  position: absolute; left: calc(100% + 5px); top: 50%; transform: translateY(-50%); white-space: nowrap;
+  font: 650 11.5px/1.2 var(--font); color: var(--text); background: color-mix(in srgb, var(--surface) 88%, transparent);
+  padding: 2px 6px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+.cam-pin.sel { left: -11px; top: -11px; width: 22px; height: 22px; }
+.cam-pin.sel i { outline: 3px solid var(--accent); outline-offset: 1px; }
+.cam-pin.sel span { outline: 2px solid var(--accent); }
+.cam-pin.approx span::after { content: ' ≈'; color: var(--text2); font-weight: 500; }
+.cam-pin.pulse i::after {
+  content: ''; position: absolute; inset: -2.5px; border-radius: 50%;
+  border: 2px solid var(--critical); animation: pin-pulse 1.6s ease-out infinite;
+}
+@keyframes pin-pulse { from { transform: scale(1); opacity: 0.9; } to { transform: scale(2.6); opacity: 0; } }
+
+/* ------------------------------------------------------------ modal */
+
+.modal-scrim { position: fixed; inset: 0; z-index: 120; background: rgba(0, 0, 0, 0.45); display: grid; place-items: center; padding: 16px; }
+.modal { width: min(440px, 100%); background: var(--raised); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-lg); padding: 18px 20px 20px; }
+.modal-t { display: flex; align-items: center; gap: 8px; font-size: 1.05rem; margin: 0; }
+.modal input[type='password'] {
+  appearance: none; font: inherit; font-size: 0.88rem; color: var(--text); background: var(--raised);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; width: 100%; min-height: 38px;
+}
+
+/* ------------------------------------------------------------ incidents */
+
+.alert.alert-done { opacity: 0.72; }
+.inc-actions { gap: 6px; }
+.inc-form { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.inc-form input { flex: 1 1 220px; min-height: 32px; padding: 5px 10px; font-size: 0.83rem; }
+.inc-history { list-style: none; margin: 8px 0 0; padding: 0 0 0 12px; border-left: 2px solid var(--hairline); font-size: 0.8rem; color: var(--text2); }
+.inc-history li + li { margin-top: 3px; }
+.nav-badge {
+  margin-left: auto; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; font-size: 0.72rem; font-weight: 720;
+  display: inline-flex; align-items: center; justify-content: center; background: var(--critical); color: #fff;
+}
+.op-btn { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ------------------------------------------------------------ live */
+
+.live-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.live-bar .live-desc { flex: 1 1 180px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.live-bar .live-ctl { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c, var(--good)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c, var(--good)) 22%, transparent); }
+.live-dot.on { animation: live-blink 1.4s ease-in-out infinite; }
+@keyframes live-blink { 50% { opacity: 0.35; } }
+.grid-live { display: grid; gap: 18px; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: start; }
+@media (max-width: 1100px) { .grid-live { grid-template-columns: minmax(0, 1fr); } }
+.stream { position: relative; border-radius: 10px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; }
+.stream img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.stream .stream-badge { position: absolute; right: 10px; top: 10px; }
+.cam-list { display: flex; flex-direction: column; gap: 6px; }
+.cam-row {
+  display: grid; grid-template-columns: 14px minmax(0, 1fr) auto auto; gap: 10px; align-items: center; text-align: left;
+  border: 1px solid var(--border); background: var(--surface); border-radius: 10px; padding: 7px 10px; cursor: pointer;
+  transition: border-color 0.12s, background 0.12s; width: 100%;
+}
+.cam-row:hover { border-color: var(--accent); }
+.cam-row[aria-pressed='true'] { border-color: var(--accent); background: var(--accent-wash); }
+.cam-row .cr-n { font-size: 0.85rem; font-weight: 640; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cam-row .cr-s { font-size: 0.74rem; color: var(--text2); }
+.cam-row .cr-v { font-size: 0.95rem; font-weight: 680; min-width: 38px; text-align: right; }
+.feed { display: flex; flex-direction: column; gap: 8px; max-height: 720px; overflow-y: auto; padding-right: 2px; }
+.event-row { font-size: 0.8rem; color: var(--text2); padding: 4px 2px; border-bottom: 1px dashed var(--hairline); }
+.event-row b { color: var(--text); }
+@media (prefers-reduced-motion: reduce) { .cam-pin.pulse i::after, .live-dot.on { animation: none; } }

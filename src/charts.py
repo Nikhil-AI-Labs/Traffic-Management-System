@@ -681,6 +681,44 @@ def delay_curve(curve: pd.DataFrame, webster_c: float) -> go.Figure:
     return fig
 
 
+def growth_headroom(curve: pd.DataFrame, practical_x: float = 0.90) -> go.Figure:
+    """Worst degree of saturation as demand grows, fixed timer vs adaptive.
+
+    The adaptive line is Webster's delay-optimal plan. Near capacity its cycle
+    is capped at the maximum, where proportional splits give the lowest worst
+    x any timing can reach - so where it crosses 1.0, retiming stops being an
+    answer. (At low demand Webster's shorter cycle shows a higher x than a long
+    fixed one; it is minimising delay, not x.) Both thresholds are drawn as
+    reference lines and named in text, so the chart reads without colour.
+    """
+    if _missing(curve, "growth_pct", "x_adaptive", "x_fixed"):
+        return _blank("No junction demand to project.")
+    p = T.P()
+    fig = go.Figure()
+    for i, (col, name) in enumerate((("x_fixed", "Fixed 120 s timer"),
+                                     ("x_adaptive", "Adaptive (Webster)"))):
+        fig.add_trace(go.Scatter(
+            x=curve.growth_pct, y=curve[col], mode="lines", name=name,
+            line=dict(color=T.series(i), width=2),
+            hovertemplate=f"x = %{{y:.3f}}<extra>{name}</extra>"))
+    for level, label, status in ((1.0, "capacity (x = 1)", "critical"),
+                                 (practical_x, f"practical limit (x = {practical_x:.2f})",
+                                  "warning")):
+        fig.add_hline(y=level, line=dict(color=T.STATUS[status], width=1, dash="dot"),
+                      annotation_text=label, annotation_position="top left",
+                      annotation_font=dict(color=p["text2"], size=10.5))
+    fig.add_vline(x=0, line=dict(color=p["axis"], width=1),
+                  annotation_text="today", annotation_position="bottom right",
+                  annotation_font=dict(color=p["muted"], size=10))
+    fig.update_layout(**T.layout(height=320, hovermode="x unified",
+                                 margin=dict(l=8, r=16, t=34, b=38)))
+    fig.update_xaxes(title="Demand change from today (%)", ticksuffix="%",
+                     showspikes=True, spikemode="across", spikethickness=1,
+                     spikecolor=p["axis"], spikedash="solid")
+    fig.update_yaxes(title="Worst degree of saturation x")
+    return fig
+
+
 # --------------------------------------------------------------------------
 # Alerts
 # --------------------------------------------------------------------------

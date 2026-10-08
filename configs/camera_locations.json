@@ -1,0 +1,10 @@
+{
+  "_note": "Approximate positions placed from the camera names, not surveyed. Drag a marker on the map (signed in as operator) to correct it; a corrected position is saved here with verified: true.",
+  "gauravpath": {"lat": 21.1592, "lon": 72.7795, "verified": false},
+  "rokadiya_hanuman": {"lat": 21.1845, "lon": 72.8335, "verified": false},
+  "chauta_bazaar": {"lat": 21.1952, "lon": 72.8236, "verified": false},
+  "mahidharpura": {"lat": 21.2003, "lon": 72.8282, "verified": false},
+  "gopi_talav": {"lat": 21.1897, "lon": 72.8278, "verified": false},
+  "rly_station": {"lat": 21.2048, "lon": 72.8408, "verified": false},
+  "central_bus_depo": {"lat": 21.2034, "lon": 72.8394, "verified": false}
+}

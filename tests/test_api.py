@@ -178,6 +178,8 @@ def test_method():
 
 @pytest.mark.parametrize("kind", ["overlay", "reference", "heatmap"])
 def test_images(kind):
+    if kind == "heatmap" and not (api.S.HEATMAP_DIR / "gauravpath_heatmap.jpg").exists():
+        pytest.skip("heatmaps are generated, not committed")
     r = client.get(f"/api/images/{kind}/gauravpath?w=400")
     assert r.status_code == 200 and r.headers["content-type"] == "image/jpeg"
     assert r.content[:2] == b"\xff\xd8"
@@ -315,3 +317,230 @@ def test_mode_setting_round_trip():
         assert bad.status_code == 422
     finally:
         client.post("/api/settings/mode", json={"mode": before})
+
+
+# --------------------------------------------------------------------------
+# Operator sign-in and rate limits
+# --------------------------------------------------------------------------
+
+import incidents as INC  # noqa: E402
+import security as SEC  # noqa: E402
+
+
+@pytest.fixture(autouse=True)
+def _fresh_buckets():
+    """Rate limits are per client, and every test is the same client."""
+    SEC.BUCKETS.reset()
+    yield
+    SEC.BUCKETS.reset()
+
+
+@pytest.fixture
+def incident_log(tmp_path, monkeypatch):
+    """Point the incident log at a scratch file for the test."""
+    monkeypatch.setattr(INC, "LOG_PATH", tmp_path / "incidents.json")
+    return INC.LOG_PATH
+
+
+def test_meta_reports_auth_and_incidents(incident_log):
+    m = get("/api/meta")
+    assert m["auth"] == {"required": False}
+    assert m["incidents"]["open"] == 31 and m["incidents"]["open_critical"] == 10
+
+
+def test_writes_need_a_token_when_one_is_set(monkeypatch):
+    monkeypatch.setattr(SEC, "OPERATOR_TOKEN", "s3cret")
+    assert get("/api/meta")["auth"]["required"] is True
+    get("/api/network")                                   # reading stays open
+    for method, url, body in [("post", "/api/live/control", {"speed": 1.0}),
+                              ("post", "/api/uploads/demo", {"camera": "gauravpath"}),
+                              ("put", "/api/locations/gauravpath", {"lat": 21.16, "lon": 72.78}),
+                              ("delete", "/api/live/detect", None)]:
+        kw = {"json": body} if body is not None else {}
+        r = getattr(client, method)(url, **kw)
+        assert r.status_code == 401, f"{method} {url} -> {r.status_code}"
+    good = client.post("/api/auth/check", headers={"Authorization": "Bearer s3cret",
+                                                   "X-Operator-Name": "Insp.%20Desai"})
+    assert good.status_code == 200 and good.json()["name"] == "Insp. Desai"
+    assert client.post("/api/auth/check",
+                       headers={"Authorization": "Bearer wrong"}).status_code == 401
+    r = client.post("/api/live/control", json={"speed": 1.0},
+                    headers={"Authorization": "Bearer s3cret"})
+    assert r.status_code == 200
+
+
+def test_rate_limit_answers_429(monkeypatch):
+    monkeypatch.setattr(SEC, "RATE_LIMITS_ON", True)
+    codes = [client.post("/api/auth/check").status_code for _ in range(8)]
+    assert codes[:5] == [200] * 5 and set(codes[5:]) == {429}
+    r = client.post("/api/auth/check")
+    assert r.status_code == 429 and int(r.headers["Retry-After"]) >= 1
+
+
+# --------------------------------------------------------------------------
+# Incident workflow
+# --------------------------------------------------------------------------
+
+def test_alerts_carry_incident_ids(incident_log):
+    b = get("/api/bottlenecks")
+    assert all(a["id"] and a["status"] == "open" and a["actionable"] for a in b["alerts"])
+    s = get("/api/sites/mahidharpura")
+    assert all("|" in a["id"] for a in s["alerts"])
+
+
+def test_incident_lifecycle(incident_log):
+    items = get("/api/incidents")["items"]
+    assert len(items) == 31 and items[0]["severity"] == "critical"
+    iid = items[0]["id"]
+
+    def act(action, note=""):
+        return client.post(f"/api/incidents/{iid}/action", json={"action": action, "note": note},
+                           headers={"X-Operator-Name": "Insp.%20Desai"})
+
+    r = act("acknowledge", "unit dispatched")
+    assert r.status_code == 200 and r.json()["status"] == "acknowledged"
+    assert act("acknowledge").status_code == 409          # not from "acknowledged"
+    assert act("resolve", "cleared").json()["status"] == "resolved"
+    assert act("reopen").json()["status"] == "open"
+    assert act("explode").status_code == 409
+    hist = next(i for i in get("/api/incidents?status=all")["items"] if i["id"] == iid)["history"]
+    assert [h["action"] for h in hist] == ["acknowledge", "resolve", "reopen"]
+    assert hist[0]["by"] == "Insp. Desai" and hist[0]["note"] == "unit dispatched"
+    # Persisted, and the status shows on the alert views and the badge.
+    assert incident_log.exists()
+    act("resolve")
+    b = get("/api/bottlenecks")
+    assert next(a for a in b["alerts"] if a["id"] == iid)["status"] == "resolved"
+    assert get("/api/meta")["incidents"]["resolved"] == 1
+    csv = client.get("/api/incidents.csv")
+    assert csv.status_code == 200 and csv.text.startswith("id,source,status")
+    assert client.post("/api/incidents/nope/action", json={"action": "resolve"}).status_code == 404
+
+
+def test_live_alert_that_clears_is_not_left_open(incident_log):
+    """A replay left running re-raises the same conditions every lap; if a
+    cleared live alert stayed "open", the open count would grow forever."""
+    from urllib.parse import quote
+    hub = api.LIVE
+    aid = hub.raise_alert({"camera_id": "gauravpath", "camera_name": "GauravPath",
+                           "zone_id": "lane_1", "zone_label": "Lane 1",
+                           "kind": "standing_queue", "severity": "critical",
+                           "start_s": 1.0, "end_s": 9.0, "duration_s": 8.0,
+                           "headline": "test", "evidence": "test",
+                           "recommendation": "test"}, "detect")
+    try:
+        def status():
+            items = get("/api/incidents?status=all&source=live")["items"]
+            return next(i for i in items if i["id"] == aid)["status"]
+        assert status() == "open"
+        hub.clear_alert(aid)
+        assert status() == "cleared"
+        assert aid not in {i["id"] for i in get("/api/incidents?status=open")["items"]}
+        # It can still be put on record after the fact.
+        r = client.post(f"/api/incidents/{quote(aid, safe='')}/action",
+                        json={"action": "resolve", "note": "checked on camera"})
+        assert r.status_code == 200 and r.json()["status"] == "resolved"
+        assert status() == "resolved"
+    finally:
+        hub.alerts.pop(aid, None)
+        hub.active.pop(aid, None)
+
+
+def test_incident_filters(incident_log):
+    assert get("/api/incidents?status=resolved")["items"] == []
+    assert len(get("/api/incidents?source=recorded")["items"]) == 31
+    get("/api/incidents?status=bogus", status=422)
+
+
+# --------------------------------------------------------------------------
+# What-if, map, briefing
+# --------------------------------------------------------------------------
+
+def test_whatif_headroom():
+    w = get("/api/signal/whatif")
+    assert_strict_json(w)
+    h = w["today"]["headroom"]
+    # Y from the uncapped flow ratios; Webster's practical and ultimate limits.
+    assert abs(h["Y"] - 0.875) < 0.002
+    assert abs(h["reserve_ultimate_pct"] - 8.24) < 0.05
+    assert h["reserve_practical_pct"] < 0                  # already past x = 0.90
+    assert abs(h["years_to_failure"] - 1.62) < 0.02        # at 5 %/yr
+    assert_figure(w["chart"])
+    assert w["benefits"]["vehicle_hours_per_year"] > 0
+    # Losing capacity on one approach can only make things worse.
+    s = get("/api/signal/whatif?loss_approach=rokadiya_hanuman&loss_pct=20&growth=10")["scenario"]
+    assert s["worst_x_adaptive"] > w["today"]["worst_x_adaptive"]
+    assert s["opt"]["feasible"] is False
+    get("/api/signal/whatif?loss_approach=nowhere&loss_pct=5", status=422)
+    get("/api/signal/whatif?growth=500", status=422)
+
+
+def test_locations(tmp_path, monkeypatch):
+    loc = get("/api/locations")
+    assert len(loc["cameras"]) == 7
+    assert all(c["lat"] is not None for c in loc["cameras"])
+    target = tmp_path / "camera_locations.json"
+    target.write_text(api.LOCATIONS.read_text(encoding="utf-8"), encoding="utf-8")
+    monkeypatch.setattr(api, "LOCATIONS", target)
+    r = client.put("/api/locations/gauravpath", json={"lat": 21.16, "lon": 72.78})
+    assert r.status_code == 200 and r.json()["verified"] is True
+    g = next(c for c in get("/api/locations")["cameras"] if c["id"] == "gauravpath")
+    assert g["verified"] and g["lat"] == 21.16
+    assert client.put("/api/locations/gauravpath", json={"lat": 28.6, "lon": 77.2}).status_code == 422
+    assert client.put("/api/locations/nowhere", json={"lat": 21.2, "lon": 72.8}).status_code == 404
+
+
+def test_briefing():
+    r = client.get("/api/report/briefing.html")
+    assert r.status_code == 200 and r.headers["content-type"].startswith("text/html")
+    assert "network briefing" in r.text and "Mahidharpura" in r.text
+    assert "headroom" in r.text and ">nan" not in r.text.lower()
+    d = client.get("/api/report/briefing.html?download=true")
+    assert "attachment" in d.headers.get("content-disposition", "")
+
+
+# --------------------------------------------------------------------------
+# Live monitoring (replay; live detection needs the detector - see e2e)
+# --------------------------------------------------------------------------
+
+def test_live_state():
+    s = get("/api/live/state")
+    assert_strict_json(s)
+    assert len(s["cameras"]) >= 7 and s["speeds"] == [0.5, 1.0, 2.0, 5.0, 10.0]
+    c = next(c for c in s["cameras"] if c["id"] == "gauravpath")
+    assert c["source"] == "replay" and 0 <= c["clip_t"] <= c["duration"]
+    assert c["zones"] and all(z["los"] in ("Free", "Moderate", "Heavy", "Jam") for z in c["zones"])
+
+
+def test_live_events_stream():
+    import json
+    with client.stream("GET", "/api/live/events?limit=2") as r:
+        assert r.headers["content-type"].startswith("text/event-stream")
+        body = b"".join(r.iter_bytes()).decode()
+    ticks = [line[6:] for line in body.splitlines() if line.startswith("data: ")]
+    assert len(ticks) == 2
+    d = json.loads(ticks[-1])
+    assert set(d) == {"state", "events"} and d["state"]["cameras"]
+
+
+def test_live_frame_and_stream():
+    f = client.get("/api/live/frame.jpg?cam=rokadiya_hanuman")
+    assert f.status_code == 200 and f.content[:2] == b"\xff\xd8"
+    with client.stream("GET", "/api/live/stream.mjpg?cam=rokadiya_hanuman&frames=2") as r:
+        assert r.headers["content-type"].startswith("multipart/x-mixed-replace")
+        body = b"".join(r.iter_bytes())
+    assert body.count(b"--frame") == 2
+    assert client.get("/api/live/frame.jpg?cam=nowhere").status_code == 404
+
+
+def test_live_control_validation():
+    try:
+        assert client.post("/api/live/control", json={"speed": 3.0}).status_code == 422
+        assert client.post("/api/live/control", json={"playing": "yes"}).status_code == 422
+        r = client.post("/api/live/control", json={"playing": False})
+        assert r.status_code == 200 and r.json()["playing"] is False
+        t1 = get("/api/live/state")["t"]
+        assert get("/api/live/state")["t"] == t1             # paused: the clock stands
+    finally:
+        client.post("/api/live/control", json={"playing": True, "speed": 1.0})
+    assert client.post("/api/live/detect", json={"camera": "nowhere"}).status_code == 404

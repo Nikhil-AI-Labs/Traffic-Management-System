@@ -43,9 +43,28 @@ palette.
 | GET | `/api/fluid/scene?rid` · `/api/fluid/image/{zones\|instant\|heatmap}?rid&t` · `/api/fluid/video?rid` | Scene facts · aerial images (instant sends `X-Vehicles` / `X-Queued`) · drone video |
 | GET | `/api/sim/scenarios` · POST `/api/sim/run` | Simulator scenarios · run all three controllers (defaults reproduce REPORT.md's table) |
 | GET | `/api/mp/method` | The observability gate on the Surat cameras |
+| POST | `/api/auth/check` | 200 when the bearer token is valid (or none is required); echoes the operator name |
+| GET | `/api/live/state` | The live picture: every camera's zones, LOS, sparkline; alerts in force; rising risks; detection session |
+| GET | `/api/live/events?limit=` | **Server-sent events**: the live picture once a second plus every alert raised/cleared since the last tick; resumes from `Last-Event-ID` |
+| GET | `/api/live/stream.mjpg?cam&frames=` · `/api/live/frame.jpg?cam` | **MJPEG** stream of a camera (replay or live detection) · one frame |
+| POST | `/api/live/control` | `{"playing", "speed": 0.5\|1\|2\|5\|10, "restart"}` — the replay clock |
+| POST · DELETE | `/api/live/detect` | Start real-time detection on `{"camera"}` · stop it (409 while the detector is busy) |
+| GET | `/api/incidents?status&source` · `/api/incidents.csv` | Every alert with its workflow status and history · the log as CSV |
+| POST | `/api/incidents/{id}/action` | `{"action": "acknowledge"\|"resolve"\|"reopen", "note"}` (409 for a transition that does not apply) |
+| GET | `/api/signal/whatif?growth&loss_approach&loss_pct&growth_per_year&hours_per_day&…` | Reserve capacity, years of headroom, scenario plans, growth curve, benefit estimate |
+| GET · PUT | `/api/locations` · `/api/locations/{cam}` | Camera map positions (approximate until confirmed) · save one `{"lat", "lon"}` |
+| GET | `/api/report/briefing.html?download=` | Printable network briefing |
 
-Errors are JSON `{"detail": "..."}`: 404 unknown resource, 409 missing
-prerequisite (no metrics, no weights, FLUID absent), 413/415/422 bad input.
+Errors are JSON `{"detail": "..."}`: 401 operator sign-in required, 404 unknown
+resource, 409 missing prerequisite (no metrics, no weights, FLUID absent,
+detector busy), 413/415/422 bad input, 429 rate limited (with `Retry-After`).
+
+**Sign-in.** With `STI_OPERATOR_TOKEN` set, every endpoint that changes state or
+starts heavy work — calibration apply/undo, uploads and their analysis, live
+control and detection, incident actions, map positions — needs
+`Authorization: Bearer <token>`. `X-Operator-Name` (percent-encoded) names the
+operator in the incident log. Reading never needs a token. Unset, the API runs
+open, which suits a single operator workstation.
 
 ## Python module API
 

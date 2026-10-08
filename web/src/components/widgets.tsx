@@ -6,8 +6,9 @@ import { ArrowDown, ArrowUp, ImageOff } from 'lucide-react'
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react'
 import { get } from '../lib/api'
 import { SEV_COLOR, int, isNum, num, type Severity } from '../lib/format'
-import type { Alert, Job, Row } from '../lib/types'
-import { Expander, Segmented, SevChip, Tile, Tiles } from './ui'
+import type { Alert, Incident, IncidentStatus, Job, Row } from '../lib/types'
+import { IncidentActions, IncidentHistory, StatusChip } from './incident'
+import { Chip, Expander, Segmented, SevChip, Tile, Tiles } from './ui'
 
 // ------------------------------------------------------------------ table
 
@@ -175,14 +176,23 @@ export function Media({
 
 // ------------------------------------------------------------------ alerts
 
-export function AlertCard({ a, showSite = true }: { a: Alert; showSite?: boolean }) {
+export function AlertCard({ a, showSite = true }: { a: Alert | Incident; showSite?: boolean }) {
+  const workflow = !!a.id && a.actionable !== false && !!a.status
+  const live = a.source === 'replay' || a.source === 'detect'
   return (
-    <div className="alert" style={{ '--c': SEV_COLOR[a.severity] } as CSSProperties}>
+    <div
+      className={`alert ${a.status === 'resolved' || a.status === 'cleared' ? 'alert-done' : ''}`}
+      style={{ '--c': SEV_COLOR[a.severity] } as CSSProperties}
+    >
       <div className="alert-top">
         <SevChip sev={a.severity} />
+        {workflow && <StatusChip status={a.status as IncidentStatus} />}
+        {live && <Chip color={a.source === 'detect' ? 'var(--critical)' : 'var(--s1)'}>{a.source === 'detect' ? 'LIVE' : 'REPLAY'}</Chip>}
         <span className="alert-m">
           {showSite && `${a.camera_name} · `}
-          {int(a.start_s)}–{int(a.end_s)} s ({int(a.duration_s)} s)
+          {live && a.raised_at
+            ? `raised ${new Date(a.raised_at).toLocaleTimeString('en-IN', { timeStyle: 'medium' })} · clip ${int(a.start_s)} s`
+            : `${int(a.start_s)}–${int(a.end_s)} s (${int(a.duration_s)} s)`}
         </span>
       </div>
       <div className="alert-h">{a.headline}</div>
@@ -192,6 +202,12 @@ export function AlertCard({ a, showSite = true }: { a: Alert; showSite?: boolean
       <div className="alert-b">
         <b>Recommendation</b> — {a.recommendation}
       </div>
+      {'history' in a && <IncidentHistory history={a.history} />}
+      {workflow && (
+        <div className="mt-1">
+          <IncidentActions id={a.id as string} status={a.status as IncidentStatus} />
+        </div>
+      )}
     </div>
   )
 }

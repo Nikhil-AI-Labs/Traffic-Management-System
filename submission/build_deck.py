@@ -3,7 +3,8 @@
     python submission/build_deck.py
 
 Generates a 15-slide 16:9 presentation covering every slide the E-Rakshak
-Stage-2 guideline names, then writes it next to this file.
+Stage-2 guideline names, then writes it next to this file. Fifteen is the
+brief's ceiling: new material goes into an existing slide, not a sixteenth.
 
 The deck is generated rather than hand-drawn for the same reason the metrics
 are: a figure quoted on a slide should come from the same place the dashboard
@@ -235,13 +236,14 @@ def picture(slide, path, x, y, w=None, h=None, border=True):
 def live_results() -> dict:
     """Recompute the headline numbers. Falls back to the verified constants."""
     r = dict(cycle="135.6", x_before="1.01", x_after="0.929", windows="2,451",
-              alerts="31", forecasts="21", papers="")
+              alerts="31", forecasts="21", papers="", head="+8.2", years="1.6")
     try:
         sys.path.insert(0, str(ROOT / "src"))
         import config as cfg, signal_opt as so
         import bottleneck_detect as bn, forecast as fc
-        import dashboard as D
-        df = D.load_metrics.__wrapped__()
+        import services as S
+        import whatif as W
+        df = S.load_metrics(include_uploads=False)
         js = [c for c in cfg.junction_cameras() if c in set(df.camera_id.unique())]
         dem = [d for d in (so.demand_from_metrics(df, c) for c in js) if d]
         base, opt = so.evaluate_fixed_plan(dem, cycle_s=120.0), so.optimise(dem)
@@ -251,6 +253,9 @@ def live_results() -> dict:
         r["windows"] = f"{len(df):,}"
         r["alerts"] = str(len(bn.detect_all(df)))
         r["forecasts"] = str(len(fc.forecast_all(df, horizon_s=60.0)))
+        h = W.headroom(dem)
+        r["head"] = f"{h['reserve_ultimate_pct']:+.1f}"
+        r["years"] = f"{h['years_to_failure']:.1f}"
         print(f"  live figures: C={r['cycle']}s  x {r['x_before']}->{r['x_after']}  "
               f"{r['windows']} windows  {r['alerts']} alerts")
     except Exception as e:
@@ -447,33 +452,37 @@ def s_key_features(prs, R):
     """Guideline: Key Features."""
     s = slide_new(prs)
     y = header(s, "Key features",
-               "Thirteen views across two tracks that never mix",
-               "Selecting a control strategy changes which views exist — neither "
-               "track can render the other's data.")
-    # Sized to clear the footer: the subtitle above costs 0.4 in of height, and
-    # at 7.15 in wide this 1680x1150 screenshot ran under the footer rule.
-    picture(s, IMG / "webster-network.png", M, y, w=Inches(6.75))
+               "A live control room, and fifteen views across two tracks",
+               "Every camera on one screen — replayed, or detected in real time — "
+               "with alerts the moment their evidence completes.")
+    # Sized to clear the footer: the subtitle above costs 0.4 in of height.
+    shot = next((p for p in (IMG / "live-detection.png", IMG / "live-monitor.png")
+                 if p.exists()), IMG / "webster-network.png")
+    picture(s, shot, M, y, w=Inches(6.75))
     x2 = M + Inches(7.5)
     tf = _txt(s, x2, y, Inches(4.6), Inches(0.3))
-    _run(_para(tf, True), "TRACK 1 — WEBSTER'S · SURAT CCTV", 9.5, True, BLUE)
+    _run(_para(tf, True), "LIVE CONTROL ROOM", 9.5, True, RED)
     bullets(s, x2, y + Inches(0.3), Inches(4.6), [
-        "Network — LOS bands and congestion ranking",
-        "Site detail — zones, overlay, heatmap, trends",
-        "Signal timing — cycle, splits, delay, saturation",
-        "Bottlenecks — every alert with its evidence",
-        "Outlook — forecasts with prediction bands",
-        "Analyse footage · Calibration · How it works",
-    ], size=11.5, gap=7)
+        "Replay on one clock; alerts never quote the future",
+        "Real-time YOLO11 + ByteTrack — 25 fps on an Intel iGPU",
+        "Stalled-vehicle watch · incidents acknowledged, resolved, logged",
+    ], size=11, gap=6, bullet_color=RED)
 
-    tf = _txt(s, x2, y + Inches(2.65), Inches(4.6), Inches(0.3))
+    tf = _txt(s, x2, y + Inches(1.6), Inches(4.6), Inches(0.3))
+    _run(_para(tf, True), "TRACK 1 — WEBSTER'S · SURAT CCTV", 9.5, True, BLUE)
+    bullets(s, x2, y + Inches(1.9), Inches(4.6), [
+        "Network map · Site detail · Outlook",
+        "Signal timing with headroom and what-if",
+        "Bottlenecks with evidence · printable briefing",
+        "Analyse footage · Calibration · How it works",
+    ], size=11, gap=6)
+
+    tf = _txt(s, x2, y + Inches(3.45), Inches(4.6), Inches(0.3))
     _run(_para(tf, True), "TRACK 2 — MAX-PRESSURE · FLUID DRONE", 9.5, True, ORANGE)
-    bullets(s, x2, y + Inches(2.95), Inches(4.6), [
-        "Validation — replayed against 3 real signals",
-        "Scene — aerial with live queue shading",
-        "Phase pressure — every movement's terms",
-        "Head-to-head — 3 demand regimes simulated",
-        "Method — what the data can and cannot say",
-    ], size=11.5, gap=7, bullet_color=ORANGE)
+    bullets(s, x2, y + Inches(3.75), Inches(4.6), [
+        "Validation against 3 real signals · Scene",
+        "Phase pressure · Head-to-head · Method",
+    ], size=11, gap=6, bullet_color=ORANGE)
     return s
 
 
@@ -492,7 +501,7 @@ def s_tech_stack(prs, R):
         ["2nd controller", "Max-pressure (Varaiya)", "Throughput-optimal — gated on observability"],
         ["Saturation flow", "IRC:SP:41-1994, S = 525·W", "Width-based; lane count is unrecoverable here"],
         ["Occupancy", "Canny edge density", "No object resolution needed — survives saturation"],
-        ["Dashboard", "Streamlit + Plotly", "Operator view without a JS build step"],
+        ["Dashboard", "React 19 + FastAPI", "Live SSE + MJPEG streams; one Python process serves it"],
         ["Language", "Python 3.11 · PyTorch 2.5 · OpenCV", "GPU-accelerated, standard"],
     ]
     table(s, M, y, CW, rows, [Inches(2.2), Inches(3.5), Inches(6.19)], size=11,
@@ -500,9 +509,10 @@ def s_tech_stack(prs, R):
     tf = _txt(s, M, Inches(6.15), CW, Inches(0.4))
     p = _para(tf, True)
     _run(p, "Hardware: ", 11, True, INK)
-    _run(p, "NVIDIA RTX 3050 6 GB laptop GPU. No cloud training was needed — "
-            "the UVH-26 weights removed the training step entirely.", 11, False,
-         INK_SOFT)
+    _run(p, "NVIDIA RTX 3050 6 GB laptop GPU for the batch pipeline; live detection "
+            "also runs on a plain Intel laptop — OpenVINO on its integrated GPU at 25 fps "
+            "(6 fps PyTorch CPU). No cloud training was needed: the UVH-26 weights "
+            "removed the training step entirely.", 11, False, INK_SOFT)
     return s
 
 
@@ -665,12 +675,14 @@ def s_results_surat(prs, R):
 
     x2 = M + Inches(7.6)
     tf = _txt(s, x2, y2, Inches(4.5), Inches(0.3))
-    _run(_para(tf, True), "TWO INDEPENDENT CHECKS", 9.5, True, INK_MUTE)
+    _run(_para(tf, True), "TWO INDEPENDENT CHECKS, AND THE LIMIT", 9.5, True, INK_MUTE)
     bullets(s, x2, y2 + Inches(0.3), Inches(4.5), [
         ("Cycle sweep. ", "Empirical delay minimum lands at 130 s against "
          "Webster's closed form of 135.6 s."),
         ("Equal saturation. ", "The optimal plan equalises degree of saturation "
          "across approaches (0.929 / 0.929) — the known optimality condition."),
+        ("Headroom. ", f"{R['head']}% demand before no timing can cope — about "
+         f"{R['years']} years at 5% annual growth. After that the fix is road space."),
     ], size=11.5, gap=9)
     return s
 
@@ -803,8 +815,8 @@ def s_future(prs, R):
          "visit."),
         ("Cameras on receiving links. ", "Unlocks true max-pressure on Surat — "
          "the controller is already implemented and validated."),
-        ("Continuous RTSP ingest. ", "Replaces 31 minutes of clips with a live "
-         "feed; the pipeline is already windowed for it."),
+        ("A live camera feed. ", "The live monitor already runs the full "
+         "pipeline in real time on the clips; an RTSP reader is the remaining piece."),
     ], size=11.5, gap=10)
 
     x2 = M + Inches(6.6)
@@ -815,8 +827,8 @@ def s_future(prs, R):
          "of continuous operation would justify a daily/weekly seasonal model."),
         ("Coordinated corridors. ", "Green-wave offsets across adjacent junctions "
          "— the simulator already models two in series."),
-        ("Production stack. ", "React + Kafka + PostGIS for city-scale "
-         "deployment; the measurement core is unchanged."),
+        ("City scale. ", "A message bus and a spatial database for hundreds of "
+         "cameras; the measurement core and React control room are unchanged."),
     ], size=11.5, gap=10, bullet_color=BLUE)
 
     yy = Inches(4.55)
